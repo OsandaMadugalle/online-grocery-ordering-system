@@ -13,10 +13,7 @@
     String logoutMessage = (String) session.getAttribute("logoutMessage");
     if (logoutMessage != null) {
 %>
-    <!-- Display logout success message -->
-    <div class="alert alert-success text-center" role="alert" style="margin-top: 20px;">
-        <%= logoutMessage %>
-    </div>
+   
 <%
         // Remove the message from the session after displaying it
         session.removeAttribute("logoutMessage");
@@ -33,6 +30,16 @@
     <!-- Include Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <style>
+    	html, body {
+		    height: 100%;
+		    margin: 0;
+		    padding: 0;
+		}   
+		.container {
+		    margin-bottom: 0;
+		    padding-bottom: 0;
+		}
+				 
         .d-flex {
             background-color: #36454F;
             color: white;
@@ -74,7 +81,8 @@
 
     <div class="d-flex">
         <!-- Left Section -->
-        <div class="container mt-4" style="width: 25%;">
+       <div class="container-fluid mt-4" style="width: 25%; height:100vh;">
+
             <ul class="list-unstyled custom-list">
                 <br>
                 <hr>
@@ -93,9 +101,11 @@
         <!-- Right Section -->
         <div class="container mt-4" style="width: 75%;">
             <c:if test="${not empty adminDetails}">
-                <div class="text-center mb-4">
-                    <h2>My Profile</h2>
-                </div>
+               <div class="text-center mb-4">
+				    <h2>My Profile</h2>                    
+				    <a href="LogoutServlet" class="btn btn-danger" style="position: absolute; top: 10px; right: 10px; margin-top:10px; margin-right:40px;">Logout</a>
+				</div>
+
                 <c:forEach var="ad" items="${adminDetails}">
                     <div class="card mb-3">
                         <div class="card-body">
@@ -110,6 +120,7 @@
                             <p><strong>Email:</strong> <c:out value="${ad.email}" /></p>
                             <p><strong>Password:</strong> <c:out value="${ad.password}" /></p>
                             <a href="editProfile.jsp" class="btn btn-primary">Edit Profile</a>
+                            
                         </div>
                     </div>
                 </c:forEach>
