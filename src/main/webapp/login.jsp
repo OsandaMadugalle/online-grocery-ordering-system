@@ -130,7 +130,7 @@
     <div class="form-container">
     
     
-        <form onsubmit="return validateLogin()"  action="log" method="post">
+        <form action="log" method="post">
         
         <div class="d-flex align-items-center mb-4" style="margin-top: 20px; margin-bottom: 20px;">
 		        <hr class="flex-grow-1 me-3" style="border: 1px solid white; margin: 0 10px;">
@@ -161,13 +161,6 @@
         </form>
     </div>
 
-	<script>
-	        // Check if the server passed an error message
-	        const errorMessage = '<%= request.getAttribute("errorMessage") %>';
-	        if (errorMessage) {
-	            alert(errorMessage); // Show pop-up alert with the error message
-	        }
-    </script>
     
 </body>
 </html>

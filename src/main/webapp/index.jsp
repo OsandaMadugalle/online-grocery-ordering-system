@@ -201,16 +201,16 @@
 		  </div>
 		  <div class="carousel-inner">
 		    <div class="carousel-item active">
-		      <img src="img/slide1.jpg" class="d-block w-100" alt="Slide 1" style="height: 800px; object-fit: cover;">
+		      <img src="images/slide1.jpg" class="d-block w-100" alt="Slide 1" style="height: 800px; object-fit: cover;">
 		    </div>
 		    <div class="carousel-item">
-		      <img src="img/slide2.jpg" class="d-block w-100" alt="Slide 2" style="height: 800px; object-fit: cover;">
+		      <img src="images/slide2.jpg" class="d-block w-100" alt="Slide 2" style="height: 800px; object-fit: cover;">
 		    </div>
 		    <div class="carousel-item">
-		      <img src="img/slide3.jpg" class="d-block w-100" alt="Slide 3" style="height: 800px; object-fit: cover;">
+		      <img src="images/slide3.jpg" class="d-block w-100" alt="Slide 3" style="height: 800px; object-fit: cover;">
 		    </div>
 		    <div class="carousel-item">
-		      <img src="img/slide4.jpg" class="d-block w-100" alt="Slide 4" style="height: 800px; object-fit: cover;">
+		      <img src="images/slide4.jpg" class="d-block w-100" alt="Slide 4" style="height: 800px; object-fit: cover;">
 		    </div>
 		  </div>
 		  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -339,7 +339,7 @@
 		        <!-- Left Side: Image -->
 		        <div class="col-md-7 order-md-1 order-2">
 		            <div style="height: 100%; max-height: 400px;">
-		                <img src="img/banner.png" class="img-fluid w-100 h-100" style="object-fit: cover;" alt="App Banner">
+		                <img src="images/banner.png" class="img-fluid w-100 h-100" style="object-fit: cover;" alt="App Banner">
 		            </div>
 		        </div>
 		
