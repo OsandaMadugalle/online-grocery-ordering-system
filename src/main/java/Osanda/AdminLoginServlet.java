@@ -13,8 +13,8 @@ import java.util.List;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/AdminLoginServlet")
+public class AdminLoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
