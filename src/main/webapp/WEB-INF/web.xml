@@ -34,6 +34,15 @@
         <url-pattern>/log</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+	    <servlet-name>LogoutServlet</servlet-name>
+	    <servlet-class>Osanda.LogoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>LogoutServlet</servlet-name>
+	    <url-pattern>/LogoutServlet</url-pattern>
+	</servlet-mapping>
+	    
    
        
 
