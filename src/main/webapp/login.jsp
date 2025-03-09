@@ -141,13 +141,11 @@
             <div class="form-group">
                 <label class="text-white">Username</label>
                 <input type="text" class="form-control" name="username" placeholder="Username" id="username" required>
-                <small class="error-message" id="usernameError">Username cannot be empty.</small>
             </div>
 
             <div class="form-group">
                 <label class="text-white">Password</label>
                 <input type="password" class="form-control" name="password" placeholder="Password" id="password" required>
-                <small class="error-message" id="passwordError">Password must be at least 6 characters long.</small>
             </div>
 
             <div class="mt-5">
