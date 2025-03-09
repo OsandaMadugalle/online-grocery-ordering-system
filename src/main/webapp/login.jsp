@@ -161,17 +161,13 @@
         </form>
     </div>
 
-    <script>
-        function validateLogin() {
-            let username = document.getElementById("username").value;
-            let password = document.getElementById("password").value;
-
-            document.getElementById("usernameError").style.display = username.trim() !== "" ? "none" : "block";
-            document.getElementById("passwordError").style.display = password.length >= 6 ? "none" : "block";
-
-            return username.trim() !== "" && password.length >= 6;
-        }
+	<script>
+	        // Check if the server passed an error message
+	        const errorMessage = '<%= request.getAttribute("errorMessage") %>';
+	        if (errorMessage) {
+	            alert(errorMessage); // Show pop-up alert with the error message
+	        }
     </script>
-
+    
 </body>
 </html>

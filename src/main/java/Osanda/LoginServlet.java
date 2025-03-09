@@ -14,33 +14,32 @@ import java.util.List;
  */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String uname = request.getParameter("username");
-		String upass = request.getParameter("password");
-		
-		try {
-		    List<Admin> adminDetails = AdminDBUtil.validate(uname, upass);
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String uname = request.getParameter("username");
+        String upass = request.getParameter("password");
 
-		    if (!adminDetails.isEmpty()) {
-		        request.setAttribute("adminDetails", adminDetails);
-		        RequestDispatcher dis = request.getRequestDispatcher("AdminAccount.jsp");
-		        dis.forward(request, response);
-		    } else {
-		        response.sendRedirect("login.jsp?error=invalid"); // Redirect to login if no admin found
-		    }
-		} catch(Exception e) {
-		    e.printStackTrace();
-		}
+        try {
+            // Validate credentials
+            List<Admin> adminDetails = AdminDBUtil.validate(uname, upass);
 
-		
-		RequestDispatcher dis = request.getRequestDispatcher("AdminAccount.jsp");
-		dis.forward(request, response);
-	}
-
+            if (!adminDetails.isEmpty()) {
+                // Login success - forward to AdminAccount page
+                request.setAttribute("adminDetails", adminDetails);
+                RequestDispatcher dis = request.getRequestDispatcher("AdminAccount.jsp");
+                dis.forward(request, response);
+            } else {
+                // Login failed - send error message back to login page
+                request.setAttribute("errorMessage", "Invalid username or password.");
+                RequestDispatcher dis = request.getRequestDispatcher("login.jsp");
+                dis.forward(request, response);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

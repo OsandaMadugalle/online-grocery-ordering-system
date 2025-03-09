@@ -197,7 +197,7 @@
             </div>
 
             <div class="mt-2">
-                <a href="./login.jsp" class="btn btn-signup btn-block text-center d-block">Log In</a>
+                <a href="login.jsp" class="btn btn-signup btn-block text-center d-block">Log In</a>
             </div>
 
         </form>
