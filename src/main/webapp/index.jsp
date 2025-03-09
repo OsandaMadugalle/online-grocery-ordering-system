@@ -94,7 +94,7 @@
 		    <!-- Top Bar with Sign In, Sign Up, and Track My Order -->
 		    <div class="d-flex justify-content-end p-2" style="background-color: #013220;">
 		        <a href="./trackOrder.jsp" class="btn btn-outline-info mx-2">Track My Order</a>
-		        <a href="./login.jsp" class="btn btn-outline-primary mx-2">Sign In</a>
+		        <a href="./login.jsp" class="btn btn-outline-primary mx-2">Log In</a>
 		        <a href="./signup.jsp" class="btn btn-outline-secondary mx-2">Sign Up</a>
 		    </div>
 		

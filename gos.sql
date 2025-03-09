@@ -11,6 +11,7 @@ create table admin(
 );
 
 insert into admin
-values(0,"Admin","Osanda","Madugalle","+94705531088","osandamadugalle@gmail.com","admin123");
+values(0,"Admin","Osanda","Madugalle","+94705531088","osandamadugalle@gmail.com","admin123"),
+	(0,"test","Saman","Silva","+94705555555","saman@gmail.com","test@123");
 
 select * from admin;

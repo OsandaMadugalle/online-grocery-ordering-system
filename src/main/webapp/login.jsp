@@ -5,7 +5,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Log In</title>
     
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -130,23 +130,23 @@
     <div class="form-container">
     
     
-        <form onsubmit="return validateLogin()"  action="#" method="post">
+        <form onsubmit="return validateLogin()"  action="log" method="post">
         
         <div class="d-flex align-items-center mb-4" style="margin-top: 20px; margin-bottom: 20px;">
 		        <hr class="flex-grow-1 me-3" style="border: 1px solid white; margin: 0 10px;">
-		        <h2 class="text-center mb-0" style="color: white;"><b>Login</b></h2>
+		        <h2 class="text-center mb-0" style="color: white;"><b>Log In</b></h2>
 		        <hr class="flex-grow-1 ms-3" style="border: 1px solid white; margin: 0 10px;">
 		    </div>   
             
             <div class="form-group">
                 <label class="text-white">Username</label>
-                <input type="text" class="form-control" placeholder="Username" id="username" required>
+                <input type="text" class="form-control" name="username" placeholder="Username" id="username" required>
                 <small class="error-message" id="usernameError">Username cannot be empty.</small>
             </div>
 
             <div class="form-group">
                 <label class="text-white">Password</label>
-                <input type="password" class="form-control" placeholder="Password" id="password" required>
+                <input type="password" class="form-control" name="password" placeholder="Password" id="password" required>
                 <small class="error-message" id="passwordError">Password must be at least 6 characters long.</small>
             </div>
 

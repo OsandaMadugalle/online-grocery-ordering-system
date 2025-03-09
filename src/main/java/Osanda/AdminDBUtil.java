@@ -10,33 +10,42 @@ import java.util.List;
 public class AdminDBUtil {
 	
 	public static List<Admin> validate(String username, String password){
-		
-		ArrayList<Admin> admin = new ArrayList<>();
-		
-		//create db connection
-		String url = "jdbc:mysql://localhost:3306/gos";
-		String UN = "root";
-		String PW = "";
-				
-		//validate
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			
-			Connection con = DriverManager.getConnection(url, username, password);
-			
-			Statement state =con.createStatement();
-			
-			String Query = "SELECT * FROM admin WHERE username='"+username+"' AND password='"+password+"'";
-			
-			ResultSet rs = state.executeQuery(Query);
-			
-			if(rs.next())
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		return admin;
+	    ArrayList<Admin> admin = new ArrayList<>();
+
+	    String url = "jdbc:mysql://localhost:3306/gos";
+	    String UN = "root";
+	    String PW = "";
+
+	    try {
+	        Class.forName("com.mysql.jdbc.Driver");
+	        Connection con = DriverManager.getConnection(url, UN, PW);
+	        Statement statement = con.createStatement();
+
+	        String query = "SELECT * FROM admin WHERE username='"+username+"' AND password='"+password+"'";
+	        ResultSet rs = statement.executeQuery(query);
+
+	        if (rs.next()) {
+	            int admin_id = rs.getInt(1);
+	            String admin_username = rs.getString(2);
+	            String first_name = rs.getString(3);
+	            String last_name = rs.getString(4);
+	            String phone = rs.getString(5);
+	            String email = rs.getString(6);
+	            String admin_password = rs.getString(7);
+
+	            Admin ad = new Admin(admin_id, admin_username, first_name, last_name, phone, email, admin_password);
+	            admin.add(ad);
+	        }
+
+	        // Debugging: Print result
+	        System.out.println("Admin List Size: " + admin.size());
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return admin;
 	}
+
 
 }
