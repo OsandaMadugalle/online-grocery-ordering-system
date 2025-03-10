@@ -130,7 +130,7 @@
     <div class="form-container">
     
     
-        <form action="log" method="post">
+        <form action="LoginServlet" method="post">
         
         <div class="d-flex align-items-center mb-4" style="margin-top: 20px; margin-bottom: 20px;">
 		        <hr class="flex-grow-1 me-3" style="border: 1px solid white; margin: 0 10px;">
