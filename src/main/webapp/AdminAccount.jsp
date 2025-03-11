@@ -106,24 +106,50 @@
 				    <a href="LogoutServlet" class="btn btn-danger" style="position: absolute; top: 10px; right: 10px; margin-top:10px; margin-right:40px;">Logout</a>
 				</div>
 
-                <c:forEach var="ad" items="${adminDetails}">
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <h3 class="card-title text-center">${ad.first_name} ${ad.last_name}</h3>
-                            <hr style="height:2px; color:black;">
-                            
-                            <p><strong>Admin ID:</strong> <c:out value="${ad.admin_id}" /></p>
-                            <p><strong>Username:</strong> <c:out value="${ad.username}" /></p>
-                            <p><strong>First Name:</strong> <c:out value="${ad.first_name}" /></p>
-                            <p><strong>Last Name:</strong> <c:out value="${ad.last_name}" /></p>
-                            <p><strong>Phone:</strong> <c:out value="${ad.phone}" /></p>
-                            <p><strong>Email:</strong> <c:out value="${ad.email}" /></p>
-                            <p><strong>Password:</strong> <c:out value="${ad.password}" /></p>
-                            <a href="editProfile.jsp" class="btn btn-primary">Edit Profile</a>
-                            
-                        </div>
-                    </div>
-                </c:forEach>
+               <div class="container mt-4">
+				    <div class="table-responsive">
+				        <table class="table table-bordered">				            
+				            <tbody>
+				                <c:forEach var="ad" items="${adminDetails}">
+				                    <tr>
+				                        <td><strong>Admin ID</strong></td>
+				                        <td><c:out value="${ad.admin_id}" /></td>
+				                    </tr>
+				                    <tr>
+				                        <td><strong>Username</strong></td>
+				                        <td><c:out value="${ad.username}" /></td>
+				                    </tr>
+				                    <tr>
+				                        <td><strong>First Name</strong></td>
+				                        <td><c:out value="${ad.first_name}" /></td>
+				                    </tr>
+				                    <tr>
+				                        <td><strong>Last Name</strong></td>
+				                        <td><c:out value="${ad.last_name}" /></td>
+				                    </tr>
+				                    <tr>
+				                        <td><strong>Phone</strong></td>
+				                        <td><c:out value="${ad.phone}" /></td>
+				                    </tr>
+				                    <tr>
+				                        <td><strong>Email</strong></td>
+				                        <td><c:out value="${ad.email}" /></td>
+				                    </tr>
+				                    <tr>
+				                        <td><strong>Password</strong></td>
+				                        <td><c:out value="${ad.password}" /></td>
+				                    </tr>
+				                    <tr>
+				                        <td colspan="2" class="text-center">
+				                            <a href="editProfile.jsp" class="btn btn-primary btn-sm">Edit Profile</a>
+				                        </td>
+				                    </tr>
+				                </c:forEach>
+				            </tbody>
+				        </table>
+				    </div>
+				</div>
+
             </c:if>
             <c:if test="${empty adminDetails}">
                 <div class="alert alert-danger text-center mt-5">No admin details found.</div>
