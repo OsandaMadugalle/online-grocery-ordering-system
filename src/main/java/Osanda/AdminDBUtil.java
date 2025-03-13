@@ -12,7 +12,7 @@ public class AdminDBUtil {
     public static List<Admin> validate(String username, String password) {
         ArrayList<Admin> admin = new ArrayList<>();
 
-        String url = "jdbc:mysql://localhost:3306/grocery_ordering_system";
+        String url = "jdbc:mysql://localhost:3306/gos";
         String UN = "root";
         String PW = "";
 

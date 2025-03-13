@@ -1,6 +1,6 @@
-CREATE DATABASE grocery_ordering_system;
+CREATE DATABASE gos;
 
-Use grocery_ordering_system;
+Use gos;
 
 CREATE TABLE Admin(
     Admin_ID INT AUTO_INCREMENT PRIMARY KEY,
