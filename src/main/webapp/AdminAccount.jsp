@@ -102,7 +102,7 @@
         <div class="container mt-4" style="width: 75%;">
             <c:if test="${not empty adminDetails}">
                <div class="text-center mb-4">
-				    <h2>My Profile</h2>                    
+				    <h2>Admin Dashboard</h2>                    
 				    <a href="LogoutServlet" class="btn btn-danger" style="position: absolute; top: 10px; right: 10px; margin-top:10px; margin-right:40px;">Logout</a>
 				</div>
 
