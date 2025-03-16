@@ -1,5 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.List" %>
+<%@ page import="com.gos.model.Admin" %>
+<%@ page session="true" %>
+
+<%
+    HttpSession sessionObj = request.getSession(false);
+    if (sessionObj == null || sessionObj.getAttribute("loggedIn") == null) {
+        response.sendRedirect("../admin/adminLogin.jsp"); // Redirect to admin folder
+        return;
+    }
+
+    List<Admin> adminDetails = (List<Admin>) sessionObj.getAttribute("adminDetails");
+    if (adminDetails == null || adminDetails.isEmpty()) {
+        response.sendRedirect("../admin/adminLogin.jsp"); // Redirect to admin folder
+        return;
+    }
+
+    Admin admin = adminDetails.get(0);
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -106,13 +126,13 @@
     </a>
 
     <div class="edit-container">
-        <h3>Update My Admin Profile</h3>
+        <h3>Update My Profile</h3>
 
-        <form action="#" method="post" onsubmit="return validateForm()">
+        <form action="../updateAdmin" method="post" onsubmit="return validateForm()">
         
        		 <!-- ID -->
             <div class="form-group">
-                <input type="text" class="form-control" name="admin_id" value="<%=id %>" required>
+                <input type="text" class="form-control" name="admin_id" value="<%=id %>" readonly>
             </div>
             
             <!-- Username -->
@@ -132,7 +152,7 @@
 
             <!-- Phone Number -->
             <div class="form-group">
-                <input type="tel" class="form-control" name="phone" value="<%=phone %>" pattern="[0-9]{10}" required>
+                <input type="tel" class="form-control" name="phone" value="<%=phone %>"  required>
             </div>
 
             <!-- Email Address -->

@@ -33,7 +33,7 @@ public class AdminCreateServlet extends HttpServlet {
 			 RequestDispatcher dis=request.getRequestDispatcher("admin/adminLogin.jsp");
 			 dis.forward(request, response);
 		 }else {
-			 RequestDispatcher dis=request.getRequestDispatcher("createAdmin.jsp");
+			 RequestDispatcher dis=request.getRequestDispatcher("admin/createAdmin.jsp");
 			 dis.forward(request, response);
 		 }
 		 
