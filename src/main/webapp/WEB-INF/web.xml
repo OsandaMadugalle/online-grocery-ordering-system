@@ -47,8 +47,8 @@
 	    <url-pattern>/LogoutServlet</url-pattern>
 	</servlet-mapping>
 	  
-	  <!-- Add Admin Function -->  
-   <servlet>
+	<!-- Add Admin Function -->  
+   	<servlet>
 	    <servlet-name>AdminAdd</servlet-name>
 	    <servlet-class>com.gos.servlet.AdminCreateServlet</servlet-class>
 	</servlet>
@@ -56,7 +56,17 @@
 	<servlet-mapping>
 	    <servlet-name>AdminAdd</servlet-name>
 	    <url-pattern>/addAdmin</url-pattern>
-	</servlet-mapping>
-       
+	</servlet-mapping>  
+	
+	<!-- Update Admin Function -->  
+   	<servlet>
+	    <servlet-name>AdminUpdate</servlet-name>
+	    <servlet-class>com.gos.servlet.AdminUpdateServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	    <servlet-name>AdminUpdate</servlet-name>
+	    <url-pattern>/updateAdmin</url-pattern>
+	</servlet-mapping>       
 
 </web-app>
