@@ -111,5 +111,28 @@ public class AdminService {
         }
         return isSuccess;
     }
+
+    //Add a Method to Fetch Updated Admin Details
+    public static List<Admin> getAdminById(String id) {
+        List<Admin> adminList = new ArrayList<>();
+        String sql = "SELECT * FROM admin WHERE Admin_ID = ?";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, Integer.parseInt(id));
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Admin admin = mapResultSetToAdmin(rs);
+                    adminList.add(admin);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return adminList;
+    }
     
 }
