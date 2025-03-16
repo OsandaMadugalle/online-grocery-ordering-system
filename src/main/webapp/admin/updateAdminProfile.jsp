@@ -132,9 +132,9 @@
         
        		 <!-- ID -->
             <div class="form-group">
-                <input type="text" class="form-control" name="admin_id" value="<%=id %>" readonly>
-            </div>
-            
+			    <input type="text" class="form-control" name="admin_id" value="<%=id %>" readonly style="background-color: grey; color: white;">
+			</div>   
+			         
             <!-- Username -->
             <div class="form-group">
                 <input type="text" class="form-control" name="username" value="<%=username %>" required>
