@@ -98,7 +98,7 @@
     <div class="edit-container">
         <h3>Edit Admin Profile</h3>
 
-        <form action="UpdateAdminServlet" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+        <form action="UpdateAdminServlet" method="post" onsubmit="return validateForm()">
             
             <!-- Username -->
             <div class="form-group">
