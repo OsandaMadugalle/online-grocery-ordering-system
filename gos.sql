@@ -4,7 +4,7 @@ Use gos;
 
 CREATE TABLE Admin(
     Admin_ID INT AUTO_INCREMENT PRIMARY KEY,
-    Username VARCHAR(50),
+    Username VARCHAR(50) UNIQUE,
     First_Name VARCHAR(50),
     Last_Name VARCHAR(50),
     Phone VARCHAR(50),
