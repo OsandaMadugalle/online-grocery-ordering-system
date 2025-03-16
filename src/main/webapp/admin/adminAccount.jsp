@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.List" %>
 <%@ page import="com.gos.model.Admin" %>
 <%@ page session="true" %>
@@ -39,7 +39,7 @@
         }
 
         .sidebar {
-            width: 250px;
+            width: 300px;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             padding: 20px;
@@ -182,22 +182,6 @@
 </head>
 
 <body>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <div class="admin-role" id="adminRole">Administrator</div>
-        <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-        <a href="updateAdminProfile.jsp"><i class="fas fa-user-edit"></i> Edit Profile</a>
-        <a href="adminManage.jsp"><i class="fas fa-users-cog"></i> Manage Admins</a> <!-- New Link -->
-        <a href="manageInventory.jsp"><i class="fas fa-boxes"></i> Manage Inventory Manager</a>
-        <a href="manageDelivery.jsp"><i class="fas fa-truck"></i> Manage Delivery Person</a>
-        <a href="#"><i class="fas fa-users"></i> Manage Users</a>
-        <a href="#"><i class="fas fa-cog"></i> Site Settings</a>
-        <a href="../LogoutServlet" class="logout-btn">
-            <i class="fas fa-sign-out-alt"></i> Logout
-        </a>
-    </div>
-
     <!-- Right Section -->
     <div class="container mt-4" style="width: 75%;">
         <c:if test="${not empty adminDetails}">          
@@ -211,6 +195,15 @@
                     <table class="table table-bordered">				            
                         <tbody>
                             <c:forEach var="ad" items="${adminDetails}">
+                            
+                            <c:set var="id" value="${ad.admin_id}"/>
+                            <c:set var="username" value="${ad.username}"/>
+                            <c:set var="fName" value="${ad.first_name}"/>
+                            <c:set var="lName" value="${ad.last_name}"/>
+                            <c:set var="phone" value="${ad.phone}"/>
+                            <c:set var="email" value="${ad.email}"/>
+                            <c:set var="password" value="${ad.password}"/>
+                            
                                 <tr>
                                     <td><strong>Admin ID</strong></td>
                                     <td><c:out value="${ad.admin_id}" /></td>
@@ -242,6 +235,18 @@
                             </c:forEach>
                         </tbody>
                     </table>
+                    
+                    <c:url value="updateAdminProfile.jsp" var="adminUpdate">
+					    <c:param name="id" value="${id}"/>
+					    <c:param name="username" value="${username}"/>
+					    <c:param name="fName" value="${fName}"/>
+					    <c:param name="lName" value="${lName}"/>
+					    <c:param name="phone" value="${phone}"/>
+					    <c:param name="email" value="${email}"/>
+					    <c:param name="password" value="${password}"/>
+					</c:url>
+
+                    
                 </div>
             </div>
 
@@ -251,6 +256,22 @@
         </c:if>
     </div>
 </div>
+
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="admin-role" id="adminRole">Administrator</div>
+        <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="${adminUpdate}"><i class="fas fa-user-edit"></i> Edit Profile</a>
+        <a href="adminManage.jsp"><i class="fas fa-users-cog"></i> Manage Admins</a> <!-- New Link -->
+        <a href="manageInventory.jsp"><i class="fas fa-boxes"></i> Manage Inventory Manager</a>
+        <a href="manageDelivery.jsp"><i class="fas fa-truck"></i> Manage Delivery Person</a>
+        <a href="#"><i class="fas fa-users"></i> Manage Users</a>
+        <a href="#"><i class="fas fa-cog"></i> Site Settings</a>
+        <a href="../LogoutServlet" class="logout-btn">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+    </div>
  <!-- Include Bootstrap JS -->
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
