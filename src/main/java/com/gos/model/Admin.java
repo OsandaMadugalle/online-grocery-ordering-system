@@ -1,4 +1,4 @@
-package Osanda;
+package com.gos.model;
 
 public class Admin {
 
@@ -10,15 +10,16 @@ public class Admin {
     private String email;
     private String password;
 
-    public Admin(int admin_id, String username, String first_name, String last_name, String phone, String email, String password) {
-        this.admin_id = admin_id;
+    public Admin(int id, String username, String firstName, String lastName, String phone, String email, String password) {
+        this.admin_id = id;
         this.username = username;
-        this.first_name = first_name;
-        this.last_name = last_name;
+        this.first_name = firstName;
+        this.last_name = lastName;
         this.phone = phone;
         this.email = email;
         this.password = password;
     }
+
 
     public int getAdmin_id() {
         return admin_id;
@@ -47,4 +48,32 @@ public class Admin {
     public String getPassword() {
         return password;
     }
+
+	public void setAdmin_id(int admin_id) {
+		this.admin_id = admin_id;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public void setFirst_name(String first_name) {
+		this.first_name = first_name;
+	}
+
+	public void setLast_name(String last_name) {
+		this.last_name = last_name;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }
