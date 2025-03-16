@@ -132,7 +132,7 @@
 
             <!-- Phone Number -->
             <div class="form-group">
-                <input type="tel" class="form-control" name="phone" value="<%=phone %>" pattern="[0-9]{10}" required>
+                <input type="tel" class="form-control" name="phone" value="<%=phone %>"  required>
             </div>
 
             <!-- Email Address -->
