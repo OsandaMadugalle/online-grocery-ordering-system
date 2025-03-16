@@ -91,6 +91,16 @@
 
 <body>
 
+	<%
+		String id= request.getParameter("id");
+		String username= request.getParameter("username");
+		String fName= request.getParameter("fName");
+		String lName= request.getParameter("lName");
+		String phone= request.getParameter("phone");
+		String email= request.getParameter("email");
+		String password= request.getParameter("password");
+	%>
+
     <a href="adminAccount.jsp" class="home-icon">
         <i class="fas fa-arrow-left"></i>
     </a>
@@ -98,41 +108,46 @@
     <div class="edit-container">
         <h3>Update My Admin Profile</h3>
 
-        <form action="../addAdmin" method="post" onsubmit="return validateForm()">
+        <form action="#" method="post" onsubmit="return validateForm()">
+        
+       		 <!-- ID -->
+            <div class="form-group">
+                <input type="text" class="form-control" name="admin_id" value="<%=id %>" required>
+            </div>
             
             <!-- Username -->
             <div class="form-group">
-                <input type="text" class="form-control" name="username" placeholder="Username" required>
+                <input type="text" class="form-control" name="username" value="<%=username %>" required>
             </div>
 
             <!-- First Name -->
             <div class="form-group">
-                <input type="text" class="form-control" name="firstName" placeholder="First Name" required>
+                <input type="text" class="form-control" name="firstName" value="<%=fName %>" required>
             </div>
 
             <!-- Last Name -->
             <div class="form-group">
-                <input type="text" class="form-control" name="lastName" placeholder="Last Name" required>
+                <input type="text" class="form-control" name="lastName" value="<%=lName %>" required>
             </div>
 
             <!-- Phone Number -->
             <div class="form-group">
-                <input type="tel" class="form-control" name="phone" placeholder="Phone" pattern="[0-9]{10}" required>
+                <input type="tel" class="form-control" name="phone" value="<%=phone %>" pattern="[0-9]{10}" required>
             </div>
 
             <!-- Email Address -->
             <div class="form-group">
-                <input type="email" class="form-control" name="email" placeholder="Email" required>
+                <input type="email" class="form-control" name="email" value="<%=email %>" required>
             </div>
 
             <!-- Password (Optional) -->
             <div class="form-group">
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                <input type="password" class="form-control" id="password" name="password" value="<%=password %>" required>
             </div>
 
             <!-- Confirm Password -->
             <div class="form-group">
-                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" required>
+                <input type="password" class="form-control" id="confirmPassword" value="<%=password %>" required>
                 <div class="error-message" id="error-message">Passwords do not match</div>
             </div>
 
