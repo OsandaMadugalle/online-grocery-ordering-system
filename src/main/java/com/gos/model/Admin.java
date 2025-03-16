@@ -10,11 +10,11 @@ public class Admin {
     private String email;
     private String password;
 
-    public Admin(int id, String username, String firstName, String lastName, String phone, String email, String password) {
-        this.admin_id = id;
+    public Admin(int admin_id, String username, String first_name, String last_name, String phone, String email, String password) {
+        this.admin_id = admin_id;
         this.username = username;
-        this.first_name = firstName;
-        this.last_name = lastName;
+        this.first_name = first_name;
+        this.last_name = last_name;
         this.phone = phone;
         this.email = email;
         this.password = password;

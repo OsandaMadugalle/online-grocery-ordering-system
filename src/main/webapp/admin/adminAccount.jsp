@@ -173,6 +173,11 @@
         .btn-download:hover {
             background: #e03e1a;
         }
+        
+        .welcome-message {
+		    color: white;
+		}
+        
     </style>
 </head>
 
@@ -183,8 +188,9 @@
         <div class="admin-role" id="adminRole">Administrator</div>
         <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
         <a href="updateAdmin.jsp"><i class="fas fa-user-edit"></i> Edit Profile</a>
+        <a href="manageInventory.jsp"><i class="fas fa-boxes"></i> Manage Inventory Manager</a>
+        <a href="manageDelivery.jsp"><i class="fas fa-truck"></i> Manage Delivery Person</a>
         <a href="#"><i class="fas fa-users"></i> Manage Users</a>
-        <a href="#"><i class="fas fa-chart-line"></i> Reports</a>
         <a href="#"><i class="fas fa-cog"></i> Settings</a>
         <a href="../LogoutServlet" class="logout-btn">
             <i class="fas fa-sign-out-alt"></i> Logout
@@ -195,6 +201,10 @@
     <div class="container mt-4" style="width: 75%;">
         <c:if test="${not empty adminDetails}">          
 
+		<div class="welcome-message">
+		    Welcome, <%= admin.getFirst_name() + " " + admin.getLast_name() %>!
+		</div>
+            
            <div class="container mt-4">
                 <div class="table-responsive">
                     <table class="table table-bordered">				            
