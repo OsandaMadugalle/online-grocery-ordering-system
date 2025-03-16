@@ -34,9 +34,10 @@ public class AdminService {
         }
 
         System.out.println("Admin list size: " + adminList.size()); // Debug log
-        return adminList;
-    }
-
+        return adminList;       
+       
+    }  
+    
     // Utility method to map a ResultSet row to an Admin object
     private static Admin mapResultSetToAdmin(ResultSet rs) throws SQLException {
         return new Admin(
@@ -54,5 +55,32 @@ public class AdminService {
     private static void logException(Exception e) {
         System.err.println("Error: " + e.getMessage());
         e.printStackTrace();
+    } 
+    
+  //add admin
+    public static boolean addAdmin( String username, String first_name, String last_name , String phone, String email , String password) {
+    	
+    	boolean isSuccess = false;
+    	
+    	String sql="INSERT INTO admin VALUES(0,'"+username+"','"+first_name+"','"+last_name+"','"+phone+"','"+email+"','"+password+"')";
+
+        try (Connection conn = DBConnection.getConnection(); // Use DBConnection to get the connection
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        	
+        	int rs=stmt.executeUpdate(sql);
+        	
+        	if(rs>0) {
+        		isSuccess=true;
+        	}else {
+        		isSuccess=false;
+        	}
+        	
+        }catch(Exception e) {
+        	e.printStackTrace();
+        }
+    	
+    	return isSuccess;
+    	
     }
+    
 }
