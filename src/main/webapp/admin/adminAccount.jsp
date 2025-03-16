@@ -187,8 +187,8 @@
     <div class="sidebar">
         <div class="admin-role" id="adminRole">Administrator</div>
         <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-        <a href="updateAdmin.jsp"><i class="fas fa-user-edit"></i> Edit Profile</a>
-        <a href="manageAdmins.jsp"><i class="fas fa-users-cog"></i> Manage Admins</a> <!-- New Link -->
+        <a href="updateAdminProfile.jsp"><i class="fas fa-user-edit"></i> Edit Profile</a>
+        <a href="adminManage.jsp"><i class="fas fa-users-cog"></i> Manage Admins</a> <!-- New Link -->
         <a href="manageInventory.jsp"><i class="fas fa-boxes"></i> Manage Inventory Manager</a>
         <a href="manageDelivery.jsp"><i class="fas fa-truck"></i> Manage Delivery Person</a>
         <a href="#"><i class="fas fa-users"></i> Manage Users</a>

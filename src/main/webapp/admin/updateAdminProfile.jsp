@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Admin</title>
+    <title>Update Profile</title>
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
@@ -91,12 +91,12 @@
 
 <body>
 
-    <a href="adminManage.jsp" class="home-icon">
+    <a href="adminAccount.jsp" class="home-icon">
         <i class="fas fa-arrow-left"></i>
     </a>
 
     <div class="edit-container">
-        <h3>Create Admin</h3>
+        <h3>Update My Admin Profile</h3>
 
         <form action="../addAdmin" method="post" onsubmit="return validateForm()">
             
@@ -137,7 +137,7 @@
             </div>
 
             <!-- Submit Button -->
-            <button type="submit" class="btn-update">Create Admin</button>
+            <button type="submit" class="btn-update">Update Profile</button>
 
         </form>
     </div>
