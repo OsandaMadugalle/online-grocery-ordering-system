@@ -268,7 +268,7 @@
         <a href="manageInventory.jsp"><i class="fas fa-boxes"></i> Manage Inventory Manager</a>
         <a href="manageDelivery.jsp"><i class="fas fa-truck"></i> Manage Delivery Person</a>
         <a href="#"><i class="fas fa-users"></i> Manage Users</a>
-        <a href="#"><i class="fas fa-cog"></i> Site Settings</a>
+        <a href="../index.jsp"><i class="fas fa-cog"></i> Site Settings</a>
         <a href="../LogoutServlet" class="logout-btn">
             <i class="fas fa-sign-out-alt"></i> Logout
         </a>
