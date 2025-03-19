@@ -31,7 +31,7 @@ public class AdminLoginServlet extends HttpServlet {
                 session.setAttribute("loggedIn", true);
                 session.setAttribute("adminDetails", adminDetails);
                 session.setAttribute("username", uname);
-
+                
                 response.sendRedirect("admin/adminAccount.jsp"); // Redirect to admin folder
             } else {
                 request.setAttribute("errorMessage", "Invalid username or password.");

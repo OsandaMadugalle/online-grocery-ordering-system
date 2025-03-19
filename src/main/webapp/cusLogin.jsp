@@ -109,6 +109,32 @@
 		.home-icon:hover {
 		    color: #ddd;
 		}
+
+        .role-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .role-buttons .btn {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            border: 2px solid white;
+            color: white;
+            background-color: transparent;
+            transition: background-color 0.3s ease;
+        }
+
+        .role-buttons .btn.active {
+            background-color: white;
+            color: #080710;
+        }
+
+        .role-buttons .btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
     </style>
 
 </head>
@@ -117,7 +143,7 @@
 
     <div class="left-side">
     
-    <a href="index.jsp" class="home-icon">
+    <a href="./index.jsp" class="home-icon">
         <i class="fas fa-home"></i>
     </a>
     
@@ -131,7 +157,11 @@
     
     
         <form action="LoginServlet" method="post">
-        
+			<div class="role-buttons">
+			    <a href="./cusLogin.jsp" class="btn">Customer</a>
+			    <a href="./admin/adminLogin.jsp" class="btn">Admin</a>
+			</div>
+
         <div class="d-flex align-items-center mb-4" style="margin-top: 20px; margin-bottom: 20px;">
 		        <hr class="flex-grow-1 me-3" style="border: 1px solid white; margin: 0 10px;">
 		        <h2 class="text-center mb-0" style="color: white;"><b>Log In</b></h2>
@@ -158,7 +188,6 @@
 
         </form>
     </div>
-
     
 </body>
 </html>

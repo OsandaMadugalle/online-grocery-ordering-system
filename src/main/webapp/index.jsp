@@ -45,7 +45,7 @@
 		</style>
 	    
 	    <!-- Include header styles and scripts -->
-  		<%@ include file="header.jsp" %>
+  		<%@ include file="./header.jsp" %>
   		
 	</head>
 	<body>
@@ -246,7 +246,7 @@
 		</div>
 		
 	    <!-- Include footer -->
-		<%@ include file="footer.jsp" %>
+		<%@ include file="./footer.jsp" %>
 		
 		<!-- Bootstrap Bundle with Popper -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
