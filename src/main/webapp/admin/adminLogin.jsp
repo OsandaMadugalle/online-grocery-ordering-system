@@ -2,10 +2,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Log In</title>
+    <title>Admin Log In</title>
     
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -14,33 +13,23 @@
     
     <style>
         body {
-            background-color: #013220;
+            background-color: #002244;
             font-family: 'Poppins', sans-serif;
             display: flex;
             height: 100vh;
         }
 
-        .left-side {
-            flex: 1; 
-            background-color: #006700;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 24px;
-            text-align: center;
-            padding: 20px;
-        }
-
         .form-container {
-            flex: 1;
+            flex: 1; 
             background-color: rgba(255, 255, 255, 0.13);
             box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
             padding: 50px 35px;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            color: white;
             animation: fadeIn 0.5s ease-in-out;
+            position: relative;
         }
 
         .form-container h3 {
@@ -68,7 +57,7 @@
         }
 
         .btn-custom:hover {
-            background-color: grey; 
+            background-color: grey;
         }
 
         .btn-signup {
@@ -81,34 +70,6 @@
         .btn-signup:hover {
             background-color: rgba(255, 255, 255, 0.2); 
         }
-
-        .error-message {
-            color: red;
-            font-size: 12px;
-            display: none;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .left-side {
-		    position: relative; /* Ensures absolute positioning works inside */
-		}
-		
-		.home-icon {
-		    position: absolute;
-		    top: 20px;
-		    left: 20px;
-		    font-size: 28px;
-		    color: white;
-		    text-decoration: none;
-		}
-		
-		.home-icon:hover {
-		    color: #ddd;
-		}
 
         .role-buttons {
             display: flex;
@@ -135,60 +96,97 @@
         .role-buttons .btn:hover {
             background-color: rgba(255, 255, 255, 0.2);
         }
-    </style>
 
+        .left-side {
+            flex: 1; 
+            background-color: #003366;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .home-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 28px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .home-icon:hover {
+            color: #ddd;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
 </head>
 
-<body>
+<body>	
 
-    <div class="left-side">
-    
-	    <a href="./index.jsp" class="home-icon">
-	        <i class="fas fa-home"></i>
-	    </a>
-    
-    	<div>
-            <h1>Welcome Back!</h1>
-            <p>Log in to continue your shopping.</p>
+    <div class="left-side">   
+    	
+        <a href="./index.jsp" class="home-icon">
+            <i class="fas fa-home"></i>
+        </a>     
+        
+        <div>
+            <h1>Let’s Get to Work! Admin.</h1>
+            <p>Log in to continue your job.</p>
         </div>
     </div>
 
     <div class="form-container">
-    	
-    	<div class="role-buttons">
-			 <a href="./cusLogin.jsp" class="btn">Customer</a>
-			    <a href="./staffLogin.jsp" class="btn">Staff</a>
-			</div>
-    
-        <form action="LoginServlet" method="post">
-			
 
-        <div class="d-flex align-items-center mb-4" style="margin-top: 20px; margin-bottom: 20px;">
+        <div class="role-buttons">
+			 <a href="../cusLogin.jsp" class="btn">Customer</a>
+			 <a href="./adminLogin.jsp" class="btn">Admin</a>
+		</div>
+
+        <form action="../adminLoginServlet" method="post">
+            
+	<div class="d-flex align-items-center mb-4" style="margin-top: 20px; margin-bottom: 20px;">
 		        <hr class="flex-grow-1 me-3" style="border: 1px solid white; margin: 0 10px;">
 		        <h2 class="text-center mb-0" style="color: white;"><b>Log In</b></h2>
 		        <hr class="flex-grow-1 ms-3" style="border: 1px solid white; margin: 0 10px;">
-		    </div>   
+		    </div> 
             
             <div class="form-group">
                 <label class="text-white">Username</label>
-                <input type="text" class="form-control" name="username" placeholder="Username" id="username" required>
+                <input type="text" class="form-control" name="username" placeholder="Username" required>
             </div>
 
             <div class="form-group">
                 <label class="text-white">Password</label>
-                <input type="password" class="form-control" name="password" placeholder="Password" id="password" required>
+                <input type="password" class="form-control" name="password" placeholder="Password" required>
             </div>
 
             <div class="mt-5">
-                <button type="submit" class="btn btn-custom btn-block" >Log In</button>
+                <button type="submit" class="btn btn-custom btn-block">Log In</button>
             </div>
-
-            <div class="mt-2">
-                <a href="./cusSignup.jsp" class="btn btn-signup btn-block text-center d-block">Sign Up</a>
-            </div>
-
         </form>
-    </div>
+    </div>  
+    
+     <script>
+        // Add active class to the clicked button
+        document.getElementById('customerBtn').addEventListener('click', function() {
+            this.classList.add('active');
+            document.getElementById('staffBtn').classList.remove('active');
+        });
+
+        document.getElementById('staffBtn').addEventListener('click', function() {
+            this.classList.add('active');
+            document.getElementById('customerBtn').classList.remove('active');
+        });
+    </script> 
     
 </body>
 </html>
