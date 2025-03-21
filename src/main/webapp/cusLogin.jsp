@@ -5,7 +5,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log In</title>
+    <title>Customer Log In</title>
     
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -143,24 +143,25 @@
 
     <div class="left-side">
     
-    <a href="./index.jsp" class="home-icon">
-        <i class="fas fa-home"></i>
-    </a>
+	    <a href="./index.jsp" class="home-icon">
+	        <i class="fas fa-home"></i>
+	    </a>
     
-    <div>
+    	<div>
             <h1>Welcome Back!</h1>
             <p>Log in to continue your shopping.</p>
         </div>
     </div>
 
     <div class="form-container">
-    
+    	
+    	<div class="role-buttons">
+			 <a href="./cusLogin.jsp" class="btn">Customer</a>
+			    <a href="./staffLogin.jsp" class="btn">Staff</a>
+			</div>
     
         <form action="LoginServlet" method="post">
-			<div class="role-buttons">
-			    <a href="./cusLogin.jsp" class="btn">Customer</a>
-			    <a href="./admin/adminLogin.jsp" class="btn">Admin</a>
-			</div>
+			
 
         <div class="d-flex align-items-center mb-4" style="margin-top: 20px; margin-bottom: 20px;">
 		        <hr class="flex-grow-1 me-3" style="border: 1px solid white; margin: 0 10px;">
@@ -183,7 +184,7 @@
             </div>
 
             <div class="mt-2">
-                <a href="./signup.jsp" class="btn btn-signup btn-block text-center d-block">Sign Up</a>
+                <a href="./cusSignup.jsp" class="btn btn-signup btn-block text-center d-block">Sign Up</a>
             </div>
 
         </form>

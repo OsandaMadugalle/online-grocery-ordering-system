@@ -34,7 +34,7 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #1b1b2f, #162447);
+            background-color: #002244;
             display: flex;
             height: 100vh;
         }
@@ -49,25 +49,11 @@
             box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.3);
             align-items: center;
         }
-
-        .profile-pic {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 3px solid white;
-            margin-bottom: 10px;
-        }
-
+        
         .admin-name {
             color: white;
             font-size: 18px;
             margin-bottom: 5px;
-        }
-
-        .admin-role {
-            color: #ff4c29;
-            font-size: 14px;
-            margin-bottom: 20px;
         }
 
         .sidebar a {
@@ -261,7 +247,6 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <div class="admin-role" id="adminRole">Administrator</div>
         <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
         <a href="${adminUpdate}"><i class="fas fa-user-edit"></i> Edit Profile</a>
         <a href="adminManage.jsp"><i class="fas fa-users-cog"></i> Manage Admins</a> <!-- New Link -->

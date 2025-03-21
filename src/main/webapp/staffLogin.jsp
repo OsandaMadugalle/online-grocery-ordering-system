@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log In</title>
+    <title>Staff Log In</title>
     
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -130,21 +130,34 @@
     </style>
 </head>
 
-<body>
+<body>	
+
+    <div class="left-side">   
+    	
+        <a href="./index.jsp" class="home-icon">
+            <i class="fas fa-home"></i>
+        </a>     
+        
+        <div>
+            <h1>Let’s Get to Work! Team.</h1>
+            <p>Log in to continue your job.</p>
+        </div>
+    </div>
 
     <div class="form-container">
 
-        <a href="../index.jsp" class="home-icon">
-            <i class="fas fa-home"></i>
-        </a>
-
         <div class="role-buttons">
-			 <a href="../cusLogin.jsp" class="btn">Customer</a>
-			 <a href="./adminLogin.jsp" class="btn">Admin</a>
+			 <a href="./cusLogin.jsp" class="btn">Customer</a>
+			 <a href="./staffLogin.jsp" class="btn">Staff</a>
 		</div>
 
-        <form action="../adminLoginServlet" method="post">
-            <h3>Log In</h3>
+        <form action="adminLoginServlet" method="post">
+            
+	<div class="d-flex align-items-center mb-4" style="margin-top: 20px; margin-bottom: 20px;">
+		        <hr class="flex-grow-1 me-3" style="border: 1px solid white; margin: 0 10px;">
+		        <h2 class="text-center mb-0" style="color: white;"><b>Log In</b></h2>
+		        <hr class="flex-grow-1 ms-3" style="border: 1px solid white; margin: 0 10px;">
+		    </div> 
             
             <div class="form-group">
                 <label class="text-white">Username</label>
@@ -160,13 +173,6 @@
                 <button type="submit" class="btn btn-custom btn-block">Log In</button>
             </div>
         </form>
-    </div>
-
-    <div class="left-side">       
-        <div>
-            <h1>Let’s Get to Work! Admin.</h1>
-            <p>Log in to continue your shopping.</p>
-        </div>
     </div>  
     
      <script>

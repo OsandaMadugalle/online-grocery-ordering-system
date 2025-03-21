@@ -34,7 +34,7 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #1b1b2f, #162447);
+            background-color: #002244;
             display: flex;
             height: 100vh;
             justify-content: center;

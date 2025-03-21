@@ -30,10 +30,10 @@ public class AdminCreateServlet extends HttpServlet {
 		 isTrue= AdminService.addAdmin(username, first_name, last_name, phone, email, password);
 		 
 		 if(isTrue==true) {
-			 RequestDispatcher dis=request.getRequestDispatcher("admin/adminLogin.jsp");
+			 RequestDispatcher dis=request.getRequestDispatcher("../admin/adminAccount.jsp");
 			 dis.forward(request, response);
 		 }else {
-			 RequestDispatcher dis=request.getRequestDispatcher("admin/createAdmin.jsp");
+			 RequestDispatcher dis=request.getRequestDispatcher("../admin/createAdmin.jsp");
 			 dis.forward(request, response);
 		 }
 		 

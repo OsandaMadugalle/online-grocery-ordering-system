@@ -32,10 +32,10 @@ public class AdminLoginServlet extends HttpServlet {
                 session.setAttribute("adminDetails", adminDetails);
                 session.setAttribute("username", uname);
                 
-                response.sendRedirect("admin/adminAccount.jsp"); // Redirect to admin folder
+                response.sendRedirect("./admin/adminAccount.jsp"); // Redirect to admin folder
             } else {
                 request.setAttribute("errorMessage", "Invalid username or password.");
-                RequestDispatcher dis = request.getRequestDispatcher("admin/adminLogin.jsp"); // Forward to admin folder
+                RequestDispatcher dis = request.getRequestDispatcher("./staffLogin.jsp"); // Forward to admin folder
                 dis.forward(request, response);
             }
         } catch (Exception e) {

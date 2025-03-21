@@ -28,6 +28,6 @@ public class AdminLogoutServlet extends HttpServlet {
             session.invalidate();
         }
         // Redirect to the login page or home page after logout
-        response.sendRedirect("admin/adminLogin.jsp");
+        response.sendRedirect("./staffLogin.jsp");
     }
 }

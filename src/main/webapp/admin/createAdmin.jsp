@@ -112,12 +112,12 @@
 
             <!-- Last Name -->
             <div class="form-group">
-                <input type="text" class="form-control" name="lastName" placeholder="Last Name" required>
+                <input type="text" class="form-control" name="lastName" placeholder="Last Name">
             </div>
 
             <!-- Phone Number -->
             <div class="form-group">
-                <input type="tel" class="form-control" name="phone" placeholder="Phone" pattern="[0-9]{10}" required>
+                <input type="tel" class="form-control" name="phone" placeholder="Phone">
             </div>
 
             <!-- Email Address -->

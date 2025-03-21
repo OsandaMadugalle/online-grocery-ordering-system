@@ -91,12 +91,12 @@
     <div class="d-flex justify-content-end p-2" style="background-color: #013220;">
         <c:if test="${not sessionScope.loggedIn}">
             <a href="./cusLogin.jsp" class="btn btn-outline-primary mx-2">Log In</a>
-            <a href="./signup.jsp" class="btn btn-outline-secondary mx-2">Sign Up</a>
+            <a href="./cusSignup.jsp" class="btn btn-outline-secondary mx-2">Sign Up</a>
         </c:if>
 
         <c:if test="${sessionScope.loggedIn}">
             <a href="trackOrder.jsp" class="btn btn-outline-info mx-2">Track My Order</a>
-            <a href="AdminAccount.jsp" class="btn btn-light mx-2">
+            <a href="admin/adminAccount.jsp" class="btn btn-light mx-2">
                 <i class="bi bi-person-circle"></i> Profile
             </a>
             <a href="LogoutServlet" class="btn btn-danger">Logout</a>
