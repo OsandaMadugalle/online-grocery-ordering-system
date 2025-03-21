@@ -134,7 +134,7 @@
 
     <div class="left-side">   
     	
-        <a href="./index.jsp" class="home-icon">
+        <a href="../index.jsp" class="home-icon">
             <i class="fas fa-home"></i>
         </a>     
         
@@ -147,7 +147,7 @@
     <div class="form-container">
 
         <div class="role-buttons">
-			 <a href="../cusLogin.jsp" class="btn">Customer</a>
+			 <a href="../customer/cusLogin.jsp" class="btn">Customer</a>
 			 <a href="./adminLogin.jsp" class="btn">Admin</a>
 		</div>
 

@@ -143,7 +143,7 @@
 
     <div class="left-side">
     
-	    <a href="./index.jsp" class="home-icon">
+	    <a href="../index.jsp" class="home-icon">
 	        <i class="fas fa-home"></i>
 	    </a>
     
@@ -157,7 +157,7 @@
     	
     	<div class="role-buttons">
 			 <a href="./cusLogin.jsp" class="btn">Customer</a>
-			    <a href="./admin/adminLogin.jsp" class="btn">Admin</a>
+			    <a href="../admin/adminLogin.jsp" class="btn">Admin</a>
 			</div>
     
         <form action="LoginServlet" method="post">

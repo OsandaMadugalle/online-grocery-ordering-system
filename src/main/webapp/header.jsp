@@ -90,8 +90,8 @@
     <!-- Top Bar -->
     <div class="d-flex justify-content-end p-2" style="background-color: #013220;">
         <c:if test="${not sessionScope.loggedIn}">
-            <a href="./cusLogin.jsp" class="btn btn-outline-primary mx-2">Log In</a>
-            <a href="./cusSignup.jsp" class="btn btn-outline-secondary mx-2">Sign Up</a>
+            <a href="./customer/cusLogin.jsp" class="btn btn-outline-primary mx-2">Log In</a>
+            <a href="./customer/cusSignup.jsp" class="btn btn-outline-secondary mx-2">Sign Up</a>
         </c:if>
 
         <c:if test="${sessionScope.loggedIn}">
