@@ -13,7 +13,7 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #1b1b2f, #162447);
+            background-color: #002244;;
             color: white;
             text-align: center;
             padding-top: 50px;

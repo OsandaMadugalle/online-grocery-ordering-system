@@ -1,7 +1,4 @@
-package com.gos.servlet;
-
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletException;
+package com.gos.servlet;import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,9 +11,7 @@ import java.util.List;
 import com.gos.model.Admin;
 import com.gos.service.AdminService;
 
-/**
- * Servlet implementation class AdminUpdateServlet
- */
+
 @WebServlet("/AdminUpdateServlet")
 public class AdminUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

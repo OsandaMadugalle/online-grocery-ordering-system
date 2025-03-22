@@ -1,6 +1,5 @@
 package com.gos.servlet;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -10,9 +9,6 @@ import java.io.IOException;
 
 import com.gos.service.AdminService;
 
-/**
- * Servlet implementation class AdminCreate
- */
 @WebServlet("../AdminCreate")
 public class AdminCreateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -30,11 +26,9 @@ public class AdminCreateServlet extends HttpServlet {
 		 isTrue= AdminService.addAdmin(username, first_name, last_name, phone, email, password);
 		 
 		 if(isTrue==true) {
-			 RequestDispatcher dis=request.getRequestDispatcher("./admin/adminAccount.jsp");
-			 dis.forward(request, response);
+			 response.sendRedirect(request.getContextPath() + "./admin/adminAccount.jsp");
 		 }else {
-			 RequestDispatcher dis=request.getRequestDispatcher("./admin/createAdmin.jsp");
-			 dis.forward(request, response);
+			 response.sendRedirect(request.getContextPath() + "./admin/createAdmin.jsp");
 		 }
 		 
 	}

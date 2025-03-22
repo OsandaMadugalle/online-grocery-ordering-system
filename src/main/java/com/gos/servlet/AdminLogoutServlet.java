@@ -8,16 +8,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
-/**
- * Servlet implementation for handling user logout.
- */
 @WebServlet("/AdminLogoutServlet")
 public class AdminLogoutServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
-    /**
-     * Handles GET requests for logging out the user.
-     */
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Retrieve the existing session
@@ -28,6 +22,6 @@ public class AdminLogoutServlet extends HttpServlet {
             session.invalidate();
         }
         // Redirect to the login page or home page after logout
-        response.sendRedirect("./admin/adminLogin.jsp");
+        response.sendRedirect(request.getContextPath() +"/admin/adminLogin.jsp");
     }
 }

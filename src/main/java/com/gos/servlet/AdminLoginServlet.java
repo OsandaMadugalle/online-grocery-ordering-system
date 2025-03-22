@@ -1,6 +1,5 @@
 package com.gos.servlet;
 
-//import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -32,12 +31,10 @@ public class AdminLoginServlet extends HttpServlet {
                 session.setAttribute("adminDetails", adminDetails);
                 session.setAttribute("username", uname);
                 
-                response.sendRedirect("./admin/adminAccount.jsp"); // Redirect to admin folder
+                response.sendRedirect(request.getContextPath() +"/admin/adminAccount.jsp"); // Redirect to admin folder
             } else {
                 request.setAttribute("errorMessage", "Invalid username or password.");
-                response.sendRedirect("./admin/adminLogin.jsp");
-                //RequestDispatcher dis = request.getRequestDispatcher("./admin/adminLogin.jsp"); // Forward to admin folder
-               // dis.forward(request, response);
+                response.sendRedirect(request.getContextPath() +"/admin/adminLogin.jsp");
             }
         } catch (Exception e) {
             e.printStackTrace();
