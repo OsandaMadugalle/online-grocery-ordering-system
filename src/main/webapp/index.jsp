@@ -46,41 +46,48 @@
 	</head>
 	<body>	
 	    
-	    <!-- Include header styles and scripts -->
+	    <!-- Include header file -->
   		<%@ include file="./header.jsp" %>  		
 		
 		<br><br>
 	
 	    <!-- Bootstrap 5 Carousel -->
 		<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
-		  <div class="carousel-indicators">
-		    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-		    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-		    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-		    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-		  </div>
-		  <div class="carousel-inner">
-		    <div class="carousel-item active">
-		      <img src="images/slide1.jpg" class="d-block w-100" alt="Slide 1" >
-		    </div>
-		    <div class="carousel-item">
-		      <img src="images/slide2.jpg" class="d-block w-100" alt="Slide 2" >
-		    </div>
-		    <div class="carousel-item">
-		      <img src="images/slide3.jpg" class="d-block w-100" alt="Slide 3" >
-		    </div>
-		    <div class="carousel-item">
-		      <img src="images/slide4.jpg" class="d-block w-100" alt="Slide 4" >
-		    </div>
-		  </div>
-		  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		    <span class="visually-hidden">Previous</span>
-		  </button>
-		  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-		    <span class="visually-hidden">Next</span>
-		  </button>
+		
+			  <div class="carousel-indicators">
+				    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+				    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+				    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+				    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+			  </div>
+			  
+			  <div class="carousel-inner">
+				    <div class="carousel-item active">
+				      	<img src="images/slide1.jpg" class="d-block w-100" alt="Slide 1" >
+				    </div>
+				    
+				    <div class="carousel-item">
+				      	<img src="images/slide2.jpg" class="d-block w-100" alt="Slide 2" >
+				    </div>
+				    
+				    <div class="carousel-item">
+				      	<img src="images/slide3.jpg" class="d-block w-100" alt="Slide 3" >
+				    </div>
+				    
+				    <div class="carousel-item">
+				      	<img src="images/slide4.jpg" class="d-block w-100" alt="Slide 4" >
+				    </div>
+			  </div>
+			  
+			  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+				    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				    <span class="visually-hidden">Previous</span>
+			  </button>
+			  
+			  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+				    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+				    <span class="visually-hidden">Next</span>
+			  </button>
 		</div>
 		 
 		 <!-- Top Products Section -->
@@ -90,7 +97,8 @@
 		        <h2 class="text-center mb-0" style="color: black;"><b>Top Products</b></h2>
 		        <hr class="flex-grow-1 ms-3" style="border: 1px solid black; margin: 0 10px;">
 		    </div>
-		    <div class="row">
+		    
+		    <div class="row">		    
 		        <!-- Product 1 -->
 		        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
 		            <div class="card" style="height: 300px;">
@@ -155,7 +163,8 @@
 		                    <p class="card-text text-center">Price: Rs: 150.00</p>
 		                </div>
 		            </div>
-		        </div>      
+		        </div>   
+		           
 		    </div>
 		</div>
 	
@@ -166,6 +175,7 @@
 		        <h2 class="text-center mb-0" style="color: black;"><b>Featured Offers</b></h2>
 		        <hr class="flex-grow-1 ms-3" style="border: 1px solid black; margin: 0 10px;">
 		    </div>
+		    
 		    <div class="row">
 		        <!-- Offer 1 -->
 		        <div class="col-md-6">
@@ -177,6 +187,7 @@
 		                </div>
 		            </div>
 		        </div>
+		        
 		        <!-- Offer 2 -->
 		        <div class="col-md-6">
 		            <div class="card">
@@ -187,12 +198,14 @@
 		                </div>
 		            </div>
 		        </div>
+		        
 		    </div>
 		</div>
 	
 		
 		<!-- App Banner Section -->
 		<div class="container-fluid mt-5 p-5" style="background-color: #f8f9fa; height: 60vh;">
+		
 		    <div class="row align-items-center h-100">
 		        <!-- Left Side: Image -->
 		        <div class="col-md-7 order-md-1 order-2">
@@ -209,45 +222,53 @@
 		                Get the App
 		            </a>
 		        </div>
+		        
 		    </div>
 		</div>
 	
 		<!-- Feedback and Support Section -->
 		<div class="container mt-5">
+		
 		    <div class="d-flex align-items-center mb-4" style="margin-top: 20px; margin-bottom: 20px;">
 		        <hr class="flex-grow-1 me-3" style="border: 1px solid black; margin: 0 10px;">
 		        <h2 class="text-center mb-0" style="color: black;"><b>Support</b></h2>
 		        <hr class="flex-grow-1 ms-3" style="border: 1px solid black; margin: 0 10px;">
 		    </div>
+		    
 		    <div class="row">
 		        <div class="col-md-6">
 		            <h5>We'd Love to Hear from You!</h5>
 		            <p>Tell us about your experience or let us know how we can assist you.</p>
 		        </div>
+		        
 		        <div class="col-md-6">
 		            <form>
 		                <div class="form-group">
 		                    <label for="name">Name</label>
 		                    <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
 		                </div>
+		                
 		                <div class="form-group">
 		                    <label for="email">Email</label>
 		                    <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
 		                </div>
+		                
 		                <div class="form-group">
 		                    <label for="feedback">Feedback</label>
 		                    <textarea class="form-control" id="feedback" rows="4" placeholder="Your message here..." required></textarea>
 		                </div>
+		                
 		                <button type="submit" class="btn btn-primary">Submit</button>
 		            </form>
 		        </div>
+		        
 		    </div>
 		</div>
 		
-	    <!-- Include footer -->
+	    <!-- Include footer file -->
 		<%@ include file="./footer.jsp" %>
 		
-		<!-- Bootstrap Bundle with Popper -->
+		<!-- Bootstrap Bundle with Popper for Carousel -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>		
 	
 	</body>
