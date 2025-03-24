@@ -8,10 +8,7 @@
 	if (logoutMessage != null && !logoutMessage.isEmpty()) {
 
 %>
-    <!-- Display the message in an alert box -->
-    <div class="alert alert-success text-center" role="alert" style="margin-top: 20px;">
-        <%= logoutMessage %>
-    </div>
+    
 <%
         // Remove the message from the session so it's not shown again
         session.removeAttribute("logoutMessage");
