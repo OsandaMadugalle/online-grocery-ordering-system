@@ -35,10 +35,12 @@
 <!-- Footer Section -->
 <footer class="text-center py-3 mt-5">
     <div class="container">
+    
         <div class="contact-info mb-3">
             <p><i class="fas fa-phone-alt"></i> Phone: +94700000000</p>
             <p><i class="fas fa-map-marker-alt"></i> Address: 123 Main Street, Colombo, Sri Lanka</p>
         </div>
+        
         <div class="social-media-links">
             <a href="https://facebook.com" target="_blank" class="mx-3 text-decoration-none">
                 <i class="fab fa-facebook fa-2x text-primary"></i>
@@ -53,6 +55,7 @@
                 <i class="fab fa-linkedin fa-2x text-primary"></i>
             </a>
         </div>
+        
         <p class="mt-3">&copy; 2025 GOS. All rights reserved.</p>
     </div>
 </footer>
