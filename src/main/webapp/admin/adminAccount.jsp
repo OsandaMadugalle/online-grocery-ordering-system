@@ -244,7 +244,6 @@
     </div>
 </div>
 
-
     <!-- Sidebar -->
     <div class="sidebar">
         <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
@@ -258,6 +257,7 @@
             <i class="fas fa-sign-out-alt"></i> Logout
         </a>
     </div>
+    
  <!-- Include Bootstrap JS -->
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
