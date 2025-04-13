@@ -1,4 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.List" %>
+<%@ page import="com.gos.model.Admin" %>
+<%@ page session="true" %>
+
+<%
+    HttpSession sessionObj = request.getSession(false);
+    if (sessionObj == null || sessionObj.getAttribute("loggedIn") == null) {
+        response.sendRedirect("../admin/adminLogin.jsp"); // Redirect to admin folder
+        return;
+    }
+
+    List<Admin> adminDetails = (List<Admin>) sessionObj.getAttribute("adminDetails");
+    if (adminDetails == null || adminDetails.isEmpty()) {
+        response.sendRedirect("../admin/adminLogin.jsp"); // Redirect to admin folder
+        return;
+    }
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,12 +26,10 @@
     <title>Admin List</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #002244;;
+            background-color: #002244;
             color: white;
             text-align: center;
             padding-top: 50px;
@@ -33,12 +49,9 @@
             font-weight: 600;
             border-radius: 8px;
         }
-        .btn-add:hover { background: #e03e1a; 
-        }
-        .table { color: white; 
-        }
-        .btn { font-size: 14px; 
-        }
+        .btn-add:hover { background: #e03e1a; }
+        .table { color: white; }
+        .btn { font-size: 14px; }
         .home-icon {
             position: absolute;
             top: 20px;
@@ -62,6 +75,7 @@
 
     <div class="container">
         <h3>Admin List</h3>
+        
         <a href="createAdmin.jsp" class="btn btn-add">Add New Admin</a>
         <table class="table table-dark table-striped mt-3">
             <thead>
@@ -77,19 +91,21 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>
-                        <a href="admin_form.jsp?id=#" class="btn btn-warning">Edit</a>
-                        <a href="DeleteAdminServlet?id=#" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
-                    </td>
-                </tr>
+                <c:forEach var="ad" items="${adminDetails}">
+                    <tr>
+                        <td><c:out value="${ad.admin_id}" /></td>
+                        <td><c:out value="${ad.username}" /></td>
+                        <td><c:out value="${ad.first_name}" /></td>
+                        <td><c:out value="${ad.last_name}" /></td>
+                        <td><c:out value="${ad.phone}" /></td>
+                        <td><c:out value="${ad.email}" /></td>
+                        <td><c:out value="${ad.password}" /></td>
+                        <td>
+                            <a href="admin_form.jsp?id=${ad.admin_id}" class="btn btn-warning">Edit</a>
+                            <a href="DeleteAdminServlet?id=${ad.admin_id}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                        </td>
+                    </tr>
+                </c:forEach>
             </tbody>
         </table>
     </div>
