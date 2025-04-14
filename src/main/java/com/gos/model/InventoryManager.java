@@ -1,6 +1,6 @@
 package com.gos.model;
 
-public class Stock_Manager {
+public class InventoryManager {
 
     private int stock_manager_id;
     private String username;
@@ -11,7 +11,7 @@ public class Stock_Manager {
     private String password;
 
     // Parameterized constructor
-    public Stock_Manager(int stock_manager_id, String username, String first_name, String last_name, String phone, String email, String password) {
+    public InventoryManager(int stock_manager_id, String username, String first_name, String last_name, String phone, String email, String password) {
         this.stock_manager_id = stock_manager_id;
         this.username = username;
         this.first_name = first_name;
@@ -22,7 +22,7 @@ public class Stock_Manager {
     }
 
     // Default constructor
-    public Stock_Manager() {
+    public InventoryManager() {
     }
 
     // Getters and setters

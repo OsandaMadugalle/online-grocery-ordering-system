@@ -1,19 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.List" %>
-<%@ page import="com.gos.model.Admin" %>
+<%@ page import="com.gos.model.InventoryManager" %>
 <%@ page session="true" %>
 
 <%
     HttpSession sessionObj = request.getSession(false);
     if (sessionObj == null || sessionObj.getAttribute("loggedIn") == null) {
-        response.sendRedirect("../admin/adminLogin.jsp"); // Redirect to admin folder
-        return;
-    }
-
-    List<Admin> adminDetails = (List<Admin>) sessionObj.getAttribute("adminDetails");
-    if (adminDetails == null || adminDetails.isEmpty()) {
-        response.sendRedirect("../admin/adminLogin.jsp"); // Redirect to admin folder
+        response.sendRedirect("../admin/adminLogin.jsp");
         return;
     }
 %>
@@ -25,7 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory Managers List</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -67,7 +61,6 @@
 </head>
 
 <body>
-
     <!-- Back Button -->
     <a href="adminAccount.jsp" class="home-icon">
         <i class="fas fa-arrow-left"></i>
@@ -77,11 +70,17 @@
         <h3>Inventory Managers List</h3>
         
         <a href="createAdmin.jsp" class="btn btn-add">Add New Inventory Manager</a>
-        <c:if test="${not empty stockManager}">
-		    <table class="table table-dark table-striped mt-3">
-		        <thead>
-		            <tr>
-		                <th>ID</th>
+        
+        <%-- Debug Info --%>
+        <div style="color: lightgray; margin: 10px 0;">
+            Data Status: ${not empty inventoryManagers ? 'Found ' += inventoryManagers.size() += ' managers' : 'No data found'}
+        </div>
+        
+        <c:if test="${not empty inventoryManagers}">
+            <table class="table table-dark table-striped mt-3">
+                <thead>
+                    <tr>
+                        <th>ID</th>
 		                <th>Username</th>
 		                <th>First Name</th>
 		                <th>Last Name</th>
@@ -89,30 +88,32 @@
 		                <th>Email</th>
 		                <th>Password</th>
 		                <th>Actions</th>
-		            </tr>
-		        </thead>
-		        <tbody>
-		            <c:forEach var="sm" items="${stockManager}">
-		                <tr>
-		                    <td><c:out value="#" /></td>
-		                    <td><c:out value="#" /></td>
-		                    <td><c:out value="#" /></td>
-		                    <td><c:out value="#" /></td>
-		                    <td><c:out value="#" /></td>
-		                    <td><c:out value="#" /></td>
-		                    <td><c:out value="#" /></td>
-		                    <td>
-		                        <a href="editStockManager.jsp?id=${sm.stock_manager_id}" class="btn btn-warning">Edit</a>
-		                        <a href="DeleteStockManagerServlet?id=${sm.stock_manager_id}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
-		                    </td>
-		                </tr>
-		            </c:forEach>
-		        </tbody>
-		    </table>
-		</c:if>
-		<c:if test="${empty stockManager}">
-		    <div class="alert alert-info mt-3">No Inventory Managers found.</div>
-		</c:if>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach var="manager" items="${inventoryManagers}">
+                        <tr>
+                            <td>${manager.stock_manager_id}</td>
+                            <td>${manager.username}</td>
+                            <td>${manager.first_name}</td>
+                            <td>${manager.last_name}</td>
+                            <td>${manager.phone}</td>
+                            <td>${manager.email}</td>
+                            <td>${manager.password}</td>
+                            <td>
+                                <a href="editStockManager.jsp?id=${manager.stock_manager_id}" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="DeleteStockManagerServlet?id=${manager.stock_manager_id}" 
+                                   class="btn btn-danger btn-sm" 
+                                   onclick="return confirm('Are you sure you want to delete this manager?')">Delete</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </c:if>
+        <c:if test="${empty inventoryManagers}">
+            <div class="alert alert-info mt-3">No Inventory Managers found.</div>
+        </c:if>
     </div>
 </body>
 </html>

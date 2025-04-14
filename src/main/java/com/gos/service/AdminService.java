@@ -1,7 +1,7 @@
 package com.gos.service;
 
 import com.gos.model.Admin;
-import com.gos.model.Stock_Manager;
+import com.gos.model.InventoryManager;
 import com.gos.util.DBConnection;
 import java.sql.*;
 import java.util.ArrayList;

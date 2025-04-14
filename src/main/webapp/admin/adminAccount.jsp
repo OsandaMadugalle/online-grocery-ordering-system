@@ -251,7 +251,9 @@
         
         <a href="ManageAdmins.jsp"><i class="fas fa-users-cog"></i> Manage Admins</a> <!-- New Link -->
         
-        <a href="ManageInventoryManagers.jsp"><i class="fas fa-boxes"></i> Manage Inventory Managers</a>
+        <a href="${pageContext.request.contextPath}/manageInventoryManager">
+		    <i class="fas fa-boxes"></i> Manage Inventory Managers
+		</a>
         
         <a href="manageDelivery.jsp"><i class="fas fa-truck"></i> Manage Delivery Persons</a>
         <a href="#"><i class="fas fa-users"></i> Manage Users</a>

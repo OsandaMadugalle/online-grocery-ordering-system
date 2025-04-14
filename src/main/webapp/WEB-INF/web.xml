@@ -69,5 +69,16 @@
 	    <url-pattern>/updateAdmin</url-pattern>
 	</servlet-mapping>    
 	
+	<!-- Manage Inventory Manager Function -->  
+   	<servlet>
+    <servlet-name>AdminInventoryManager</servlet-name>
+    <servlet-class>com.gos.servlet.AdminInventoryManagerServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>AdminInventoryManager</servlet-name>
+    <url-pattern>/manageInventoryManager</url-pattern>
+</servlet-mapping>  
+	
 
 </web-app>
