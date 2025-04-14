@@ -1,6 +1,7 @@
 package com.gos.service;
 
 import com.gos.model.Admin;
+import com.gos.model.Stock_Manager;
 import com.gos.util.DBConnection;
 import java.sql.*;
 import java.util.ArrayList;
@@ -147,41 +148,5 @@ public class AdminService {
         }
 
         return ad;
-    }  
-    
-    //get
-    public static List<Admin> getAdminDetails() {
-        List<Admin> adminList = new ArrayList<>();
-        String sql = "SELECT * FROM admin";
-
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
-
-            while (rs.next()) {
-                // Fetch data from the current row
-                int id = rs.getInt("Admin_ID");
-                String username = rs.getString("Username");
-                String fName = rs.getString("First_Name");
-                String lName = rs.getString("Last_Name");
-                String phone = rs.getString("Phone");
-                String email = rs.getString("Email");
-                String password = rs.getString("Password");
-
-                // Create Admin object and add to the list
-                Admin admin = new Admin(id, username, fName, lName, phone, email, password);
-                adminList.add(admin);
-
-                // Debugging: Log admin details
-                System.out.println("Fetched admin: " + admin);
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace(); // Print any errors that occur
-        }
-
-        // Debugging: Log the total number of admins fetched
-        System.out.println("Total admins fetched: " + adminList.size());
-        return adminList;
-    }
+    } 
 }

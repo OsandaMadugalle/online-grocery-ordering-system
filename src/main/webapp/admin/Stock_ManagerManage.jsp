@@ -23,7 +23,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin List</title>
+    <title>Stock Managers List</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
@@ -74,40 +74,45 @@
     </a>
 
     <div class="container">
-        <h3>Admin List</h3>
+        <h3> Stock Manager List</h3>
         
-        <a href="createAdmin.jsp" class="btn btn-add">Add New Admin</a>
-        <table class="table table-dark table-striped mt-3">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                    <th>Password</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach var="ad" items="${adminDetails}">
-                    <tr>
-                        <td><c:out value="${ad.admin_id}" /></td>
-                        <td><c:out value="${ad.username}" /></td>
-                        <td><c:out value="${ad.first_name}" /></td>
-                        <td><c:out value="${ad.last_name}" /></td>
-                        <td><c:out value="${ad.phone}" /></td>
-                        <td><c:out value="${ad.email}" /></td>
-                        <td><c:out value="${ad.password}" /></td>
-                        <td>
-                            <a href="admin_form.jsp?id=${ad.admin_id}" class="btn btn-warning">Edit</a>
-                            <a href="DeleteAdminServlet?id=${ad.admin_id}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
-                        </td>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
+        <a href="createAdmin.jsp" class="btn btn-add">Add New Stock Manager</a>
+        <c:if test="${not empty stockManager}">
+		    <table class="table table-dark table-striped mt-3">
+		        <thead>
+		            <tr>
+		                <th>ID</th>
+		                <th>Username</th>
+		                <th>First Name</th>
+		                <th>Last Name</th>
+		                <th>Phone</th>
+		                <th>Email</th>
+		                <th>Password</th>
+		                <th>Actions</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		            <c:forEach var="sm" items="${stockManager}">
+		                <tr>
+		                    <td><c:out value="${sm.stock_manager_id}" /></td>
+		                    <td><c:out value="${sm.username}" /></td>
+		                    <td><c:out value="${sm.first_name}" /></td>
+		                    <td><c:out value="${sm.last_name}" /></td>
+		                    <td><c:out value="${sm.phone}" /></td>
+		                    <td><c:out value="${sm.email}" /></td>
+		                    <td><c:out value="${sm.password}" /></td>
+		                    <td>
+		                        <a href="editStockManager.jsp?id=${sm.stock_manager_id}" class="btn btn-warning">Edit</a>
+		                        <a href="DeleteStockManagerServlet?id=${sm.stock_manager_id}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+		                    </td>
+		                </tr>
+		            </c:forEach>
+		        </tbody>
+		    </table>
+		</c:if>
+		<c:if test="${empty stockManager}">
+		    <div class="alert alert-info mt-3">No stock managers found.</div>
+		</c:if>
     </div>
 </body>
 </html>

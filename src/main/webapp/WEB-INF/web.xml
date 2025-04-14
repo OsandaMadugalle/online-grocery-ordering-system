@@ -67,6 +67,7 @@
 	<servlet-mapping>
 	    <servlet-name>AdminUpdate</servlet-name>
 	    <url-pattern>/updateAdmin</url-pattern>
-	</servlet-mapping>       
+	</servlet-mapping>    
+	
 
 </web-app>
