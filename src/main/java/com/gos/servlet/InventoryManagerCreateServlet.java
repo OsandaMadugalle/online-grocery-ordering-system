@@ -28,7 +28,7 @@ private static final long serialVersionUID = 1L;
 		 isTrue= InventoryManagersService.addInventoryManager(username, first_name, last_name, phone, email, password);
 		 
 		 if(isTrue==true) {
-			 response.sendRedirect("/manageInventoryManager");
+			 response.sendRedirect("manageInventoryManager");
 		 }else {
 			 response.sendRedirect(request.getContextPath() + "/admin/createInventoryManager.jsp");
 		 }

@@ -7,7 +7,7 @@
 <%
     HttpSession sessionObj = request.getSession(false);
     if (sessionObj == null || sessionObj.getAttribute("loggedIn") == null) {
-        response.sendRedirect("../admin/adminLogin.jsp");
+        response.sendRedirect(request.getContextPath() +"/admin/adminLogin.jsp");
         return;
     }
 %>

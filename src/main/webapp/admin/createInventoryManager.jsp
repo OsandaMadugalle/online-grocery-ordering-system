@@ -111,7 +111,7 @@
 
 <body>
 
-    <a href="adminManage.jsp" class="home-icon">
+    <a href="../manageInventoryManager" class="home-icon">
         <i class="fas fa-arrow-left"></i>
     </a>
 
@@ -157,7 +157,7 @@
             </div>
 
             <!-- Submit Button -->
-            <button type="submit" class="btn-update">Create Admin</button>
+            <button type="submit" class="btn-update">Create Inventory Manager</button>
 
         </form>
     </div>
