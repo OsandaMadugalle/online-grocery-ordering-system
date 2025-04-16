@@ -80,6 +80,16 @@
 	    <url-pattern>/manageInventoryManager</url-pattern>
 	</servlet-mapping>  
 	
+	<servlet>
+	    <servlet-name>DeleteInventoryManager</servlet-name>
+	    <servlet-class>com.gos.servlet.AdminDeleteInventoryManagerServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	    <servlet-name>DeleteInventoryManager</servlet-name>
+	    <url-pattern>/deleteInventoryManager</url-pattern>
+	</servlet-mapping>
+		
 </web-app>
 	
 	

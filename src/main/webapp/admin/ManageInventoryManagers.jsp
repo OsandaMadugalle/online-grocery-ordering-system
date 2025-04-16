@@ -1,15 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.List" %>
-<%@ page import="com.gos.model.InventoryManager" %>
+<%@ page import="com.gos.model.*" %>
 <%@ page session="true" %>
 
 <%
     HttpSession sessionObj = request.getSession(false);
     if (sessionObj == null || sessionObj.getAttribute("loggedIn") == null) {
-        response.sendRedirect(request.getContextPath() +"/admin/adminLogin.jsp");
+        response.sendRedirect(request.getContextPath() + "/admin/adminLogin.jsp"); // Redirect to admin folder
         return;
     }
+
+    List<Admin> adminDetails = (List<Admin>) sessionObj.getAttribute("adminDetails");
+    if (adminDetails == null || adminDetails.isEmpty()) {
+        response.sendRedirect(request.getContextPath() + "/admin/adminLogin.jsp"); // Redirect to admin folder
+        return;
+    }
+
+    Admin admin = adminDetails.get(0);
 %>
 
 <!DOCTYPE html>
@@ -103,11 +111,15 @@
                             <td>${manager.email}</td>
                             <td>${manager.password}</td>
                             <td>
-                                <a href="admin/updateInventoryManagerProfile.jsp?id=${manager.stock_manager_id}" class="btn btn-warning btn-sm">Edit</a>
-                                <a href="DeleteStockManagerServlet?id=${manager.stock_manager_id}" 
-                                   class="btn btn-danger btn-sm" 
-                                   onclick="return confirm('Are you sure you want to delete this manager?')">Delete</a>
-                            </td>
+							    <a href="admin/updateInventoryManagerProfile.jsp?id=${manager.stock_manager_id}" class="btn btn-warning btn-sm">Edit</a>
+							    <form action="deleteInventoryManager" method="POST" style="display: inline;">
+							        <input type="hidden" name="id" value="${manager.stock_manager_id}">
+							        <button type="submit" class="btn btn-danger btn-sm" 
+							                onclick="return confirm('Are you sure you want to delete this manager?')">
+							            Delete
+							        </button>
+							    </form>
+							</td>
                         </tr>
                     </c:forEach>
                 </tbody>

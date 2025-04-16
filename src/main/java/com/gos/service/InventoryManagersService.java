@@ -110,6 +110,19 @@ public class InventoryManagersService {
         }
 
         return IM;
-    } 
+    }
+    
+    //delete Invent
+    public void deleteInventoryManager(InventoryManager im) {
+        String sql = "DELETE FROM InventoryManager WHERE M_ID = ?";
+         
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)){
+            stmt.setInt(1, im.getStock_manager_id());
+            stmt.executeUpdate();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
