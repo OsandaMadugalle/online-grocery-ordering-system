@@ -124,5 +124,34 @@ public class InventoryManagersService {
             e.printStackTrace();
         }
     }
+    
+ // Update Inventory Manager Details
+    public static boolean updateInventoryManager(String id, String username, String fname, 
+            String lname, String phone, String email, String password) {
+        boolean isSuccess = false;
+        String sql = "UPDATE InventoryManager SET Username=?, First_Name=?, Last_Name=?, "
+                + "Phone=?, Email=?, Password=? WHERE M_ID=?";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, username);
+            stmt.setString(2, fname);
+            stmt.setString(3, lname);
+            stmt.setString(4, phone);
+            stmt.setString(5, email);
+            stmt.setString(6, password);
+            stmt.setInt(7, Integer.parseInt(id));
+
+            int rs = stmt.executeUpdate();
+
+            if (rs > 0) {
+                isSuccess = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return isSuccess;
+    }
 
 }

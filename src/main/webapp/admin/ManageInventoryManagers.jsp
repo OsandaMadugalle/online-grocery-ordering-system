@@ -3,6 +3,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.gos.model.*" %>
 <%@ page session="true" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 
 <%
     HttpSession sessionObj = request.getSession(false);
@@ -83,7 +85,19 @@
         
         <%-- Debug Info --%>
         <div style="color: lightgray; margin: 10px 0;">
-            Data Status: ${not empty inventoryManagers ? 'Found ' += inventoryManagers.size() += ' managers' : 'No data found'}
+            <c:choose>
+			    <c:when test="${not empty inventoryManagers}">
+			        <div style="color: lightgray; margin: 10px 0;">
+			            Data Status: Found ${fn:length(inventoryManagers)} managers
+			        </div>
+			    </c:when>
+			    <c:otherwise>
+			        <div style="color: lightgray; margin: 10px 0;">
+			            Data Status: No data found
+			        </div>
+			    </c:otherwise>
+			</c:choose>
+
         </div>
         
         <c:if test="${not empty inventoryManagers}">
@@ -111,7 +125,11 @@
                             <td>${manager.email}</td>
                             <td>${manager.password}</td>
                             <td>
-							    <a href="admin/updateInventoryManagerProfile.jsp?id=${manager.stock_manager_id}" class="btn btn-warning btn-sm">Edit</a>
+							    <form action="updateInventoryManager" method="get" style="display: inline;">
+								    <input type="hidden" name="id" value="${manager.stock_manager_id}">
+								    <button type="submit" class="btn btn-warning btn-sm">Edit</button>
+								</form>
+							    
 							    <form action="deleteInventoryManager" method="POST" style="display: inline;">
 							        <input type="hidden" name="id" value="${manager.stock_manager_id}">
 							        <button type="submit" class="btn btn-danger btn-sm" 
