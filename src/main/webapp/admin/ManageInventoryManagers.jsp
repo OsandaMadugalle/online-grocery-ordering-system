@@ -103,7 +103,7 @@
                             <td>${manager.email}</td>
                             <td>${manager.password}</td>
                             <td>
-                                <a href="editStockManager.jsp?id=${manager.stock_manager_id}" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="admin/updateInventoryManagerProfile.jsp?id=${manager.stock_manager_id}" class="btn btn-warning btn-sm">Edit</a>
                                 <a href="DeleteStockManagerServlet?id=${manager.stock_manager_id}" 
                                    class="btn btn-danger btn-sm" 
                                    onclick="return confirm('Are you sure you want to delete this manager?')">Delete</a>
