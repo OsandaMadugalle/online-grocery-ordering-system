@@ -249,7 +249,7 @@
         <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
         <a href="${adminUpdate}"><i class="fas fa-user-edit"></i> Edit Profile</a>
         
-        <a href="ManageAdmins.jsp"><i class="fas fa-users-cog"></i> Manage Admins</a> <!-- New Link -->
+        <a href="ManageAdmins.jsp"><i class="fas fa-users-cog"></i> Manage Admins</a>
         
         <a href="../manageInventoryManager"><i class="fas fa-boxes"></i> Manage Inventory Managers</a>
         

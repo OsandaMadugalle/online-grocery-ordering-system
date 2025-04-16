@@ -14,8 +14,8 @@ CREATE TABLE Admin(
 
 INSERT INTO  InventoryManager (M_ID, Username, First_Name, Last_Name, Phone, Email, Password)
 VALUES
-    (0, "Admin", "Osanda", "Madugalle", "+94705531088", "osandamadugalle@gmail.com", "admin123"),
-    (0, "Test", "Saman", "Silva", "+94705555555", "saman@gmail.com", "test@123");
+    (0, "Admin1", "Osanda", "Madugalle", "+94705531088", "osandamadugalle@gmail.com", "admin123"),
+    (0, "Test1", "Saman", "Silva", "+94705555555", "saman@gmail.com", "test@123");
 
 SELECT * FROM admin;
 SELECT * FROM InventoryManager;
