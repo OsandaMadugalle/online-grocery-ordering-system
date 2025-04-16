@@ -1,5 +1,7 @@
 package com.gos.service;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -9,6 +11,7 @@ import com.gos.util.DBConnection;
 
 public class InventoryManagersService {
 	
+	// Display Inventory Managers Table
 	public ArrayList<InventoryManager> getAllInventoryManager(){
 	    try {
 	        ArrayList<InventoryManager> listInventoryManager = new ArrayList<>();
@@ -42,5 +45,31 @@ public class InventoryManagersService {
 	        return null;
 	    }
 	}
+	
+	//Add Inventory Manager
+    public static boolean addInventoryManager( String username, String first_name, String last_name , String phone, String email , String password) {
+    	
+    	boolean isSuccess = false;
+    	
+    	String sql="INSERT INTO InventoryManager VALUES(0,'"+username+"','"+first_name+"','"+last_name+"','"+phone+"','"+email+"','"+password+"')";
+
+        try (Connection conn = DBConnection.getConnection(); // Use DBConnection to get the connection
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        	
+        	int rs=stmt.executeUpdate(sql);
+        	
+        	if(rs>0) {
+        		isSuccess=true;
+        	}else {
+        		isSuccess=false;
+        	}
+        	
+        }catch(Exception e) {
+        	e.printStackTrace();
+        }
+    	
+    	return isSuccess;
+    	
+    }
 
 }

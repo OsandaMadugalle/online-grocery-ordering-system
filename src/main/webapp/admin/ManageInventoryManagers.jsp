@@ -71,7 +71,7 @@
     <div class="container">
         <h3>Inventory Managers List</h3>
         
-        <a href="createAdmin.jsp" class="btn btn-add">Add New Inventory Manager</a>
+        <a href="${pageContext.request.contextPath}/admin/createInventoryManager.jsp" class="btn btn-add">Add New Inventory Manager</a>
         
         <%-- Debug Info --%>
         <div style="color: lightgray; margin: 10px 0;">

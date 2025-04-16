@@ -80,4 +80,15 @@
 	    <url-pattern>/manageInventoryManager</url-pattern>
 	</servlet-mapping>  
 	
+	<!-- Add Inventory Manager Function -->  
+   	<servlet>
+	    <servlet-name>InventoryManagerAdd</servlet-name>
+	    <servlet-class>com.gos.servlet.InventoryManagerCreateServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	    <servlet-name>InventoryManagerAdd</servlet-name>
+	    <url-pattern>/addInventoryManager</url-pattern>
+	</servlet-mapping>  
+	
 </web-app>
