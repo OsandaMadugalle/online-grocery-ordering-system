@@ -14,14 +14,14 @@ public class AdminService {
         List<Admin> adminList = new ArrayList<>();
         String sql = "SELECT * FROM admin WHERE username = ? AND password = ?";
 
-        try (Connection conn = DBConnection.getConnection(); // Use DBConnection to get the connection
+        try (Connection conn = DBConnection.getConnection(); 
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             // Set parameters for the query
             stmt.setString(1, username);
             stmt.setString(2, password);
 
-            System.out.println("Executing query: " + stmt.toString()); // Debug log
+            System.out.println("Executing query: " + stmt.toString()); 
 
             // Execute the query
             try (ResultSet rs = stmt.executeQuery()) {
@@ -31,10 +31,10 @@ public class AdminService {
                 }
             }
         } catch (Exception e) {
-            logException(e);
+        	e.printStackTrace();
         }
 
-        System.out.println("Admin list size: " + adminList.size()); // Debug log
+        System.out.println("Admin list size: " + adminList.size()); 
         return adminList;       
        
     }  
@@ -65,7 +65,7 @@ public class AdminService {
     	
     	String sql="INSERT INTO admin VALUES(0,'"+username+"','"+first_name+"','"+last_name+"','"+phone+"','"+email+"','"+password+"')";
 
-        try (Connection conn = DBConnection.getConnection(); // Use DBConnection to get the connection
+        try (Connection conn = DBConnection.getConnection(); 
              PreparedStatement stmt = conn.prepareStatement(sql)) {
         	
         	int rs=stmt.executeUpdate(sql);
@@ -98,7 +98,7 @@ public class AdminService {
             stmt.setString(4, phone);
             stmt.setString(5, email);
             stmt.setString(6, password);
-            stmt.setInt(7, Integer.parseInt(id)); // Assuming Admin_ID is an integer
+            stmt.setInt(7, Integer.parseInt(id)); 
 
             int rs = stmt.executeUpdate();
 
