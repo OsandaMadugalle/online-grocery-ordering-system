@@ -92,6 +92,16 @@
 	    <url-pattern>/deleteAdmin</url-pattern>
 	</servlet-mapping>
 	
+	<!-- Admin Update Admin Function -->
+	<servlet>
+	    <servlet-name>adminUpdateAdmin</servlet-name>
+	    <servlet-class>com.gos.servlet.AdminUpdateAdminServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	    <servlet-name>adminUpdateAdmin</servlet-name>
+	    <url-pattern>/adminUpdateAdmin</url-pattern>
+	</servlet-mapping>
 	
 	
 	

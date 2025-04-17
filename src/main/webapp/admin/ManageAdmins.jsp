@@ -125,7 +125,7 @@
                             <td>${ad.email}</td>
                             <td>${ad.password}</td>
                             <td>
-							    <form action="#" method="get" style="display: inline;">
+							    <form action="adminUpdateAdmin" method="get" style="display: inline;">
 								    <input type="hidden" name="id" value="${ad.admin_id}">
 								    <button type="submit" class="btn btn-warning btn-sm">Edit</button>
 								</form>
