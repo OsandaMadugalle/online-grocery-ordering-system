@@ -2,7 +2,7 @@ package com.gos.model;
 
 public class InventoryManager {
 
-    private int stock_manager_id;
+    private int inventory_manager_id;
     private String username;
     private String first_name;
     private String last_name;
@@ -11,8 +11,8 @@ public class InventoryManager {
     private String password;
 
     // Parameterized constructor
-    public InventoryManager(int stock_manager_id, String username, String first_name, String last_name, String phone, String email, String password) {
-        this.stock_manager_id = stock_manager_id;
+    public InventoryManager(int inventory_manager_id, String username, String first_name, String last_name, String phone, String email, String password) {
+        this.inventory_manager_id = inventory_manager_id;
         this.username = username;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -26,12 +26,12 @@ public class InventoryManager {
     }
 
     // Getters and setters
-    public int getStock_manager_id() {
-        return stock_manager_id; 
+    public int getInventory_manager_id() {
+        return inventory_manager_id; 
     }
 
-    public void setStock_manager_id(int stock_manager_id) { 
-        this.stock_manager_id = stock_manager_id; 
+    public void setInventory_manager_id(int inventory_manager_id) { 
+        this.inventory_manager_id = inventory_manager_id; 
     }
 
     public String getUsername() { 
@@ -84,8 +84,8 @@ public class InventoryManager {
 
     @Override
     public String toString() {
-        return "Stock_Manager{" +
-               "stock_manager_id=" + stock_manager_id +
+        return "InventoryManager{" +
+               "inventory_manager_id=" + inventory_manager_id +
                ", username='" + username + '\'' +
                ", first_name='" + first_name + '\'' +
                ", last_name='" + last_name + '\'' +

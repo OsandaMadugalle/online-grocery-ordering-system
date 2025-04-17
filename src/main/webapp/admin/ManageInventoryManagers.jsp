@@ -88,7 +88,7 @@
             <c:choose>
 			    <c:when test="${not empty inventoryManagers}">
 			        <div style="color: lightgray; margin: 10px 0;">
-			            Data Status: Found ${fn:length(inventoryManagers)} managers
+			            Data Status: Found ${fn:length(inventoryManagers)} Inventory Managers
 			        </div>
 			    </c:when>
 			    <c:otherwise>
@@ -117,7 +117,7 @@
                 <tbody>
                     <c:forEach var="manager" items="${inventoryManagers}">
                         <tr>
-                            <td>${manager.stock_manager_id}</td>
+                            <td>${manager.inventory_manager_id}</td>
                             <td>${manager.username}</td>
                             <td>${manager.first_name}</td>
                             <td>${manager.last_name}</td>
@@ -126,12 +126,12 @@
                             <td>${manager.password}</td>
                             <td>
 							    <form action="updateInventoryManager" method="get" style="display: inline;">
-								    <input type="hidden" name="id" value="${manager.stock_manager_id}">
+								    <input type="hidden" name="id" value="${manager.inventory_manager_id}">
 								    <button type="submit" class="btn btn-warning btn-sm">Edit</button>
 								</form>
 							    
 							    <form action="deleteInventoryManager" method="POST" style="display: inline;">
-							        <input type="hidden" name="id" value="${manager.stock_manager_id}">
+							        <input type="hidden" name="id" value="${manager.inventory_manager_id}">
 							        <button type="submit" class="btn btn-danger btn-sm" 
 							                onclick="return confirm('Are you sure you want to delete this manager?')">
 							            Delete

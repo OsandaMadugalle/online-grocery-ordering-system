@@ -32,7 +32,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Manager Profile</title>
+    <title>Update Inventory Manager</title>
     
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
@@ -91,14 +91,14 @@
     </a>
 
     <div class="edit-container">
-        <h3>Update Manager Profile</h3>
+        <h3>Update Inventory Manager </h3>
         
         <form action="${pageContext.request.contextPath}/updateInventoryManager" method="post" onsubmit="return validateForm()">
     
             <!-- ID -->
             <div class="form-group">
                 <input type="text" class="form-control" name="id" 
-                    value="<%= manager.getStock_manager_id() %>" readonly style="background-color: grey;">
+                    value="<%= manager.getInventory_manager_id() %>" readonly style="background-color: grey;">
             </div>
             
             <!-- Username -->
@@ -116,13 +116,13 @@
             <!-- Last Name -->
             <div class="form-group">
                 <input type="text" class="form-control" name="lastName" 
-                    value="<%= manager.getLast_name() %>" required>
+                    value="<%= manager.getLast_name() %>" >
             </div>
             
             <!-- Phone -->
             <div class="form-group">
                 <input type="tel" class="form-control" name="phone" 
-                    value="<%= manager.getPhone() %>" required>
+                    value="<%= manager.getPhone() %>" >
             </div>
             
             <!-- Email -->

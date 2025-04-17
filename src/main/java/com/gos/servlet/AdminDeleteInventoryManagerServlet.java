@@ -11,7 +11,6 @@ import java.io.IOException;
 import com.gos.model.InventoryManager;
 import com.gos.service.InventoryManagersService;
 
-
 @WebServlet("/deleteInventoryManager")
 public class AdminDeleteInventoryManagerServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -24,7 +23,7 @@ public class AdminDeleteInventoryManagerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         InventoryManager IM = new InventoryManager();
-        IM.setStock_manager_id(Integer.parseInt(request.getParameter("id")));
+        IM.setInventory_manager_id(Integer.parseInt(request.getParameter("id"))); // Updated to inventory_manager_id
 
         InventoryManagersService delService = new InventoryManagersService();
         delService.deleteInventoryManager(IM);

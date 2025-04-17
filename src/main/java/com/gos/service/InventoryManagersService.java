@@ -26,7 +26,7 @@ public class InventoryManagersService {
 	        
 	        while(rs.next()) {
 	            InventoryManager IM = new InventoryManager();
-	            IM.setStock_manager_id(rs.getInt("M_ID"));
+	            IM.setInventory_manager_id(rs.getInt("M_ID")); // Updated to inventory_manager_id
 	            IM.setUsername(rs.getString("Username"));
 	            IM.setFirst_name(rs.getString("First_Name"));
 	            IM.setLast_name(rs.getString("Last_Name"));
@@ -48,7 +48,7 @@ public class InventoryManagersService {
 	    }
 	}
 	
-	//Add Inventory Manager
+	// Add Inventory Manager
     public static boolean addInventoryManager( String username, String first_name, String last_name , String phone, String email , String password) {
     	
     	boolean isSuccess = false;
@@ -73,23 +73,19 @@ public class InventoryManagersService {
     	return isSuccess;
     	
     }
-    
         
-  //Add a Method to Fetch Updated Inventory Manager Details
+  // Add a Method to Fetch Updated Inventory Manager Details
     public static List<InventoryManager> getInventoryManagerById(String id) {
     	    	
     	List<InventoryManager> IM = new ArrayList<>();
-        String sql = "SELECT * FROM InventoryManager WHERE M_ID = ?";//Admin_ID = '"+id+"'
+        String sql = "SELECT * FROM InventoryManager WHERE M_ID = ?";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
         	stmt.setInt(1, Integer.parseInt(id));
         	
-         //   stmt.setInt(1, id); // Use placeholder to prevent SQL injection
             ResultSet rs = stmt.executeQuery(); // Get the ResultSet
-
-          //  stmt.setInt(1, Integer.parseInt(id));
             
             while (rs.next()) {
                 int mId = rs.getInt(1);
@@ -100,7 +96,7 @@ public class InventoryManagersService {
                 String email = rs.getString(6);
                 String password = rs.getString(7);
 
-                // Create an Admin object and add it to the list
+                // Create InventoryManager object and add it to the list
                 InventoryManager inventoryManager = new InventoryManager(mId, username, fName, lName, phone, email, password);
                 IM.add(inventoryManager);
             }
@@ -112,13 +108,13 @@ public class InventoryManagersService {
         return IM;
     }
     
-    //delete Invent
+    // Delete Inventory Manager
     public void deleteInventoryManager(InventoryManager im) {
         String sql = "DELETE FROM InventoryManager WHERE M_ID = ?";
          
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)){
-            stmt.setInt(1, im.getStock_manager_id());
+            stmt.setInt(1, im.getInventory_manager_id()); // Updated to inventory_manager_id
             stmt.executeUpdate();
         } catch(Exception e) {
             e.printStackTrace();
