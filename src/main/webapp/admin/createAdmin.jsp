@@ -4,21 +4,9 @@
 <%@ page import="com.gos.model.Admin" %>
 <%@ page session="true" %>
 
-<%
-    HttpSession sessionObj = request.getSession(false);
-    if (sessionObj == null || sessionObj.getAttribute("loggedIn") == null) {
-        response.sendRedirect("../admin/adminLogin.jsp"); // Redirect to admin folder
-        return;
-    }
-
-    List<Admin> adminDetails = (List<Admin>) sessionObj.getAttribute("adminDetails");
-    if (adminDetails == null || adminDetails.isEmpty()) {
-        response.sendRedirect("../admin/adminLogin.jsp"); // Redirect to admin folder
-        return;
-    }
-
-    Admin admin = adminDetails.get(0);
-%>
+<c:if test="${empty sessionScope.loggedIn or empty sessionScope.adminDetails}">
+    <c:redirect url="/admin/adminLogin.jsp"/>
+</c:if>
 
 <!DOCTYPE html>
 <html lang="en">

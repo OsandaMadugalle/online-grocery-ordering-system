@@ -1,24 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="java.util.List" %>
-<%@ page import="com.gos.model.Admin" %>
 <%@ page session="true" %>
 
-<%
-    HttpSession sessionObj = request.getSession(false);
-    if (sessionObj == null || sessionObj.getAttribute("loggedIn") == null) {
-        response.sendRedirect("../admin/adminLogin.jsp"); // Redirect to admin folder
-        return;
-    }
-
-    List<Admin> adminDetails = (List<Admin>) sessionObj.getAttribute("adminDetails");
-    if (adminDetails == null || adminDetails.isEmpty()) {
-        response.sendRedirect("../admin/adminLogin.jsp"); // Redirect to admin folder
-        return;
-    }
-
-    Admin admin = adminDetails.get(0);
-%>
+<c:if test="${empty sessionScope.loggedIn or empty sessionScope.adminDetails}">
+    <c:redirect url="/admin/adminLogin.jsp"/>
+</c:if>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -104,23 +90,6 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
 
-        .dashboard-cards {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 20px;
-            width: 250px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-            margin: 15px;
-        }
-
         .table-container {
             margin-top: 30px;
         }
@@ -136,8 +105,6 @@
         }
 
         th, td {
-            width: 50%;
-            color: white;
             padding: 12px;
             text-align: left;
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -147,42 +114,118 @@
             background: rgba(255, 255, 255, 0.2);
         }
 
-        .btn-download {
-            margin-top: 10px;
-            background: #ff4c29;
-            border: none;
-            color: white;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .btn-download:hover {
-            background: #e03e1a;
-        }
-        
         .welcome-message {
-		    color: white;
-		}
+            color: white;
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
         
+        /* Enhanced table styles */
+        .detail-row {
+            transition: background-color 0.3s ease;
+        }
+        
+        .detail-row:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #ffcc00;
+            width: 35%;
+            vertical-align: middle;
+        }
+        
+        .detail-label i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .detail-value {
+            color: #ffffff;
+            vertical-align: middle;
+        }
+        
+        .password-field {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .password-mask {
+            letter-spacing: 2px;
+        }
+        
+        .btn-show-password {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 2px 8px;
+            font-size: 12px;
+        }
+        
+        .btn-show-password:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .btn-edit-profile {
+            background: linear-gradient(135deg, #ff4c29 0%, #ff6b3d 100%); 
+            box-shadow: 0 4px 8px rgba(255, 76, 41, 0.3); 
+            padding: 12px 24px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        
+        .btn-edit-profile:hover {
+            background: linear-gradient(135deg, #e03e1a 0%, #e05a2a 100%);
+            color: white;
+        }
     </style>
 </head>
 
 <body>
-    <!-- Right Section -->
-    <div class="container mt-4" style="width: 75%;">
-        <c:if test="${not empty adminDetails}">          
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="../manageAdmin"><i class="fas fa-users-cog"></i> Manage Admins</a>
+        <a href="../manageInventoryManager"><i class="fas fa-boxes"></i> Manage Inventory Managers</a>
+        <a href="manageDelivery.jsp"><i class="fas fa-truck"></i> Manage Delivery Persons</a>
+        <a href="#"><i class="fas fa-users"></i> Manage Users</a>
+        <a href="../index.jsp"><i class="fas fa-cog"></i> Site Settings</a>
+        <a href="../LogoutServlet" class="logout-btn">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+    </div>
 
-		<div class="welcome-message">
-		    Welcome, <%= admin.getFirst_name() + " " + admin.getLast_name() %>!
-		</div>
-            
-           <div class="container mt-4">
+    <!-- Main Content -->
+    <div class="main-content">
+        <c:choose>
+            <c:when test="${not empty sessionScope.adminDetails}">
+                <div class="welcome-message">
+                    <i class="fas fa-user-shield"></i> Welcome, ${sessionScope.adminDetails[0].first_name} ${sessionScope.adminDetails[0].last_name}!
+                </div>
+                
                 <div class="table-responsive">
                     <table class="table table-bordered">				            
                         <tbody>
-                            <c:forEach var="ad" items="${adminDetails}">
-                            
+                            <c:forEach var="ad" items="${sessionScope.adminDetails}">
                             <c:set var="id" value="${ad.admin_id}"/>
                             <c:set var="username" value="${ad.username}"/>
                             <c:set var="fName" value="${ad.first_name}"/>
@@ -191,78 +234,89 @@
                             <c:set var="email" value="${ad.email}"/>
                             <c:set var="password" value="${ad.password}"/>
                             
-                                <tr>
-                                    <td><strong>Admin ID</strong></td>
-                                    <td><c:out value="${ad.admin_id}" /></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Username</strong></td>
-                                    <td><c:out value="${ad.username}" /></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>First Name</strong></td>
-                                    <td><c:out value="${ad.first_name}" /></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Last Name</strong></td>
-                                    <td><c:out value="${ad.last_name}" /></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Phone</strong></td>
-                                    <td><c:out value="${ad.phone}" /></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Email</strong></td>
-                                    <td><c:out value="${ad.email}" /></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Password</strong></td>
-                                    <td><c:out value="${ad.password}" /></td>
-                                </tr>                                
+                            <tr class="detail-row">
+                                <td class="detail-label"><i class="fas fa-id-card"></i> Admin ID</td>
+                                <td class="detail-value"><c:out value="${ad.admin_id}"/></td>
+                            </tr>
+                            <tr class="detail-row">
+                                <td class="detail-label"><i class="fas fa-user"></i> Username</td>
+                                <td class="detail-value"><c:out value="${ad.username}"/></td>
+                            </tr>
+                            <tr class="detail-row">
+                                <td class="detail-label"><i class="fas fa-signature"></i> First Name</td>
+                                <td class="detail-value"><c:out value="${ad.first_name}"/></td>
+                            </tr>
+                            <tr class="detail-row">
+                                <td class="detail-label"><i class="fas fa-signature"></i> Last Name</td>
+                                <td class="detail-value"><c:out value="${ad.last_name}"/></td>
+                            </tr>
+                            <tr class="detail-row">
+                                <td class="detail-label"><i class="fas fa-phone"></i> Phone</td>
+                                <td class="detail-value"><c:out value="${ad.phone}"/></td>
+                            </tr>
+                            <tr class="detail-row">
+                                <td class="detail-label"><i class="fas fa-envelope"></i> Email</td>
+                                <td class="detail-value"><c:out value="${ad.email}"/></td>
+                            </tr>
+                            <tr class="detail-row">
+                                <td class="detail-label"><i class="fas fa-lock"></i> Password</td>
+                                <td class="detail-value">
+                                    <div class="password-field">
+                                        <span class="password-mask">••••••••</span>
+                                        <button class="btn btn-sm btn-show-password" onclick="togglePassword(this)">
+                                            <i class="fas fa-eye"></i> Show
+                                        </button>
+                                        <span class="actual-password" style="display:none;"><c:out value="${ad.password}"/></span>
+                                    </div>
+                                </td>
+                            </tr>
                             </c:forEach>
                         </tbody>
                     </table>
                     
                     <c:url value="updateAdminProfile.jsp" var="adminUpdate">
-					    <c:param name="id" value="${id}"/>
-					    <c:param name="username" value="${username}"/>
-					    <c:param name="fName" value="${fName}"/>
-					    <c:param name="lName" value="${lName}"/>
-					    <c:param name="phone" value="${phone}"/>
-					    <c:param name="email" value="${email}"/>
-					    <c:param name="password" value="${password}"/>
-					</c:url>
+                        <c:param name="id" value="${id}"/>
+                        <c:param name="username" value="${username}"/>
+                        <c:param name="fName" value="${fName}"/>
+                        <c:param name="lName" value="${lName}"/>
+                        <c:param name="phone" value="${phone}"/>
+                        <c:param name="email" value="${email}"/>
+                        <c:param name="password" value="${password}"/>
+                    </c:url>
 
-                    
+                    <a href="${adminUpdate}" class="btn-edit-profile">
+                        <i class="fas fa-user-edit"></i> Edit Profile
+                    </a>
                 </div>
-            </div>
-
-        </c:if>
-        <c:if test="${empty adminDetails}">
-            <div class="alert alert-danger text-center mt-5">No admin details found.</div>
-        </c:if>
+            </c:when>
+            <c:otherwise>
+                <div class="alert alert-danger text-center mt-5">No admin details found.</div>
+            </c:otherwise>
+        </c:choose>
     </div>
-</div>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-        
-        <a href="${adminUpdate}"><i class="fas fa-user-edit"></i> Edit Profile</a>
-        
-        <a href="../manageAdmin"><i class="fas fa-users-cog"></i> Manage Admins</a>
-        
-        <a href="../manageInventoryManager"><i class="fas fa-boxes"></i> Manage Inventory Managers</a>
-        
-        <a href="manageDelivery.jsp"><i class="fas fa-truck"></i> Manage Delivery Persons</a>
-        <a href="#"><i class="fas fa-users"></i> Manage Users</a>
-        <a href="../index.jsp"><i class="fas fa-cog"></i> Site Settings</a>
-        <a href="../LogoutServlet" class="logout-btn">
-            <i class="fas fa-sign-out-alt"></i> Logout
-        </a>
-    </div>
+    <!-- Include Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
- <!-- Include Bootstrap JS -->
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function togglePassword(button) {
+            const row = button.closest('.password-field');
+            const mask = row.querySelector('.password-mask');
+            const actual = row.querySelector('.actual-password');
+            const icon = button.querySelector('i');
+            
+            if (mask.style.display === 'none') {
+                mask.style.display = 'inline';
+                actual.style.display = 'none';
+                icon.className = 'fas fa-eye';
+                button.innerHTML = '<i class="fas fa-eye"></i> Show';
+            } else {
+                mask.style.display = 'none';
+                actual.style.display = 'inline';
+                icon.className = 'fas fa-eye-slash';
+                button.innerHTML = '<i class="fas fa-eye-slash"></i> Hide';
+            }
+        }
+    </script>
 </body>
 </html>

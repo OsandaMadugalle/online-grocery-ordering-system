@@ -4,21 +4,12 @@
 <%@ page import="com.gos.model.Admin" %>
 <%@ page session="true" %>
 
+<c:if test="${empty sessionScope.loggedIn or empty sessionScope.adminDetails}">
+    <c:redirect url="/admin/adminLogin.jsp"/>
+</c:if>
+
 <%
-    // Admin session verification
-    HttpSession sessionObj = request.getSession(false);
-    if (sessionObj == null || sessionObj.getAttribute("loggedIn") == null) {
-        response.sendRedirect(request.getContextPath() + "/admin/adminLogin.jsp");
-        return;
-    }
-
-    List<Admin> adminDetails = (List<Admin>) sessionObj.getAttribute("adminDetails");
-    if (adminDetails == null || adminDetails.isEmpty()) {
-        response.sendRedirect(request.getContextPath() + "/admin/adminLogin.jsp");
-        return;
-    }
-
-    // Get the manager to edit
+    // Get the admin to edit
     Admin ad = (Admin) request.getAttribute("admin");
     if (ad == null) {
         response.sendRedirect(request.getContextPath() + "/adminUpdateAdmin");
