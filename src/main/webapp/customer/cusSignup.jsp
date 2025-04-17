@@ -106,7 +106,7 @@
 
     <div class="form-container">
     
-    <a href="index.jsp" class="home-icon">
+    <a href="../index.jsp" class="home-icon">
         <i class="fas fa-home"></i>
     </a>
     

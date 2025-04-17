@@ -25,6 +25,7 @@
         <url-pattern>/images/*</url-pattern>
     </servlet-mapping>
     
+    <!-- Admin Functions -->
     <!-- Admin Login Function -->
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
