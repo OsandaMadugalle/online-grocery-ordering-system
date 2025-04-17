@@ -111,14 +111,14 @@
 
 <body>
 
-    <a href="adminManage.jsp" class="home-icon">
+    <a href="../manageAdmin" class="home-icon">
         <i class="fas fa-arrow-left"></i>
     </a>
 
     <div class="edit-container">
         <h3>Create Admin</h3>
 
-        <form action="addAdmin" method="post" onsubmit="return validateForm()">
+        <form action="../addAdmin" method="post" onsubmit="return validateForm()">
             
             <!-- Username -->
             <div class="form-group">

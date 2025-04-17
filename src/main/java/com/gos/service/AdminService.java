@@ -9,7 +9,7 @@ import java.util.List;
 
 public class AdminService {
 
-    // Validate Admin Credentials
+    // Validate Admin 
     public static List<Admin> validate(String username, String password) {
         List<Admin> adminList = new ArrayList<>();
         String sql = "SELECT * FROM admin WHERE username = ? AND password = ?";
@@ -17,7 +17,6 @@ public class AdminService {
         try (Connection conn = DBConnection.getConnection(); 
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            // Set parameters for the query
             stmt.setString(1, username);
             stmt.setString(2, password);
 
@@ -42,7 +41,7 @@ public class AdminService {
     // Utility method to map a ResultSet row to an Admin object
     private static Admin mapResultSetToAdmin(ResultSet rs) throws SQLException {
         return new Admin(
-                rs.getInt("Admin_ID"), // Ensure this matches the column name in the database
+                rs.getInt("Admin_ID"),
                 rs.getString("Username"),
                 rs.getString("First_name"),
                 rs.getString("Last_name"),
@@ -53,11 +52,11 @@ public class AdminService {
     }
 
     // Utility method to log exceptions
-    private static void logException(Exception e) {
-        System.err.println("Error: " + e.getMessage());
-        e.printStackTrace();
-    } 
-    
+  //  private static void logException(Exception e) {
+   //     System.err.println("Error: " + e.getMessage());
+  //      e.printStackTrace();
+  //  } 
+ //   
   //add admin
     public static boolean addAdmin( String username, String first_name, String last_name , String phone, String email , String password) {
     	
@@ -117,17 +116,14 @@ public class AdminService {
     public static List<Admin> getAdminById(String id) {
     	    	
     	List<Admin> ad = new ArrayList<>();
-        String sql = "SELECT * FROM admin WHERE Admin_ID = ?";//Admin_ID = '"+id+"'
+        String sql = "SELECT * FROM admin WHERE Admin_ID = ?";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
         	stmt.setInt(1, Integer.parseInt(id));
         	
-         //   stmt.setInt(1, id); // Use placeholder to prevent SQL injection
-            ResultSet rs = stmt.executeQuery(); // Get the ResultSet
-
-          //  stmt.setInt(1, Integer.parseInt(id));
+            ResultSet rs = stmt.executeQuery(); 
             
             while (rs.next()) {
                 int aId = rs.getInt(1);
@@ -138,7 +134,6 @@ public class AdminService {
                 String email = rs.getString(6);
                 String password = rs.getString(7);
 
-                // Create an Admin object and add it to the list
                 Admin admin = new Admin(aId, username, fName, lName, phone, email, password);
                 ad.add(admin);
             }
@@ -149,4 +144,46 @@ public class AdminService {
 
         return ad;
     } 
+
+	// Display Admins Table
+	public ArrayList<Admin> getAllAdmin(){
+		ArrayList<Admin> listAdmin = new ArrayList<>();        
+        String sql = "SELECT * FROM admin";
+	    try (Connection conn = DBConnection.getConnection();
+	         PreparedStatement stmt = conn.prepareStatement(sql)){
+	        	        
+	        ResultSet rs = stmt.executeQuery(sql);
+	        
+	        while(rs.next()) {
+	            Admin ad = new Admin();
+	            ad.setAdmin_id(rs.getInt("Admin_ID"));
+	            ad.setUsername(rs.getString("Username"));
+	            ad.setFirst_name(rs.getString("First_Name"));
+	            ad.setLast_name(rs.getString("Last_Name"));
+	            ad.setPhone(rs.getString("Phone"));
+	            ad.setEmail(rs.getString("Email"));
+	            ad.setPassword(rs.getString("Password"));
+	            
+	            listAdmin.add(ad);
+	        }
+	        return listAdmin;
+	    }
+	    catch(Exception e) {
+	        e.printStackTrace();
+	        return null;
+	    }
+	}
+	
+	 // Delete Admin
+    public void deleteadmin(Admin ad) {
+        String sql = "DELETE FROM admin WHERE Admin_ID = ?";
+         
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)){
+            stmt.setInt(1, ad.getAdmin_id());
+            stmt.executeUpdate();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

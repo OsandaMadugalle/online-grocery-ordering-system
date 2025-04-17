@@ -31,8 +31,8 @@ public class Admin {
 	    	return admin_id; 
 	    }
 	    
-	    public void setAdmin_id(int admin_id) { 
-	    	this.admin_id = admin_id; 
+	    public void setAdmin_id(int i) { 
+	    	this.admin_id = i; 
 	    }
 	
 	    public String getUsername() { 

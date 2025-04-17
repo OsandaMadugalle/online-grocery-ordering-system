@@ -9,7 +9,7 @@ import java.io.IOException;
 
 import com.gos.service.AdminService;
 
-@WebServlet("../AdminCreate")
+@WebServlet("/AdminCreate")
 public class AdminCreateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
@@ -18,7 +18,7 @@ public class AdminCreateServlet extends HttpServlet {
 		 String first_name  = request.getParameter("firstName");
 		 String last_name  = request.getParameter("lastName");
 		 String phone  = request.getParameter("phone");
-		 String email  = request.getParameter("username");
+		 String email  = request.getParameter("email");
 		 String password  = request.getParameter("password");
 		 
 		 boolean isTrue;
@@ -26,9 +26,9 @@ public class AdminCreateServlet extends HttpServlet {
 		 isTrue= AdminService.addAdmin(username, first_name, last_name, phone, email, password);
 		 
 		 if(isTrue==true) {
-			 response.sendRedirect(request.getContextPath() + "./admin/adminAccount.jsp");
+			 response.sendRedirect("manageAdmin");
 		 }else {
-			 response.sendRedirect(request.getContextPath() + "./admin/createAdmin.jsp");
+			 response.sendRedirect(request.getContextPath() + "/admin/createAdmin.jsp");
 		 }
 		 
 	}
