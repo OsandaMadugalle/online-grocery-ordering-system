@@ -11,7 +11,7 @@ import java.io.IOException;
 import com.gos.model.Admin;
 import com.gos.model.InventoryManager;
 import com.gos.service.AdminService;
-import com.gos.service.InventoryManagersService;
+import com.gos.service.InventoryManagerService;
 
 @WebServlet("/deleteadmin")
 public class AdminDeleteServlet extends HttpServlet {

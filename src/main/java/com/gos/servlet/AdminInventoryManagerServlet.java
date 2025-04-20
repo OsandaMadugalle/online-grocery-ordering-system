@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import com.gos.model.InventoryManager;
-import com.gos.service.InventoryManagersService;
+import com.gos.service.InventoryManagerService;
 
 @WebServlet("/manageInventoryManagerServlet")
 public class AdminInventoryManagerServlet extends HttpServlet {
@@ -20,7 +20,7 @@ public class AdminInventoryManagerServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
         	System.out.println("Servlet is being called!");
-            InventoryManagersService service = new InventoryManagersService();
+            InventoryManagerService service = new InventoryManagerService();
             ArrayList<InventoryManager> inventoryManagers = service.getAllInventoryManager();
             
             System.out.println("Number of managers fetched: " + inventoryManagers.size()); // Debug line

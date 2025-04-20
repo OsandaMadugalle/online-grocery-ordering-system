@@ -111,7 +111,7 @@
 	<!-- Manage Inventory Manager Function -->  
    	<servlet>
 	    <servlet-name>AdminInventoryManager</servlet-name>
-	    <servlet-class>com.gos.servlet.AdminInventoryManagerServlet</servlet-class>
+	    <servlet-class>com.gos.servlet.AdminCreateInventoryManagerServlet</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>

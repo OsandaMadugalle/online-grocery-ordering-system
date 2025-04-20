@@ -8,11 +8,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import com.gos.service.AdminService;
-import com.gos.service.InventoryManagersService;
+import com.gos.service.InventoryManagerService;
 
 
 @WebServlet("../InventoryManagerCreateServlet")
-public class InventoryManagerCreateServlet extends HttpServlet {
+public class AdminCreateInventoryManagerServlet extends HttpServlet {
 private static final long serialVersionUID = 1L;
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,7 +25,7 @@ private static final long serialVersionUID = 1L;
 		 
 		 boolean isTrue;
 		 
-		 isTrue= InventoryManagersService.addInventoryManager(username, first_name, last_name, phone, email, password);
+		 isTrue= InventoryManagerService.addInventoryManager(username, first_name, last_name, phone, email, password);
 		 
 		 if(isTrue==true) {
 			 response.sendRedirect("manageInventoryManager");

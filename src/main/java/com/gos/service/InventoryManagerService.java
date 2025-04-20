@@ -11,7 +11,7 @@ import com.gos.model.Admin;
 import com.gos.model.InventoryManager;
 import com.gos.util.DBConnection;
 
-public class InventoryManagersService {
+public class InventoryManagerService {
 	
 	// Display Inventory Managers Table
 	public ArrayList<InventoryManager> getAllInventoryManager(){

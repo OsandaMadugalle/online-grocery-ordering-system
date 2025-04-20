@@ -13,7 +13,7 @@ import java.util.List;
 import com.gos.model.Admin;
 import com.gos.model.InventoryManager;
 import com.gos.service.AdminService;
-import com.gos.service.InventoryManagersService;
+import com.gos.service.InventoryManagerService;
 
 @WebServlet("/updateInventoryManager")
 public class AdminUpdateAdminServlet extends HttpServlet {

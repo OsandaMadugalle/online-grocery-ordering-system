@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.List;
 
 import com.gos.model.InventoryManager;
-import com.gos.service.InventoryManagersService;
+import com.gos.service.InventoryManagerService;
 
 @WebServlet("/updateInventoryManager")
 public class AdminUpdateInventoryManagerServlet extends HttpServlet {
@@ -20,7 +20,7 @@ public class AdminUpdateInventoryManagerServlet extends HttpServlet {
             throws ServletException, IOException {
         // Display edit form - GET request
         String id = request.getParameter("id");
-        List<InventoryManager> manager = InventoryManagersService.getInventoryManagerById(id);
+        List<InventoryManager> manager = InventoryManagerService.getInventoryManagerById(id);
         
         if (manager != null && !manager.isEmpty()) {
             request.setAttribute("manager", manager.get(0));
@@ -41,12 +41,12 @@ public class AdminUpdateInventoryManagerServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        boolean isSuccess = InventoryManagersService.updateInventoryManager(
+        boolean isSuccess = InventoryManagerService.updateInventoryManager(
                 id, username, fName, lName, phone, email, password);
 
         if (isSuccess) {
             // Refresh the list in session if needed
-            List<InventoryManager> updatedList = InventoryManagersService.getInventoryManagerById(id);
+            List<InventoryManager> updatedList = InventoryManagerService.getInventoryManagerById(id);
             request.getSession().setAttribute("inventoryManagers", updatedList);
         }
         

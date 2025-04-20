@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import com.gos.model.InventoryManager;
-import com.gos.service.InventoryManagersService;
+import com.gos.service.InventoryManagerService;
 
 @WebServlet("/deleteInventoryManager")
 public class AdminDeleteInventoryManagerServlet extends HttpServlet {
@@ -25,7 +25,7 @@ public class AdminDeleteInventoryManagerServlet extends HttpServlet {
         InventoryManager IM = new InventoryManager();
         IM.setInventory_manager_id(Integer.parseInt(request.getParameter("id"))); // Updated to inventory_manager_id
 
-        InventoryManagersService delService = new InventoryManagersService();
+        InventoryManagerService delService = new InventoryManagerService();
         delService.deleteInventoryManager(IM);
 
         response.sendRedirect(request.getContextPath() + "/manageInventoryManager");
