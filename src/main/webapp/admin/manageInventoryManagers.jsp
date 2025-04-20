@@ -5,7 +5,15 @@
 <%@ page session="true" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+<%-- Authorization check (session) --%>
+<c:if test="${empty sessionScope.loggedIn}">
+    <c:redirect url="/admin/adminLogin.jsp"/>
+</c:if>
 
+<%-- Data availability check (request) --%>
+<c:if test="${empty inventoryManagers}">
+    <div class="alert alert-warning">No inventory manager data available</div>
+</c:if>
 
 <!DOCTYPE html>
 <html lang="en">

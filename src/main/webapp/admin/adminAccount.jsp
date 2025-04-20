@@ -121,7 +121,6 @@
             font-weight: 600;
         }
         
-        /* Enhanced table styles */
         .detail-row {
             transition: background-color 0.3s ease;
         }

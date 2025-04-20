@@ -23,7 +23,7 @@ public class AdminServlet extends HttpServlet {
             ArrayList<Admin> ad = service.getAllAdmin();
             
             request.setAttribute("admin", ad);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/ManageAdmins.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/manageAdmins.jsp");
             dispatcher.forward(request, response);
         } 
         catch (Exception e) {

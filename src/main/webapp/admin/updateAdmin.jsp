@@ -86,8 +86,8 @@
 	
 	    .form-group label {
 	        text-align: right;
-	        min-width: 150px; /* Ensures alignment */
-	        margin-right: 15px; /* Spacing between label and input */
+	        min-width: 150px; 
+	        margin-right: 15px; 
 	        color: white;
 	    }
 	
