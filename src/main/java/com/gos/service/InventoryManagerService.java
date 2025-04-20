@@ -42,28 +42,30 @@ public class InventoryManagerService {
 	}
 	
 	// Add Inventory Manager
-    public static boolean addInventoryManager( String username, String first_name, String last_name , String phone, String email , String password) {    	
-    	boolean isSuccess = false;    	
-    	String sql="INSERT INTO InventoryManager VALUES(0,'"+username+"','"+first_name+"','"+last_name+"','"+phone+"','"+email+"','"+password+"')";
+	public static boolean addInventoryManager(String username, String first_name, String last_name, String phone, String email, String password) {
+	    boolean isSuccess = false;
+	    String sql = "INSERT INTO InventoryManager (username, first_name, last_name, phone, email, password) VALUES (?, ?, ?, ?, ?, ?)";
 
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-        	
-        	int rs=stmt.executeUpdate(sql);
-        	
-        	if(rs>0) {
-        		isSuccess=true;
-        	}else {
-        		isSuccess=false;
-        	}
-        	
-        }catch(Exception e) {
-        	e.printStackTrace();
-        }
-    	
-    	return isSuccess;
-    	
-    }
+	    try (Connection conn = DBConnection.getConnection();
+	         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+	        stmt.setString(1, username);
+	        stmt.setString(2, first_name);
+	        stmt.setString(3, last_name);
+	        stmt.setString(4, phone);
+	        stmt.setString(5, email);
+	        stmt.setString(6, password);
+
+	        int rs = stmt.executeUpdate();
+
+	        isSuccess = rs > 0;
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return isSuccess;
+	}
         
   // Add a Method to Fetch Updated Inventory Manager Details
     public static List<InventoryManager> getInventoryManagerById(String id) {    	    	
