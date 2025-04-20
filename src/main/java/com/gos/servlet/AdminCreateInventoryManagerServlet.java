@@ -32,6 +32,5 @@ private static final long serialVersionUID = 1L;
 		 }else {
 			 response.sendRedirect(request.getContextPath() + "/admin/createInventoryManager.jsp");
 		 }
-		 
 	}
 }
