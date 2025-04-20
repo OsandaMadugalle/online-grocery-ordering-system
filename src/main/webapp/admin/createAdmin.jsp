@@ -12,7 +12,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Add Admin</title>
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -20,90 +20,163 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <style>
+        :root {
+            --primary-bg: #002244;
+            --form-bg: rgba(255, 255, 255, 0.1);
+            --accent-color: #ff4c29;
+            --accent-hover: #e03e1a;
+            --text-color: white;
+            --placeholder-color: #e0e0e0;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #002244;
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            min-height: 100vh;
             display: flex;
-            height: 100vh;
             justify-content: center;
             align-items: center;
+            padding: 20px;
         }
 
-        .edit-container {
-            background: rgba(255, 255, 255, 0.1);
+        .form-container {
+            background: var(--form-bg);
             backdrop-filter: blur(10px);
-            padding: 40px;
-            width: 800px;
+            padding: 30px;
+            width: 100%;
+            max-width: 800px;
             border-radius: 12px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-            text-align: center;
             animation: fadeIn 0.5s ease-in-out;
-            color: white;
         }
 
-        .edit-container h3 {
-            font-size: 28px;
-            margin-bottom: 20px;
+        .form-container h3 {
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            margin-bottom: 25px;
+            text-align: center;
         }
 
         .form-control {
             background: rgba(255, 255, 255, 0.2);
-            color: white;
+            color: var(--text-color);
             border: none;
-            padding: 12px;
-            border-radius: 5px;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 0 0.2rem rgba(255, 76, 41, 0.25);
         }
 
         .form-control::placeholder {
-            color: #e0e0e0;
+            color: var(--placeholder-color);
         }
 
-        .btn-update {
-            background: #ff4c29;
+        .btn-submit {
+            background: var(--accent-color);
             color: white;
-            font-size: 16px;
+            font-size: clamp(0.9rem, 1.2vw, 1rem);
             font-weight: 600;
             border: none;
-            padding: 10px;
+            padding: 12px;
             width: 100%;
             border-radius: 8px;
-            transition: 0.3s;
-            margin-top: 15px;
+            transition: all 0.3s ease;
+            margin-top: 10px;
         }
 
-        .btn-update:hover {
-            background: #e03e1a;
+        .btn-submit:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
         }
 
         .error-message {
-            color: red;
-            font-size: 14px;
+            color: #ff6b6b;
+            font-size: 0.85rem;
             display: none;
-            margin-top: 5px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+            text-align: left;
         }
 
         .home-icon {
-            position: absolute;
+            position: fixed;
             top: 20px;
             left: 20px;
-            font-size: 28px;
+            font-size: 1.5rem;
             color: white;
             text-decoration: none;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px 12px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
         }
 
         .home-icon:hover {
             color: #ddd;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            color: var(--placeholder-color);
+            cursor: pointer;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 25px;
+                margin-top: 40px;
+            }
+            
+            .form-control {
+                padding: 10px 12px;
+            }
+            
+            .home-icon {
+                font-size: 1.3rem;
+                padding: 6px 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .form-container {
+                padding: 20px 15px;
+            }
+            
+            body {
+                padding: 15px;
+                align-items: flex-start;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 
 <body>
-
     <a href="../manageAdmin" class="home-icon">
         <i class="fas fa-arrow-left"></i>
     </a>
 
-    <div class="edit-container">
+    <div class="form-container">
         <h3>Create Admin</h3>
 
         <form action="../addAdmin" method="post" onsubmit="return validateForm()">
@@ -133,38 +206,54 @@
                 <input type="email" class="form-control" name="email" placeholder="Email" required>
             </div>
 
-            <!-- Password (Optional) -->
+            <!-- Password -->
             <div class="form-group">
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                <button type="button" class="password-toggle" onclick="togglePassword('password', this)">
+                    <i class="fas fa-eye"></i>
+                </button>
             </div>
 
             <!-- Confirm Password -->
             <div class="form-group">
                 <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" required>
+                <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword', this)">
+                    <i class="fas fa-eye"></i>
+                </button>
                 <div class="error-message" id="error-message">Passwords do not match</div>
             </div>
 
             <!-- Submit Button -->
-            <button type="submit" class="btn-update">Create Admin</button>
-
+            <button type="submit" class="btn-submit">Create Admin</button>
         </form>
     </div>
 
     <script>
         function validateForm() {
-            let password = document.getElementById("password").value;
-            let confirmPassword = document.getElementById("confirmPassword").value;
-            let errorMessage = document.getElementById("error-message");
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+            const errorMessage = document.getElementById("error-message");
 
-            if (password !== "" && password !== confirmPassword) {
+            if (password !== confirmPassword) {
                 errorMessage.style.display = "block";
                 return false;
+            }
+            errorMessage.style.display = "none";
+            return true;
+        }
+
+        function togglePassword(fieldId, button) {
+            const field = document.getElementById(fieldId);
+            const icon = button.querySelector('i');
+            
+            if (field.type === "password") {
+                field.type = "text";
+                icon.classList.replace('fa-eye', 'fa-eye-slash');
             } else {
-                errorMessage.style.display = "none";
-                return true;
+                field.type = "password";
+                icon.classList.replace('fa-eye-slash', 'fa-eye');
             }
         }
     </script>
-
 </body>
 </html>
