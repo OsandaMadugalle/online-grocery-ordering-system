@@ -2,7 +2,7 @@ package com.gos.model;
 
 public class DeliveryManager {
 
-    private int delivary_manager_id;
+    private int delivery_manager_id;
     private String username;
     private String first_name;
     private String last_name;
@@ -10,8 +10,8 @@ public class DeliveryManager {
     private String email;
     private String password;
 
-    public  DeliveryManager(int delivary_manager_id, String username, String first_name, String last_name, String phone, String email, String password) {
-        this.delivary_manager_id = delivary_manager_id;
+    public  DeliveryManager(int delivery_manager_id, String username, String first_name, String last_name, String phone, String email, String password) {
+        this.delivery_manager_id = delivery_manager_id;
         this.username = username;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -23,12 +23,12 @@ public class DeliveryManager {
     public DeliveryManager() {
     }
 
-    public int getdelivary_manager_id() {
-        return delivary_manager_id; 
+    public int getdelivery_manager_id() {
+        return delivery_manager_id; 
     }
 
-    public void setdelivary_manager_id(int delivary_manager_id) { 
-        this.delivary_manager_id = delivary_manager_id; 
+    public void setdelivery_manager_id(int delivery_manager_id) { 
+        this.delivery_manager_id = delivery_manager_id; 
     }
 
     public String getUsername() { 
