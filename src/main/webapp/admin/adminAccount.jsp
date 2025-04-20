@@ -286,6 +286,7 @@
                     <a href="${adminUpdate}" class="btn-edit-profile">
                         <i class="fas fa-user-edit"></i> Edit Profile
                     </a>
+                    
                 </div>
             </c:when>
             <c:otherwise>
