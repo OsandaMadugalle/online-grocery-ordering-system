@@ -11,7 +11,7 @@ import com.gos.service.AdminService;
 import com.gos.service.InventoryManagerService;
 
 
-@WebServlet("../InventoryManagerCreateServlet")
+@WebServlet("/AdminCreateInventoryManagerServlet")
 public class AdminCreateInventoryManagerServlet extends HttpServlet {
 private static final long serialVersionUID = 1L;
     

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class AdminService {
 
-    // Validate Admin 
+    // Validate Admin Login
     public static List<Admin> validate(String username, String password) {
         List<Admin> adminList = new ArrayList<>();
         String sql = "SELECT * FROM admin WHERE username = ? AND password = ?";
@@ -18,11 +18,8 @@ public class AdminService {
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, username);
-            stmt.setString(2, password);
+            stmt.setString(2, password); 
 
-            System.out.println("Executing query: " + stmt.toString()); 
-
-            // Execute the query
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     Admin admin = mapResultSetToAdmin(rs);
@@ -32,13 +29,10 @@ public class AdminService {
         } catch (Exception e) {
         	e.printStackTrace();
         }
-
-        System.out.println("Admin list size: " + adminList.size()); 
-        return adminList;       
-       
+        return adminList;  
     }  
     
-    // Utility method to map a ResultSet row to an Admin object
+    //Map the ResultSet row to an Admin object
     private static Admin mapResultSetToAdmin(ResultSet rs) throws SQLException {
         return new Admin(
                 rs.getInt("Admin_ID"),
@@ -50,14 +44,8 @@ public class AdminService {
                 rs.getString("Password")
         );
     }
-
-    // Utility method to log exceptions
-  //  private static void logException(Exception e) {
-   //     System.err.println("Error: " + e.getMessage());
-  //      e.printStackTrace();
-  //  } 
- //   
-  //add admin
+    
+  //Add Admin
     public static boolean addAdmin( String username, String first_name, String last_name , String phone, String email , String password) {
     	
     	boolean isSuccess = false;
@@ -112,7 +100,7 @@ public class AdminService {
         return isSuccess;
     }
 
-    //Add a Method to Fetch Updated Admin Details
+    //Fetch Updated Admins
     public static List<Admin> getAdminById(String id) {
     	    	
     	List<Admin> ad = new ArrayList<>();
@@ -180,9 +168,11 @@ public class AdminService {
          
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)){
+        	
             stmt.setInt(1, ad.getAdmin_id());
             stmt.executeUpdate();
-        } catch(Exception e) {
+        } 
+        catch(Exception e) {
             e.printStackTrace();
         }
     }

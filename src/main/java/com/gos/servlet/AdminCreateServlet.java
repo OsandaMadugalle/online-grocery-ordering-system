@@ -9,7 +9,7 @@ import java.io.IOException;
 
 import com.gos.service.AdminService;
 
-@WebServlet("/AdminCreate")
+@WebServlet("/AdminCreateServlet")
 public class AdminCreateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     

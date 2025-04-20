@@ -15,7 +15,7 @@ import com.gos.model.InventoryManager;
 import com.gos.service.AdminService;
 import com.gos.service.InventoryManagerService;
 
-@WebServlet("/updateInventoryManager")
+@WebServlet("/AdminUpdateInventoryManager")
 public class AdminUpdateAdminServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 

@@ -24,21 +24,16 @@ public class AdminUpdateServlet extends HttpServlet {
 	    String email = request.getParameter("email");
 	    String password = request.getParameter("password");
 
-	    // Update the admin details in the database
 	    boolean isTrue = AdminService.updateAdmin(id, username, fName, lName, phone, email, password);
 
-	    if (isTrue) {
-	        // Fetch the updated admin details from the database
+	    if (isTrue) {	       
 	        List<Admin> updatedAdminDetails = AdminService.getAdminById(id);
-
-	        // Update the session with the new admin details
+	        
 	        HttpSession session = request.getSession();
 	        session.setAttribute("adminDetails", updatedAdminDetails);
 
-	        // Redirect to the admin account page
 	        response.sendRedirect(request.getContextPath() + "/admin/adminAccount.jsp");
 	    } else {
-	        // Redirect back to the update page if the update fails
 	        response.sendRedirect(request.getContextPath() + "/admin/updateAdminProfile.jsp");
 	    }
 	}

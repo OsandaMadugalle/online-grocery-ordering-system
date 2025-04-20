@@ -19,14 +19,13 @@ public class InventoryManagerService {
 	        ArrayList<InventoryManager> listInventoryManager = new ArrayList<>();
 	        
 	        String sql = "SELECT * FROM InventoryManager";
-	        System.out.println("Executing query: " + sql); // Debug
 	        
 	        Statement stmt = DBConnection.getConnection().createStatement();
 	        ResultSet rs = stmt.executeQuery(sql);
 	        
 	        while(rs.next()) {
 	            InventoryManager IM = new InventoryManager();
-	            IM.setInventory_manager_id(rs.getInt("M_ID")); // Updated to inventory_manager_id
+	            IM.setInventory_manager_id(rs.getInt("M_ID"));
 	            IM.setUsername(rs.getString("Username"));
 	            IM.setFirst_name(rs.getString("First_Name"));
 	            IM.setLast_name(rs.getString("Last_Name"));
@@ -34,15 +33,11 @@ public class InventoryManagerService {
 	            IM.setEmail(rs.getString("Email"));
 	            IM.setPassword(rs.getString("Password"));
 	            
-	            System.out.println("Found manager: " + IM.getUsername()); // Debug
 	            listInventoryManager.add(IM);
 	        }
-	        
-	        System.out.println("Total managers found: " + listInventoryManager.size()); // Debug
 	        return listInventoryManager;
 	    }
 	    catch(Exception e) {
-	        System.err.println("Error in getAllInventoryManager: " + e.getMessage());
 	        e.printStackTrace();
 	        return null;
 	    }
@@ -55,7 +50,7 @@ public class InventoryManagerService {
     	
     	String sql="INSERT INTO InventoryManager VALUES(0,'"+username+"','"+first_name+"','"+last_name+"','"+phone+"','"+email+"','"+password+"')";
 
-        try (Connection conn = DBConnection.getConnection(); // Use DBConnection to get the connection
+        try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
         	
         	int rs=stmt.executeUpdate(sql);
@@ -85,7 +80,7 @@ public class InventoryManagerService {
 
         	stmt.setInt(1, Integer.parseInt(id));
         	
-            ResultSet rs = stmt.executeQuery(); // Get the ResultSet
+            ResultSet rs = stmt.executeQuery();
             
             while (rs.next()) {
                 int mId = rs.getInt(1);
@@ -96,7 +91,6 @@ public class InventoryManagerService {
                 String email = rs.getString(6);
                 String password = rs.getString(7);
 
-                // Create InventoryManager object and add it to the list
                 InventoryManager inventoryManager = new InventoryManager(mId, username, fName, lName, phone, email, password);
                 IM.add(inventoryManager);
             }
@@ -114,9 +108,11 @@ public class InventoryManagerService {
          
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)){
-            stmt.setInt(1, im.getInventory_manager_id()); // Updated to inventory_manager_id
+        	
+            stmt.setInt(1, im.getInventory_manager_id());
             stmt.executeUpdate();
-        } catch(Exception e) {
+        } 
+        catch(Exception e) {
             e.printStackTrace();
         }
     }
@@ -125,8 +121,7 @@ public class InventoryManagerService {
     public static boolean updateInventoryManager(String id, String username, String fname, 
             String lname, String phone, String email, String password) {
         boolean isSuccess = false;
-        String sql = "UPDATE InventoryManager SET Username=?, First_Name=?, Last_Name=?, "
-                + "Phone=?, Email=?, Password=? WHERE M_ID=?";
+        String sql = "UPDATE InventoryManager SET Username=?, First_Name=?, Last_Name=?, Phone=?, Email=?, Password=? WHERE M_ID=?";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {

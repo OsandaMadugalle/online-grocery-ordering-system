@@ -10,7 +10,6 @@ public class InventoryManager {
     private String email;
     private String password;
 
-    // Parameterized constructor
     public InventoryManager(int inventory_manager_id, String username, String first_name, String last_name, String phone, String email, String password) {
         this.inventory_manager_id = inventory_manager_id;
         this.username = username;
@@ -21,11 +20,9 @@ public class InventoryManager {
         this.password = password;
     }
 
-    // Default constructor
     public InventoryManager() {
     }
 
-    // Getters and setters
     public int getInventory_manager_id() {
         return inventory_manager_id; 
     }
@@ -81,7 +78,7 @@ public class InventoryManager {
     public void setPassword(String password) { 
         this.password = password; 
     }
-
+/*
     @Override
     public String toString() {
         return "InventoryManager{" +
@@ -93,5 +90,5 @@ public class InventoryManager {
                ", email='" + email + '\'' +
                ", password='" + password + '\'' +
                '}';
-    }
+    } */
 }

@@ -13,19 +13,19 @@ import com.gos.model.InventoryManager;
 import com.gos.service.AdminService;
 import com.gos.service.InventoryManagerService;
 
-@WebServlet("/deleteadmin")
+@WebServlet("/AdminDeleteServlet")
 public class AdminDeleteServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response); // Forward GET to POST
+        doPost(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Admin ad = new Admin();
-        ad.setAdmin_id(Integer.parseInt(request.getParameter("id"))); // Updated to inventory_manager_id
+        ad.setAdmin_id(Integer.parseInt(request.getParameter("id")));
 
         AdminService delService = new AdminService();
         delService.deleteadmin(ad);

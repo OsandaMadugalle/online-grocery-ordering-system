@@ -13,7 +13,7 @@ import com.gos.model.Admin;
 import com.gos.service.AdminService;
 import com.gos.util.DBConnection;
 
-@WebServlet("/adminLoginServlet")
+@WebServlet("/AdminLoginServlet")
 public class AdminLoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -31,7 +31,7 @@ public class AdminLoginServlet extends HttpServlet {
                 session.setAttribute("adminDetails", adminDetails);
                 session.setAttribute("username", uname);
                 
-                response.sendRedirect(request.getContextPath() +"/admin/adminAccount.jsp"); // Redirect to admin folder
+                response.sendRedirect(request.getContextPath() +"/admin/adminAccount.jsp"); 
             } else {
                 request.setAttribute("errorMessage", "Invalid username or password.");
                 response.sendRedirect(request.getContextPath() +"/admin/adminLogin.jsp");

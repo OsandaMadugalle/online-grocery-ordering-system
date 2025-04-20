@@ -14,14 +14,14 @@ public class AdminLogoutServlet extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Retrieve the existing session
-        HttpSession session = request.getSession(false); // Use false to avoid creating a new session if one doesn't exist
+       
+        HttpSession session = request.getSession(false);
         if (session != null) {
-            // Invalidate the session to log out the user
-        	session.setAttribute("logoutMessage", "You have successfully logged out."); // Set logout message
+           
+        	session.setAttribute("logoutMessage", "You have successfully logged out."); 
             session.invalidate();
         }
-        // Redirect to the login page or home page after logout
+  
         response.sendRedirect(request.getContextPath() +"/admin/adminLogin.jsp");
     }
 }

@@ -10,7 +10,6 @@ public class Admin {
     private String email;
     private String password;
 
-	    // Parameterized constructor
 	    public Admin(int admin_id, String username, String first_name, String last_name, String phone, String email, String password) {
 	        this.admin_id = admin_id;
 	        this.username = username;
@@ -21,12 +20,10 @@ public class Admin {
 	        this.password = password;
 	    }
 	
-	    // Default constructor
 	    public Admin() {
 	    	
 	    }
 	
-	    // Getters and setters
 	    public int getAdmin_id() {
 	    	return admin_id; 
 	    }
@@ -82,8 +79,7 @@ public class Admin {
 	    public void setPassword(String password) { 
 	    	this.password = password; 
 	    }
-	
-	    // toString for debugging
+	/*
 	    @Override
 	    public String toString() {
 	        return "Admin{" +
@@ -95,5 +91,5 @@ public class Admin {
 	               ", email='" + email + '\'' +
 	               ", password='" + password + '\'' +
 	               '}';
-	    }
+	    }  */
 }
