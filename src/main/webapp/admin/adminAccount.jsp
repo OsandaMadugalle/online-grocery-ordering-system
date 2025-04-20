@@ -10,7 +10,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Admin Dashboard</title>
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -18,45 +18,90 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <style>
+        :root {
+            --sidebar-width: 300px;
+            --sidebar-collapsed-width: 80px;
+            --primary-color: #002244;
+            --accent-color: #ff4c29;
+            --text-color: white;
+        }
+        
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #002244;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            min-height: 100vh;
             display: flex;
-            height: 100vh;
+            flex-direction: column;
         }
 
         .sidebar {
-            width: 300px;
+            width: var(--sidebar-width);
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             padding: 20px;
             display: flex;
             flex-direction: column;
             box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.3);
-            align-items: center;
+            transition: all 0.3s ease;
+            position: fixed;
+            height: 100vh;
+            z-index: 1000;
+        }
+        
+        .sidebar-collapsed {
+            width: var(--sidebar-collapsed-width);
+            overflow: hidden;
+        }
+        
+        .sidebar-collapsed .nav-text {
+            display: none;
+        }
+        
+        .sidebar-collapsed a {
+            justify-content: center;
+            padding: 12px 0;
+        }
+        
+        .sidebar-collapsed .admin-name {
+            display: none;
+        }
+        
+        .sidebar-collapsed .logout-btn span {
+            display: none;
         }
         
         .admin-name {
             color: white;
             font-size: 18px;
             margin-bottom: 5px;
+            text-align: center;
+            padding: 10px 0;
+            white-space: nowrap;
         }
 
         .sidebar a {
             color: white;
             text-decoration: none;
             padding: 12px;
-            display: block;
+            display: flex;
+            align-items: center;
             font-size: 16px;
             margin: 10px 0;
             border-radius: 5px;
             transition: 0.3s;
             width: 100%;
+            white-space: nowrap;
+        }
+
+        .sidebar a i {
+            margin-right: 10px;
+            width: 20px;
             text-align: center;
         }
 
         .sidebar a:hover, .sidebar a.active {
-            background: #ff4c29;
+            background: var(--accent-color);
         }
 
         .logout-btn {
@@ -69,6 +114,9 @@
             cursor: pointer;
             transition: 0.3s;
             width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .logout-btn:hover {
@@ -78,7 +126,12 @@
         .main-content {
             flex: 1;
             padding: 30px;
-            color: white;
+            margin-left: var(--sidebar-width);
+            transition: margin-left 0.3s ease;
+        }
+        
+        .main-content-expanded {
+            margin-left: var(--sidebar-collapsed-width);
         }
 
         .admin-details {
@@ -92,6 +145,7 @@
 
         .table-container {
             margin-top: 30px;
+            overflow-x: auto;
         }
 
         table {
@@ -102,6 +156,7 @@
             color: white;
             border-radius: 10px;
             overflow: hidden;
+            min-width: 600px;
         }
 
         th, td {
@@ -196,82 +251,227 @@
             background: linear-gradient(135deg, #e03e1a 0%, #e05a2a 100%);
             color: white;
         }
+        
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1100;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .sidebar {
+                transform: translateX(-100%);
+                position: fixed;
+                z-index: 1000;
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding-top: 80px;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            table {
+                font-size: 14px;
+            }
+            
+            th, td {
+                padding: 8px 12px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .welcome-message {
+                font-size: 20px;
+            }
+            
+            .btn-edit-profile {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .main-content {
+                padding: 20px 15px;
+            }
+            
+            .welcome-message {
+                font-size: 18px;
+                margin-bottom: 15px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+    .profile-table, 
+    .profile-table tbody, 
+    .profile-table tr, 
+    .profile-table td {
+      display: block;
+      width: 100%;
+    }
+    
+    .profile-table thead {
+      display: none;
+    }
+    
+    .profile-table tr {
+      margin-bottom: 15px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 5px;
+    }
+    
+    .profile-table td {
+      padding: 10px 15px;
+      text-align: right;
+      position: relative;
+      border: none;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .profile-table td:last-child {
+      border-bottom: none;
+    }
+    
+    .profile-table td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 15px;
+      top: 10px;
+      font-weight: bold;
+      text-align: left;
+      color: #ffcc00;
+    }
+    
+    .password-field {
+      justify-content: flex-end;
+    }
+  }
     </style>
 </head>
 
 <body>
+    <!-- Mobile Menu Toggle -->
+    <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
     <!-- Sidebar -->
-    <div class="sidebar">
-        <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-        <a href="../manageAdmin"><i class="fas fa-users-cog"></i> Manage Admins</a>
-        <a href="../manageInventoryManager"><i class="fas fa-boxes"></i> Manage Inventory Managers</a>
-        <a href="../manageDeliveryManager"><i class="fas fa-truck"></i> Manage Delivery Managers</a>
-        <a href="#"><i class="fas fa-users"></i> Manage Users</a>
-        <a href="../index.jsp"><i class="fas fa-cog"></i> Site Settings</a>
+    <div class="sidebar" id="sidebar">
+        <div class="admin-name">
+            <i class="fas fa-user-shield"></i>
+            <span class="nav-text">${sessionScope.adminDetails[0].first_name} ${sessionScope.adminDetails[0].last_name}</span>
+        </div>
+        <a href="#" class="active">
+            <i class="fas fa-tachometer-alt"></i>
+            <span class="nav-text">Dashboard</span>
+        </a>
+        <a href="../manageAdmin">
+            <i class="fas fa-users-cog"></i>
+            <span class="nav-text">Manage Admins</span>
+        </a>
+        <a href="../manageInventoryManager">
+            <i class="fas fa-boxes"></i>
+            <span class="nav-text">Manage Inventory</span>
+        </a>
+        <a href="../manageDeliveryManager">
+            <i class="fas fa-truck"></i>
+            <span class="nav-text">Manage Delivery</span>
+        </a>
+        <a href="#">
+            <i class="fas fa-users"></i>
+            <span class="nav-text">Manage Users</span>
+        </a>
+        <a href="../index.jsp">
+            <i class="fas fa-cog"></i>
+            <span class="nav-text">Site Settings</span>
+        </a>
         <a href="../LogoutServlet" class="logout-btn">
-            <i class="fas fa-sign-out-alt"></i> Logout
+            <i class="fas fa-sign-out-alt"></i>
+            <span class="nav-text">Logout</span>
         </a>
     </div>
 
     <!-- Main Content -->
-    <div class="main-content">
+    <div class="main-content" id="mainContent">
         <c:choose>
             <c:when test="${not empty sessionScope.adminDetails}">
                 <div class="welcome-message">
                     <i class="fas fa-user-shield"></i> Welcome, ${sessionScope.adminDetails[0].first_name} ${sessionScope.adminDetails[0].last_name}!
                 </div>
                 
-                <div class="table-responsive">
-                    <table class="table table-bordered">				            
-                        <tbody>
-                            <c:forEach var="ad" items="${sessionScope.adminDetails}">
-                            <c:set var="id" value="${ad.admin_id}"/>
-                            <c:set var="username" value="${ad.username}"/>
-                            <c:set var="fName" value="${ad.first_name}"/>
-                            <c:set var="lName" value="${ad.last_name}"/>
-                            <c:set var="phone" value="${ad.phone}"/>
-                            <c:set var="email" value="${ad.email}"/>
-                            <c:set var="password" value="${ad.password}"/>
-                            
-                            <tr class="detail-row">
-                                <td class="detail-label"><i class="fas fa-id-card"></i> Admin ID</td>
-                                <td class="detail-value"><c:out value="${ad.admin_id}"/></td>
-                            </tr>
-                            <tr class="detail-row">
-                                <td class="detail-label"><i class="fas fa-user"></i> Username</td>
-                                <td class="detail-value"><c:out value="${ad.username}"/></td>
-                            </tr>
-                            <tr class="detail-row">
-                                <td class="detail-label"><i class="fas fa-signature"></i> First Name</td>
-                                <td class="detail-value"><c:out value="${ad.first_name}"/></td>
-                            </tr>
-                            <tr class="detail-row">
-                                <td class="detail-label"><i class="fas fa-signature"></i> Last Name</td>
-                                <td class="detail-value"><c:out value="${ad.last_name}"/></td>
-                            </tr>
-                            <tr class="detail-row">
-                                <td class="detail-label"><i class="fas fa-phone"></i> Phone</td>
-                                <td class="detail-value"><c:out value="${ad.phone}"/></td>
-                            </tr>
-                            <tr class="detail-row">
-                                <td class="detail-label"><i class="fas fa-envelope"></i> Email</td>
-                                <td class="detail-value"><c:out value="${ad.email}"/></td>
-                            </tr>
-                            <tr class="detail-row">
-                                <td class="detail-label"><i class="fas fa-lock"></i> Password</td>
-                                <td class="detail-value">
-                                    <div class="password-field">
-                                        <span class="password-mask">••••••••</span>
-                                        <button class="btn btn-sm btn-show-password" onclick="togglePassword(this)">
-                                            <i class="fas fa-eye"></i> Show
-                                        </button>
-                                        <span class="actual-password" style="display:none;"><c:out value="${ad.password}"/></span>
-                                    </div>
-                                </td>
-                            </tr>
-                            </c:forEach>
-                        </tbody>
-                    </table>
+               <div class="table-responsive">
+			    <div class="table-container">
+			        <table class="profile-table table-bordered">
+			            <tbody>
+			                <c:forEach var="ad" items="${sessionScope.adminDetails}">
+			                <c:set var="id" value="${ad.admin_id}"/>
+			                <c:set var="username" value="${ad.username}"/>
+			                <c:set var="fName" value="${ad.first_name}"/>
+			                <c:set var="lName" value="${ad.last_name}"/>
+			                <c:set var="phone" value="${ad.phone}"/>
+			                <c:set var="email" value="${ad.email}"/>
+			                <c:set var="password" value="${ad.password}"/>
+			                
+			                <tr class="detail-row">
+			                    <td class="detail-label" data-label="Admin ID"><i class="fas fa-id-card"></i> Admin ID</td>
+			                    <td class="detail-value"><c:out value="${ad.admin_id}"/></td>
+			                </tr>
+			                <tr class="detail-row">
+			                    <td class="detail-label" data-label="Username"><i class="fas fa-user"></i> Username</td>
+			                    <td class="detail-value"><c:out value="${ad.username}"/></td>
+			                </tr>
+			                <tr class="detail-row">
+			                    <td class="detail-label" data-label="First Name"><i class="fas fa-signature"></i> First Name</td>
+			                    <td class="detail-value"><c:out value="${ad.first_name}"/></td>
+			                </tr>
+			                <tr class="detail-row">
+			                    <td class="detail-label" data-label="Last Name"><i class="fas fa-signature"></i> Last Name</td>
+			                    <td class="detail-value"><c:out value="${ad.last_name}"/></td>
+			                </tr>
+			                <tr class="detail-row">
+			                    <td class="detail-label" data-label="Phone"><i class="fas fa-phone"></i> Phone</td>
+			                    <td class="detail-value"><c:out value="${ad.phone}"/></td>
+			                </tr>
+			                <tr class="detail-row">
+			                    <td class="detail-label" data-label="Email"><i class="fas fa-envelope"></i> Email</td>
+			                    <td class="detail-value"><c:out value="${ad.email}"/></td>
+			                </tr>
+			                <tr class="detail-row">
+			                    <td class="detail-label" data-label="Password"><i class="fas fa-lock"></i> Password</td>
+			                    <td class="detail-value">
+			                        <div class="password-field">
+			                            <span class="password-mask">••••••••</span>
+			                            <button class="btn btn-sm btn-show-password" onclick="togglePassword(this)">
+			                                <i class="fas fa-eye"></i> Show
+			                            </button>
+			                            <span class="actual-password" style="display:none;"><c:out value="${ad.password}"/></span>
+			                        </div>
+			                    </td>
+			                </tr>
+			                </c:forEach>
+			            </tbody>
+			        </table>
+			    </div>
+			</div>
                     
                     <c:url value="updateAdminProfile.jsp" var="adminUpdate">
                         <c:param name="id" value="${id}"/>
@@ -317,6 +517,35 @@
                 button.innerHTML = '<i class="fas fa-eye-slash"></i> Hide';
             }
         }
+        
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('mainContent');
+            
+            menuToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+            });
+            
+            // Close sidebar when clicking outside on mobile
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 992 && 
+                    !sidebar.contains(event.target) && 
+                    event.target !== menuToggle) {
+                    sidebar.classList.remove('active');
+                }
+            });
+            
+            // Toggle sidebar collapse on larger screens
+            function handleResize() {
+                if (window.innerWidth > 992) {
+                    sidebar.classList.remove('active');
+                }
+            }
+            
+            window.addEventListener('resize', handleResize);
+        });
     </script>
 </body>
 </html>
