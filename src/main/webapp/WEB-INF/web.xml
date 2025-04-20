@@ -105,7 +105,7 @@
 	
 	
 	
-	
+	<!-- Inventory Manager Function -->  	
 	<!-- Manage Inventory Manager Function -->  
    	<servlet>
 	    <servlet-name>AdminInventoryManager</servlet-name>
@@ -117,7 +117,7 @@
 	    <url-pattern>/manageInventoryManager</url-pattern>
 	</servlet-mapping>  
 	
-	<!-- Add Inventory Manager Function -->  
+	<!-- Create Inventory Manager Function -->  
    	<servlet>
 	    <servlet-name>AdminCreateInventoryManager</servlet-name>
 	    <servlet-class>com.gos.servlet.AdminCreateInventoryManagerServlet</servlet-class>
@@ -150,6 +150,31 @@
 	    <servlet-name>DeleteInventoryManager</servlet-name>
 	    <url-pattern>/deleteInventoryManager</url-pattern>
 	</servlet-mapping>
+	
+
+	
+	<!-- Delivery Manager Function -->  
+	<!-- Manage Delivery Manager Function -->  
+   	<servlet>
+	    <servlet-name>AdminDeliveryManager</servlet-name>
+	    <servlet-class>com.gos.servlet.AdminDeliveryManagerServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	    <servlet-name>AdminDeliveryManager</servlet-name>
+	    <url-pattern>/manageDeliveryManager</url-pattern>
+	</servlet-mapping>  
+	
+	<!-- Create Delivery Manager Function -->  
+   	<servlet>
+	    <servlet-name>AdminCreateDeliveryManager</servlet-name>
+	    <servlet-class>com.gos.servlet.AdminCreateDeliveryManagerServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	    <servlet-name>AdminCreateDeliveryManager</servlet-name>
+	    <url-pattern>/addDeliveryManager</url-pattern>
+	</servlet-mapping>  
 		
 </web-app>
 	
