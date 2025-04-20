@@ -106,17 +106,26 @@
 	
 	
 	
-	
-	
 	<!-- Manage Inventory Manager Function -->  
    	<servlet>
 	    <servlet-name>AdminInventoryManager</servlet-name>
-	    <servlet-class>com.gos.servlet.AdminCreateInventoryManagerServlet</servlet-class>
+	    <servlet-class>com.gos.servlet.AdminInventoryManagerServlet</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
 	    <servlet-name>AdminInventoryManager</servlet-name>
 	    <url-pattern>/manageInventoryManager</url-pattern>
+	</servlet-mapping>  
+	
+	<!-- Add Inventory Manager Function -->  
+   	<servlet>
+	    <servlet-name>AdminCreateInventoryManager</servlet-name>
+	    <servlet-class>com.gos.servlet.AdminCreateInventoryManagerServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	    <servlet-name>AdminCreateInventoryManager</servlet-name>
+	    <url-pattern>/addInventoryManager</url-pattern>
 	</servlet-mapping>  
 	
 	<!-- Update Inventory Manager Function -->

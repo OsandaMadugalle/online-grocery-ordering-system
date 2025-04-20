@@ -5,8 +5,14 @@
 <%@ page session="true" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<c:if test="${empty sessionScope.loggedIn or empty sessionScope.adminDetails}">
+<%-- Authorization check (session) --%>
+<c:if test="${empty sessionScope.loggedIn}">
     <c:redirect url="/admin/adminLogin.jsp"/>
+</c:if>
+
+<%-- Data availability check (request) --%>
+<c:if test="${empty admin}">
+    <div class="alert alert-warning">No admin data available</div>
 </c:if>
 
 <!DOCTYPE html>

@@ -33,4 +33,9 @@ public class AdminInventoryManagerServlet extends HttpServlet {
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error retrieving inventory managers");
         }
     }
+    
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+        doGet(request, response); // Or implement separate POST handling
+    }
 }
