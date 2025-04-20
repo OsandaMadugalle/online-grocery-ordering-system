@@ -205,7 +205,7 @@
         <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
         <a href="../manageAdmin"><i class="fas fa-users-cog"></i> Manage Admins</a>
         <a href="../manageInventoryManager"><i class="fas fa-boxes"></i> Manage Inventory Managers</a>
-        <a href="manageDelivery.jsp"><i class="fas fa-truck"></i> Manage Delivery Persons</a>
+        <a href="manageDelivery.jsp"><i class="fas fa-truck"></i> Manage Delivery Managers</a>
         <a href="#"><i class="fas fa-users"></i> Manage Users</a>
         <a href="../index.jsp"><i class="fas fa-cog"></i> Site Settings</a>
         <a href="../LogoutServlet" class="logout-btn">

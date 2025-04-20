@@ -14,14 +14,12 @@ import com.gos.util.DBConnection;
 public class InventoryManagerService {
 	
 	// Display Inventory Managers Table
-	public ArrayList<InventoryManager> getAllInventoryManager(){
-	    try {
-	        ArrayList<InventoryManager> listInventoryManager = new ArrayList<>();
-	        
-	        String sql = "SELECT * FROM InventoryManager";
-	        
-	        Statement stmt = DBConnection.getConnection().createStatement();
-	        ResultSet rs = stmt.executeQuery(sql);
+	public ArrayList<InventoryManager> getAllInventoryManager(){		
+		ArrayList<InventoryManager> listInventoryManager = new ArrayList<>();        
+        String sql = "SELECT * FROM InventoryManager";
+        
+	    try(Statement stmt = DBConnection.getConnection().createStatement();
+		    ResultSet rs = stmt.executeQuery(sql)) {     
 	        
 	        while(rs.next()) {
 	            InventoryManager IM = new InventoryManager();
@@ -44,10 +42,8 @@ public class InventoryManagerService {
 	}
 	
 	// Add Inventory Manager
-    public static boolean addInventoryManager( String username, String first_name, String last_name , String phone, String email , String password) {
-    	
-    	boolean isSuccess = false;
-    	
+    public static boolean addInventoryManager( String username, String first_name, String last_name , String phone, String email , String password) {    	
+    	boolean isSuccess = false;    	
     	String sql="INSERT INTO InventoryManager VALUES(0,'"+username+"','"+first_name+"','"+last_name+"','"+phone+"','"+email+"','"+password+"')";
 
         try (Connection conn = DBConnection.getConnection();
@@ -70,8 +66,7 @@ public class InventoryManagerService {
     }
         
   // Add a Method to Fetch Updated Inventory Manager Details
-    public static List<InventoryManager> getInventoryManagerById(String id) {
-    	    	
+    public static List<InventoryManager> getInventoryManagerById(String id) {    	    	
     	List<InventoryManager> IM = new ArrayList<>();
         String sql = "SELECT * FROM InventoryManager WHERE M_ID = ?";
 
@@ -118,8 +113,7 @@ public class InventoryManagerService {
     }
     
  // Update Inventory Manager Details
-    public static boolean updateInventoryManager(String id, String username, String fname, 
-            String lname, String phone, String email, String password) {
+    public static boolean updateInventoryManager(String id, String username, String fname, String lname, String phone, String email, String password) {
         boolean isSuccess = false;
         String sql = "UPDATE InventoryManager SET Username=?, First_Name=?, Last_Name=?, Phone=?, Email=?, Password=? WHERE M_ID=?";
 
