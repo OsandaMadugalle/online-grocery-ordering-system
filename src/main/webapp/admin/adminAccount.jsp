@@ -386,19 +386,19 @@
         </a>
         <a href="../manageAdmin">
             <i class="fas fa-users-cog"></i>
-            <span class="nav-text">Manage Admins</span>
+            <span class="nav-text">Admins</span>
         </a>
         <a href="../manageInventoryManager">
             <i class="fas fa-boxes"></i>
-            <span class="nav-text">Manage Inventory</span>
+            <span class="nav-text">Inventory Managers</span>
         </a>
         <a href="../manageDeliveryManager">
             <i class="fas fa-truck"></i>
-            <span class="nav-text">Manage Delivery</span>
+            <span class="nav-text">Delivery Managers</span>
         </a>
         <a href="#">
             <i class="fas fa-users"></i>
-            <span class="nav-text">Manage Users</span>
+            <span class="nav-text">Users</span>
         </a>
         <a href="../index.jsp">
             <i class="fas fa-cog"></i>
