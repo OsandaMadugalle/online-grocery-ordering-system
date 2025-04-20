@@ -14,174 +14,234 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     
-    <style>
-        :root {
-            --primary-color: #002244;
-            --accent-color: #ff4c29;
-            --text-color: white;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--primary-color);
-            color: var(--text-color);
-            padding: 20px 0;
-        }
-        
-        .container {
-            max-width: 95%;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-            margin: 0 auto;
-        }
-        
-        /* Responsive Table Styles */
-        .responsive-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 25px 0;
-            font-size: 0.9em;
-            border-radius: 5px 5px 0 0;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-        }
-        
-        .responsive-table thead tr {
-            background-color: rgba(255, 76, 41, 0.7);
-            color: #ffffff;
-            text-align: left;
-            font-weight: bold;
-        }
-        
-        .responsive-table th,
-        .responsive-table td {
-            padding: 12px 15px;
-            vertical-align: middle;
-        }
-        
-        .responsive-table tbody tr {
-            border-bottom: 1px solid rgba(221, 221, 221, 0.2);
-            background-color: rgba(0, 0, 0, 0.2);
-        }
-        
-        .responsive-table tbody tr:nth-of-type(even) {
-            background-color: rgba(0, 0, 0, 0.3);
-        }
-        
-        .responsive-table tbody tr:last-of-type {
-            border-bottom: 2px solid var(--accent-color);
-        }
-        
-        .responsive-table tbody tr:hover {
-            background-color: rgba(255, 76, 41, 0.1);
-        }
-        
-        /* Mobile Styles */
-        @media screen and (max-width: 768px) {
-            .responsive-table {
-                display: block;
-                width: 100%;
-            }
-            
-            .responsive-table thead {
-                display: none;
-            }
-            
-            .responsive-table tbody, 
-            .responsive-table tr, 
-            .responsive-table td {
-                display: block;
-                width: 100%;
-            }
-            
-            .responsive-table tr {
-                margin-bottom: 15px;
-                border: 1px solid rgba(255, 255, 255, 0.2);
-                border-radius: 5px;
-            }
-            
-            .responsive-table td {
-                text-align: right;
-                padding-left: 50%;
-                position: relative;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            }
-            
-            .responsive-table td:before {
-                content: attr(data-label);
-                position: absolute;
-                left: 15px;
-                width: calc(50% - 15px);
-                padding-right: 10px;
-                font-weight: bold;
-                text-align: left;
-                color: #ffcc00;
-            }
-            
-            .responsive-table td:last-child {
-                border-bottom: 0;
-            }
-            
-            .action-buttons {
-                display: flex;
-                justify-content: flex-end;
-                gap: 5px;
-            }
-        }
-        
-        /* Action Buttons */
-        .btn-action {
-            padding: 5px 10px;
-            font-size: 0.8rem;
-            margin: 2px;
-            min-width: 70px;
-        }
-        
-        /* Password Field */
-        .password-field {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-        }
-        
-        .password-mask {
-            letter-spacing: 2px;
-        }
-        
-        .btn-show-password {
-            background: transparent;
-            border: none;
-            color: white;
-            margin-left: 5px;
-            cursor: pointer;
-        }
-        
-        /* Other Elements */
-        .btn-add {
-            background: var(--accent-color);
-            color: white;
-            font-weight: 600;
-            border-radius: 8px;
-            padding: 10px 20px;
-            margin-bottom: 20px;
-        }
-        
-        .home-icon {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            font-size: 28px;
-            color: white;
-            text-decoration: none;
-            z-index: 1000;
-            background: rgba(0,0,0,0.5);
-            padding: 5px 10px;
-            border-radius: 50%;
-        }
-    </style>
+   <style>
+   	:root {
+	    --primary-color: #002244;
+	    --accent-color: #ff4c29;
+	    --text-color: white;
+	}
+	
+	body {
+	    font-family: 'Poppins', sans-serif;
+	    background-color: var(--primary-color);
+	    color: var(--text-color);
+	    padding: 20px 0;
+	}
+	
+	.container {
+	    max-width: 95%;
+	    background: rgba(255, 255, 255, 0.1);
+	    backdrop-filter: blur(10px);
+	    padding: 20px;
+	    border-radius: 12px;
+	    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+	    margin: 0 auto;
+	}
+	
+	/* Header Section Styles */
+	.d-flex {
+	    display: flex;
+	}
+	
+	.justify-content-between {
+	    justify-content: space-between;
+	}
+	
+	.align-items-center {
+	    align-items: center;
+	}
+	
+	.mb-4 {
+	    margin-bottom: 1.5rem;
+	}
+	
+	.mb-0 {
+	    margin-bottom: 0;
+	}
+	
+	.mr-3 {
+	    margin-right: 1rem;
+	}
+	
+	/* Admin Count Badge */
+	.admin-count-badge {
+	    background-color: rgba(255, 76, 41, 0.7);
+	    color: white;
+	    padding: 8px 15px;
+	    border-radius: 20px;
+	    font-weight: 600;
+	    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	    display: inline-flex;
+	    align-items: center;
+	}
+	
+	.admin-count-badge i {
+	    margin-right: 8px;
+	}
+	
+	/* Add Button */
+	.btn-add {
+	    background: var(--accent-color);
+	    color: white;
+	    font-weight: 600;
+	    border-radius: 8px;
+	    padding: 10px 20px;
+	    transition: all 0.3s ease;
+	    display: inline-flex;
+	    align-items: center;
+	    white-space: nowrap;
+	    margin-bottom: 20px;
+	}
+	
+	.btn-add:hover {
+	    transform: translateY(-2px);
+	    box-shadow: 0 4px 8px rgba(255, 76, 41, 0.3);
+	}
+	
+	.btn-add i {
+	    margin-right: 8px;
+	}
+	
+	/* Responsive Table Styles */
+	.responsive-table {
+	    width: 100%;
+	    border-collapse: collapse;
+	    margin: 25px 0;
+	    font-size: 0.9em;
+	    border-radius: 5px 5px 0 0;
+	    overflow: hidden;
+	    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+	}
+	
+	.responsive-table thead tr {
+	    background-color: rgba(255, 76, 41, 0.7);
+	    color: #ffffff;
+	    text-align: left;
+	    font-weight: bold;
+	}
+	
+	.responsive-table th,
+	.responsive-table td {
+	    padding: 12px 15px;
+	    vertical-align: middle;
+	}
+	
+	.responsive-table tbody tr {
+	    border-bottom: 1px solid rgba(221, 221, 221, 0.2);
+	    background-color: rgba(0, 0, 0, 0.2);
+	}
+	
+	.responsive-table tbody tr:nth-of-type(even) {
+	    background-color: rgba(0, 0, 0, 0.3);
+	}
+	
+	.responsive-table tbody tr:last-of-type {
+	    border-bottom: 2px solid var(--accent-color);
+	}
+	
+	.responsive-table tbody tr:hover {
+	    background-color: rgba(255, 76, 41, 0.1);
+	}
+	
+	/* Mobile Styles */
+	@media screen and (max-width: 768px) {
+	    .responsive-table {
+	        display: block;
+	        width: 100%;
+	    }
+	    
+	    .responsive-table thead {
+	        display: none;
+	    }
+	    
+	    .responsive-table tbody, 
+	    .responsive-table tr, 
+	    .responsive-table td {
+	        display: block;
+	        width: 100%;
+	    }
+	    
+	    .responsive-table tr {
+	        margin-bottom: 15px;
+	        border: 1px solid rgba(255, 255, 255, 0.2);
+	        border-radius: 5px;
+	    }
+	    
+	    .responsive-table td {
+	        text-align: right;
+	        padding-left: 50%;
+	        position: relative;
+	        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	    }
+	    
+	    .responsive-table td:before {
+	        content: attr(data-label);
+	        position: absolute;
+	        left: 15px;
+	        width: calc(50% - 15px);
+	        padding-right: 10px;
+	        font-weight: bold;
+	        text-align: left;
+	        color: #ffcc00;
+	    }
+	    
+	    .responsive-table td:last-child {
+	        border-bottom: 0;
+	    }
+	    
+	    .action-buttons {
+	        display: flex;
+	        justify-content: flex-end;
+	        gap: 5px;
+	    }
+	}
+	
+	/* Action Buttons */
+	.btn-action {
+	    padding: 5px 10px;
+	    font-size: 0.8rem;
+	    margin: 2px;
+	    min-width: 70px;
+	}
+	
+	/* Password Field */
+	.password-field {
+	    display: flex;
+	    align-items: center;
+	    justify-content: flex-end;
+	}
+	
+	.password-mask {
+	    letter-spacing: 2px;
+	}
+	
+	.btn-show-password {
+	    background: transparent;
+	    border: none;
+	    color: white;
+	    margin-left: 5px;
+	    cursor: pointer;
+	}
+	
+	/* Home Icon */
+	.home-icon {
+	    position: fixed;
+	    top: 20px;
+	    left: 20px;
+	    font-size: 28px;
+	    color: white;
+	    text-decoration: none;
+	    z-index: 1000;
+	    background: rgba(0,0,0,0.5);
+	    padding: 5px 10px;
+	    border-radius: 50%;
+	    transition: all 0.3s ease;
+	}
+	
+	.home-icon:hover {
+	    background: rgba(0,0,0,0.7);
+	}
+   </style>
 </head>
 
 <body>
@@ -191,12 +251,23 @@
     </a>
 
     <div class="container">
-        <h3>Admins List</h3>
+    <!-- Header Section -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="mb-0">Admins List</h3>
         
-        <a href="${pageContext.request.contextPath}/admin/createAdmin.jsp" class="btn btn-add">
-            <i class="fas fa-plus"></i> Add New Admin
-        </a>
-        
+        <div class="d-flex align-items-center">
+            <c:if test="${not empty admin}">
+                <div class="admin-count-badge mr-3">
+                    <i class="fas fa-users"></i> Total Admins: ${fn:length(admin)}
+                </div>
+            </c:if>
+            
+            <a href="${pageContext.request.contextPath}/admin/createAdmin.jsp" class="btn btn-add">
+                <i class="fas fa-plus"></i> Add New Admin
+            </a>
+        </div>
+    </div>
+    
         <c:if test="${not empty admin}">
             <table class="responsive-table">
                 <thead>
