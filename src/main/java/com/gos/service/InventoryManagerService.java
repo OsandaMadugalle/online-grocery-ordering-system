@@ -3,6 +3,7 @@ package com.gos.service;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,42 @@ import com.gos.model.InventoryManager;
 import com.gos.util.DBConnection;
 
 public class InventoryManagerService {
+	
+	//Validate Inventory Manager Login
+	public static List<InventoryManager> validate(String username, String password){
+		List<InventoryManager> inventoryManagerList = new ArrayList<>();
+		String sql = "SELECT * FROM InventoryManager WHERE Username = ? AND Password = ?";
+		
+		try(Connection con = DBConnection.getConnection(); 
+             PreparedStatement stmt = con.prepareStatement(sql)){
+			
+			stmt.setString(1, username);
+			stmt.setString(2, password);
+			
+			try(ResultSet rs = stmt.executeQuery()){
+				while(rs.next()) {
+					InventoryManager inventoryManager =mapResultSetToInventoryManager(rs);
+					inventoryManagerList.add(inventoryManager);
+				}
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}		
+		return inventoryManagerList;
+	}
+	
+	//Map the ResultSet row to an Inventory Manager object
+    private static InventoryManager mapResultSetToInventoryManager(ResultSet rs) throws SQLException {
+        return new InventoryManager(
+                rs.getInt("M_ID"),
+                rs.getString("Username"),
+                rs.getString("First_name"),
+                rs.getString("Last_name"),
+                rs.getString("Phone"),
+                rs.getString("Email"),
+                rs.getString("Password")
+        );
+    }
 	
 	// Display Inventory Managers Table
 	public ArrayList<InventoryManager> getAllInventoryManager(){		
@@ -67,7 +104,7 @@ public class InventoryManagerService {
 	    return isSuccess;
 	}
         
-  // Add a Method to Fetch Updated Inventory Manager Details
+  // Fetch Inventory Manager Details By ID
     public static List<InventoryManager> getInventoryManagerById(String id) {    	    	
     	List<InventoryManager> IM = new ArrayList<>();
         String sql = "SELECT * FROM InventoryManager WHERE M_ID = ?";
