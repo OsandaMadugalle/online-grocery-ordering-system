@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Update My Profile</title>
+    <title>Update My Profile - Inventory Manager</title>
     
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
@@ -21,13 +21,15 @@
     
     <style>
         :root {
-            --primary-bg: #002244;
-            --form-bg: rgba(255, 255, 255, 0.1);
-            --accent-color: #ff4c29;
-            --accent-hover: #e03e1a;
+            --primary-bg: #1a1a2e;
+            --secondary-bg: #16213e;
+            --accent-color: #4cc9f0;
+            --accent-hover: #3a9ec7;
             --text-color: white;
-            --placeholder-color: #e0e0e0;
-            --error-color: #ff6b6b;
+            --placeholder-color: #b8c2d9;
+            --error-color: #e94560;
+            --form-bg: rgba(255, 255, 255, 0.1);
+            --border-radius: 10px;
         }
 
         body {
@@ -39,37 +41,43 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
+            background-image: linear-gradient(to bottom right, var(--primary-bg), var(--secondary-bg));
         }
         
         .form-container {
             background: var(--form-bg);
-            backdrop-filter: blur(10px);
-            padding: 30px;
+            backdrop-filter: blur(12px);
+            padding: 40px;
             width: 100%;
             max-width: 800px;
-            border-radius: 12px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-            animation: fadeIn 0.5s ease-in-out;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 0.6s cubic-bezier(0.39, 0.575, 0.565, 1);
         }
         
         .form-container h3 {
             font-size: clamp(1.5rem, 2.5vw, 2rem);
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             text-align: center;
+            color: var(--accent-color);
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
         
         .form-row {
             display: flex;
             flex-wrap: wrap;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             align-items: center;
         }
         
         .form-label {
-            flex: 0 0 150px;
+            flex: 0 0 180px;
             text-align: right;
-            padding-right: 15px;
+            padding-right: 20px;
             font-weight: 500;
+            color: var(--accent-color);
         }
         
         .form-input {
@@ -78,18 +86,21 @@
         }
         
         .form-control {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
             color: var(--text-color);
-            border: none;
-            padding: 12px 15px;
-            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
             width: 100%;
             transition: all 0.3s ease;
+            font-size: 15px;
         }
         
         .form-control:focus {
-            background: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 0 0 0.2rem rgba(255, 76, 41, 0.25);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 0 0 0.2rem rgba(76, 201, 240, 0.3);
+            border-color: var(--accent-color);
+            outline: none;
         }
         
         .form-control::placeholder {
@@ -98,52 +109,58 @@
         }
         
         .form-control[readonly] {
-            background-color: rgba(128, 128, 128, 0.3);
+            background-color: rgba(128, 128, 128, 0.2);
+            color: #ccc;
         }
         
         .btn-submit {
             background: var(--accent-color);
-            color: white;
+            color: #0a192f;
             font-size: clamp(0.9rem, 1.2vw, 1rem);
             font-weight: 600;
             border: none;
-            padding: 12px;
+            padding: 14px;
             width: 100%;
-            border-radius: 8px;
+            border-radius: var(--border-radius);
             transition: all 0.3s ease;
-            margin-top: 20px;
+            margin-top: 25px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
         
         .btn-submit:hover {
             background: var(--accent-hover);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(76, 201, 240, 0.3);
         }
         
         .error-message {
             color: var(--error-color);
             font-size: 0.85rem;
-            margin-top: 5px;
+            margin-top: 8px;
             text-align: left;
             display: none;
+            font-weight: 500;
         }
         
         .home-icon {
             position: fixed;
-            top: 20px;
-            left: 20px;
+            top: 25px;
+            left: 25px;
             font-size: 1.5rem;
             color: white;
             text-decoration: none;
             z-index: 100;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 8px 12px;
-            border-radius: 50%;
+            background: rgba(76, 201, 240, 0.2);
+            padding: 10px 15px;
+            border-radius: var(--border-radius);
             transition: all 0.3s ease;
+            border: 1px solid rgba(76, 201, 240, 0.3);
         }
         
         .home-icon:hover {
-            color: #ddd;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(76, 201, 240, 0.3);
+            transform: translateY(-2px);
         }
         
         .password-toggle {
@@ -155,6 +172,11 @@
             border: none;
             color: var(--placeholder-color);
             cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .password-toggle:hover {
+            color: var(--accent-color);
         }
         
         .password-wrapper {
@@ -164,8 +186,8 @@
 
         @media (max-width: 768px) {
             .form-container {
-                padding: 25px;
-                margin-top: 40px;
+                padding: 30px;
+                margin-top: 60px;
             }
             
             .form-row {
@@ -177,7 +199,7 @@
                 flex: 0 0 auto;
                 text-align: left;
                 padding-right: 0;
-                margin-bottom: 8px;
+                margin-bottom: 10px;
                 width: 100%;
             }
             
@@ -186,25 +208,48 @@
             }
             
             .home-icon {
+                top: 15px;
+                left: 15px;
                 font-size: 1.3rem;
-                padding: 6px 10px;
+                padding: 8px 12px;
             }
         }
 
         @media (max-width: 576px) {
             .form-container {
-                padding: 20px 15px;
+                padding: 25px 20px;
             }
             
             body {
                 padding: 15px;
                 align-items: flex-start;
             }
+            
+            .form-control {
+                padding: 10px 15px;
+            }
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        /* Floating animation for the form container */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .form-container {
+            animation: fadeIn 0.6s ease-out, float 6s ease-in-out infinite;
         }
     </style>
 </head>
@@ -220,17 +265,19 @@
         String password= request.getParameter("password");
     %>
 
-    <a href="${pageContext.request.contextPath}/inventoryManager/inventoryManagerLogin.jsp" class="home-icon">
+    <a href="${pageContext.request.contextPath}/inventoryManager/inventoryManagerDashboard.jsp" class="home-icon">
         <i class="fas fa-arrow-left"></i>
     </a>
 
     <div class="form-container">
-        <h3>Update My Profile</h3>
+        <h3><i class="fas fa-user-edit mr-2"></i>Update Inventory Manager Profile</h3>
         
         <form action="../updateInventoryManager" method="post" onsubmit="return validateForm()">
             <!-- ID -->
             <div class="form-row">
-                <label for="admin_id" class="form-label">Inventory Manager ID</label>
+                <label for="admin_id" class="form-label">
+                    <i class="fas fa-id-card mr-2"></i>Manager ID
+                </label>
                 <div class="form-input">
                     <input type="text" class="form-control" name="admin_id" id="admin_id" 
                         value="<%= id %>" readonly>
@@ -239,56 +286,68 @@
             
             <!-- Username -->
             <div class="form-row">
-                <label for="username" class="form-label">Username</label>
+                <label for="username" class="form-label">
+                    <i class="fas fa-user mr-2"></i>Username
+                </label>
                 <div class="form-input">
                     <input type="text" class="form-control" name="username" id="username" 
-                        placeholder="Username" value="<%= username %>" required>
+                        placeholder="Enter username" value="<%= username %>" required>
                 </div>
             </div>
             
             <!-- First Name -->
             <div class="form-row">
-                <label for="firstName" class="form-label">First Name</label>
+                <label for="firstName" class="form-label">
+                    <i class="fas fa-signature mr-2"></i>First Name
+                </label>
                 <div class="form-input">
                     <input type="text" class="form-control" name="firstName" id="firstName" 
-                        placeholder="First Name" value="<%= fName %>" required>
+                        placeholder="Enter first name" value="<%= fName %>" required>
                 </div>
             </div>
             
             <!-- Last Name -->
             <div class="form-row">
-                <label for="lastName" class="form-label">Last Name</label>
+                <label for="lastName" class="form-label">
+                    <i class="fas fa-signature mr-2"></i>Last Name
+                </label>
                 <div class="form-input">
                     <input type="text" class="form-control" name="lastName" id="lastName" 
-                        placeholder="Last Name" value="<%= lName %>" required>
+                        placeholder="Enter last name" value="<%= lName %>" required>
                 </div>
             </div>
             
             <!-- Phone -->
             <div class="form-row">
-                <label for="phone" class="form-label">Phone</label>
+                <label for="phone" class="form-label">
+                    <i class="fas fa-phone mr-2"></i>Phone
+                </label>
                 <div class="form-input">
                     <input type="tel" class="form-control" name="phone" id="phone" 
-                        placeholder="Phone" value="<%= phone %>" required>
+                        placeholder="Enter phone number" value="<%= phone %>" required>
                 </div>
             </div>
             
             <!-- Email -->
             <div class="form-row">
-                <label for="email" class="form-label">Email</label>
+                <label for="email" class="form-label">
+                    <i class="fas fa-envelope mr-2"></i>Email
+                </label>
                 <div class="form-input">
                     <input type="email" class="form-control" name="email" id="email" 
-                        placeholder="Email" value="<%= email %>" required>
+                        placeholder="Enter email address" value="<%= email %>" required>
                 </div>
             </div>
             
             <!-- Password -->
             <div class="form-row">
-                <label for="password" class="form-label">Password</label>
+                <label for="password" class="form-label">
+                    <i class="fas fa-lock mr-2"></i>Password
+                </label>
                 <div class="form-input">
                     <div class="password-wrapper">
                         <input type="password" class="form-control" name="password" id="password" 
-                            placeholder="Password" value="<%= password %>" required>
+                            placeholder="Enter new password" value="<%= password %>" required>
                         <button type="button" class="password-toggle" onclick="togglePassword('password', this)">
                             <i class="fas fa-eye"></i>
                         </button>
@@ -298,20 +357,26 @@
             
             <!-- Confirm Password -->
             <div class="form-row">
-                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <label for="confirmPassword" class="form-label">
+                    <i class="fas fa-check-circle mr-2"></i>Confirm Password
+                </label>
                 <div class="form-input">
                     <div class="password-wrapper">
                         <input type="password" class="form-control" id="confirmPassword" 
-                            placeholder="Re-type Password" value="<%= password %>" required>
+                            placeholder="Re-enter password" value="<%= password %>" required>
                         <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword', this)">
                             <i class="fas fa-eye"></i>
                         </button>
                     </div>
-                    <div class="error-message" id="error-message">Passwords do not match</div>
+                    <div class="error-message" id="error-message">
+                        <i class="fas fa-exclamation-circle mr-1"></i>Passwords do not match
+                    </div>
                 </div>
             </div>
             
-            <button type="submit" class="btn-submit">Update Profile</button>
+            <button type="submit" class="btn-submit">
+                <i class="fas fa-save mr-2"></i>Update Profile
+            </button>
         </form>
     </div>
 
@@ -323,6 +388,7 @@
             
             if (password !== confirmPassword) {
                 errorMessage.style.display = "block";
+                document.getElementById("confirmPassword").focus();
                 return false;
             }
             errorMessage.style.display = "none";
@@ -341,6 +407,19 @@
                 icon.classList.replace('fa-eye-slash', 'fa-eye');
             }
         }
+        
+        // Validate password match on the fly
+        document.getElementById('confirmPassword').addEventListener('input', function() {
+            const password = document.getElementById("password").value;
+            const confirmPassword = this.value;
+            const errorMessage = document.getElementById("error-message");
+            
+            if (password !== confirmPassword) {
+                errorMessage.style.display = "block";
+            } else {
+                errorMessage.style.display = "none";
+            }
+        });
     </script>
 </body>
 </html>
