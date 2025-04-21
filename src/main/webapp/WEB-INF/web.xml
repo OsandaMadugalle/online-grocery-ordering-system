@@ -105,7 +105,18 @@
 	
 	
 	
-	<!-- Inventory Manager Function -->  	
+	<!-- Inventory Manager Function -->  
+	 <!-- Inventory Manager Login Function -->
+    <servlet>
+        <servlet-name>InventoryManagerLoginServlet</servlet-name>
+        <servlet-class>com.gos.servlet.InventoryManagerLoginServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>InventoryManagerLoginServlet</servlet-name>
+        <url-pattern>/inventoryManagerLoginServlet</url-pattern>
+    </servlet-mapping>
+		
 	<!-- Manage Inventory Manager Function -->  
    	<servlet>
 	    <servlet-name>AdminInventoryManager</servlet-name>
