@@ -31,7 +31,7 @@ public class InventoryManagerLoginServlet extends HttpServlet {
                 session.setAttribute("inventoryManagerDetails", inventoryManagerDetails);
                 session.setAttribute("username", uname);
                 
-                response.sendRedirect(request.getContextPath() +"/inventoryManager/inventoryManagerAccount.jsp"); 
+                response.sendRedirect(request.getContextPath() +"/inventoryManager/inventoryManagerDashboard.jsp"); 
             } else {
                 request.setAttribute("errorMessage", "Invalid username or password.");
                 response.sendRedirect(request.getContextPath() +"/inventoryManager/inventoryManagerLogin.jsp"); 
