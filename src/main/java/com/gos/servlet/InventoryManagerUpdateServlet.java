@@ -32,7 +32,7 @@ public class InventoryManagerUpdateServlet extends HttpServlet {
 	        List<InventoryManager> updatedInventoryManagerDetails = InventoryManagerService.getInventoryManagerById(id);
 	        
 	        HttpSession session = request.getSession();
-	        session.setAttribute("inventoryMangerDetails", updatedInventoryManagerDetails);
+	        session.setAttribute("inventoryManagerDetails", updatedInventoryManagerDetails);
 
 	        response.sendRedirect(request.getContextPath() + "/inventoryManager/inventoryManagerDashboard.jsp");
 	    } else {
