@@ -66,7 +66,7 @@ public class InventoryManagerUpdateProductServlet extends HttpServlet {
             filePart.write(uploadDir + File.separator + fileName);
 
             // Update the image path for saving in DB
-            imagePath = "productImages/" + fileName;
+            imagePath = "productImages/" + fileName;  // Store just the relative path
         }
 
         product.setImagePath(imagePath);
