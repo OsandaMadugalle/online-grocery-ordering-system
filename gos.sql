@@ -49,8 +49,7 @@ VALUES
     ('/productImages/3.jpg', 'Cotton T-Shirt', 'Clothing', 200, 19.99);
 
 -- Verify the data
-SELECT * FROM Product;
-DROP TABLE Product;
+SELECT * FROM admin;
 
 
 INSERT INTO  DeliveryManager (D_ID, Username, First_Name, Last_Name, Phone, Email, Password)
