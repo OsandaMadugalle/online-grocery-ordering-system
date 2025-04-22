@@ -275,11 +275,11 @@
         <form action="../updateInventoryManager" method="post" onsubmit="return validateForm()">
             <!-- ID -->
             <div class="form-row">
-                <label for="admin_id" class="form-label">
+                <label for="m_id" class="form-label">
                     <i class="fas fa-id-card mr-2"></i>Manager ID
                 </label>
                 <div class="form-input">
-                    <input type="text" class="form-control" name="admin_id" id="admin_id" 
+                    <input type="text" class="form-control" name="m_id" id="m_id" 
                         value="<%= id %>" readonly>
                 </div>
             </div>
