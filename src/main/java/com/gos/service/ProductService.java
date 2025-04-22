@@ -60,5 +60,21 @@ public class ProductService {
 
         return isSuccess;
     }
+    
+ // Delete Product
+    public void deleteProduct(Product product) {
+        String sql = "DELETE FROM Product WHERE id = ?";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, product.getId());
+            stmt.executeUpdate();
+        } 
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
