@@ -386,15 +386,15 @@
             <i class="fas fa-tachometer-alt"></i>
             <span class="nav-text">Dashboard</span>
         </a>
-        <a href="../manageInventory">
+     <!--    <a href="../manageInventory">
             <i class="fas fa-warehouse"></i>
             <span class="nav-text">Inventory</span>
-        </a>
+        </a>  --> 
         <a href="../manageProducts">
             <i class="fas fa-box-open"></i>
             <span class="nav-text">Products</span>
         </a>
-        <a href="../manageCategories">
+   <!--     <a href="../manageCategories">
             <i class="fas fa-tags"></i>
             <span class="nav-text">Categories</span>
         </a>
@@ -405,7 +405,7 @@
         <a href="../manageOrders">
             <i class="fas fa-clipboard-list"></i>
             <span class="nav-text">Orders</span>
-        </a>
+        </a>  --> 
         <a href="../inventoryManagerLogoutServlet" class="logout-btn">
             <i class="fas fa-sign-out-alt"></i>
             <span class="nav-text">Logout</span>

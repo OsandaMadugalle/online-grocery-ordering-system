@@ -25,6 +25,11 @@
         <url-pattern>/images/*</url-pattern>
     </servlet-mapping>
     
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/productImages/*</url-pattern>
+    </servlet-mapping>
+    
     <!-- Admin Functions -->
     <!-- Admin Login Function -->
     <servlet>
@@ -138,6 +143,21 @@
 	    <servlet-name>InventoryManagerLogoutServlet</servlet-name>
 	    <url-pattern>/inventoryManagerLogoutServlet</url-pattern>
 	</servlet-mapping> 
+	
+	<!-- Manage produvt Function -->  
+   	<servlet>
+	    <servlet-name>ProductManage</servlet-name>
+	    <servlet-class>com.gos.servlet.InventoryManagerProductServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	    <servlet-name>ProductManage</servlet-name>
+	    <url-pattern>/manageProducts</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	
     
     <!-- Update Inventory Manager Function -->
 	<servlet>
