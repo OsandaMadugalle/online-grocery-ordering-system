@@ -19,7 +19,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
-    
+
     <style>
         :root {
             --primary-bg: #1a1a2e;
@@ -39,7 +39,7 @@
             padding: 20px 0;
             background-image: linear-gradient(to bottom right, var(--primary-bg), var(--secondary-bg));
         }
-        
+
         .container {
             max-width: 95%;
             background: rgba(255, 255, 255, 0.1);
@@ -51,24 +51,22 @@
             margin: 0 auto;
             animation: fadeIn 0.6s ease-out;
         }
-        
-        /* Header Section */
+
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 25px;
             flex-wrap: wrap;
-            gap: 15px;
         }
-        
+
         .page-title {
             font-size: 1.8rem;
             font-weight: 600;
             color: var(--accent-color);
             margin: 0;
         }
-        
+
         .product-count-badge {
             background-color: rgba(76, 201, 240, 0.2);
             color: var(--accent-color);
@@ -79,8 +77,9 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            margin-right: 10px;
         }
-        
+
         .btn-add {
             background: var(--accent-color);
             color: #0a192f;
@@ -94,7 +93,7 @@
             border: none;
             text-decoration: none;
         }
-        
+
         .btn-add:hover {
             background: var(--accent-hover);
             transform: translateY(-2px);
@@ -102,14 +101,13 @@
             color: #0a192f;
             text-decoration: none;
         }
-        
-        /* Table Styles */
+
         .table-container {
             overflow-x: auto;
             border-radius: 10px;
             margin-top: 20px;
         }
-        
+
         .product-table {
             width: 100%;
             border-collapse: collapse;
@@ -117,11 +115,11 @@
             border-radius: 10px;
             overflow: hidden;
         }
-        
+
         .product-table thead tr {
             background: rgba(76, 201, 240, 0.2);
         }
-        
+
         .product-table th {
             padding: 15px;
             text-align: left;
@@ -129,33 +127,32 @@
             color: var(--accent-color);
             border-bottom: 2px solid var(--accent-color);
         }
-        
+
         .product-table td {
             padding: 12px 15px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             vertical-align: middle;
         }
-        
+
         .product-table tbody tr {
             transition: all 0.2s ease;
         }
-        
+
         .product-table tbody tr:hover {
             background: rgba(76, 201, 240, 0.1);
         }
-        
+
         .product-table tbody tr:last-child td {
             border-bottom: none;
         }
-        
-        /* Action Buttons */
+
         .action-buttons {
             display: flex;
             gap: 8px;
-            justify-content: flex-end;
             flex-wrap: wrap;
+            justify-content: flex-start;
         }
-        
+
         .btn-action {
             padding: 6px 12px;
             border-radius: 6px;
@@ -166,34 +163,32 @@
             transition: all 0.2s ease;
             border: none;
             cursor: pointer;
-            white-space: nowrap;
             height: 32px;
             box-sizing: border-box;
         }
-        
+
         .btn-edit {
             background: rgba(245, 158, 11, 0.2);
             color: var(--warning-color);
             border: 1px solid var(--warning-color);
         }
-        
+
         .btn-edit:hover {
             background: var(--warning-color);
             color: white;
         }
-        
+
         .btn-delete {
             background: rgba(233, 69, 96, 0.2);
             color: var(--error-color);
             border: 1px solid var(--error-color);
         }
-        
+
         .btn-delete:hover {
             background: var(--error-color);
             color: white;
         }
-        
-        /* Status Indicators */
+
         .status-badge {
             padding: 5px 10px;
             border-radius: 20px;
@@ -201,39 +196,37 @@
             font-weight: 500;
             display: inline-block;
         }
-        
+
         .status-active {
             background: rgba(74, 222, 128, 0.2);
             color: var(--success-color);
             border: 1px solid var(--success-color);
         }
-        
+
         .status-inactive {
             background: rgba(233, 69, 96, 0.2);
             color: var(--error-color);
             border: 1px solid var(--error-color);
         }
-        
+
         .status-warning {
             background: rgba(245, 158, 11, 0.2);
             color: var(--warning-color);
             border: 1px solid var(--warning-color);
         }
-        
-        /* Empty State */
+
         .empty-state {
             text-align: center;
             padding: 40px 20px;
             color: rgba(255, 255, 255, 0.6);
         }
-        
+
         .empty-state i {
             font-size: 3rem;
             margin-bottom: 15px;
             color: rgba(76, 201, 240, 0.3);
         }
-        
-        /* Navigation */
+
         .home-icon {
             position: fixed;
             top: 25px;
@@ -248,15 +241,13 @@
             transition: all 0.3s ease;
             border: 1px solid rgba(76, 201, 240, 0.3);
         }
-        
+
         .home-icon:hover {
             background: rgba(76, 201, 240, 0.3);
             transform: translateY(-2px);
             color: white;
-            text-decoration: none;
         }
-        
-        /* Product Image */
+
         .product-image {
             max-width: 60px;
             max-height: 60px;
@@ -264,92 +255,94 @@
             object-fit: cover;
             background-color: rgba(255, 255, 255, 0.1);
         }
-        
-        /* Responsive Styles */
+
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
             }
-            
+
             .header-container {
                 flex-direction: column;
                 align-items: flex-start;
+                gap: 10px;
             }
-            
-            .product-table {
-                display: block;
+
+            .product-count-badge,
+            .btn-add {
                 width: 100%;
+                justify-content: center;
             }
-            
+
             .product-table thead {
                 display: none;
             }
-            
-            .product-table tbody, 
-            .product-table tr, 
+
+            .product-table tbody,
+            .product-table tr,
             .product-table td {
                 display: block;
                 width: 100%;
             }
-            
+
             .product-table tr {
-                margin-bottom: 15px;
+                margin-bottom: 20px;
                 border: 1px solid rgba(255, 255, 255, 0.2);
                 border-radius: 8px;
-                padding: 10px;
+                padding: 12px;
+                background-color: rgba(255, 255, 255, 0.03);
             }
-            
+
             .product-table td {
-                text-align: right;
-                padding-left: 50%;
+                padding: 10px 15px 10px 100px;
                 position: relative;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                min-height: 46px;
+                border: none;
+                text-align: left;
             }
-            
+
             .product-table td:before {
                 content: attr(data-label);
                 position: absolute;
                 left: 15px;
-                width: calc(50% - 15px);
-                padding-right: 10px;
-                font-weight: bold;
-                text-align: left;
-                color: var(--accent-color);
                 top: 50%;
                 transform: translateY(-50%);
+                font-weight: 600;
+                font-size: 0.85rem;
+                color: var(--accent-color);
             }
-            
-            .product-table td:last-child {
-                border-bottom: 0;
-            }
-            
+
             .action-buttons {
-                justify-content: flex-end;
-                margin-top: 10px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
             }
-            
+
+            .btn-action {
+                width: 100%;
+                justify-content: center;
+            }
+
             .home-icon {
                 top: 15px;
                 left: 15px;
                 font-size: 1.1rem;
                 padding: 8px 12px;
             }
-            
+
             .product-image {
-                max-width: 40px;
-                max-height: 40px;
+                max-width: 100%;
+                max-height: 100px;
+                margin: 10px 0;
             }
         }
 
         @keyframes fadeIn {
-            from { 
-                opacity: 0; 
-                transform: translateY(20px); 
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
-            to { 
-                opacity: 1; 
-                transform: translateY(0); 
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
@@ -365,23 +358,21 @@
         <!-- Header Section -->
         <div class="header-container">
             <h1 class="page-title">
-                <i class="fas fa-boxes mr-2"></i>Product Inventory
+                <i class="fas fa-boxes me-2"></i>Product Inventory
             </h1>
-            
-            <div class="d-flex align-items-center gap-3">
+            <div class="d-flex align-items-center flex-wrap">
                 <c:if test="${not empty products}">
-                    <div class="product-count-badge">
+                    <div class="product-count-badge me-2 mb-2">
                         <i class="fas fa-box"></i> 
                         <span>Total: ${fn:length(products)}</span>
                     </div>
                 </c:if>
-                
-                <a href="${pageContext.request.contextPath}/inventoryManager/createProduct.jsp" class="btn-add">
+                <a href="${pageContext.request.contextPath}/inventoryManager/createProduct.jsp" class="btn-add mb-2">
                     <i class="fas fa-plus"></i> Add Product
                 </a>
             </div>
         </div>
-        
+
         <!-- Products Table -->
         <div class="table-container">
             <c:choose>
@@ -390,7 +381,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Image</th>                                
+                                <th>Image</th>
                                 <th>Product Name</th>
                                 <th>Category</th>
                                 <th>Stock</th>
@@ -417,10 +408,7 @@
                                             </c:otherwise>
                                         </c:choose>
                                     </td>
-                                    <td data-label="Product Name">
-                                        <strong>${product.productName}</strong>
-                                    </td>
-                                                                        
+                                    <td data-label="Product Name"><strong>${product.productName}</strong></td>
                                     <td data-label="Category">
                                         <span class="status-badge">${product.category}</span>
                                     </td>
@@ -444,21 +432,22 @@
                                         </c:choose>
                                     </td>
                                     <td data-label="Price">$${product.price}</td>
-                                    <td data-label="Actions" class="action-buttons">
-                                        <form action="updateProduct" method="get" style="display: inline;">
-                                            <input type="hidden" name="id" value="${product.id}">
-                                            <button type="submit" class="btn-action btn-edit">
-                                                <i class="fas fa-edit"></i> Edit
-                                            </button>
-                                        </form>
-                                        
-                                        <form action="deleteProduct" method="POST" style="display: inline;">
-                                            <input type="hidden" name="id" value="${product.id}">
-                                            <button type="submit" class="btn-action btn-delete" 
+                                    <td data-label="Actions">
+                                        <div class="action-buttons">
+                                            <form action="updateProduct" method="get">
+                                                <input type="hidden" name="id" value="${product.id}">
+                                                <button type="submit" class="btn-action btn-edit">
+                                                    <i class="fas fa-edit"></i> Edit
+                                                </button>
+                                            </form>
+                                            <form action="deleteProduct" method="POST">
+                                                <input type="hidden" name="id" value="${product.id}">
+                                                <button type="submit" class="btn-action btn-delete" 
                                                     onclick="return confirm('Are you sure you want to delete ${product.productName}?')">
-                                                <i class="fas fa-trash"></i> Delete
-                                            </button>
-                                        </form>
+                                                    <i class="fas fa-trash"></i> Delete
+                                                </button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -477,14 +466,12 @@
     </div>
 
     <script>
-        // Simple animation for table rows
         document.addEventListener('DOMContentLoaded', function() {
             const rows = document.querySelectorAll('.product-table tbody tr');
             rows.forEach((row, index) => {
                 row.style.opacity = '0';
                 row.style.transform = 'translateY(10px)';
                 row.style.transition = `all 0.3s ease ${index * 0.05}s`;
-                
                 setTimeout(() => {
                     row.style.opacity = '1';
                     row.style.transform = 'translateY(0)';
