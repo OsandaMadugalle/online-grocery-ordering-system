@@ -6,8 +6,6 @@
     <c:redirect url="inventoryManagerLogin.jsp"/>
 </c:if>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,10 +36,10 @@
         }
 
         .container {
-            max-width: 95%;
+            max-width: 90%;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(12px);
-            padding: 25px;
+            padding: 30px;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -67,6 +65,7 @@
             border: 1px solid #333;
             border-radius: 6px;
             padding: 0.7rem 1rem;
+            transition: all 0.3s ease;
         }
 
         .form-control:focus,
@@ -84,6 +83,7 @@
             border-radius: 8px;
             margin-top: 1rem;
             transition: all 0.3s;
+            width: 100%;
         }
 
         .btn-submit:hover {
@@ -98,11 +98,25 @@
             margin-bottom: 1rem;
             display: inline-block;
             text-decoration: none;
+            font-size: 1.1rem; /* Increase font size */
+            padding: 10px 15px; /* Add padding around the icon for better touch area */
+            border-radius: 8px; /* Rounded corners for the link */
+            transition: all 0.3s ease; /* Smooth transition for hover */
+        }
+
+        .back-link i {
+            font-size: 1.2rem; /* Ensure the arrow is appropriately sized */
         }
 
         .back-link:hover {
-            color: var(--accent-hover);
-            text-decoration: underline;
+            color: var(--accent-hover); /* Change color on hover */
+            text-decoration: none;
+            background-color: rgba(76, 201, 240, 0.1); /* Subtle background on hover */
+            transform: translateY(-3px); /* Slight lift on hover */
+        }
+
+        .back-link:hover i {
+            transform: translateX(-5px); /* Move the icon slightly left on hover */
         }
 
         .image-upload-container {
@@ -112,6 +126,7 @@
             border-radius: 10px;
             text-align: center;
             margin-top: 1rem;
+            position: relative;
         }
 
         .image-upload-container:hover {
@@ -190,6 +205,35 @@
                 max-width: 140px;
             }
         }
+
+        /* Animation for the form submission button */
+        .btn-submit {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-submit:active {
+            transform: scale(0.98);
+        }
+
+        .spinner-border {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        .loading-btn {
+            display: block;
+            opacity: 0;
+        }
+
+        .loading-btn.active {
+            display: inline-block;
+            opacity: 1;
+        }
+
     </style>
 </head>
 <body>
@@ -203,7 +247,7 @@
             <p class="text-muted">Modify the product details below.</p>
         </div>
 
-        <form action="${pageContext.request.contextPath}/updateProduct" method="post" enctype="multipart/form-data">
+        <form action="${pageContext.request.contextPath}/updateProduct" method="post" enctype="multipart/form-data" id="updateForm">
             <input type="hidden" name="id" value="${product.id}">
 
             <div class="row">
@@ -215,11 +259,11 @@
                     <label class="form-label">Category</label>
                     <select class="form-select" name="category" required>
                         <option value="" disabled>Select a category</option>
-                        <option value="Electronics" ${product.category == 'Electronics' ? 'selected' : ''}>Electronics</option>
-                        <option value="Clothing" ${product.category == 'Clothing' ? 'selected' : ''}>Clothing</option>
-                        <option value="Home & Garden" ${product.category == 'Home & Garden' ? 'selected' : ''}>Home & Garden</option>
-                        <option value="Sports" ${product.category == 'Sports' ? 'selected' : ''}>Sports</option>
-                        <option value="Other" ${product.category == 'Other' ? 'selected' : ''}>Other</option>
+                        <option value="Fruits & Vegetables" ${product.category == 'Fruits & Vegetables' ? 'selected' : ''}>Fruits & Vegetables</option>
+                        <option value="Dairy & Eggs" ${product.category == 'Dairy & Eggs' ? 'selected' : ''}>Dairy & Eggs</option>
+                        <option value="Meat & Seafood" ${product.category == 'Meat & Seafood' ? 'selected' : ''}>Meat & Seafood</option>
+                        <option value="Bakery & Bread" ${product.category == 'Bakery & Bread' ? 'selected' : ''}>Bakery & Bread</option>
+                        <option value="Pantry Staples" ${product.category == 'Pantry Staples' ? 'selected' : ''}>Pantry Staples</option>
                     </select>
                 </div>
             </div>
@@ -255,11 +299,11 @@
                                 <i class="fas fa-times"></i>
                             </button>
                         </div>
-                        <img src="${not empty product.imagePath ? product.imagePath : 'productImages/default-product.png'}"
-						     alt="Product preview"
-						     class="preview-image"
-						     id="previewImage">
-						 </div>
+                        <img src="${pageContext.request.contextPath}/${not empty product.imagePath ? product.imagePath : 'images/default-product.png'}"
+                             alt="Product preview"
+                             class="preview-image"
+                             id="previewImage">
+                    </div>
 
                     <input type="file" id="imageFile" name="imageFile" accept="image/*" class="file-input" onchange="previewUploadedImage(this)">
                     <input type="hidden" name="existingImagePath" value="${product.imagePath}" id="existingImagePath">
@@ -276,6 +320,7 @@
 
             <button type="submit" class="btn btn-submit w-100">
                 <i class="fas fa-save me-2"></i> Update Product
+                <div class="spinner-border spinner-border-sm text-light loading-btn" role="status"></div>
             </button>
         </form>
     </div>
@@ -305,6 +350,14 @@
             document.getElementById('imageFile').value = '';
             document.getElementById('existingImagePath').value = '';
         }
+
+        // Optional: Show loading spinner when the form is being submitted
+        document.getElementById("updateForm").addEventListener("submit", function() {
+            const submitButton = document.querySelector(".btn-submit");
+            const spinner = submitButton.querySelector(".spinner-border");
+            spinner.classList.add("active");
+            submitButton.disabled = true;
+        });
     </script>
 </body>
 </html>
