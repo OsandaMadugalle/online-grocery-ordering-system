@@ -128,10 +128,10 @@
         <url-pattern>/inventoryManagerLoginServlet</url-pattern>
     </servlet-mapping>
     
-    <!-- Admin Logout Function -->
+    <!-- Inventory Manager Logout Function -->
     <servlet>
 	    <servlet-name>InventoryManagerLogoutServlet</servlet-name>
-	    <servlet-class>com.gos.servlet.AdminLogoutServlet</servlet-class>
+	    <servlet-class>com.gos.servlet.InventoryManagerLogoutServlet</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
