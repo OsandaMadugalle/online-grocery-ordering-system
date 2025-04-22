@@ -211,6 +211,16 @@
         <servlet-name>DeleteInventoryManager</servlet-name>
         <url-pattern>/deleteInventoryManager</url-pattern>
     </servlet-mapping>
+    
+      <!-- Inventory Manager Updates Product -->
+    <servlet>
+        <servlet-name>InventoryManagerUpdateProduct</servlet-name>
+        <servlet-class>com.gos.servlet.InventoryManagerUpdateProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InventoryManagerUpdateProduct</servlet-name>
+        <url-pattern>/updateProduct</url-pattern>
+    </servlet-mapping>
 
     <!-- ============================================
          SECTION: Delivery Manager Servlets
