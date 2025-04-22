@@ -36,4 +36,29 @@ public class ProductService {
             return null;
         }
     }
+    
+    //add Product
+    public static boolean addProduct(Product product) {
+        boolean isSuccess = false;
+        String sql = "INSERT INTO Product (product_name, category, stock, price, image_path) VALUES (?, ?, ?, ?, ?)";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, product.getProductName());
+            stmt.setString(2, product.getCategory());
+            stmt.setInt(3, product.getStock());
+            stmt.setDouble(4, product.getPrice());
+            stmt.setString(5, product.getImagePath());
+
+            int rowsAffected = stmt.executeUpdate();
+            isSuccess = rowsAffected > 0;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return isSuccess;
+    }
+
 }
