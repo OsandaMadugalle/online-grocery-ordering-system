@@ -99,6 +99,8 @@
             background: var(--accent-hover);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(76, 201, 240, 0.3);
+            color: #0a192f;
+            text-decoration: none;
         }
         
         /* Table Styles */
@@ -146,7 +148,7 @@
             border-bottom: none;
         }
         
-        /* Action Buttons - UPDATED */
+        /* Action Buttons */
         .action-buttons {
             display: flex;
             gap: 8px;
@@ -212,6 +214,12 @@
             border: 1px solid var(--error-color);
         }
         
+        .status-warning {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning-color);
+            border: 1px solid var(--warning-color);
+        }
+        
         /* Empty State */
         .empty-state {
             text-align: center;
@@ -244,12 +252,23 @@
         .home-icon:hover {
             background: rgba(76, 201, 240, 0.3);
             transform: translateY(-2px);
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* Product Image */
+        .product-image {
+            max-width: 60px;
+            max-height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+            background-color: rgba(255, 255, 255, 0.1);
         }
         
         /* Responsive Styles */
         @media (max-width: 768px) {
             .container {
-                padding: 20px;
+                padding: 15px;
             }
             
             .header-container {
@@ -285,6 +304,7 @@
                 padding-left: 50%;
                 position: relative;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                min-height: 46px;
             }
             
             .product-table td:before {
@@ -296,6 +316,8 @@
                 font-weight: bold;
                 text-align: left;
                 color: var(--accent-color);
+                top: 50%;
+                transform: translateY(-50%);
             }
             
             .product-table td:last-child {
@@ -304,6 +326,7 @@
             
             .action-buttons {
                 justify-content: flex-end;
+                margin-top: 10px;
             }
             
             .home-icon {
@@ -311,6 +334,11 @@
                 left: 15px;
                 font-size: 1.1rem;
                 padding: 8px 12px;
+            }
+            
+            .product-image {
+                max-width: 40px;
+                max-height: 40px;
             }
         }
 
@@ -375,14 +403,24 @@
                                 <tr>
                                     <td data-label="ID">${product.id}</td>
                                     <td data-label="Image">
-									    <img src="${pageContext.request.contextPath}${product.imagePath}" 
-									         alt="${product.productName}" 
-									         style="max-width: 60px; max-height: 60px; border-radius: 8px; object-fit: cover;">
-									</td>
+                                        <c:choose>
+                                            <c:when test="${not empty product.imagePath}">
+                                                <img src="${pageContext.request.contextPath}${product.imagePath}" 
+                                                     alt="${product.productName}" 
+                                                     class="product-image"
+                                                     onerror="this.src='${pageContext.request.contextPath}/images/default-product.png'">
+                                            </c:when>
+                                            <c:otherwise>
+                                                <img src="${pageContext.request.contextPath}/images/default-product.png" 
+                                                     alt="Default product image" 
+                                                     class="product-image">
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
                                     <td data-label="Product Name">
                                         <strong>${product.productName}</strong>
                                     </td>
-                                    									                                    
+                                                                        
                                     <td data-label="Category">
                                         <span class="status-badge">${product.category}</span>
                                     </td>
@@ -394,7 +432,7 @@
                                                 </span>
                                             </c:when>
                                             <c:when test="${product.stock > 0}">
-                                                <span class="status-badge status-inactive">
+                                                <span class="status-badge status-warning">
                                                     <i class="fas fa-exclamation-circle"></i> ${product.stock} (Low)
                                                 </span>
                                             </c:when>
@@ -430,7 +468,8 @@
                 <c:otherwise>
                     <div class="empty-state">
                         <i class="fas fa-box-open"></i>
-                        <h3>No Products Found</h3>                       
+                        <h3>No Products Found</h3>
+                        <p>Add your first product to get started</p>
                     </div>
                 </c:otherwise>
             </c:choose>
