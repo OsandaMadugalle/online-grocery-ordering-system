@@ -49,6 +49,8 @@ public class InventoryManagerService {
                 rs.getString("Password")
         );
     }
+    
+   
 	
 	// Display Inventory Managers Table
 	public ArrayList<InventoryManager> getAllInventoryManager(){		
