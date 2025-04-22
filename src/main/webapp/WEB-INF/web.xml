@@ -103,6 +103,17 @@
 	    <url-pattern>/adminUpdateAdmin</url-pattern>
 	</servlet-mapping>
 	
+	<!-- Admin Update Inventory Manager Function -->
+	<servlet>
+	    <servlet-name>updateInventoryManager</servlet-name>
+	    <servlet-class>com.gos.servlet.AdminUpdateInventoryManagerServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	    <servlet-name>updateInventoryManager</servlet-name>
+	    <url-pattern>/adminUpdateInventoryManager</url-pattern>
+	</servlet-mapping>
+	
 	
 	
 	<!-- Inventory Manager Function -->  
@@ -139,16 +150,7 @@
 	    <url-pattern>/addInventoryManager</url-pattern>
 	</servlet-mapping>  
 	
-	<!-- Update Inventory Manager Function -->
-	<servlet>
-	    <servlet-name>updateInventoryManager</servlet-name>
-	    <servlet-class>com.gos.servlet.AdminUpdateInventoryManagerServlet</servlet-class>
-	</servlet>
 	
-	<servlet-mapping>
-	    <servlet-name>updateInventoryManager</servlet-name>
-	    <url-pattern>/updateInventoryManager</url-pattern>
-	</servlet-mapping>
 
 	
 	<!-- Delete Inventory Manager Function -->
