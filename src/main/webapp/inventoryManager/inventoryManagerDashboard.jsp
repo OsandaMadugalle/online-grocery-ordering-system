@@ -406,7 +406,7 @@
             <i class="fas fa-clipboard-list"></i>
             <span class="nav-text">Orders</span>
         </a>
-        <a href="../LogoutServlet" class="logout-btn">
+        <a href="../inventoryManagerLogoutServlet" class="logout-btn">
             <i class="fas fa-sign-out-alt"></i>
             <span class="nav-text">Logout</span>
         </a>
