@@ -105,12 +105,12 @@
 	
 	<!-- Admin Update Inventory Manager Function -->
 	<servlet>
-	    <servlet-name>updateInventoryManager</servlet-name>
+	    <servlet-name>AdminUpdateInventoryManager</servlet-name>
 	    <servlet-class>com.gos.servlet.AdminUpdateInventoryManagerServlet</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
-	    <servlet-name>updateInventoryManager</servlet-name>
+	    <servlet-name>AdminUpdateInventoryManager</servlet-name>
 	    <url-pattern>/adminUpdateInventoryManager</url-pattern>
 	</servlet-mapping>
 	
@@ -127,6 +127,28 @@
         <servlet-name>InventoryManagerLoginServlet</servlet-name>
         <url-pattern>/inventoryManagerLoginServlet</url-pattern>
     </servlet-mapping>
+    
+    <!-- Admin Logout Function -->
+    <servlet>
+	    <servlet-name>InventoryManagerLogoutServlet</servlet-name>
+	    <servlet-class>com.gos.servlet.AdminLogoutServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	    <servlet-name>InventoryManagerLogoutServlet</servlet-name>
+	    <url-pattern>/inventoryManagerLogoutServlet</url-pattern>
+	</servlet-mapping> 
+    
+    <!-- Update Inventory Manager Function -->
+	<servlet>
+	    <servlet-name>updateInventoryManager</servlet-name>
+	    <servlet-class>com.gos.servlet.InventoryManagerUpdateServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	    <servlet-name>updateInventoryManager</servlet-name>
+	    <url-pattern>/updateInventoryManager</url-pattern>
+	</servlet-mapping>
 		
 	<!-- Manage Inventory Manager Function -->  
    	<servlet>
