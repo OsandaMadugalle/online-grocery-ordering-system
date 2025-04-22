@@ -155,6 +155,17 @@
 	    <url-pattern>/manageProducts</url-pattern>
 	</servlet-mapping>
 	
+	<!-- add produvt Function -->  
+   	<servlet>
+	    <servlet-name>AddProduct</servlet-name>
+	    <servlet-class>com.gos.servlet.InventoryManagerCreateProductServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	    <servlet-name>AddProduct</servlet-name>
+	    <url-pattern>/addProducts</url-pattern>
+	</servlet-mapping>
+	
 	
 	
 	
