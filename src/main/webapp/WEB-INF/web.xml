@@ -161,6 +161,16 @@
         <servlet-name>AddProduct</servlet-name>
         <url-pattern>/addProducts</url-pattern>
     </servlet-mapping>
+    
+    <!-- Inventory Manager Deletes Product -->
+   <servlet>
+	    <servlet-name>DeleteProduct</servlet-name>
+	    <servlet-class>com.gos.servlet.AdminDeleteProductServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>DeleteProduct</servlet-name>
+	    <url-pattern>/deleteProduct</url-pattern>
+	</servlet-mapping>
 
     <!-- Update Inventory Manager Profile -->
     <servlet>
