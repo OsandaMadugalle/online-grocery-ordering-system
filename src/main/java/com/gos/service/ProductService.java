@@ -76,5 +76,55 @@ public class ProductService {
         }
     }
 
+ // Update Product
+    public boolean updateProduct(Product product) {
+        String sql = "UPDATE Product SET product_name = ?, category = ?, stock = ?, price = ?, image_path = ? WHERE id = ?";
+        boolean isSuccess = false;
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, product.getProductName());
+            stmt.setString(2, product.getCategory());
+            stmt.setInt(3, product.getStock());
+            stmt.setDouble(4, product.getPrice());
+            stmt.setString(5, product.getImagePath());
+            stmt.setInt(6, product.getId());
+
+            isSuccess = stmt.executeUpdate() > 0;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return isSuccess;
+    }
+
+ // Inside ProductService class
+    public Product getProductById(int id) {
+        Product product = null;
+        String sql = "SELECT * FROM Product WHERE id = ?";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                product = new Product();
+                product.setId(rs.getInt("id"));  // Changed from "product_id" to "id"
+                product.setProductName(rs.getString("product_name"));
+                product.setCategory(rs.getString("category"));
+                product.setStock(rs.getInt("stock"));
+                product.setPrice(rs.getDouble("price"));
+                product.setImagePath(rs.getString("image_path"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return product;
+    }
 
 }
