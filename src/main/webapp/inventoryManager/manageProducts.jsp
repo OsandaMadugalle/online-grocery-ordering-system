@@ -393,22 +393,22 @@
                             <c:forEach var="product" items="${products}">
                                 <tr>
                                     <td data-label="ID">${product.id}</td>
-                                    <td data-label="Image">
-                                        <c:choose>
-                                            <c:when test="${not empty product.imagePath}">
-                                                <img src="${pageContext.request.contextPath}${product.imagePath}" 
-                                                     alt="${product.productName}" 
-                                                     class="product-image"
-                                                     onerror="this.src='${pageContext.request.contextPath}/images/default-product.png'">
-                                            </c:when>
-                                            <c:otherwise>
-                                                <img src="${pageContext.request.contextPath}/images/default-product.png" 
-                                                     alt="Default product image" 
-                                                     class="product-image">
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </td>
-                                    <td data-label="Product Name"><strong>${product.productName}</strong></td>
+									<td data-label="Image">
+									    <c:choose>
+									        <c:when test="${not empty product.imagePath}">
+									            <img src="${pageContext.request.contextPath}/${product.imagePath}" 
+									                 alt="${product.productName}" 
+									                 class="product-image"
+									                 onerror="this.src='${pageContext.request.contextPath}/productImages/default-product.png'">
+									        </c:when>
+									        <c:otherwise>
+									            <img src="${pageContext.request.contextPath}/productImages/default-product.png" 
+									                 alt="Default product image" 
+									                 class="product-image">
+									        </c:otherwise>
+									    </c:choose>
+									</td>                                    
+									<td data-label="Product Name"><strong>${product.productName}</strong></td>
                                     <td data-label="Category">
                                         <span class="status-badge">${product.category}</span>
                                     </td>
