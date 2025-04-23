@@ -271,7 +271,7 @@
     </style>
 </head>
 <body>
-    <a href="${pageContext.request.contextPath}/inventoryManager/inventoryManagerDashboard.jsp" class="home-icon">
+    <a href="${pageContext.request.contextPath}/manageProducts" class="home-icon">
         <i class="fas fa-arrow-left"></i>
     </a>
 
