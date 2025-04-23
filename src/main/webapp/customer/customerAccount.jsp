@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Dashboard</title>
+    <title>Customer Profile</title>
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
@@ -271,14 +271,14 @@
             <i class="fas fa-user"></i>
             <span>${sessionScope.customerDetails[0].first_name} ${sessionScope.customerDetails[0].last_name}</span>
         </div>
-        <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Profile</a>
         <a href="./viewProducts.jsp"><i class="fas fa-shopping-bag"></i> Shop</a>
         <a href="./viewOrders.jsp"><i class="fas fa-clipboard-list"></i> My Orders</a>
         <a href="./viewCart.jsp"><i class="fas fa-shopping-cart"></i> My Cart</a>
         <a href="./viewWishlist.jsp"><i class="fas fa-heart"></i> Wishlist</a>
         <a href="../index.jsp">
             <i class="fas fa-cog"></i>
-            <span class="nav-text">Site Settings</span>
+            <span class="nav-text">Back To Site</span>
         </a>
         <a href="${pageContext.request.contextPath}/customerLogoutServlet" class="logout-btn">
             <i class="fas fa-sign-out-alt"></i> Logout
