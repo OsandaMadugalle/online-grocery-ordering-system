@@ -1,6 +1,5 @@
 package com.gos.servlet;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -9,9 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import com.gos.model.Admin;
-import com.gos.model.InventoryManager;
 import com.gos.service.AdminService;
-import com.gos.service.InventoryManagerService;
 
 @WebServlet("/AdminDeleteServlet")
 public class AdminDeleteServlet extends HttpServlet {
