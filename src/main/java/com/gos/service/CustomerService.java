@@ -59,7 +59,7 @@ public class CustomerService {
 	    return customerList;
 	}
 
-	// Map the ResultSet row to a Customer object
+	// Map the ResultSet row to a Customer
 	private static Customer mapResultSetToCustomer(ResultSet rs) throws SQLException {
 	    return new Customer(
 	    		rs.getInt("customer_id"),
@@ -72,7 +72,7 @@ public class CustomerService {
 	    );
 	}
 	
-	//update cus
+	//Update Customer
 	public static boolean updateCustomer(String id, String username, String fname, String lname, String phone, String email, String password) {
 	    boolean isSuccess = false;
 	    String sql = "UPDATE Customer SET username = ?, first_name = ?, last_name = ?, phone = ?, email = ?, password = ? WHERE customer_id = ?";
@@ -98,7 +98,7 @@ public class CustomerService {
 	    return isSuccess;
 	}
 	
-	//get by id
+	//Get Customer By ID
 	public static List<Customer> getCustomerById(String id) {
     	
 	    List<Customer> customers = new ArrayList<>();
@@ -131,7 +131,7 @@ public class CustomerService {
 	    return customers;
 	}
 	
-	// Delete Cus
+	// Delete Customer
     public void deleteCustomer(Customer cus) {
         String sql = "DELETE FROM Customer WHERE customer_id = ?";
          
