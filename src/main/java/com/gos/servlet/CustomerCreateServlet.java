@@ -19,11 +19,11 @@ public class CustomerCreateServlet extends HttpServlet {
         String last_name = request.getParameter("lastName");
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
-        String address = request.getParameter("address");
+        String password = request.getParameter("password"); // Changed from 'address' to 'password'
 
         boolean isTrue;
 
-        isTrue = CustomerService.addCustomer(username, first_name, last_name, phone, email, address);
+        isTrue = CustomerService.addCustomer(username, first_name, last_name, phone, email, password); // Updated parameter
 
         if (isTrue) {
             response.sendRedirect(request.getContextPath() + "/customer/cusLogin.jsp");
