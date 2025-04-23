@@ -8,9 +8,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-import com.gos.model.Admin;
 import com.gos.model.InventoryManager;
-import com.gos.service.AdminService;
 import com.gos.service.InventoryManagerService;
 
 
