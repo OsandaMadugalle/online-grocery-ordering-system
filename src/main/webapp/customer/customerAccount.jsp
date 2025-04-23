@@ -499,7 +499,7 @@
             <i class="fas fa-heart"></i>
             <span class="nav-text">Wishlist</span>
         </a>
-        <a href="../customerLogoutServlet" class="logout-btn">
+        <a href="${pageContext.request.contextPath}/customerLogoutServlet" class="logout-btn">
             <i class="fas fa-sign-out-alt"></i>
             <span class="nav-text">Logout</span>
         </a>
