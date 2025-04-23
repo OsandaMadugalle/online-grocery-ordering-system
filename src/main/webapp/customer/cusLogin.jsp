@@ -161,7 +161,7 @@
 			    <a href="../inventoryManager/inventoryManagerLogin.jsp" class="btn">Inventory Manager</a>
 			</div>
     
-        <form action="LoginServlet" method="post">
+        <form action="../customerLoginServlet" method="post">
 			
 
         <div class="d-flex align-items-center mb-4" style="margin-top: 20px; margin-bottom: 20px;">
