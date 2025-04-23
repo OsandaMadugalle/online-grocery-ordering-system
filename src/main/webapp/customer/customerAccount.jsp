@@ -499,7 +499,7 @@
             <i class="fas fa-heart"></i>
             <span class="nav-text">Wishlist</span>
         </a>
-        <a href="../LogoutServlet" class="logout-btn">
+        <a href="../customerLogoutServlet" class="logout-btn">
             <i class="fas fa-sign-out-alt"></i>
             <span class="nav-text">Logout</span>
         </a>
@@ -527,7 +527,6 @@
                                         <c:set var="phone" value="${cd.phone}"/>
                                         <c:set var="email" value="${cd.email}"/>
                                         <c:set var="password" value="${cd.password}"/>
-                                        <c:set var="address" value="${cd.address}"/>
                                         
                                         <tr class="detail-row">
                                             <td class="detail-label" data-label="Customer ID"><i class="fas fa-id-card"></i> Customer ID</td>
@@ -552,10 +551,6 @@
                                         <tr class="detail-row">
                                             <td class="detail-label" data-label="Email"><i class="fas fa-envelope"></i> Email</td>
                                             <td class="detail-value"><c:out value="${cd.email}"/></td>
-                                        </tr>
-                                        <tr class="detail-row">
-                                            <td class="detail-label" data-label="Address"><i class="fas fa-map-marker-alt"></i> Address</td>
-                                            <td class="detail-value"><c:out value="${cd.address}"/></td>
                                         </tr>
                                         <tr class="detail-row">
                                             <td class="detail-label" data-label="Password"><i class="fas fa-lock"></i> Password</td>
@@ -583,7 +578,6 @@
                             <c:param name="phone" value="${phone}"/>
                             <c:param name="email" value="${email}"/>
                             <c:param name="password" value="${password}"/>
-                            <c:param name="address" value="${address}"/>
                         </c:url>
 
                         <a href="${customerUpdate}" class="btn-edit-profile">
