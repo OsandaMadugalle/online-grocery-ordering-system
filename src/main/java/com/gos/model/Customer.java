@@ -8,7 +8,7 @@ public class Customer {
     private String last_name;
     private String phone;
     private String email;
-    private String password; // Replaced 'address' with 'password'
+    private String password;
 
     public Customer(int customer_id, String username, String first_name, String last_name, String phone, String email, String password) {
         this.customer_id = customer_id;
@@ -17,7 +17,7 @@ public class Customer {
         this.last_name = last_name;
         this.phone = phone;
         this.email = email;
-        this.password = password; // Updated field
+        this.password = password; 
     }
 
     public Customer() {
@@ -72,11 +72,11 @@ public class Customer {
         this.email = email;
     }
 
-    public String getPassword() { // Updated getter
+    public String getPassword() { 
         return password;
     }
 
-    public void setPassword(String password) { // Updated setter
+    public void setPassword(String password) { 
         this.password = password;
     }
 }
