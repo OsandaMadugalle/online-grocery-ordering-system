@@ -282,6 +282,48 @@
                 padding: 12px;
             }
         }
+        
+        .button-container {
+		    display: flex;
+		    gap: 15px;
+		    justify-content: center; /* Optional: Center the buttons */
+		}
+		
+		.btn-edit-profile, .delete-btn {
+		    display: inline-flex;
+		    align-items: center;
+		    gap: 8px;
+		    padding: 12px 24px;
+		    font-size: 16px;
+		    border-radius: 5px;
+		    text-decoration: none;
+		    box-shadow: 0 4px 12px rgba(0, 76, 41, 0.3);
+		    transition: all 0.3s ease;
+		}
+		
+		.btn-edit-profile {
+		    background: linear-gradient(135deg, #ff4c29 0%, #ff6b3d 100%);
+		}
+		
+		.btn-edit-profile:hover {
+		    background: linear-gradient(135deg, #e03e1a 0%, #e05a2a 100%);
+		}
+		
+		.delete-btn {
+		    background: #dc3545;
+		    color: white;
+		    padding: 12px 24px;
+		    text-align: center;
+		    border-radius: 5px;
+		    cursor: pointer;
+		    transition: 0.3s;
+		}
+		
+		.delete-btn:hover {
+		    background: #c82333;
+		    transform: translateY(-2px);
+		}
+		        
 
         @media (max-width: 576px) {
             .welcome-message {
@@ -355,57 +397,64 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-12">
-                        <div class="table-responsive">
-                            <table class="profile-table table table-bordered">
-                                <tbody>
-                                    <c:forEach var="cd" items="${sessionScope.customerDetails}">
-                                        <c:set var="id" value="${cd.customer_id}"/>
-                                        <c:set var="username" value="${cd.username}"/>
-                                        <c:set var="fName" value="${cd.first_name}"/>
-                                        <c:set var="lName" value="${cd.last_name}"/>
-                                        <c:set var="phone" value="${cd.phone}"/>
-                                        <c:set var="email" value="${cd.email}"/>
-                                        <c:set var="password" value="${cd.password}"/>
-
-                                        <tr><td class="detail-label" data-label="Customer ID"><i class="fas fa-id-card"></i> Customer ID</td><td><c:out value="${cd.customer_id}"/></td></tr>
-                                        <tr><td class="detail-label" data-label="Username"><i class="fas fa-user"></i> Username</td><td><c:out value="${cd.username}"/></td></tr>
-                                        <tr><td class="detail-label" data-label="First Name"><i class="fas fa-signature"></i> First Name</td><td><c:out value="${cd.first_name}"/></td></tr>
-                                        <tr><td class="detail-label" data-label="Last Name"><i class="fas fa-signature"></i> Last Name</td><td><c:out value="${cd.last_name}"/></td></tr>
-                                        <tr><td class="detail-label" data-label="Phone"><i class="fas fa-phone"></i> Phone</td><td><c:out value="${cd.phone}"/></td></tr>
-                                        <tr><td class="detail-label" data-label="Email"><i class="fas fa-envelope"></i> Email</td><td><c:out value="${cd.email}"/></td></tr>
-                                        <tr>
-                                            <td class="detail-label" data-label="Password"><i class="fas fa-lock"></i> Password</td>
-                                            <td>
-                                                <div class="password-field">
-                                                    <span class="password-mask">••••••••</span>
-                                                    <button class="btn btn-sm btn-show-password" onclick="togglePassword(this)">
-                                                        <i class="fas fa-eye"></i> Show
-                                                    </button>
-                                                    <span class="actual-password" style="display:none;"><c:out value="${cd.password}"/></span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </c:forEach>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <c:url value="updateCustomerProfile.jsp" var="customerUpdate">
-                            <c:param name="id" value="${id}"/>
-                            <c:param name="username" value="${username}"/>
-                            <c:param name="fName" value="${fName}"/>
-                            <c:param name="lName" value="${lName}"/>
-                            <c:param name="phone" value="${phone}"/>
-                            <c:param name="email" value="${email}"/>
-                            <c:param name="password" value="${password}"/>
-                        </c:url>
-
-                        <a href="${customerUpdate}" class="btn-edit-profile mt-3 mb-4">
-                            <i class="fas fa-user-edit"></i> Edit Profile
-                        </a>
-                    </div>
-                </div>
+				    <div class="col-12">
+				        <div class="table-responsive">
+				            <table class="profile-table table table-bordered">
+				                <tbody>
+				                    <c:forEach var="cd" items="${sessionScope.customerDetails}">
+				                        <c:set var="id" value="${cd.customer_id}"/>
+				                        <c:set var="username" value="${cd.username}"/>
+				                        <c:set var="fName" value="${cd.first_name}"/>
+				                        <c:set var="lName" value="${cd.last_name}"/>
+				                        <c:set var="phone" value="${cd.phone}"/>
+				                        <c:set var="email" value="${cd.email}"/>
+				                        <c:set var="password" value="${cd.password}"/>
+				
+				                        <tr><td class="detail-label" data-label="Customer ID"><i class="fas fa-id-card"></i> Customer ID</td><td><c:out value="${cd.customer_id}"/></td></tr>
+				                        <tr><td class="detail-label" data-label="Username"><i class="fas fa-user"></i> Username</td><td><c:out value="${cd.username}"/></td></tr>
+				                        <tr><td class="detail-label" data-label="First Name"><i class="fas fa-signature"></i> First Name</td><td><c:out value="${cd.first_name}"/></td></tr>
+				                        <tr><td class="detail-label" data-label="Last Name"><i class="fas fa-signature"></i> Last Name</td><td><c:out value="${cd.last_name}"/></td></tr>
+				                        <tr><td class="detail-label" data-label="Phone"><i class="fas fa-phone"></i> Phone</td><td><c:out value="${cd.phone}"/></td></tr>
+				                        <tr><td class="detail-label" data-label="Email"><i class="fas fa-envelope"></i> Email</td><td><c:out value="${cd.email}"/></td></tr>
+				                        <tr>
+				                            <td class="detail-label" data-label="Password"><i class="fas fa-lock"></i> Password</td>
+				                            <td>
+				                                <div class="password-field">
+				                                    <span class="password-mask">••••••••</span>
+				                                    <button class="btn btn-sm btn-show-password" onclick="togglePassword(this)">
+				                                        <i class="fas fa-eye"></i> Show
+				                                    </button>
+				                                    <span class="actual-password" style="display:none;"><c:out value="${cd.password}"/></span>
+				                                </div>
+				                            </td>
+				                        </tr>
+				                    </c:forEach>
+				                </tbody>
+				            </table>
+				        </div>
+				
+				        <c:url value="updateCustomerProfile.jsp" var="customerUpdate">
+				            <c:param name="id" value="${id}"/>
+				            <c:param name="username" value="${username}"/>
+				            <c:param name="fName" value="${fName}"/>
+				            <c:param name="lName" value="${lName}"/>
+				            <c:param name="phone" value="${phone}"/>
+				            <c:param name="email" value="${email}"/>
+				            <c:param name="password" value="${password}"/>
+				        </c:url>
+				
+				        <!-- Buttons container -->
+				        <div class="button-container mt-3 mb-4">
+				            <a href="${customerUpdate}" class="btn-edit-profile">
+				                <i class="fas fa-user-edit"></i> Edit Profile
+				            </a>
+				            
+							<a href="${pageContext.request.contextPath}/deleteCustomer?id=${id}" class="delete-btn" onclick="return confirm('Are you sure you want to delete your account? This action is irreversible.')">
+								<i class="fas fa-trash-alt"></i> Delete Account
+				            </a>
+				        </div>
+				    </div>
+				</div>                        
             </c:when>
             <c:otherwise>
                 <div class="alert alert-danger text-center mt-5">No customer details found.</div>
