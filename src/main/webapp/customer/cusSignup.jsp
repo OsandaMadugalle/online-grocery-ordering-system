@@ -110,7 +110,7 @@
         <i class="fas fa-home"></i>
     </a>
     
-        <form action="signupServlet" method="post" onsubmit="return validateForm()">
+        <form action="../createCustomer" method="post" onsubmit="return validateForm()">
             <div class="d-flex align-items-center mb-4" style="margin-top: 20px; margin-bottom: 20px;">
 		        <hr class="flex-grow-1 me-3" style="border: 1px solid white; margin: 0 10px;">
 		        <h2 class="text-center mb-0" style="color: white;"><b>Sign Up</b></h2>
@@ -134,7 +134,7 @@
             <div class="form-group row">
                 <label for="lastName" class="col-sm-4 col-form-label text-white">Last Name</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" placeholder="Last Name" id="lastName" name="lastName" required>
+                    <input type="text" class="form-control" placeholder="Last Name" id="lastName" name="lastName">
                 </div>
             </div>
 
