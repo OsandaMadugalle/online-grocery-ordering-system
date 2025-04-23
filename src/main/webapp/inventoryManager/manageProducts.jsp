@@ -14,7 +14,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Inventory Management - Products</title>
+    <title>Manage Products</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
@@ -363,7 +363,7 @@
                 <c:if test="${not empty products}">
                     <div class="product-count-badge me-2 mb-2">
                         <i class="fas fa-box"></i> 
-                        <span>Total: ${fn:length(products)}</span>
+                        <span>Total Products: ${fn:length(products)}</span>
                     </div>
                 </c:if>
                 <a href="${pageContext.request.contextPath}/inventoryManager/createProduct.jsp" class="btn-add mb-2">
