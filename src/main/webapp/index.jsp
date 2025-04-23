@@ -26,7 +26,7 @@
 			}					    
 		       
 		    body {
-		        background-color: white; /* Change background color to white */
+		        background-color: white;
 		    }
 		     
 		    .carousel-item.active img {
