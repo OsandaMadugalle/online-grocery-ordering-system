@@ -163,9 +163,6 @@
 
 <body>
 
-    <!-- Include header file -->
-    <%@ include file="./header.jsp" %>
-
     <div class="main-content">
         <div class="welcome-message">
             <i class="fas fa-comment-alt"></i> Share Your Feedback
@@ -265,9 +262,6 @@
             });
         });
     </script>
-
-    <!-- Include footer file -->
-    <%@ include file="./footer.jsp" %>
 
 </body>
 
