@@ -382,6 +382,7 @@
             <i class="fas fa-boxes"></i>
             <span class="nav-text">${sessionScope.inventoryManagerDetails[0].first_name} ${sessionScope.inventoryManagerDetails[0].last_name}</span>
         </div>
+        
         <a href="#" class="active">
             <i class="fas fa-tachometer-alt"></i>
             <span class="nav-text">Dashboard</span>
@@ -401,10 +402,12 @@
             <i class="fas fa-tags"></i>
             <span class="nav-text">Categories</span>
         </a>
+        
         <a href="../manageSuppliers">
             <i class="fas fa-truck-loading"></i>
             <span class="nav-text">Suppliers</span>
         </a>
+        
         <a href="../manageOrders">
             <i class="fas fa-clipboard-list"></i>
             <span class="nav-text">Orders</span>
@@ -496,7 +499,7 @@
                 </div>
             </c:when>
             <c:otherwise>
-                <div class="alert alert-danger text-center mt-5">No manager details found.</div>
+                <div class="alert alert-danger text-center mt-5">No inventory manager details found.</div>
             </c:otherwise>
         </c:choose>
     </div>
