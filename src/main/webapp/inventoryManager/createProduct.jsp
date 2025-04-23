@@ -11,14 +11,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>${empty product.id ? 'Add Product' : 'Edit Product'} | Inventory Manager</title>
+    <title>Add Product</title>
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <style>
-        /* Root color variables */
         :root {
             --primary-bg: #1a1a2e;
             --secondary-bg: #16213e;
@@ -173,55 +172,49 @@
             font-weight: 500;
             color: var(--accent-color);
         }
-
-       /* Enhanced Category Dropdown */
+        
 		.enhanced-dropdown {
-		    background: rgba(255, 255, 255, 0.15); /* Light translucent background */
-		    color: var(--text-color); /* Text color */
-		    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
-		    padding: 14px 20px; /* Same padding as other inputs */
-		    border-radius: var(--border-radius); /* Rounded corners */
-		    margin-bottom: 20px; /* Space between fields */
-		    transition: all 0.3s ease; /* Smooth transitions for hover/focus */
-		    font-size: 15px; /* Standard font size */
-		    appearance: none; /* Remove default dropdown arrow */
+		    background: rgba(255, 255, 255, 0.15);
+		    color: var(--text-color);
+		    border: 1px solid rgba(255, 255, 255, 0.2); 
+		    padding: 14px 20px; 
+		    border-radius: var(--border-radius); 
+		    margin-bottom: 20px;
+		    transition: all 0.3s ease; 
+		    font-size: 15px; 
+		    appearance: none; 
 		    -webkit-appearance: none;
 		    -moz-appearance: none;
-		    position: relative; /* Position for the custom arrow */
-		
-		    /* Center the text vertically */
+		    position: relative; 		
 		    display: flex;
 		    align-items: center;
-		    height: 50px; /* Set a consistent height */
-		    line-height: 20px; /* Ensures the text stays centered */
+		    height: 50px;
+		    line-height: 20px; 
 		}
 		
-		/* Custom Dropdown Arrow */
 		.enhanced-dropdown::after {
-		    content: "\f0d7"; /* FontAwesome icon for the dropdown arrow */
-		    font-family: 'Font Awesome 5 Free'; /* FontAwesome font */
-		    font-weight: 900; /* Bold arrow */
+		    content: "\f0d7";
+		    font-family: 'Font Awesome 5 Free';
+		    font-weight: 900; 
 		    position: absolute;
-		    right: 20px; /* Position the arrow on the right side */
-		    top: 50%; /* Center the arrow vertically */
-		    transform: translateY(-50%); /* Adjust to make it vertically centered */
-		    color: rgba(255, 255, 255, 0.5); /* Light color for the arrow */
-		    pointer-events: none; /* Make the arrow non-interactive */
+		    right: 20px; 
+		    top: 50%; 
+		    transform: translateY(-50%); 
+		    color: rgba(255, 255, 255, 0.5);
+		    pointer-events: none; 
 		}
 		
-		/* Focus and Hover Styles */
 		.enhanced-dropdown:focus {
-		    background: rgba(255, 255, 255, 0.25); /* Slightly lighter background on focus */
-		    box-shadow: 0 0 0 0.2rem rgba(76, 201, 240, 0.3); /* Blue shadow on focus */
-		    border-color: var(--accent-color); /* Accent color border */
-		    outline: none; /* Remove default outline */
+		    background: rgba(255, 255, 255, 0.25); 
+		    box-shadow: 0 0 0 0.2rem rgba(76, 201, 240, 0.3); 
+		    border-color: var(--accent-color); 
+		    outline: none; 
 		}
 		
 		.enhanced-dropdown:hover {
-		    background: rgba(255, 255, 255, 0.2); /* Lighten background on hover */
+		    background: rgba(255, 255, 255, 0.2); 
 		}
 		
-		/* Remove default dropdown arrow in IE/Edge */
 		.enhanced-dropdown::-ms-expand {
 		    display: none;
 		}
@@ -271,7 +264,6 @@
                 font-size: 0.9rem;
             }
         }
-
     </style>
 </head>
 
@@ -286,7 +278,7 @@
             ${empty product.id ? 'Add New Product' : 'Edit Product'}
         </h3>
 
-        <form action="../${empty product.id ? 'addProducts' : 'updateProduct'}" method="post" enctype="multipart/form-data">
+        <form action="../addProducts" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="${product.id}">
 
             <!-- Product Name -->
@@ -296,7 +288,7 @@
                        placeholder="Enter product name" value="${product.productName}" required>
             </div>
 
-            <!-- Category Dropdown -->
+            <!-- Category -->
 			<div class="form-group">
 			    <label class="form-label">Category</label>
 			    <select class="form-control enhanced-dropdown" name="category" required>
@@ -348,7 +340,7 @@
             <!-- Submit Button -->
             <button type="submit" class="btn-submit">
                 <i class="fas fa-${empty product.id ? 'save' : 'sync-alt'} mr-2"></i>
-                ${empty product.id ? 'Add Product' : 'Update Product'}
+                Add Product
             </button>
         </form>
     </div>
