@@ -256,7 +256,27 @@
         <url-pattern>/createCustomer</url-pattern>
     </servlet-mapping>
      
-     
+     <!-- Customer Login -->
+    <servlet>
+        <servlet-name>CustomerLoginServlet</servlet-name>
+        <servlet-class>com.gos.servlet.CustomerLoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomerLoginServlet</servlet-name>
+        <url-pattern>/customerLoginServlet</url-pattern>
+    </servlet-mapping>
+    
+     <!-- Customer Logout -->
+	<servlet>
+	    <servlet-name>CustomerLogoutServlet</servlet-name>
+	    <servlet-class>com.gos.servlet.CustomerLogoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>CustomerLogoutServlet</servlet-name>
+	    <url-pattern>/customerLogoutServlet</url-pattern>
+	</servlet-mapping>
+    
+    
      
   	<!-- ============================================
          SECTION: Delivery Manager Servlets
