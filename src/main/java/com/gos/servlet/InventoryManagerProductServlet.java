@@ -17,13 +17,10 @@ public class InventoryManagerProductServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            // Get all products from service
             List<Product> products = productService.getAllProducts();
             
-            // Set products as request attribute
             request.setAttribute("products", products);
             
-            // Forward to JSP page
             RequestDispatcher dispatcher = request.getRequestDispatcher("/inventoryManager/manageProducts.jsp");
             dispatcher.forward(request, response);
             
@@ -31,10 +28,5 @@ public class InventoryManagerProductServlet extends HttpServlet {
             e.printStackTrace();
             request.setAttribute("error", "Error loading products");
         }
-    }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        doGet(request, response); // Simply forward to doGet()
     }
 }
