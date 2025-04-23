@@ -29,9 +29,7 @@ public class CustomerLoginServlet extends HttpServlet {
                 session.setAttribute("loggedIn", true);
                 session.setAttribute("customerDetails", customerDetails);
                 session.setAttribute("username", uname);
-                
-                // Change this to forward instead of redirect
-                //request.getRequestDispatcher("/customer/customerAccount.jsp").forward(request, response);
+                                
                 response.sendRedirect(request.getContextPath() + "/index.jsp");
             } else {
                 request.setAttribute("errorMessage", "Invalid username or password.");
