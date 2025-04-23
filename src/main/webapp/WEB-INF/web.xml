@@ -275,6 +275,16 @@
 	    <servlet-name>CustomerLogoutServlet</servlet-name>
 	    <url-pattern>/customerLogoutServlet</url-pattern>
 	</servlet-mapping>
+	
+	 <!-- Customer Update  -->
+    <servlet>
+        <servlet-name>CustomerUpdate</servlet-name>
+        <servlet-class>com.gos.servlet.CustomerUpdateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomerUpdate</servlet-name>
+        <url-pattern>/customerUpdate</url-pattern>
+    </servlet-mapping>
     
     
      
