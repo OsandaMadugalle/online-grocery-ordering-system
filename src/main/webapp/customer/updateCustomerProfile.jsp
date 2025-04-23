@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Customer Account</title>
+    <title>Edit Account</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -382,7 +382,7 @@
 <div class="main-content">
     <div class="account-container">
         <div class="back-button" onclick="history.back()">
-            <i class="fas fa-arrow-left"></i> Back to Dashboard
+            <i class="fas fa-arrow-left"></i> Back to Profile
         </div>
 
         <h3><i class="fas fa-user-edit"></i> Edit Your Account</h3>
