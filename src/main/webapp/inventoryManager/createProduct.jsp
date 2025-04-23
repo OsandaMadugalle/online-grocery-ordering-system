@@ -2,8 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page session="true" %>
 
-<c:if test="${empty sessionScope.loggedIn}">
-    <c:redirect url="inventoryManagerLogin.jsp"/>
+<c:if test="${empty sessionScope.loggedIn or empty sessionScope.inventoryManagerDetails}">
+    <c:redirect url="/inventoryManager/inventoryManagerLogin.jsp"/>
 </c:if>
 
 <!DOCTYPE html>

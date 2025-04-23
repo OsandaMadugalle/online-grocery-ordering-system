@@ -3,7 +3,7 @@
 <%@ page session="true" %>
  
 <c:if test="${empty sessionScope.loggedIn or empty sessionScope.inventoryManagerDetails}">
-    <c:redirect url="inventoryManagerLogin.jsp"/>
+    <c:redirect url="/inventoryManager/inventoryManagerLogin.jsp"/>
 </c:if>
 
 <!DOCTYPE html>
@@ -408,7 +408,8 @@
         <a href="../manageOrders">
             <i class="fas fa-clipboard-list"></i>
             <span class="nav-text">Orders</span>
-        </a>  
+        </a>
+          
         <a href="../inventoryManagerLogoutServlet" class="logout-btn">
             <i class="fas fa-sign-out-alt"></i>
             <span class="nav-text">Logout</span>
@@ -547,8 +548,7 @@
                 if (window.innerWidth > 992) {
                     sidebar.classList.remove('active');
                 }
-            }
-            
+            }            
             window.addEventListener('resize', handleResize);
         });
     </script>

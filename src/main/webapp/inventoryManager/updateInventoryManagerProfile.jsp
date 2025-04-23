@@ -5,7 +5,7 @@
 <%@ page session="true" %>
 
 <c:if test="${empty sessionScope.loggedIn or empty sessionScope.inventoryManagerDetails}">
-    <c:redirect url="inventoryManager/inventoryManagerLogin.jsp"/>
+    <c:redirect url="/inventoryManager/inventoryManagerLogin.jsp"/>
 </c:if>
 
 <!DOCTYPE html>

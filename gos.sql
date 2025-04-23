@@ -1,7 +1,11 @@
-CREATE DATABASE gos;
-Use gos;
+-- Drop tables if they exist to start fresh
+DROP TABLE IF EXISTS Product;
+DROP TABLE IF EXISTS Admin;
+DROP TABLE IF EXISTS InventoryManager;
+DROP TABLE IF EXISTS DeliveryManager;
 
-CREATE TABLE Admin(
+-- Create Admin table
+CREATE TABLE Admin (
     Admin_ID INT AUTO_INCREMENT PRIMARY KEY,
     Username VARCHAR(50) UNIQUE,
     First_Name VARCHAR(50),
@@ -11,7 +15,8 @@ CREATE TABLE Admin(
     Password VARCHAR(50)
 );
 
-CREATE TABLE InventoryManager(
+-- Create InventoryManager table
+CREATE TABLE InventoryManager (
     M_ID INT AUTO_INCREMENT PRIMARY KEY,
     Username VARCHAR(50) UNIQUE,
     First_Name VARCHAR(50),
@@ -21,7 +26,8 @@ CREATE TABLE InventoryManager(
     Password VARCHAR(50)
 );
 
-CREATE TABLE DeliveryManager(
+-- Create DeliveryManager table
+CREATE TABLE DeliveryManager (
     D_ID INT AUTO_INCREMENT PRIMARY KEY,
     Username VARCHAR(50) UNIQUE,
     First_Name VARCHAR(50),
@@ -31,7 +37,7 @@ CREATE TABLE DeliveryManager(
     Password VARCHAR(50)
 );
 
--- Create Product table with the specified columns
+-- Create Product table
 CREATE TABLE Product (
     id INT AUTO_INCREMENT PRIMARY KEY,
     image_path VARCHAR(255),
@@ -41,23 +47,50 @@ CREATE TABLE Product (
     price DECIMAL(10,2) NOT NULL
 );
 
--- Insert sample product data
+-- Sample Inserts for Product table
 INSERT INTO Product (image_path, product_name, category, stock, price)
 VALUES
-    ('/productImages/1.jpg', 'MacBook Pro', 'Electronics', 50, 1299.99),
-    ('/productImages/2.jpg', 'iPhone 15', 'Electronics', 9, 899.99),
-    ('/productImages/3.jpg', 'Cotton T-Shirt', 'Clothing', 200, 19.99);
+    ('/productImages/4.jpg', 'Fresh Milk', 'Dairy', 100, 1.99),
+    ('/productImages/5.jpg', 'Brown Bread', 'Bakery', 50, 1.29),
+    ('/productImages/6.jpg', 'Chicken Breast', 'Meat', 30, 3.99),
+    ('/productImages/7.jpg', 'Broccoli', 'Vegetables', 75, 0.99),
+    ('/productImages/8.jpg', 'Basmati Rice', 'Grains', 40, 12.49);
 
--- Verify the data
-SELECT * FROM admin;
-
-
-INSERT INTO  DeliveryManager (D_ID, Username, First_Name, Last_Name, Phone, Email, Password)
+-- Sample Inserts for Admin table
+INSERT INTO Admin (Username, First_Name, Last_Name, Phone, Email, Password)
 VALUES
-    (0, "Admin1", "Osanda", "Madugalle", "+94705531088", "osandamadugalle@gmail.com", "admin123"),
-    (0, "Test1", "Saman", "Silva", "+94705555555", "saman@gmail.com", "test@123");
+    ('SuperAdmin', 'John', 'Doe', '+94701112222', 'john.doe@example.com', 'admin@123'),
+    ('adminJane', 'Jane', 'Smith', '+94701113333', 'jane.smith@example.com', 'pass1234'),
+    ('adminSam', 'Sam', 'Brown', '+94701114444', 'sam.brown@example.com', 'secure123'),
+    ('adminLily', 'Lily', 'Taylor', '+94701115555', 'lily.taylor@example.com', 'admin2025'),
+    ('adminMax', 'Max', 'Davis', '+94701116666', 'max.davis@example.com', 'password1');
 
-SELECT * FROM admin;
+-- Sample Inserts for InventoryManager table
+INSERT INTO InventoryManager (Username, First_Name, Last_Name, Phone, Email, Password)
+VALUES
+    ('SuperManager', 'Alex', 'Miller', '+94702223333', 'alex.miller@example.com', 'inv@2025'),
+    ('managerEva', 'Eva', 'Wilson', '+94702224444', 'eva.wilson@example.com', 'invManager1'),
+    ('managerJake', 'Jake', 'Anderson', '+94702225555', 'jake.anderson@example.com', 'inventory!99'),
+    ('managerMia', 'Mia', 'Thomas', '+94702226666', 'mia.thomas@example.com', 'manager$12'),
+    ('managerZoe', 'Zoe', 'Martin', '+94702227777', 'zoe.martin@example.com', 'inventory#44');
+
+-- Sample Inserts for DeliveryManager table
+INSERT INTO DeliveryManager (Username, First_Name, Last_Name, Phone, Email, Password)
+VALUES
+    ('SuperDelivery', 'Adam', 'White', '+94703334444', 'adam.white@example.com', 'del@driver'),
+    ('deliveryChloe', 'Chloe', 'King', '+94703335555', 'chloe.king@example.com', 'deliver123'),
+    ('deliveryNick', 'Nick', 'Scott', '+94703336666', 'nick.scott@example.com', 'fast$move'),
+    ('deliverySophia', 'Sophia', 'Green', '+94703337777', 'sophia.green@example.com', 'onTime#45'),
+    ('deliveryLiam', 'Liam', 'Clark', '+94703338888', 'liam.clark@example.com', 'routeDriver');
+    
+-- Select all data from Admin table
+SELECT * FROM Admin;
+
+-- Select all data from InventoryManager table
 SELECT * FROM InventoryManager;
+
+-- Select all data from DeliveryManager table
 SELECT * FROM DeliveryManager;
 
+-- Select all data from Product table
+SELECT * FROM Product;

@@ -5,9 +5,8 @@
 <%@ page session="true" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<%-- Authorization check (session) --%>
-<c:if test="${empty sessionScope.loggedIn}">
-    <c:redirect url="inventoryManagerLogin.jsp"/>
+<c:if test="${empty sessionScope.loggedIn or empty sessionScope.inventoryManagerDetails}">
+    <c:redirect url="/inventoryManager/inventoryManagerLogin.jsp"/>
 </c:if>
 
 <!DOCTYPE html>
