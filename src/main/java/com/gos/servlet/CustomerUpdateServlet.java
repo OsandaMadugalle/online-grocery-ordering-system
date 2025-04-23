@@ -40,7 +40,4 @@ public class CustomerUpdateServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/customer/updateCustomerProfile.jsp");
         }
     }
-    
-    
-
 }
