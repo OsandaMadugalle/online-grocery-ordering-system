@@ -10,7 +10,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Customer Profile</title>
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -30,6 +30,7 @@
             background-color: var(--primary-color);
             color: var(--text-color);
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         .sidebar {
@@ -39,7 +40,7 @@
             padding: 20px;
             position: fixed;
             height: 100vh;
-            z-index: 1000;
+            z-index: 1050;
             box-shadow: 4px 0px 12px rgba(0, 0, 0, 0.3);
             border-right: 1px solid rgba(255, 255, 255, 0.1);
             transition: transform 0.3s ease;
@@ -98,7 +99,8 @@
         .main-content {
             padding: 30px;
             margin-left: var(--sidebar-width);
-            transition: margin-left 0.3s ease;
+            transition: all 0.3s ease;
+            min-height: 100vh;
         }
 
         .welcome-message {
@@ -133,9 +135,10 @@
             background-color: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.3);
             color: white;
-            padding: 2px 8px;
+            padding: 5px 10px;
             font-size: 12px;
             transition: 0.3s;
+            min-width: 60px;
         }
 
         .btn-show-password:hover {
@@ -167,12 +170,14 @@
         .profile-table {
             color: white;
             background-color: transparent;
+            width: 100%;
         }
 
         .profile-table td {
             color: white;
             background-color: rgba(255, 255, 255, 0.05);
             border-color: rgba(255, 255, 255, 0.1);
+            padding: 12px 15px;
         }
 
         .profile-table tbody tr:hover td {
@@ -199,20 +204,27 @@
             box-shadow: 0px 0px 8px rgba(0,0,0,0.2);
         }
 
+        /* Responsive styles */
         @media (max-width: 992px) {
             .sidebar {
                 transform: translateX(-100%);
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100%;
+                z-index: 1050;
             }
-
+            
             .sidebar.active {
                 transform: translateX(0);
             }
-
+            
             .main-content {
                 margin-left: 0;
-                padding-top: 80px;
+                padding: 20px;
+                padding-top: 70px;
             }
-
+            
             .menu-toggle {
                 display: block;
             }
@@ -221,8 +233,9 @@
         @media (max-width: 768px) {
             .welcome-message {
                 font-size: 20px;
+                margin-top: 10px;
             }
-
+            
             .profile-table,
             .profile-table tbody,
             .profile-table tr,
@@ -230,21 +243,23 @@
                 display: block;
                 width: 100%;
             }
-
+            
             .profile-table thead {
                 display: none;
             }
-
+            
             .profile-table tr {
                 margin-bottom: 15px;
+                position: relative;
             }
-
+            
             .profile-table td {
                 text-align: right;
                 position: relative;
                 padding-left: 50%;
+                padding-right: 15px;
             }
-
+            
             .profile-table td::before {
                 content: attr(data-label);
                 position: absolute;
@@ -252,10 +267,57 @@
                 font-weight: bold;
                 text-align: left;
                 color: #ffcc00;
+                width: calc(50% - 15px);
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
-
+            
             .password-field {
                 justify-content: flex-end;
+            }
+            
+            .btn-edit-profile {
+                width: 100%;
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .welcome-message {
+                font-size: 18px;
+            }
+            
+            .profile-table td {
+                padding-left: 40%;
+            }
+            
+            .profile-table td::before {
+                width: calc(40% - 15px);
+            }
+            
+            .detail-label {
+                width: 100%;
+            }
+            
+            .btn-show-password {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .profile-table td {
+                padding-left: 50%;
+            }
+            
+            .profile-table td::before {
+                width: calc(50% - 15px);
+            }
+            
+            .main-content {
+                padding: 15px;
+                padding-top: 70px;
             }
         }
     </style>
@@ -293,7 +355,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-12">
                         <div class="table-responsive">
                             <table class="profile-table table table-bordered">
                                 <tbody>
@@ -339,7 +401,7 @@
                             <c:param name="password" value="${password}"/>
                         </c:url>
 
-                        <a href="${customerUpdate}" class="btn-edit-profile mt-3">
+                        <a href="${customerUpdate}" class="btn-edit-profile mt-3 mb-4">
                             <i class="fas fa-user-edit"></i> Edit Profile
                         </a>
                     </div>
@@ -373,16 +435,28 @@
         document.addEventListener('DOMContentLoaded', function () {
             const menuToggle = document.getElementById('menuToggle');
             const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('mainContent');
 
             menuToggle.addEventListener('click', function () {
                 sidebar.classList.toggle('active');
+                document.body.classList.toggle('sidebar-open');
             });
 
+            // Close sidebar when clicking outside on mobile
             document.addEventListener('click', function (event) {
-                if (window.innerWidth <= 992 &&
-                    !sidebar.contains(event.target) &&
+                if (window.innerWidth <= 992 && 
+                    !sidebar.contains(event.target) && 
                     event.target !== menuToggle) {
                     sidebar.classList.remove('active');
+                    document.body.classList.remove('sidebar-open');
+                }
+            });
+            
+            // Better handling of window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 992) {
+                    sidebar.classList.remove('active');
+                    document.body.classList.remove('sidebar-open');
                 }
             });
         });
