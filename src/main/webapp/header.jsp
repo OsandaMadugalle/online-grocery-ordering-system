@@ -5,7 +5,6 @@
 <html lang="en">
 
 <head>
-    <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -20,10 +19,9 @@
     <!-- FontAwesome (Version 5.15.4) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-    <!-- Custom Styles -->
     <style>
         body {
-            padding-top: 60px; /* Adjusted for fixed header */
+            padding-top: 60px;
         }
 
         input[type="search"]::placeholder {
