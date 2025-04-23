@@ -2,10 +2,6 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<c:if test="${empty sessionScope.loggedIn or empty sessionScope.customerDetails}">
-    <c:redirect url="/customer/cusLogin.jsp"/>
-</c:if>
-
 <!-- Bootstrap CSS (Version 4.3) -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" 
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -83,11 +79,11 @@
         </c:if>
 
         <c:if test="${sessionScope.loggedIn}">
-            <a href="trackOrder.jsp" class="btn btn-outline-info mx-2">Track My Order</a>
-            <a href="admin/adminAccount.jsp" class="btn btn-light mx-2">
+            <a href="#" class="btn btn-outline-info mx-2">Track My Order</a>
+            <a href="customer/customerAccount.jsp" class="btn btn-light mx-2">
                 <i class="bi bi-person-circle"></i> Profile
             </a>
-            <a href="LogoutServlet" class="btn btn-danger">Logout</a>
+            <a href="customerLogoutServlet" class="btn btn-danger">Logout</a>
         </c:if>
     </div>
 
