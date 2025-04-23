@@ -47,6 +47,18 @@ CREATE TABLE Product (
     price DECIMAL(10,2) NOT NULL
 );
 
+-- Create Customer table
+CREATE TABLE Customer (
+    customer_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50),
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    phone VARCHAR(15),
+    email VARCHAR(100),
+    address VARCHAR(255)
+);
+
+
 -- Sample Inserts for Product table
 INSERT INTO Product (image_path, product_name, category, stock, price)
 VALUES
@@ -82,6 +94,16 @@ VALUES
     ('deliveryNick', 'Nick', 'Scott', '+94703336666', 'nick.scott@example.com', 'fast$move'),
     ('deliverySophia', 'Sophia', 'Green', '+94703337777', 'sophia.green@example.com', 'onTime#45'),
     ('deliveryLiam', 'Liam', 'Clark', '+94703338888', 'liam.clark@example.com', 'routeDriver');
+
+-- Insert sample values
+INSERT INTO Customer (customer_id, username, first_name, last_name, phone, email, address)
+VALUES
+(1, 'john_doe', 'John', 'Doe', '1234567890', 'john.doe@example.com', '123 Elm Street'),
+(2, 'jane_smith', 'Jane', 'Smith', '0987654321', 'jane.smith@example.com', '456 Oak Avenue'),
+(3, 'alice_williams', 'Alice', 'Williams', '5678901234', 'alice.williams@example.com', '789 Pine Road'),
+(4, 'mike_jones', 'Mike', 'Jones', '6789012345', 'mike.jones@example.com', '321 Cedar Lane'),
+(5, 'emma_brown', 'Emma', 'Brown', '7890123456', 'emma.brown@example.com', '654 Maple Drive');
+
     
 -- Select all data from Admin table
 SELECT * FROM Admin;
@@ -94,3 +116,6 @@ SELECT * FROM DeliveryManager;
 
 -- Select all data from Product table
 SELECT * FROM Product;
+
+-- Select all data from Customer table
+SELECT * FROM Customer;
