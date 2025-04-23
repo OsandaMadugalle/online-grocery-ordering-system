@@ -243,6 +243,22 @@
     </servlet-mapping>
 
     <!-- ============================================
+         SECTION: Customer Servlets
+         ============================================ -->
+         
+     <!-- Signup Customer -->
+    <servlet>
+        <servlet-name>SignupCustomer</servlet-name>
+        <servlet-class>com.gos.servlet.CustomerCreateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SignupCustomer</servlet-name>
+        <url-pattern>/createCustomer</url-pattern>
+    </servlet-mapping>
+     
+     
+     
+  	<!-- ============================================
          SECTION: Delivery Manager Servlets
          ============================================ -->
 
