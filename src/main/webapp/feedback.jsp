@@ -1,19 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page session="true" %>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Feedback - Grocery Ordering System</title>
 
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <!-- RateYo CSS for Rating Stars -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
 
+    <!-- Custom Styles (Placed after external CSS) -->
     <style>
         :root {
             --primary-color: #013220;
@@ -66,7 +72,8 @@
             margin-bottom: 8px;
         }
 
-        .form-control, .form-select {
+        .form-control,
+        .form-select {
             background-color: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
             color: white;
@@ -74,7 +81,8 @@
             border-radius: 5px;
         }
 
-        .form-control:focus, .form-select:focus {
+        .form-control:focus,
+        .form-select:focus {
             background-color: rgba(255, 255, 255, 0.15);
             border-color: var(--accent-color);
             color: white;
@@ -150,9 +158,14 @@
             }
         }
     </style>
+
 </head>
 
 <body>
+
+    <!-- Include header file -->
+    <%@ include file="./header.jsp" %>
+
     <div class="main-content">
         <div class="welcome-message">
             <i class="fas fa-comment-alt"></i> Share Your Feedback
@@ -182,7 +195,7 @@
             <div class="col-lg-8">
                 <div class="feedback-card">
                     <h3 class="feedback-title"><i class="fas fa-pencil-alt"></i> Submit Feedback</h3>
-                    
+
                     <form id="feedbackForm" action="${pageContext.request.contextPath}/submitFeedback" method="post">
                         <div class="mb-3">
                             <label for="orderId" class="form-label"><i class="fas fa-receipt"></i> Order Reference</label>
@@ -193,7 +206,7 @@
                                 </c:forEach>
                             </select>
                         </div>
-                        
+
                         <div class="mb-3">
                             <label class="form-label"><i class="fas fa-star"></i> Overall Rating</label>
                             <div class="rating-container">
@@ -201,7 +214,7 @@
                                 <input type="hidden" id="ratingValue" name="rating" required>
                             </div>
                         </div>
-                        
+
                         <div class="mb-3">
                             <label for="feedbackType" class="form-label"><i class="fas fa-tag"></i> Feedback Type</label>
                             <select class="form-select" id="feedbackType" name="feedbackType" required>
@@ -214,12 +227,12 @@
                                 <option value="OTHER">Other</option>
                             </select>
                         </div>
-                        
+
                         <div class="mb-3">
                             <label for="comments" class="form-label"><i class="fas fa-comment-dots"></i> Your Comments</label>
                             <textarea class="form-control" id="comments" name="comments" rows="5" placeholder="Please share your experience with us..." required></textarea>
                         </div>
-                        
+
                         <button type="submit" class="btn btn-submit-feedback">
                             <i class="fas fa-paper-plane"></i> Submit Feedback
                         </button>
@@ -252,5 +265,10 @@
             });
         });
     </script>
+
+    <!-- Include footer file -->
+    <%@ include file="./footer.jsp" %>
+
 </body>
+
 </html>
