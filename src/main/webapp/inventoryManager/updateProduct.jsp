@@ -22,29 +22,36 @@
             --accent-color: #4cc9f0;
             --accent-hover: #3a9ec7;
             --text-color: white;
+            --placeholder-color: #b8c2d9;
             --error-color: #e94560;
             --success-color: #4ade80;
             --warning-color: #f59e0b;
+            --form-bg: rgba(255, 255, 255, 0.1);
+            --border-radius: 10px;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--primary-bg);
             color: var(--text-color);
+            min-height: 100vh;
             padding: 20px 0;
             background-image: linear-gradient(to bottom right, var(--primary-bg), var(--secondary-bg));
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .container {
             max-width: 90%;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--form-bg);
             backdrop-filter: blur(12px);
             padding: 30px;
-            border-radius: 15px;
+            border-radius: var(--border-radius);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.1);
             margin: 0 auto;
-            animation: fadeIn 0.6s ease-out;
+            animation: fadeIn 0.6s ease-out, float 6s ease-in-out infinite;
         }
 
         .form-header h2 {
@@ -55,68 +62,77 @@
 
         .form-label {
             font-weight: 500;
-            color: var(--text-color);
+            color: var(--accent-color);
         }
 
         .form-control,
         .form-select {
-            background-color: #0f0f1c;
+            background: rgba(255, 255, 255, 0.15);
             color: var(--text-color);
-            border: 1px solid #333;
-            border-radius: 6px;
-            padding: 0.7rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius);
+            padding: 12px 20px;
             transition: all 0.3s ease;
+            font-size: 15px;
         }
 
         .form-control:focus,
         .form-select:focus {
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 0 0 0.2rem rgba(76, 201, 240, 0.3);
             border-color: var(--accent-color);
-            box-shadow: 0 0 0 0.2rem rgba(76, 201, 240, 0.25);
+            outline: none;
+        }
+
+        .form-control::placeholder {
+            color: var(--placeholder-color);
+            opacity: 0.7;
+        }
+
+        .form-control[readonly] {
+            background-color: rgba(128, 128, 128, 0.2);
+            color: #ccc;
         }
 
         .btn-submit {
-            background-color: var(--accent-color);
+            background: var(--accent-color);
             color: #0a192f;
+            font-size: clamp(0.9rem, 1.2vw, 1rem);
             font-weight: 600;
             border: none;
-            padding: 0.75rem;
-            border-radius: 8px;
-            margin-top: 1rem;
-            transition: all 0.3s;
+            padding: 14px;
             width: 100%;
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+            margin-top: 25px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         .btn-submit:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(76, 201, 240, 0.2);
-        }
-
-        .back-link {
-            color: var(--accent-color);
-            font-weight: 500;
-            margin-bottom: 1rem;
-            display: inline-block;
-            text-decoration: none;
-            font-size: 1.1rem; 
-            padding: 10px 15px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .back-link i {
-            font-size: 1.2rem; 
-        }
-
-        .back-link:hover {
-            color: var(--accent-hover); 
-            text-decoration: none;
-            background-color: rgba(76, 201, 240, 0.1); 
+            background: var(--accent-hover);
             transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(76, 201, 240, 0.3);
         }
 
-        .back-link:hover i {
-            transform: translateX(-5px);
+        .home-icon {
+            position: fixed;
+            top: 25px;
+            left: 25px;
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
+            z-index: 100;
+            background: rgba(76, 201, 240, 0.2);
+            padding: 10px 15px;
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(76, 201, 240, 0.3);
+        }
+        
+        .home-icon:hover {
+            background: rgba(76, 201, 240, 0.3);
+            transform: translateY(-2px);
         }
 
         .image-upload-container {
@@ -192,27 +208,14 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-
-            .preview-image {
-                max-width: 140px;
-            }
-        }
-
-        .btn-submit {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-submit:active {
-            transform: scale(0.98);
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
 
         .spinner-border {
@@ -233,14 +236,46 @@
             opacity: 1;
         }
 
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px;
+                margin-top: 60px;
+            }
+            
+            .home-icon {
+                top: 15px;
+                left: 15px;
+                font-size: 1.3rem;
+                padding: 8px 12px;
+            }
+
+            .preview-image {
+                max-width: 140px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 25px 20px;
+            }
+            
+            body {
+                padding: 15px;
+                align-items: flex-start;
+            }
+            
+            .form-control {
+                padding: 10px 15px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <a href="${pageContext.request.contextPath}/manageProducts" class="back-link">
-            <i class="fas fa-arrow-left me-2"></i> Back to Products
-        </a>
+    <a href="${pageContext.request.contextPath}/inventoryManager/inventoryManagerDashboard.jsp" class="home-icon">
+        <i class="fas fa-arrow-left"></i>
+    </a>
 
+    <div class="container">
         <div class="form-header text-center">
             <h2><i class="fas fa-edit me-2"></i>Update Product</h2>
             <p class="text-muted">Modify the product details below.</p>
