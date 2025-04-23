@@ -10,7 +10,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Dashboard</title>
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -19,8 +19,7 @@
 
     <style>
         :root {
-            --sidebar-width: 300px;
-            --sidebar-collapsed-width: 80px;
+            --sidebar-width: 250px;
             --primary-color: #013220;
             --accent-color: #ff4c29;
             --text-color: white;
@@ -31,8 +30,6 @@
             background-color: var(--primary-color);
             color: var(--text-color);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
         }
 
         .sidebar {
@@ -40,41 +37,17 @@
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             padding: 20px;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
             position: fixed;
             height: 100vh;
             z-index: 1000;
+            box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
         }
-        
-        .sidebar-collapsed {
-            width: var(--sidebar-collapsed-width);
-            overflow: hidden;
-        }
-        
-        .sidebar-collapsed .nav-text {
-            display: none;
-        }
-        
-        .sidebar-collapsed a {
-            justify-content: center;
-            padding: 12px 0;
-        }
-        
-        .sidebar-collapsed .customer-name {
-            display: none;
-        }
-        
-        .sidebar-collapsed .logout-btn span {
-            display: none;
-        }
-        
+
         .customer-name {
             color: white;
             font-size: 18px;
-            margin-bottom: 5px;
+            margin-bottom: 20px;
             text-align: center;
             padding: 10px 0;
             white-space: nowrap;
@@ -90,8 +63,6 @@
             margin: 10px 0;
             border-radius: 5px;
             transition: 0.3s;
-            width: 100%;
-            white-space: nowrap;
         }
 
         .sidebar a i {
@@ -113,7 +84,6 @@
             border-radius: 5px;
             cursor: pointer;
             transition: 0.3s;
-            width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -124,49 +94,9 @@
         }
 
         .main-content {
-            flex: 1;
             padding: 30px;
             margin-left: var(--sidebar-width);
             transition: margin-left 0.3s ease;
-        }
-        
-        .main-content-expanded {
-            margin-left: var(--sidebar-collapsed-width);
-        }
-
-        .customer-details {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            margin-bottom: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .table-container {
-            margin-top: 30px;
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            min-width: 600px;
-        }
-
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        th {
-            background: rgba(255, 255, 255, 0.2);
         }
 
         .welcome-message {
@@ -176,30 +106,16 @@
             font-weight: 600;
         }
         
-        .detail-row {
-            transition: background-color 0.3s ease;
-        }
-        
-        .detail-row:hover {
-            background-color: rgba(255, 255, 255, 0.15);
-        }
-        
         .detail-label {
             font-weight: 600;
             color: #ffcc00;
             width: 35%;
-            vertical-align: middle;
         }
         
         .detail-label i {
             margin-right: 10px;
             width: 20px;
             text-align: center;
-        }
-        
-        .detail-value {
-            color: #ffffff;
-            vertical-align: middle;
         }
         
         .password-field {
@@ -224,16 +140,8 @@
             background-color: rgba(255, 255, 255, 0.2);
         }
         
-        .profile-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
         .btn-edit-profile {
             background: linear-gradient(135deg, #ff4c29 0%, #ff6b3d 100%); 
-            box-shadow: 0 4px 8px rgba(255, 76, 41, 0.3); 
             padding: 12px 24px;
             font-size: 16px;
             transition: all 0.3s ease;
@@ -250,6 +158,26 @@
         .btn-edit-profile:hover {
             background: linear-gradient(135deg, #e03e1a 0%, #e05a2a 100%);
             color: white;
+        }
+
+        /* Table Styling Fixes */
+        .profile-table {
+            color: white;
+            background-color: transparent;
+        }
+
+        .profile-table td {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .profile-table tbody tr:hover td {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .actual-password {
+            color: white !important;
         }
         
         /* Mobile Menu Toggle */
@@ -271,8 +199,6 @@
         @media (max-width: 992px) {
             .sidebar {
                 transform: translateX(-100%);
-                position: fixed;
-                z-index: 1000;
             }
             
             .sidebar.active {
@@ -287,14 +213,6 @@
             .menu-toggle {
                 display: block;
             }
-            
-            table {
-                font-size: 14px;
-            }
-            
-            th, td {
-                padding: 8px 12px;
-            }
         }
         
         @media (max-width: 768px) {
@@ -302,24 +220,6 @@
                 font-size: 20px;
             }
             
-            .btn-edit-profile {
-                padding: 10px 15px;
-                font-size: 14px;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .main-content {
-                padding: 20px 15px;
-            }
-            
-            .welcome-message {
-                font-size: 18px;
-                margin-bottom: 15px;
-            }
-        }
-        
-        @media (max-width: 768px) {
             .profile-table, 
             .profile-table tbody, 
             .profile-table tr, 
@@ -334,28 +234,18 @@
             
             .profile-table tr {
               margin-bottom: 15px;
-              background: rgba(255,255,255,0.05);
-              border: 1px solid rgba(255,255,255,0.2);
-              border-radius: 5px;
             }
             
             .profile-table td {
-              padding: 10px 15px;
               text-align: right;
               position: relative;
-              border: none;
-              border-bottom: 1px solid rgba(255,255,255,0.1);
-            }
-            
-            .profile-table td:last-child {
-              border-bottom: none;
+              padding-left: 50%;
             }
             
             .profile-table td::before {
               content: attr(data-label);
               position: absolute;
               left: 15px;
-              top: 10px;
               font-weight: bold;
               text-align: left;
               color: #ffcc00;
@@ -364,105 +254,6 @@
             .password-field {
               justify-content: flex-end;
             }
-        }
-        
-        .order-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-        }
-        
-        .order-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
-        }
-        
-        .order-header {
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            padding-bottom: 10px;
-            margin-bottom: 10px;
-        }
-        
-        .order-status {
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-        
-        .status-pending {
-            background-color: #ffc107;
-            color: #000;
-        }
-        
-        .status-completed {
-            background-color: #28a745;
-            color: #fff;
-        }
-        
-        .status-cancelled {
-            background-color: #dc3545;
-            color: #fff;
-        }
-        
-        .order-details {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        
-        .order-detail-item {
-            flex: 1;
-            min-width: 120px;
-        }
-        
-        .order-detail-label {
-            font-size: 12px;
-            color: #ffcc00;
-            margin-bottom: 5px;
-        }
-        
-        .order-detail-value {
-            font-size: 14px;
-            font-weight: 500;
-        }
-        
-        .order-actions {
-            margin-top: 10px;
-            display: flex;
-            gap: 10px;
-        }
-        
-        .btn-order-action {
-            padding: 5px 10px;
-            font-size: 12px;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-view {
-            background-color: rgba(0, 123, 255, 0.8);
-            color: white;
-        }
-        
-        .btn-view:hover {
-            background-color: rgba(0, 123, 255, 1);
-        }
-        
-        .btn-cancel {
-            background-color: rgba(220, 53, 69, 0.8);
-            color: white;
-        }
-        
-        .btn-cancel:hover {
-            background-color: rgba(220, 53, 69, 1);
         }
     </style>
 </head>
@@ -477,31 +268,31 @@
     <div class="sidebar" id="sidebar">
         <div class="customer-name">
             <i class="fas fa-user"></i>
-            <span class="nav-text">${sessionScope.customerDetails[0].first_name} ${sessionScope.customerDetails[0].last_name}</span>
+            <span>${sessionScope.customerDetails[0].first_name} ${sessionScope.customerDetails[0].last_name}</span>
         </div>
         <a href="#" class="active">
             <i class="fas fa-tachometer-alt"></i>
-            <span class="nav-text">Dashboard</span>
+            <span>Dashboard</span>
         </a>
         <a href="./viewProducts.jsp">
             <i class="fas fa-shopping-bag"></i>
-            <span class="nav-text">Shop</span>
+            <span>Shop</span>
         </a>
         <a href="./viewOrders.jsp">
             <i class="fas fa-clipboard-list"></i>
-            <span class="nav-text">My Orders</span>
+            <span>My Orders</span>
         </a>
         <a href="./viewCart.jsp">
             <i class="fas fa-shopping-cart"></i>
-            <span class="nav-text">My Cart</span>
+            <span>My Cart</span>
         </a>
         <a href="./viewWishlist.jsp">
             <i class="fas fa-heart"></i>
-            <span class="nav-text">Wishlist</span>
+            <span>Wishlist</span>
         </a>
         <a href="${pageContext.request.contextPath}/customerLogoutServlet" class="logout-btn">
             <i class="fas fa-sign-out-alt"></i>
-            <span class="nav-text">Logout</span>
+            <span>Logout</span>
         </a>
     </div>
 
@@ -514,63 +305,61 @@
                 </div>
                 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <div class="table-responsive">
-                            <div class="table-container">
-                                <table class="profile-table table-bordered">
-                                    <tbody>
-                                        <c:forEach var="cd" items="${sessionScope.customerDetails}">
-                                        <c:set var="id" value="${cd.customer_id}"/>
-                                        <c:set var="username" value="${cd.username}"/>
-                                        <c:set var="fName" value="${cd.first_name}"/>
-                                        <c:set var="lName" value="${cd.last_name}"/>
-                                        <c:set var="phone" value="${cd.phone}"/>
-                                        <c:set var="email" value="${cd.email}"/>
-                                        <c:set var="password" value="${cd.password}"/>
-                                        
-                                        <tr class="detail-row">
-                                            <td class="detail-label" data-label="Customer ID"><i class="fas fa-id-card"></i> Customer ID</td>
-                                            <td class="detail-value"><c:out value="${cd.customer_id}"/></td>
-                                        </tr>
-                                        <tr class="detail-row">
-                                            <td class="detail-label" data-label="Username"><i class="fas fa-user"></i> Username</td>
-                                            <td class="detail-value"><c:out value="${cd.username}"/></td>
-                                        </tr>
-                                        <tr class="detail-row">
-                                            <td class="detail-label" data-label="First Name"><i class="fas fa-signature"></i> First Name</td>
-                                            <td class="detail-value"><c:out value="${cd.first_name}"/></td>
-                                        </tr>
-                                        <tr class="detail-row">
-                                            <td class="detail-label" data-label="Last Name"><i class="fas fa-signature"></i> Last Name</td>
-                                            <td class="detail-value"><c:out value="${cd.last_name}"/></td>
-                                        </tr>
-                                        <tr class="detail-row">
-                                            <td class="detail-label" data-label="Phone"><i class="fas fa-phone"></i> Phone</td>
-                                            <td class="detail-value"><c:out value="${cd.phone}"/></td>
-                                        </tr>
-                                        <tr class="detail-row">
-                                            <td class="detail-label" data-label="Email"><i class="fas fa-envelope"></i> Email</td>
-                                            <td class="detail-value"><c:out value="${cd.email}"/></td>
-                                        </tr>
-                                        <tr class="detail-row">
-                                            <td class="detail-label" data-label="Password"><i class="fas fa-lock"></i> Password</td>
-                                            <td class="detail-value">
-                                                <div class="password-field">
-                                                    <span class="password-mask">••••••••</span>
-                                                    <button class="btn btn-sm btn-show-password" onclick="togglePassword(this)">
-                                                        <i class="fas fa-eye"></i> Show
-                                                    </button>
-                                                    <span class="actual-password" style="display:none;"><c:out value="${cd.password}"/></span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        </c:forEach>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <table class="profile-table table table-bordered">
+                                <tbody>
+                                    <c:forEach var="cd" items="${sessionScope.customerDetails}">
+                                    <c:set var="id" value="${cd.customer_id}"/>
+                                    <c:set var="username" value="${cd.username}"/>
+                                    <c:set var="fName" value="${cd.first_name}"/>
+                                    <c:set var="lName" value="${cd.last_name}"/>
+                                    <c:set var="phone" value="${cd.phone}"/>
+                                    <c:set var="email" value="${cd.email}"/>
+                                    <c:set var="password" value="${cd.password}"/>
+                                    
+                                    <tr>
+                                        <td class="detail-label" data-label="Customer ID"><i class="fas fa-id-card"></i> Customer ID</td>
+                                        <td><c:out value="${cd.customer_id}"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="detail-label" data-label="Username"><i class="fas fa-user"></i> Username</td>
+                                        <td><c:out value="${cd.username}"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="detail-label" data-label="First Name"><i class="fas fa-signature"></i> First Name</td>
+                                        <td><c:out value="${cd.first_name}"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="detail-label" data-label="Last Name"><i class="fas fa-signature"></i> Last Name</td>
+                                        <td><c:out value="${cd.last_name}"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="detail-label" data-label="Phone"><i class="fas fa-phone"></i> Phone</td>
+                                        <td><c:out value="${cd.phone}"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="detail-label" data-label="Email"><i class="fas fa-envelope"></i> Email</td>
+                                        <td><c:out value="${cd.email}"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="detail-label" data-label="Password"><i class="fas fa-lock"></i> Password</td>
+                                        <td>
+                                            <div class="password-field">
+                                                <span class="password-mask">••••••••</span>
+                                                <button class="btn btn-sm btn-show-password" onclick="togglePassword(this)">
+                                                    <i class="fas fa-eye"></i> Show
+                                                </button>
+                                                <span class="actual-password" style="display:none;"><c:out value="${cd.password}"/></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </c:forEach>
+                                </tbody>
+                            </table>
                         </div>
                         
-                        <c:url value="updateCustomerProfile.jsp" var="customerUpdate">
+                        <c:url value="customer/updateCustomerProfile.jsp" var="customerUpdate">
                             <c:param name="id" value="${id}"/>
                             <c:param name="username" value="${username}"/>
                             <c:param name="fName" value="${fName}"/>
@@ -580,67 +369,8 @@
                             <c:param name="password" value="${password}"/>
                         </c:url>
 
-                        <a href="${customerUpdate}" class="btn-edit-profile">
+                        <a href="${customerUpdate}" class="btn-edit-profile mt-3">
                             <i class="fas fa-user-edit"></i> Edit Profile
-                        </a>
-                    </div>
-                    
-                    <div class="col-md-6">
-                        <h4 class="text-white mb-4"><i class="fas fa-clipboard-list"></i> Recent Orders</h4>
-                        
-                        <!-- Sample Order Cards - Replace with dynamic content from your backend -->
-                        <div class="order-card">
-                            <div class="order-header">
-                                <h5 class="text-white">Order #12345</h5>
-                                <span class="order-status status-pending">Pending</span>
-                            </div>
-                            <div class="order-details">
-                                <div class="order-detail-item">
-                                    <div class="order-detail-label">Date</div>
-                                    <div class="order-detail-value">May 15, 2023</div>
-                                </div>
-                                <div class="order-detail-item">
-                                    <div class="order-detail-label">Items</div>
-                                    <div class="order-detail-value">3</div>
-                                </div>
-                                <div class="order-detail-item">
-                                    <div class="order-detail-label">Total</div>
-                                    <div class="order-detail-value">$149.99</div>
-                                </div>
-                            </div>
-                            <div class="order-actions">
-                                <button class="btn-order-action btn-view">View Details</button>
-                                <button class="btn-order-action btn-cancel">Cancel Order</button>
-                            </div>
-                        </div>
-                        
-                        <div class="order-card">
-                            <div class="order-header">
-                                <h5 class="text-white">Order #12344</h5>
-                                <span class="order-status status-completed">Completed</span>
-                            </div>
-                            <div class="order-details">
-                                <div class="order-detail-item">
-                                    <div class="order-detail-label">Date</div>
-                                    <div class="order-detail-value">May 10, 2023</div>
-                                </div>
-                                <div class="order-detail-item">
-                                    <div class="order-detail-label">Items</div>
-                                    <div class="order-detail-value">2</div>
-                                </div>
-                                <div class="order-detail-item">
-                                    <div class="order-detail-label">Total</div>
-                                    <div class="order-detail-value">$89.98</div>
-                                </div>
-                            </div>
-                            <div class="order-actions">
-                                <button class="btn-order-action btn-view">View Details</button>
-                                <button class="btn-order-action btn-view">Reorder</button>
-                            </div>
-                        </div>
-                        
-                        <a href="./viewOrders.jsp" class="btn btn-block mt-3" style="background: rgba(255,255,255,0.1); color: white;">
-                            View All Orders <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
@@ -678,7 +408,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             const menuToggle = document.getElementById('menuToggle');
             const sidebar = document.getElementById('sidebar');
-            const mainContent = document.getElementById('mainContent');
             
             menuToggle.addEventListener('click', function() {
                 sidebar.classList.toggle('active');
@@ -692,15 +421,6 @@
                     sidebar.classList.remove('active');
                 }
             });
-            
-            // Toggle sidebar collapse on larger screens
-            function handleResize() {
-                if (window.innerWidth > 992) {
-                    sidebar.classList.remove('active');
-                }
-            }
-            
-            window.addEventListener('resize', handleResize);
         });
     </script>
 </body>
