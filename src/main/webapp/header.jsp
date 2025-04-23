@@ -108,9 +108,9 @@
                         CATALOG
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="catalogDropdown" style="background-color: #004d00;">
-                        <li><a class="dropdown-item" href="#">Electronics</a></li>
-                        <li><a class="dropdown-item" href="#">Fashion</a></li>
-                        <li><a class="dropdown-item" href="#">Home Appliances</a></li>
+                        <li><a class="dropdown-item" href="#">Vegitables</a></li>
+                        <li><a class="dropdown-item" href="#">Fruits</a></li>
+                        <li><a class="dropdown-item" href="#">Rice</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#">More Categories</a></li>
                     </ul>
@@ -122,7 +122,7 @@
                     <a class="nav-link" href="#">OFFERS</a>
                 </li>
                 <li class="nav-item mx-4">
-                    <a class="nav-link" href="#">FEEDBACK</a>
+                    <a class="nav-link" href="feedback.jsp">FEEDBACK</a>
                 </li>
                 <li class="nav-item mx-4">
                     <a class="nav-link" href="#">CONTACT</a>
