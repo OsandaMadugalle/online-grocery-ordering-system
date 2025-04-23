@@ -33,7 +33,7 @@ public class CustomerLoginServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/index.jsp");
             } else {
                 request.setAttribute("errorMessage", "Invalid username or password.");
-                request.getRequestDispatcher("/customer/cusLogin.jsp").forward(request, response);
+                response.sendRedirect(request.getContextPath() + "/customer/cusLogin.jsp");
             }
         } catch (Exception e) {
             e.printStackTrace();
