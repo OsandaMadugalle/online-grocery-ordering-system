@@ -42,7 +42,7 @@ public class DeliveryManagerService {
 	//Add Delivary Manager
 	public static boolean addDeliveryManager(String username, String fname, String lname, String phone, String email, String password) {
 		boolean isSuccess = false;
-		String sql = "INSERT INTO DeliveryManager (username, first_name, last_name, phone, email, password) VALUES (?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO DeliveryManager (Username, First_Name, Last_Name, Phone, Email, Password) VALUES (?, ?, ?, ?, ?, ?)";
 		
 		try(Connection con = DBConnection.getConnection();
 				PreparedStatement stmt = con.prepareStatement(sql)){
