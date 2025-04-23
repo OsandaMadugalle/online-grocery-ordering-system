@@ -359,7 +359,7 @@
                             </table>
                         </div>
                         
-                        <c:url value="customer/updateCustomerProfile.jsp" var="customerUpdate">
+                        <c:url value="updateCustomerProfile.jsp" var="customerUpdate">
                             <c:param name="id" value="${id}"/>
                             <c:param name="username" value="${username}"/>
                             <c:param name="fName" value="${fName}"/>
