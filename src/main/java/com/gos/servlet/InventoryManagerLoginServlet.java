@@ -11,7 +11,6 @@ import java.util.List;
 
 import com.gos.model.InventoryManager;
 import com.gos.service.InventoryManagerService;
-import com.gos.util.DBConnection;
 
 @WebServlet("/InventoryManagerLoginServlet")
 public class InventoryManagerLoginServlet extends HttpServlet {
@@ -39,12 +38,6 @@ public class InventoryManagerLoginServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-    
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Redirect to login page or handle GET requests
-        response.sendRedirect(request.getContextPath() + "/inventoryManager/inventoryManagerLogin.jsp");
-    }
+    }  
 }
 
