@@ -2,18 +2,9 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%
-    // Retrieve the logout message, if it exists
-   	String logoutMessage = (String) session.getAttribute("logoutMessage");
-	if (logoutMessage != null && !logoutMessage.isEmpty()) {
-
-%>
-    
-<%
-        // Remove the message from the session so it's not shown again
-        session.removeAttribute("logoutMessage");
-    }
-%>
+<c:if test="${empty sessionScope.loggedIn or empty sessionScope.customerDetails}">
+    <c:redirect url="/customer/cusLogin.jsp"/>
+</c:if>
 
 <!-- Bootstrap CSS (Version 4.3) -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" 
