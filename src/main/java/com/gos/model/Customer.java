@@ -8,16 +8,16 @@ public class Customer {
     private String last_name;
     private String phone;
     private String email;
-    private String address;
+    private String password; // Replaced 'address' with 'password'
 
-    public Customer(int customer_id, String username, String first_name, String last_name, String phone, String email, String address) {
+    public Customer(int customer_id, String username, String first_name, String last_name, String phone, String email, String password) {
         this.customer_id = customer_id;
         this.username = username;
         this.first_name = first_name;
         this.last_name = last_name;
         this.phone = phone;
         this.email = email;
-        this.address = address;
+        this.password = password; // Updated field
     }
 
     public Customer() {
@@ -72,11 +72,11 @@ public class Customer {
         this.email = email;
     }
 
-    public String getAddress() {
-        return address;
+    public String getPassword() { // Updated getter
+        return password;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setPassword(String password) { // Updated setter
+        this.password = password;
     }
 }
