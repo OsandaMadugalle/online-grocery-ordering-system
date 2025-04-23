@@ -55,7 +55,7 @@ CREATE TABLE Customer (
     last_name VARCHAR(50),
     phone VARCHAR(15),
     email VARCHAR(100),
-    address VARCHAR(255)
+    Password VARCHAR(50)
 );
 
 
@@ -96,13 +96,13 @@ VALUES
     ('deliveryLiam', 'Liam', 'Clark', '+94703338888', 'liam.clark@example.com', 'routeDriver');
 
 -- Insert sample values
-INSERT INTO Customer (customer_id, username, first_name, last_name, phone, email, address)
+INSERT INTO Customer (customer_id, username, first_name, last_name, phone, email, password)
 VALUES
-(1, 'john_doe', 'John', 'Doe', '1234567890', 'john.doe@example.com', '123 Elm Street'),
-(2, 'jane_smith', 'Jane', 'Smith', '0987654321', 'jane.smith@example.com', '456 Oak Avenue'),
-(3, 'alice_williams', 'Alice', 'Williams', '5678901234', 'alice.williams@example.com', '789 Pine Road'),
-(4, 'mike_jones', 'Mike', 'Jones', '6789012345', 'mike.jones@example.com', '321 Cedar Lane'),
-(5, 'emma_brown', 'Emma', 'Brown', '7890123456', 'emma.brown@example.com', '654 Maple Drive');
+(1, 'john_doe', 'John', 'Doe', '1234567890', 'john.doe@example.com', 'securePass123'),
+(2, 'jane_smith', 'Jane', 'Smith', '0987654321', 'jane.smith@example.com', 'password987'),
+(3, 'alice_williams', 'Alice', 'Williams', '5678901234', 'alice.williams@example.com', 'aliceSecure1'),
+(4, 'mike_jones', 'Mike', 'Jones', '6789012345', 'mike.jones@example.com', 'mikePass1234'),
+(5, 'emma_brown', 'Emma', 'Brown', '7890123456', 'emma.brown@example.com', 'emmaCode567');
 
     
 -- Select all data from Admin table
