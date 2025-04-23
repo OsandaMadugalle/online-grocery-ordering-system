@@ -22,6 +22,6 @@ public class CustomerLogoutServlet extends HttpServlet {
             session.invalidate();
         }
   
-        response.sendRedirect(request.getContextPath() + "/customer/cusLogin.jsp");
+        response.sendRedirect(request.getContextPath() + "/index.jsp");
     }
 }
