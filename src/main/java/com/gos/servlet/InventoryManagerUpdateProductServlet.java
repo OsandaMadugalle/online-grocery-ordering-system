@@ -20,7 +20,6 @@ import java.io.IOException;
 public class InventoryManagerUpdateProductServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    // Handle GET request to fetch product by ID and forward to JSP
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int productId = Integer.parseInt(request.getParameter("id"));
@@ -35,7 +34,6 @@ public class InventoryManagerUpdateProductServlet extends HttpServlet {
         }
     }
 
-    // Handle POST request to update the product (with image)
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Product product = new Product();
@@ -79,7 +77,7 @@ public class InventoryManagerUpdateProductServlet extends HttpServlet {
         } else {
             request.setAttribute("error", "Failed to update product.");
             request.setAttribute("product", product);
-            request.getRequestDispatcher("/inventoryManager/updateProduct.jsp").forward(request, response);
+            response.sendRedirect(request.getContextPath() + "/inventoryManager/updateProduct.jsp\"");
         }
     }
 }
