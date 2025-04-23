@@ -20,8 +20,7 @@ public class CustomerLogoutServlet extends HttpServlet {
            
             session.setAttribute("logoutMessage", "You have successfully logged out."); 
             session.invalidate();
-        }
-  
+        }  
         response.sendRedirect(request.getContextPath() + "/index.jsp");
     }
 }
