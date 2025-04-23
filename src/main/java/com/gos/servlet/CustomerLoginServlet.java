@@ -32,7 +32,7 @@ public class CustomerLoginServlet extends HttpServlet {
                 
                 // Change this to forward instead of redirect
                 //request.getRequestDispatcher("/customer/customerAccount.jsp").forward(request, response);
-                response.sendRedirect(request.getContextPath() + "/customer/customerAccount.jsp");
+                response.sendRedirect(request.getContextPath() + "/index.jsp");
             } else {
                 request.setAttribute("errorMessage", "Invalid username or password.");
                 request.getRequestDispatcher("/customer/cusLogin.jsp").forward(request, response);
