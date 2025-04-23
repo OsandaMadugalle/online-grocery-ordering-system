@@ -286,6 +286,16 @@
         <url-pattern>/customerUpdate</url-pattern>
     </servlet-mapping>
     
+     <servlet>
+	    <servlet-name>DeleteCustomer</servlet-name>
+	    <servlet-class>com.gos.servlet.CustomerDeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>DeleteCustomer</servlet-name>
+	    <url-pattern>/deleteCustomer</url-pattern>
+	</servlet-mapping>
+
+    
     
      
   	<!-- ============================================
