@@ -23,7 +23,7 @@ public class CustomerService {
 	        stmt.setString(3, last_name);
 	        stmt.setString(4, phone);
 	        stmt.setString(5, email);
-	        stmt.setString(6, password); // Updated field from 'address' to 'password'
+	        stmt.setString(6, password); 
 
 	        int rs = stmt.executeUpdate();
 
@@ -39,7 +39,7 @@ public class CustomerService {
 	// Validate Customer Login
 	public static List<Customer> validate(String username, String password) {
 	    List<Customer> customerList = new ArrayList<>();
-	    String sql = "SELECT * FROM customer WHERE username = ? AND password = ?";
+	    String sql = "SELECT * FROM Customer WHERE username = ? AND password = ?";
 
 	    try (Connection conn = DBConnection.getConnection(); 
 	         PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -62,21 +62,21 @@ public class CustomerService {
 	// Map the ResultSet row to a Customer object
 	private static Customer mapResultSetToCustomer(ResultSet rs) throws SQLException {
 	    return new Customer(
-	            rs.getInt("Customer_ID"),
-	            rs.getString("Username"),
-	            rs.getString("First_name"),
-	            rs.getString("Last_name"),
-	            rs.getString("Phone"),
-	            rs.getString("Email"),
-	            rs.getString("Password") // Updated field from 'address' to 'password'
+	    		rs.getInt("customer_id"),
+	    		rs.getString("username"),
+	    		rs.getString("first_name"),
+	    		rs.getString("last_name"),
+	    		rs.getString("phone"),
+	    		rs.getString("email"),
+	    		rs.getString("password")
 	    );
 	}
 	
 	//update cus
 	public static boolean updateCustomer(String id, String username, String fname, String lname, String phone, String email, String password) {
 	    boolean isSuccess = false;
-	    String sql = "UPDATE customer SET Username=?, First_Name=?, Last_Name=?, Phone=?, Email=?, Password=? WHERE Customer_ID=?";
-
+	    String sql = "UPDATE Customer SET username = ?, first_name = ?, last_name = ?, phone = ?, email = ?, password = ? WHERE customer_id = ?";
+	    
 	    try (Connection conn = DBConnection.getConnection();
 	         PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -102,7 +102,7 @@ public class CustomerService {
 	public static List<Customer> getCustomerById(String id) {
     	
 	    List<Customer> customers = new ArrayList<>();
-	    String sql = "SELECT * FROM customer WHERE Customer_ID = ?";
+	    String sql = "SELECT * FROM Customer WHERE customer_ID = ?";
 
 	    try (Connection conn = DBConnection.getConnection();
 	         PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -130,4 +130,19 @@ public class CustomerService {
 
 	    return customers;
 	}
+	
+	// Delete Cus
+    public void deleteCustomer(Customer cus) {
+        String sql = "DELETE FROM Customer WHERE customer_id = ?";
+         
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)){
+        	
+            stmt.setInt(1, cus.getCustomer_id());
+            stmt.executeUpdate();
+        } 
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
