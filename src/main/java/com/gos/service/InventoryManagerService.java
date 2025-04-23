@@ -84,7 +84,7 @@ public class InventoryManagerService {
 	// Add Inventory Manager
 	public static boolean addInventoryManager(String username, String first_name, String last_name, String phone, String email, String password) {
 	    boolean isSuccess = false;
-	    String sql = "INSERT INTO InventoryManager (username, first_name, last_name, phone, email, password) VALUES (?, ?, ?, ?, ?, ?)";
+	    String sql = "INSERT INTO InventoryManager (Username, First_name, Last_name, Phone, Email, Password) VALUES (?, ?, ?, ?, ?, ?)";
 
 	    try (Connection conn = DBConnection.getConnection();
 	         PreparedStatement stmt = conn.prepareStatement(sql)) {
