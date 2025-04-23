@@ -2,13 +2,12 @@ package com.gos.model;
 
 public class Product {
     private int id;
-    private String imagePath; // or could be byte[] for storing image data
+    private String imagePath;
     private String productName;
     private String category;
     private int stock;
     private double price;
     
-    // Constructors
     public Product() {
     }
 
@@ -21,7 +20,6 @@ public class Product {
         this.price = price;
     }
 
-    // Getters and Setters
     public int getId() {
         return id;
     }
