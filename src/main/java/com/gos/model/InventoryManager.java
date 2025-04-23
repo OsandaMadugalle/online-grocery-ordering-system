@@ -78,17 +78,4 @@ public class InventoryManager {
     public void setPassword(String password) { 
         this.password = password; 
     }
-/*
-    @Override
-    public String toString() {
-        return "InventoryManager{" +
-               "inventory_manager_id=" + inventory_manager_id +
-               ", username='" + username + '\'' +
-               ", first_name='" + first_name + '\'' +
-               ", last_name='" + last_name + '\'' +
-               ", phone='" + phone + '\'' +
-               ", email='" + email + '\'' +
-               ", password='" + password + '\'' +
-               '}';
-    } */
 }
