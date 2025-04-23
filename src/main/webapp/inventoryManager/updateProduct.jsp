@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Product | Inventory Management</title>
+    <title>Update Product</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -98,25 +98,25 @@
             margin-bottom: 1rem;
             display: inline-block;
             text-decoration: none;
-            font-size: 1.1rem; /* Increase font size */
-            padding: 10px 15px; /* Add padding around the icon for better touch area */
-            border-radius: 8px; /* Rounded corners for the link */
-            transition: all 0.3s ease; /* Smooth transition for hover */
+            font-size: 1.1rem; 
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
         }
 
         .back-link i {
-            font-size: 1.2rem; /* Ensure the arrow is appropriately sized */
+            font-size: 1.2rem; 
         }
 
         .back-link:hover {
-            color: var(--accent-hover); /* Change color on hover */
+            color: var(--accent-hover); 
             text-decoration: none;
-            background-color: rgba(76, 201, 240, 0.1); /* Subtle background on hover */
-            transform: translateY(-3px); /* Slight lift on hover */
+            background-color: rgba(76, 201, 240, 0.1); 
+            transform: translateY(-3px);
         }
 
         .back-link:hover i {
-            transform: translateX(-5px); /* Move the icon slightly left on hover */
+            transform: translateX(-5px);
         }
 
         .image-upload-container {
@@ -206,7 +206,6 @@
             }
         }
 
-        /* Animation for the form submission button */
         .btn-submit {
             position: relative;
             overflow: hidden;
