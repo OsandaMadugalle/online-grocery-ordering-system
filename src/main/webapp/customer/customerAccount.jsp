@@ -24,7 +24,7 @@
             --accent-color: #ff4c29;
             --text-color: white;
         }
-        
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--primary-color);
@@ -34,13 +34,14 @@
 
         .sidebar {
             width: var(--sidebar-width);
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.25);
             backdrop-filter: blur(10px);
             padding: 20px;
             position: fixed;
             height: 100vh;
             z-index: 1000;
-            box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 4px 0px 12px rgba(0, 0, 0, 0.3);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
             transition: transform 0.3s ease;
         }
 
@@ -50,7 +51,6 @@
             margin-bottom: 20px;
             text-align: center;
             padding: 10px 0;
-            white-space: nowrap;
         }
 
         .sidebar a {
@@ -62,7 +62,7 @@
             font-size: 16px;
             margin: 10px 0;
             border-radius: 5px;
-            transition: 0.3s;
+            transition: background 0.3s;
         }
 
         .sidebar a i {
@@ -87,10 +87,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
         }
 
         .logout-btn:hover {
             background: darkred;
+            transform: translateY(-2px);
         }
 
         .main-content {
@@ -105,43 +107,43 @@
             margin-bottom: 20px;
             font-weight: 600;
         }
-        
+
         .detail-label {
             font-weight: 600;
             color: #ffcc00;
             width: 35%;
         }
-        
+
         .detail-label i {
             margin-right: 10px;
             width: 20px;
-            text-align: center;
         }
-        
+
         .password-field {
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        
+
         .password-mask {
             letter-spacing: 2px;
         }
-        
+
         .btn-show-password {
             background-color: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.3);
             color: white;
             padding: 2px 8px;
             font-size: 12px;
+            transition: 0.3s;
         }
-        
+
         .btn-show-password:hover {
             background-color: rgba(255, 255, 255, 0.2);
         }
-        
+
         .btn-edit-profile {
-            background: linear-gradient(135deg, #ff4c29 0%, #ff6b3d 100%); 
+            background: linear-gradient(135deg, #ff4c29 0%, #ff6b3d 100%);
             padding: 12px 24px;
             font-size: 16px;
             transition: all 0.3s ease;
@@ -153,14 +155,15 @@
             border: none;
             border-radius: 5px;
             text-decoration: none;
+            box-shadow: 0 4px 12px rgba(255, 76, 41, 0.3);
         }
-        
+
         .btn-edit-profile:hover {
             background: linear-gradient(135deg, #e03e1a 0%, #e05a2a 100%);
+            transform: translateY(-2px);
             color: white;
         }
 
-        /* Table Styling Fixes */
         .profile-table {
             color: white;
             background-color: transparent;
@@ -179,186 +182,153 @@
         .actual-password {
             color: white !important;
         }
-        
-        /* Mobile Menu Toggle */
+
         .menu-toggle {
             display: none;
             position: fixed;
-            top: 20px;
-            left: 20px;
+            top: 15px;
+            left: 15px;
             z-index: 1100;
             background: var(--accent-color);
             color: white;
             border: none;
             border-radius: 5px;
-            padding: 10px;
+            padding: 10px 14px;
+            font-size: 18px;
             cursor: pointer;
+            box-shadow: 0px 0px 8px rgba(0,0,0,0.2);
         }
-        
-        /* Responsive Styles */
+
         @media (max-width: 992px) {
             .sidebar {
                 transform: translateX(-100%);
             }
-            
+
             .sidebar.active {
                 transform: translateX(0);
             }
-            
+
             .main-content {
                 margin-left: 0;
                 padding-top: 80px;
             }
-            
+
             .menu-toggle {
                 display: block;
             }
         }
-        
+
         @media (max-width: 768px) {
             .welcome-message {
                 font-size: 20px;
             }
-            
-            .profile-table, 
-            .profile-table tbody, 
-            .profile-table tr, 
+
+            .profile-table,
+            .profile-table tbody,
+            .profile-table tr,
             .profile-table td {
-              display: block;
-              width: 100%;
+                display: block;
+                width: 100%;
             }
-            
+
             .profile-table thead {
-              display: none;
+                display: none;
             }
-            
+
             .profile-table tr {
-              margin-bottom: 15px;
+                margin-bottom: 15px;
             }
-            
+
             .profile-table td {
-              text-align: right;
-              position: relative;
-              padding-left: 50%;
+                text-align: right;
+                position: relative;
+                padding-left: 50%;
             }
-            
+
             .profile-table td::before {
-              content: attr(data-label);
-              position: absolute;
-              left: 15px;
-              font-weight: bold;
-              text-align: left;
-              color: #ffcc00;
+                content: attr(data-label);
+                position: absolute;
+                left: 15px;
+                font-weight: bold;
+                text-align: left;
+                color: #ffcc00;
             }
-            
+
             .password-field {
-              justify-content: flex-end;
+                justify-content: flex-end;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Mobile Menu Toggle -->
     <button class="menu-toggle" id="menuToggle">
         <i class="fas fa-bars"></i>
     </button>
 
-    <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="customer-name">
             <i class="fas fa-user"></i>
             <span>${sessionScope.customerDetails[0].first_name} ${sessionScope.customerDetails[0].last_name}</span>
         </div>
-        <a href="#" class="active">
-            <i class="fas fa-tachometer-alt"></i>
-            <span>Dashboard</span>
-        </a>
-        <a href="./viewProducts.jsp">
-            <i class="fas fa-shopping-bag"></i>
-            <span>Shop</span>
-        </a>
-        <a href="./viewOrders.jsp">
-            <i class="fas fa-clipboard-list"></i>
-            <span>My Orders</span>
-        </a>
-        <a href="./viewCart.jsp">
-            <i class="fas fa-shopping-cart"></i>
-            <span>My Cart</span>
-        </a>
-        <a href="./viewWishlist.jsp">
-            <i class="fas fa-heart"></i>
-            <span>Wishlist</span>
+        <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="./viewProducts.jsp"><i class="fas fa-shopping-bag"></i> Shop</a>
+        <a href="./viewOrders.jsp"><i class="fas fa-clipboard-list"></i> My Orders</a>
+        <a href="./viewCart.jsp"><i class="fas fa-shopping-cart"></i> My Cart</a>
+        <a href="./viewWishlist.jsp"><i class="fas fa-heart"></i> Wishlist</a>
+        <a href="../index.jsp">
+            <i class="fas fa-cog"></i>
+            <span class="nav-text">Site Settings</span>
         </a>
         <a href="${pageContext.request.contextPath}/customerLogoutServlet" class="logout-btn">
-            <i class="fas fa-sign-out-alt"></i>
-            <span>Logout</span>
+            <i class="fas fa-sign-out-alt"></i> Logout
         </a>
     </div>
 
-    <!-- Main Content -->
     <div class="main-content" id="mainContent">
         <c:choose>
             <c:when test="${not empty sessionScope.customerDetails}">
                 <div class="welcome-message">
                     <i class="fas fa-user"></i> Welcome, ${sessionScope.customerDetails[0].first_name} ${sessionScope.customerDetails[0].last_name}!
                 </div>
-                
+
                 <div class="row">
                     <div class="col-md-8">
                         <div class="table-responsive">
                             <table class="profile-table table table-bordered">
                                 <tbody>
                                     <c:forEach var="cd" items="${sessionScope.customerDetails}">
-                                    <c:set var="id" value="${cd.customer_id}"/>
-                                    <c:set var="username" value="${cd.username}"/>
-                                    <c:set var="fName" value="${cd.first_name}"/>
-                                    <c:set var="lName" value="${cd.last_name}"/>
-                                    <c:set var="phone" value="${cd.phone}"/>
-                                    <c:set var="email" value="${cd.email}"/>
-                                    <c:set var="password" value="${cd.password}"/>
-                                    
-                                    <tr>
-                                        <td class="detail-label" data-label="Customer ID"><i class="fas fa-id-card"></i> Customer ID</td>
-                                        <td><c:out value="${cd.customer_id}"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="detail-label" data-label="Username"><i class="fas fa-user"></i> Username</td>
-                                        <td><c:out value="${cd.username}"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="detail-label" data-label="First Name"><i class="fas fa-signature"></i> First Name</td>
-                                        <td><c:out value="${cd.first_name}"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="detail-label" data-label="Last Name"><i class="fas fa-signature"></i> Last Name</td>
-                                        <td><c:out value="${cd.last_name}"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="detail-label" data-label="Phone"><i class="fas fa-phone"></i> Phone</td>
-                                        <td><c:out value="${cd.phone}"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="detail-label" data-label="Email"><i class="fas fa-envelope"></i> Email</td>
-                                        <td><c:out value="${cd.email}"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="detail-label" data-label="Password"><i class="fas fa-lock"></i> Password</td>
-                                        <td>
-                                            <div class="password-field">
-                                                <span class="password-mask">••••••••</span>
-                                                <button class="btn btn-sm btn-show-password" onclick="togglePassword(this)">
-                                                    <i class="fas fa-eye"></i> Show
-                                                </button>
-                                                <span class="actual-password" style="display:none;"><c:out value="${cd.password}"/></span>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <c:set var="id" value="${cd.customer_id}"/>
+                                        <c:set var="username" value="${cd.username}"/>
+                                        <c:set var="fName" value="${cd.first_name}"/>
+                                        <c:set var="lName" value="${cd.last_name}"/>
+                                        <c:set var="phone" value="${cd.phone}"/>
+                                        <c:set var="email" value="${cd.email}"/>
+                                        <c:set var="password" value="${cd.password}"/>
+
+                                        <tr><td class="detail-label" data-label="Customer ID"><i class="fas fa-id-card"></i> Customer ID</td><td><c:out value="${cd.customer_id}"/></td></tr>
+                                        <tr><td class="detail-label" data-label="Username"><i class="fas fa-user"></i> Username</td><td><c:out value="${cd.username}"/></td></tr>
+                                        <tr><td class="detail-label" data-label="First Name"><i class="fas fa-signature"></i> First Name</td><td><c:out value="${cd.first_name}"/></td></tr>
+                                        <tr><td class="detail-label" data-label="Last Name"><i class="fas fa-signature"></i> Last Name</td><td><c:out value="${cd.last_name}"/></td></tr>
+                                        <tr><td class="detail-label" data-label="Phone"><i class="fas fa-phone"></i> Phone</td><td><c:out value="${cd.phone}"/></td></tr>
+                                        <tr><td class="detail-label" data-label="Email"><i class="fas fa-envelope"></i> Email</td><td><c:out value="${cd.email}"/></td></tr>
+                                        <tr>
+                                            <td class="detail-label" data-label="Password"><i class="fas fa-lock"></i> Password</td>
+                                            <td>
+                                                <div class="password-field">
+                                                    <span class="password-mask">••••••••</span>
+                                                    <button class="btn btn-sm btn-show-password" onclick="togglePassword(this)">
+                                                        <i class="fas fa-eye"></i> Show
+                                                    </button>
+                                                    <span class="actual-password" style="display:none;"><c:out value="${cd.password}"/></span>
+                                                </div>
+                                            </td>
+                                        </tr>
                                     </c:forEach>
                                 </tbody>
                             </table>
                         </div>
-                        
+
                         <c:url value="updateCustomerProfile.jsp" var="customerUpdate">
                             <c:param name="id" value="${id}"/>
                             <c:param name="username" value="${username}"/>
@@ -381,42 +351,36 @@
         </c:choose>
     </div>
 
-    <!-- Include Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
     <script>
         function togglePassword(button) {
             const row = button.closest('.password-field');
             const mask = row.querySelector('.password-mask');
             const actual = row.querySelector('.actual-password');
             const icon = button.querySelector('i');
-            
+
             if (mask.style.display === 'none') {
                 mask.style.display = 'inline';
                 actual.style.display = 'none';
-                icon.className = 'fas fa-eye';
                 button.innerHTML = '<i class="fas fa-eye"></i> Show';
             } else {
                 mask.style.display = 'none';
                 actual.style.display = 'inline';
-                icon.className = 'fas fa-eye-slash';
                 button.innerHTML = '<i class="fas fa-eye-slash"></i> Hide';
             }
         }
-        
-        // Mobile menu toggle functionality
-        document.addEventListener('DOMContentLoaded', function() {
+
+        document.addEventListener('DOMContentLoaded', function () {
             const menuToggle = document.getElementById('menuToggle');
             const sidebar = document.getElementById('sidebar');
-            
-            menuToggle.addEventListener('click', function() {
+
+            menuToggle.addEventListener('click', function () {
                 sidebar.classList.toggle('active');
             });
-            
-            // Close sidebar when clicking outside on mobile
-            document.addEventListener('click', function(event) {
-                if (window.innerWidth <= 992 && 
-                    !sidebar.contains(event.target) && 
+
+            document.addEventListener('click', function (event) {
+                if (window.innerWidth <= 992 &&
+                    !sidebar.contains(event.target) &&
                     event.target !== menuToggle) {
                     sidebar.classList.remove('active');
                 }
