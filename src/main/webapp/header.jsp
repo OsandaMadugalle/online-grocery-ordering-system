@@ -141,12 +141,12 @@
                         <a class="nav-link" href="feedback.jsp">FEEDBACK</a>
                     </li>
                     <li class="nav-item mx-4">
-                        <a class="nav-link" href="#">CONTACT</a>
+                        <a class="nav-link" href="contact.jsp">CONTACT</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="bi bi-cart4"></i> CART</a>
+                        <a class="nav-link" href="customer/cart.jsp"><i class="bi bi-cart4"></i> CART</a>
                     </li>
                 </ul>
             </div>
