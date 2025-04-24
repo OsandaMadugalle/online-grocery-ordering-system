@@ -1,42 +1,70 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
 
-<!-- Feedback-specific styles -->
 <style>
     body, html {
         margin: 0;
         padding: 0;
         height: 100%;
-        background-color: #014d4d; /* Deep green background */
+        background-color: #014d4d;
     }
 
     #feedback-wrapper {
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
         padding: 40px 20px;
-        background-color: #013220; /* Match background */
+        background-color: #013220;
         color: #f5f5f5;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         min-height: 100vh;
         box-sizing: border-box;
+        gap: 40px;
+        margin-top: 15px;
     }
 
-    #feedback-wrapper h1 {
-        font-size: 36px;
-        color: #FFD700; /* Gold accent */
-        margin-bottom: 30px;
+    .left-column, .right-column {
+        flex: 1 1 400px;
+        max-width: 600px;
+    }
+
+    h1, h2 {
+        color: #FFD700;
         text-align: center;
     }
 
-    #feedback-wrapper label {
+    h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
+
+    .testimonial {
+	    background-color: #145c5c;
+	    border-left: 4px solid #FFD700;
+	    padding: 16px;
+	    margin-top: 10px; /* Updated from 5px to 10px */
+	    border-radius: 5px;
+	}
+
+    .testimonial small {
+        color: #ccc;
+    }
+
+    label {
         color: #FFD700;
         font-weight: 500;
         margin-bottom: 8px;
+        display: block;
+        margin-top: 5px;
     }
 
-    #feedback-wrapper .form-control {
+    .form-control {
         background-color: #145c5c;
         color: #fff;
         border: 1px solid #FFD700;
@@ -44,19 +72,21 @@
         padding: 10px;
         font-size: 15px;
         width: 100%;
+        margin-top: 5px;
+        box-sizing: border-box;
     }
 
-    #feedback-wrapper .form-control::placeholder {
+    .form-control::placeholder {
         color: #bbb;
     }
 
-    #feedback-wrapper .form-control:focus {
+    .form-control:focus {
         outline: none;
         box-shadow: 0 0 5px 2px #FFD70055;
         border-color: #FFD700;
     }
 
-    #feedback-wrapper .btn-custom {
+    .btn-custom {
         background-color: #FFD700;
         color: #014d4d;
         font-weight: bold;
@@ -64,35 +94,54 @@
         border-radius: 5px;
         border: none;
         transition: 0.3s ease;
+        cursor: pointer;
+        margin-top: 5px;
     }
 
-    #feedback-wrapper .btn-custom:hover {
+    .btn-custom:hover {
         background-color: #e6c200;
     }
 
-    form {
-        width: 100%;
-        max-width: 600px;
+    @media (max-width: 768px) {
+        #feedback-wrapper {
+            flex-direction: column;
+            align-items: center;
+        }
     }
 </style>
 
 <br><br><br><br>
 
-<!-- Feedback Form Section -->
 <div id="feedback-wrapper">
-    <h1>We Value Your Feedback</h1>
-    <form method="post" action="SubmitFeedbackServlet">
-        <div class="mb-3">
+
+    <!-- Left Column -->
+    <div class="left-column">
+    <br>
+        <h2>What Our Customers Are Saying</h2>
+
+        <div class="testimonial"><p>"My order arrived right on time and everything was super fresh! So convenient!"</p><small>– Riya S.</small></div>
+        <div class="testimonial"><p>"I love how easy it is to find everything I need. A true lifesaver during busy weeks."</p><small>– Arjun P.</small></div>
+        <div class="testimonial"><p>"Their customer support is amazing! I had a missing item and it was resolved instantly."</p><small>– Maya D.</small></div>
+        <div class="testimonial"><p>"I’ve been ordering groceries online for a while, and this is by far the best service."</p><small>– Zaid K.</small></div>
+        <div class="testimonial"><p>"Very impressed with the quality of fruits and vegetables. Everything was top-notch."</p><small>– Neha M.</small></div>
+        <div class="testimonial"><p>"Their same-day delivery has been a game-changer. No more last-minute grocery runs."</p><small>– Tanmay V.</small></div>
+        <div class="testimonial"><p>"I’ve never had such a smooth online ordering experience. Highly recommended!"</p><small>– Sneha R.</small></div>
+        <div class="testimonial"><p>"Everything is well organized and delivery is always on time. Love it!"</p><small>– Karan J.</small></div>
+        <div class="testimonial"><p>"Great prices and amazing offers. I end up saving so much every month."</p><small>– Ayesha B.</small></div>
+        <div class="testimonial"><p>"Even during peak hours, they deliver exactly what I ordered. Super reliable!"</p><small>– Rahul T.</small></div>
+    </div>
+
+    <!-- Right Column -->
+    <div class="right-column">
+    <br>
+        <h1>We Value Your Feedback</h1>
+        <form method="post" action="SubmitFeedbackServlet">
             <label for="name">Name</label>
             <input type="text" class="form-control" name="name" placeholder="Your Name" required>
-        </div>
 
-        <div class="mb-3">
             <label for="email">Email</label>
             <input type="email" class="form-control" name="email" placeholder="you@example.com" required>
-        </div>
 
-        <div class="mb-3">
             <label for="rating">Rating</label>
             <select class="form-control" name="rating" required>
                 <option value="">-- Select Rating --</option>
@@ -101,17 +150,15 @@
                 <option value="Fair">Fair</option>
                 <option value="Poor">Poor</option>
             </select>
-        </div>
 
-        <div class="mb-3">
             <label for="comments">Comments</label>
             <textarea class="form-control" name="comments" rows="4" placeholder="Tell us what you think..." required></textarea>
-        </div>
 
-        <div class="text-center mt-4">
-            <button type="submit" class="btn-custom">Submit</button>
-        </div>
-    </form>
+            <div class="text-center">
+                <button type="submit" class="btn-custom">Submit</button>
+            </div>
+        </form>
+    </div>
 </div>
 
 <%@ include file="footer.jsp" %>
