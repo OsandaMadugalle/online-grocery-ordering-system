@@ -13,16 +13,16 @@ public class ProductService {
 	// Display Products Table
     public ArrayList<Product> getAllProducts() {
         ArrayList<Product> productList = new ArrayList<>();        
-        String sql = "SELECT * FROM Product"; // Assuming your table is named 'product'
+        String sql = "SELECT * FROM Product";
         
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
+        		PreparedStatement stmt = conn.prepareStatement(sql);
+        		ResultSet rs = stmt.executeQuery()) {
             
             while(rs.next()) {
                 Product product = new Product();
                 product.setId(rs.getInt("id"));
-                product.setImagePath(rs.getString("image_path")); // or whatever your column name is
+                product.setImagePath(rs.getString("image_path")); 
                 product.setProductName(rs.getString("product_name"));
                 product.setCategory(rs.getString("category"));
                 product.setStock(rs.getInt("stock"));
@@ -38,13 +38,13 @@ public class ProductService {
         }
     }
     
-    //add Product
+    //Add Product
     public static boolean addProduct(Product product) {
         boolean isSuccess = false;
         String sql = "INSERT INTO Product (product_name, category, stock, price, image_path) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        		PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, product.getProductName());
             stmt.setString(2, product.getCategory());
@@ -67,7 +67,7 @@ public class ProductService {
         String sql = "DELETE FROM Product WHERE id = ?";
 
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        		PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, product.getId());
             stmt.executeUpdate();
@@ -83,7 +83,7 @@ public class ProductService {
         boolean isSuccess = false;
 
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        		PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, product.getProductName());
             stmt.setString(2, product.getCategory());
@@ -101,13 +101,13 @@ public class ProductService {
         return isSuccess;
     }
 
- // Inside ProductService class
+    // Inside ProductService class
     public Product getProductById(int id) {
         Product product = null;
         String sql = "SELECT * FROM Product WHERE id = ?";
 
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        		PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
@@ -124,8 +124,6 @@ public class ProductService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return product;
     }
-
 }
