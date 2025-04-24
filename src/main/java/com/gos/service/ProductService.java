@@ -9,6 +9,7 @@ import com.gos.model.Product;
 import com.gos.util.DBConnection;
 
 public class ProductService {
+	
 	// Display Products Table
     public ArrayList<Product> getAllProducts() {
         ArrayList<Product> productList = new ArrayList<>();        
@@ -61,7 +62,7 @@ public class ProductService {
         return isSuccess;
     }
     
- // Delete Product
+    // Delete Product
     public void deleteProduct(Product product) {
         String sql = "DELETE FROM Product WHERE id = ?";
 
@@ -76,7 +77,7 @@ public class ProductService {
         }
     }
 
- // Update Product
+    // Update Product
     public boolean updateProduct(Product product) {
         String sql = "UPDATE Product SET product_name = ?, category = ?, stock = ?, price = ?, image_path = ? WHERE id = ?";
         boolean isSuccess = false;
