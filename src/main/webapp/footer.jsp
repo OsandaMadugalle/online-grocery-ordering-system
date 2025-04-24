@@ -1,12 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Footer Section</title>
 
     <!-- Bootstrap CSS -->
@@ -44,22 +41,22 @@
 
             <!-- Contact Information -->
             <div class="contact-info mb-3">
-                <p><i class="fas fa-phone-alt"></i> Phone: +94700000000</p>
-                <p><i class="fas fa-map-marker-alt"></i> Address: 123 Main Street, Colombo, Sri Lanka</p>
+                <p><i class="fas fa-phone-alt"></i> Phone: +94701234567</p>
+                <p><i class="fas fa-map-marker-alt"></i> Address: Colombo, Sri Lanka</p>
             </div>
 
             <!-- Social Media Links -->
             <div class="social-media-links">
-                <a href="https://facebook.com" target="_blank" class="mx-3 text-decoration-none">
+                <a href="https://facebook.com" target="_blank" class="mx-3">
                     <i class="fab fa-facebook fa-2x text-primary"></i>
                 </a>
-                <a href="https://twitter.com" target="_blank" class="mx-3 text-decoration-none">
+                <a href="https://twitter.com" target="_blank" class="mx-3">
                     <i class="fab fa-twitter fa-2x text-info"></i>
                 </a>
-                <a href="https://instagram.com" target="_blank" class="mx-3 text-decoration-none">
+                <a href="https://instagram.com" target="_blank" class="mx-3">
                     <i class="fab fa-instagram fa-2x text-danger"></i>
                 </a>
-                <a href="https://linkedin.com" target="_blank" class="mx-3 text-decoration-none">
+                <a href="https://linkedin.com" target="_blank" class="mx-3">
                     <i class="fab fa-linkedin fa-2x text-primary"></i>
                 </a>
             </div>
@@ -68,13 +65,6 @@
             <p class="mt-3">&copy; 2025 GOS. All rights reserved.</p>
         </div>
     </footer>
-
-    <!-- jQuery (Required for Bootstrap's JavaScript) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 
 </html>
