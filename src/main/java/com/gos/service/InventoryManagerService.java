@@ -21,7 +21,7 @@ public class InventoryManagerService {
 		String sql = "SELECT * FROM InventoryManager WHERE Username = ? AND Password = ?";
 		
 		try(Connection con = DBConnection.getConnection(); 
-             PreparedStatement stmt = con.prepareStatement(sql)){
+				PreparedStatement stmt = con.prepareStatement(sql)){
 			
 			stmt.setString(1, username);
 			stmt.setString(2, password);
@@ -59,7 +59,7 @@ public class InventoryManagerService {
         String sql = "SELECT * FROM InventoryManager";
         
 	    try(Statement stmt = DBConnection.getConnection().createStatement();
-		    ResultSet rs = stmt.executeQuery(sql)) {     
+	    		ResultSet rs = stmt.executeQuery(sql)) {     
 	        
 	        while(rs.next()) {
 	            InventoryManager IM = new InventoryManager();
@@ -87,7 +87,7 @@ public class InventoryManagerService {
 	    String sql = "INSERT INTO InventoryManager (Username, First_name, Last_name, Phone, Email, Password) VALUES (?, ?, ?, ?, ?, ?)";
 
 	    try (Connection conn = DBConnection.getConnection();
-	         PreparedStatement stmt = conn.prepareStatement(sql)) {
+	    		PreparedStatement stmt = conn.prepareStatement(sql)) {
 
 	        stmt.setString(1, username);
 	        stmt.setString(2, first_name);
@@ -107,13 +107,13 @@ public class InventoryManagerService {
 	    return isSuccess;
 	}    
     
- // Update Inventory Manager Details
+	// Update Inventory Manager Details
     public static boolean updateInventoryManager(String id, String username, String fname, String lname, String phone, String email, String password) {
         boolean isSuccess = false;
         String sql = "UPDATE InventoryManager SET Username=?, First_Name=?, Last_Name=?, Phone=?, Email=?, Password=? WHERE M_ID=?";
 
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        		PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, username);
             stmt.setString(2, fname);
@@ -140,7 +140,7 @@ public class InventoryManagerService {
         String sql = "SELECT * FROM InventoryManager WHERE M_ID = ?";
 
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        		PreparedStatement stmt = conn.prepareStatement(sql)) {
 
         	stmt.setInt(1, Integer.parseInt(id));
         	
@@ -158,7 +158,6 @@ public class InventoryManagerService {
                 InventoryManager inventoryManager = new InventoryManager(mId, username, fName, lName, phone, email, password);
                 IM.add(inventoryManager);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -171,7 +170,7 @@ public class InventoryManagerService {
         String sql = "DELETE FROM InventoryManager WHERE M_ID = ?";
          
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)){
+        		PreparedStatement stmt = conn.prepareStatement(sql)){
         	
             stmt.setInt(1, im.getInventory_manager_id());
             stmt.executeUpdate();
