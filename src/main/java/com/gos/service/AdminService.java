@@ -14,7 +14,7 @@ public class AdminService {
         String sql = "SELECT * FROM Admin WHERE Username = ? AND Password = ?";
 
         try (Connection conn = DBConnection.getConnection(); 
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        		PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, username);
             stmt.setString(2, password); 
@@ -44,7 +44,7 @@ public class AdminService {
         );
     }
     
-  //Add Admin
+    //Add Admin
     public static boolean addAdmin( String username, String first_name, String last_name , String phone, String email , String password) {
     	
     	boolean isSuccess = false;
@@ -52,7 +52,7 @@ public class AdminService {
     	String sql="INSERT INTO Admin VALUES(0,'"+username+"','"+first_name+"','"+last_name+"','"+phone+"','"+email+"','"+password+"')";
 
         try (Connection conn = DBConnection.getConnection(); 
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        		PreparedStatement stmt = conn.prepareStatement(sql)) {
         	
         	int rs=stmt.executeUpdate(sql);
         	
@@ -76,7 +76,7 @@ public class AdminService {
         String sql = "UPDATE Admin SET Username=?, First_Name=?, Last_Name=?, Phone=?, Email=?, Password=? WHERE Admin_ID=?";
 
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        		PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, username);
             stmt.setString(2, fname);
@@ -106,7 +106,7 @@ public class AdminService {
         String sql = "SELECT * FROM Admin WHERE Admin_ID = ?";
 
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        		PreparedStatement stmt = conn.prepareStatement(sql)) {
 
         	stmt.setInt(1, Integer.parseInt(id));
         	
@@ -137,7 +137,7 @@ public class AdminService {
 		ArrayList<Admin> listAdmin = new ArrayList<>();        
         String sql = "SELECT * FROM Admin";
 	    try (Connection conn = DBConnection.getConnection();
-	         PreparedStatement stmt = conn.prepareStatement(sql)){
+	    		PreparedStatement stmt = conn.prepareStatement(sql)){
 	        	        
 	        ResultSet rs = stmt.executeQuery(sql);
 	        
@@ -161,12 +161,12 @@ public class AdminService {
 	    }
 	}
 	
-	 // Delete Admin
+	// Delete Admin
     public void deleteadmin(Admin ad) {
         String sql = "DELETE FROM Admin WHERE Admin_ID = ?";
          
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)){
+        		PreparedStatement stmt = conn.prepareStatement(sql)){
         	
             stmt.setInt(1, ad.getAdmin_id());
             stmt.executeUpdate();
