@@ -1,12 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <style>
     body, html {
         margin: 0;
         padding: 0;
+        padding-top: 60px;
         height: 100%;
-        background-color: #014d4d;
+        background-color: white;
     }
 
     #feedback-wrapper {
@@ -48,7 +52,7 @@
 	    background-color: #145c5c;
 	    border-left: 4px solid #FFD700;
 	    padding: 16px;
-	    margin-top: 10px; /* Updated from 5px to 10px */
+	    margin-top: 10px; 
 	    border-radius: 5px;
 	}
 
@@ -109,8 +113,8 @@
         }
     }
 </style>
-
-<br><br><br><br>
+</head>
+<body>
 
 <div id="feedback-wrapper">
 
@@ -162,3 +166,5 @@
 </div>
 
 <%@ include file="footer.jsp" %>
+</body>
+</html>
