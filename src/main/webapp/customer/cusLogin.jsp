@@ -159,6 +159,7 @@
 			 <a href="./cusLogin.jsp" class="btn active">Customer</a>
 			    <a href="../admin/adminLogin.jsp" class="btn">Admin</a>
 			    <a href="../inventoryManager/inventoryManagerLogin.jsp" class="btn">Inventory Manager</a>
+			    <a href="../deliveryManager/delLogin.jsp" class="btn">Delivery Manager</a>
 			</div>
     
         <form action="../customerLoginServlet" method="post">
