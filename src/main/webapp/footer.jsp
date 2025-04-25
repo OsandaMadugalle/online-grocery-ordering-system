@@ -43,7 +43,7 @@
 <body>
 
     <!-- Footer Section -->
-    <footer class="text-center py-3 mt-5">
+    <footer class="text-center py-3">
         <div class="container">
 
             <!-- Contact Information -->
