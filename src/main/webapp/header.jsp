@@ -153,14 +153,14 @@
         </nav>
 
         <!-- Search Bar -->
-        <div class="search-bar-container d-flex justify-content-center align-items-center p-3 w-50"
-            style="background-color: #004d00; text-align: center; height: 60px; margin: 0 auto; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
-            <form class="form-inline d-flex justify-content-center w-100">
-                <input id="searchInput" class="form-control me-2" type="search" placeholder="Search..." aria-label="Search"
-                    style="width: 100%; max-width: 400px;">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
+		<div class="search-bar-container d-flex justify-content-center align-items-center px-3 py-2"
+		     style="background-color: #004d00; text-align: center; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
+		    <form class="form-inline w-100 d-flex justify-content-center">
+		        <input id="searchInput" class="form-control mr-2" type="search" placeholder="Search..." aria-label="Search"
+		            style="max-width: 400px; width: 100%;">
+		        <button class="btn btn-outline-success" type="submit">Search</button>
+		    </form>
+		</div>
     </header>
 
     <!-- Animated Placeholder Script -->
