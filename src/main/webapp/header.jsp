@@ -10,27 +10,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Header</title>
 
-    <!-- Bootstrap CSS (Version 4.5.2) -->
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css">
 
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
-    <!-- FontAwesome (Version 5.15.4) -->
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <style>
         body {
             padding-top: 60px;
-        }
-
-        input[type="search"]::placeholder {
-            color: gray;
-            transition: color 0.3s ease;
-        }
-
-        input[type="search"]:focus::placeholder {
-            color: transparent;
         }
 
         @media (max-width: 768px) {
@@ -43,8 +34,7 @@
             }
         }
 
-        .navbar,
-        footer {
+        .navbar, footer {
             background-color: #004d00;
         }
 
@@ -52,38 +42,29 @@
             color: white;
         }
 
-        .btn,
-        .dropdown-item:hover {
-            background-color: #28a745;
-            color: white;
+        .dropdown:hover .dropdown-menu {
+            display: block;
         }
 
-        .navbar-nav .nav-link {
-            font-size: 1.25rem;
+        /* Additional styles for search bar */
+        .search-bar-container {
+            background-color: #004d00;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
         }
 
-        .dropdown-item {
-            color: white;
+        input[type="search"]::placeholder {
+            color: gray;
+            transition: color 0.3s ease;
         }
 
-        .card {
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
-
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .search-bar-container form {
-            width: auto;
-            max-width: 100%;
+        input[type="search"]:focus::placeholder {
+            color: transparent;
         }
     </style>
 </head>
 
 <body>
-
     <!-- Header Section -->
     <header style="position: fixed; top: 0; width: 100%; z-index: 1030;">
         <!-- Top Bar -->
@@ -103,7 +84,7 @@
         </div>
 
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-dark px-5" style="background-color: #004d00; height: 60px;">
+        <nav class="navbar navbar-expand-lg navbar-dark px-5">
             <a class="navbar-brand mx-0" href="#">
                 <img src="images/logo.png" alt="Website Logo" style="height: 40px; width: 100px;">
             </a>
@@ -116,20 +97,20 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto p-2">
                     <li class="nav-item active mx-4">
-                        <a class="nav-link" href="index.jsp" aria-current="page">HOME</a>
+                        <a class="nav-link" href="index.jsp">HOME</a>
                     </li>
                     <li class="nav-item dropdown mx-4">
                         <a class="nav-link dropdown-toggle" href="#" id="catalogDropdown" role="button"
-                            data-toggle="dropdown">
+                            data-toggle="dropdown" aria-expanded="false">
                             CATALOG
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="catalogDropdown" style="background-color: #004d00;">
-                            <li><a class="dropdown-item" href="#">Vegetables</a></li>
-                            <li><a class="dropdown-item" href="#">Fruits</a></li>
-                            <li><a class="dropdown-item" href="#">Rice</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">More Categories</a></li>
-                        </ul>
+                        <div class="dropdown-menu" aria-labelledby="catalogDropdown">
+                            <a class="dropdown-item" href="#">Vegetables</a>
+                            <a class="dropdown-item" href="#">Fruits</a>
+                            <a class="dropdown-item" href="#">Rice</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">More Categories</a>
+                        </div>
                     </li>
                     <li class="nav-item mx-4">
                         <a class="nav-link" href="#">SHOP</a>
@@ -153,14 +134,13 @@
         </nav>
 
         <!-- Search Bar -->
-		<div class="search-bar-container d-flex justify-content-center align-items-center px-3 py-2"
-		     style="background-color: #004d00; text-align: center; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
-		    <form class="form-inline w-100 d-flex justify-content-center">
-		        <input id="searchInput" class="form-control mr-2" type="search" placeholder="Search..." aria-label="Search"
-		            style="max-width: 400px; width: 100%;">
-		        <button class="btn btn-outline-success" type="submit">Search</button>
-		    </form>
-		</div>
+        <div class="search-bar-container d-flex justify-content-center align-items-center px-3 py-2">
+            <form class="form-inline w-100 d-flex justify-content-center">
+                <input id="searchInput" class="form-control mr-2" type="search" placeholder="Search..." aria-label="Search"
+                    style="max-width: 400px; width: 100%;">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
     </header>
 
     <!-- Animated Placeholder Script -->
@@ -191,8 +171,9 @@
         typePlaceholder();
     </script>
 
-    <!-- Bootstrap JS (Version 4.5.2) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js" defer></script>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
