@@ -16,18 +16,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
-	    body {
-		    padding-top: 60px;
-		}
-	    
+        body {
+            padding-top: 60px;
+        }
+
         footer {
             background-color: #004d00;
             color: white;
-            padding: 20px 0;
+            padding: 40px 0;
         }
 
-        .contact-info p {
+        .contact-info p,
+        .quick-links a,
+        .services p {
             margin: 5px 0;
+            color: white;
+        }
+
+        .quick-links a:hover {
+            text-decoration: underline;
         }
 
         .social-media-links a {
@@ -37,39 +44,71 @@
         .social-media-links a:hover {
             transform: scale(1.2);
         }
+
+        .footer-heading {
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 
 <body>
 
     <!-- Footer Section -->
-    <footer class="text-center py-3">
-        <div class="container">
+    <footer>
+        <div class="container text-center text-md-left">
 
-            <!-- Contact Information -->
-            <div class="contact-info mb-3">
-                <p><i class="fas fa-phone-alt"></i> Phone: +94701234567</p>
-                <p><i class="fas fa-map-marker-alt"></i> Address: Colombo, Sri Lanka</p>
+            <div class="row">
+
+                <!-- Contact Information -->
+                <div class="col-md-4 contact-info mb-4">
+                    <h5 class="footer-heading">Contact Us</h5>
+                    <p><i class="fas fa-phone-alt"></i> +94 70 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> support@gosgroceries.lk</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Main Street, Colombo, Sri Lanka</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-md-4 quick-links mb-4">
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <a href="/shop">Shop Now</a><br>
+                    <a href="/about">About Us</a><br>
+                    <a href="/contact">Contact</a><br>
+                    <a href="/faq">FAQs</a><br>
+                    <a href="/terms">Terms & Conditions</a>
+                </div>
+
+                <!-- Services Offered -->
+                <div class="col-md-4 services mb-4">
+                    <h5 class="footer-heading">Our Services</h5>
+                    <p><i class="fas fa-truck"></i> Same-Day Delivery</p>
+                    <p><i class="fas fa-leaf"></i> Fresh Produce Guaranteed</p>
+                    <p><i class="fas fa-credit-card"></i> Secure Payments</p>
+                    <p><i class="fas fa-sync-alt"></i> Easy Returns</p>
+                </div>
             </div>
 
             <!-- Social Media Links -->
-            <div class="social-media-links">
-                <a href="https://facebook.com" target="_blank" class="mx-3">
-                    <i class="fab fa-facebook fa-2x text-primary"></i>
+            <div class="text-center social-media-links mt-3">
+                <a href="https://facebook.com" target="_blank" class="mx-2">
+                    <i class="fab fa-facebook fa-2x text-white"></i>
                 </a>
-                <a href="https://twitter.com" target="_blank" class="mx-3">
-                    <i class="fab fa-twitter fa-2x text-info"></i>
+                <a href="https://twitter.com" target="_blank" class="mx-2">
+                    <i class="fab fa-twitter fa-2x text-white"></i>
                 </a>
-                <a href="https://instagram.com" target="_blank" class="mx-3">
-                    <i class="fab fa-instagram fa-2x text-danger"></i>
+                <a href="https://instagram.com" target="_blank" class="mx-2">
+                    <i class="fab fa-instagram fa-2x text-white"></i>
                 </a>
-                <a href="https://linkedin.com" target="_blank" class="mx-3">
-                    <i class="fab fa-linkedin fa-2x text-primary"></i>
+                <a href="https://linkedin.com" target="_blank" class="mx-2">
+                    <i class="fab fa-linkedin fa-2x text-white"></i>
                 </a>
             </div>
 
-            <!-- Footer Copyright -->
-            <p class="mt-3">&copy; 2025 GOS. All rights reserved.</p>
+            <!-- Footer Bottom -->
+            <div class="text-center mt-3">
+                <p>&copy; 2025 GOS Groceries. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 </body>
