@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="./header.jsp" %>  
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,10 +49,7 @@
 	
 	<body>	
 	    
-	    <!-- Include header file -->
-  		<%@ include file="./header.jsp" %>  		
-		
-		<br><br>
+	    	
 	
 	    <!-- Bootstrap 5 Carousel -->
 		<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -229,7 +227,7 @@
 		</div>
 	
 		<!-- Feedback and Support Section -->
-		<div class="container mt-5">
+		<div class="container mt-5 mb-5">
 		
 		    <div class="d-flex align-items-center mb-4" style="margin-top: 20px; margin-bottom: 20px;">
 		        <hr class="flex-grow-1 me-3" style="border: 1px solid black; margin: 0 10px;">
@@ -265,13 +263,11 @@
 		        </div>
 		        
 		    </div>
-		</div>
-		
-	    <!-- Include footer file -->
-		<%@ include file="./footer.jsp" %>
+		</div>		
 		
 		<!-- Bootstrap Bundle with Popper for Carousel -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>		
 	
+		<%@ include file="./footer.jsp" %>
 	</body>
 </html>
