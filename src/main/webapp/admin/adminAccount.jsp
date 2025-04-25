@@ -320,51 +320,51 @@
         }
         
         @media (max-width: 768px) {
-    .profile-table, 
-    .profile-table tbody, 
-    .profile-table tr, 
-    .profile-table td {
-      display: block;
-      width: 100%;
-    }
-    
-    .profile-table thead {
-      display: none;
-    }
-    
-    .profile-table tr {
-      margin-bottom: 15px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 5px;
-    }
-    
-    .profile-table td {
-      padding: 10px 15px;
-      text-align: right;
-      position: relative;
-      border: none;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-    
-    .profile-table td:last-child {
-      border-bottom: none;
-    }
-    
-    .profile-table td::before {
-      content: attr(data-label);
-      position: absolute;
-      left: 15px;
-      top: 10px;
-      font-weight: bold;
-      text-align: left;
-      color: #ffcc00;
-    }
-    
-    .password-field {
-      justify-content: flex-end;
-    }
-  }
+		    .profile-table, 
+		    .profile-table tbody, 
+		    .profile-table tr, 
+		    .profile-table td {
+		      display: block;
+		      width: 100%;
+		    }
+		    
+		    .profile-table thead {
+		      display: none;
+		    }
+		    
+		    .profile-table tr {
+		      margin-bottom: 15px;
+		      background: rgba(255,255,255,0.05);
+		      border: 1px solid rgba(255,255,255,0.2);
+		      border-radius: 5px;
+		    }
+		    
+		    .profile-table td {
+		      padding: 10px 15px;
+		      text-align: right;
+		      position: relative;
+		      border: none;
+		      border-bottom: 1px solid rgba(255,255,255,0.1);
+		    }
+		    
+		    .profile-table td:last-child {
+		      border-bottom: none;
+		    }
+		    
+		    .profile-table td::before {
+		      content: attr(data-label);
+		      position: absolute;
+		      left: 15px;
+		      top: 10px;
+		      font-weight: bold;
+		      text-align: left;
+		      color: #ffcc00;
+		    }
+		    
+		    .password-field {
+		      justify-content: flex-end;
+		    }
+		  }
     </style>
 </head>
 
