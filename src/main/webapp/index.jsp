@@ -27,6 +27,7 @@
 		       
 		    body {
 		        background-color: white;
+		        padding-top: 60px;
 		    }
 		     
 		    .carousel-item.active img {
