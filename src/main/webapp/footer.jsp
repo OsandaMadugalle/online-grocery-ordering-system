@@ -10,10 +10,10 @@
     <title>Footer Section</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css">
 
     <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <style>
         body {
@@ -50,6 +50,20 @@
             margin-bottom: 10px;
             text-transform: uppercase;
         }
+
+        /* Back to Top Button */
+        #backToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px 15px;
+            display: none;
+            z-index: 1000;
+        }
     </style>
 </head>
 
@@ -72,11 +86,11 @@
                 <!-- Quick Links -->
                 <div class="col-md-4 quick-links mb-4">
                     <h5 class="footer-heading">Quick Links</h5>
-                    <a href="/shop">Shop Now</a><br>
-                    <a href="/about">About Us</a><br>
-                    <a href="/contact">Contact</a><br>
-                    <a href="/faq">FAQs</a><br>
-                    <a href="/terms">Terms & Conditions</a>
+                    <a href="<c:url value='/shop'/>">Shop Now</a><br>
+                    <a href="<c:url value='/about'/>">About Us</a><br>
+                    <a href="<c:url value='/contact'/>">Contact</a><br>
+                    <a href="<c:url value='/faq'/>">FAQs</a><br>
+                    <a href="<c:url value='/terms'/>">Terms & Conditions</a>
                 </div>
 
                 <!-- Services Offered -->
@@ -91,16 +105,16 @@
 
             <!-- Social Media Links -->
             <div class="text-center social-media-links mt-3">
-                <a href="https://facebook.com" target="_blank" class="mx-2">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="mx-2">
                     <i class="fab fa-facebook fa-2x text-white"></i>
                 </a>
-                <a href="https://twitter.com" target="_blank" class="mx-2">
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="mx-2">
                     <i class="fab fa-twitter fa-2x text-white"></i>
                 </a>
-                <a href="https://instagram.com" target="_blank" class="mx-2">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="mx-2">
                     <i class="fab fa-instagram fa-2x text-white"></i>
                 </a>
-                <a href="https://linkedin.com" target="_blank" class="mx-2">
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="mx-2">
                     <i class="fab fa-linkedin fa-2x text-white"></i>
                 </a>
             </div>
@@ -111,6 +125,36 @@
             </div>
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Back to Top Script -->
+    <script>
+        const backToTopButton = document.getElementById("backToTop");
+
+        window.onscroll = function () {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        };
+
+        backToTopButton.addEventListener("click", function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>
