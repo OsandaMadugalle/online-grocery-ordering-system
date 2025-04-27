@@ -121,7 +121,7 @@
 
             <!-- Footer Bottom -->
             <div class="text-center mt-3">
-                <p>&copy; 2025 GOS Groceries. All rights reserved.</p>
+                <p>&copy; 2025 SLIIT Kandy Uni Y2S1 Group 27. All rights reserved.</p>
             </div>
         </div>
     </footer>
