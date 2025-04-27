@@ -14,8 +14,116 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <style>
+        :root {
+            --primary-green: #004d00;
+            --light-green: #e8f5e9;
+            --accent-gold: #FFD700;
+            --dark-green: #013220;
+        }
+        
         body {
             padding-top: 160px;
+            background-color: var(--light-green);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .contact-container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 77, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .contact-info-section {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 30px;
+            height: 100%;
+        }
+        
+        .contact-info-section h2 {
+            color: var(--accent-gold);
+            font-weight: 700;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .contact-info-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-gold);
+        }
+        
+        .contact-info-section p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-info-section i {
+            color: var(--accent-gold);
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .contact-form-section {
+            padding: 30px;
+        }
+        
+        .contact-form-section h4 {
+            color: var(--primary-green);
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+        
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 0.2rem rgba(0, 77, 0, 0.25);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-green);
+            border-color: var(--primary-green);
+            padding: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--dark-green);
+            border-color: var(--dark-green);
+            transform: translateY(-2px);
+        }
+        
+        label {
+            font-weight: 600;
+            color: var(--dark-green);
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding-top: 200px;
+            }
+            
+            .contact-info-section {
+                border-radius: 15px 15px 0 0;
+            }
+            
+            .contact-form-section {
+                border-radius: 0 0 15px 15px;
+            }
         }
     </style>
 </head>
@@ -26,24 +134,32 @@
 
     <main>
         <div class="container my-5">
-            <div class="row">
-                <!-- Left: Contact Info -->
-                <div class="col-md-6 mb-4">
-                    <h2 class="text-primary">Get in Touch</h2>
-                    <p><i class="fas fa-phone-alt"></i> +94 70 123 4567</p>
-                    <p><i class="fas fa-envelope"></i> support@gosgroceries.lk</p>
-                    <p><i class="fas fa-map-marker-alt"></i> 123 Main Street, Colombo, Sri Lanka</p>
-                </div>
+            <div class="contact-container">
+                <div class="row no-gutters">
+                    <!-- Left: Contact Info -->
+                    <div class="col-lg-6">
+                        <div class="contact-info-section">
+                            <h2>Get in Touch</h2>
+                            <p><i class="fas fa-phone-alt"></i> +94 70 123 4567</p>
+                            <p><i class="fas fa-envelope"></i> support@gosgroceries.lk</p>
+                            <p><i class="fas fa-map-marker-alt"></i> 123 Main Street, Colombo, Sri Lanka</p>
+                            <p><i class="fas fa-clock"></i> Open Daily: 8:00 AM - 10:00 PM</p>
+                            
+                            <div class="mt-5">
+                                <h5 class="mb-3">Follow Us</h5>
+                                <a href="#" class="text-white mr-3"><i class="fab fa-facebook-f fa-2x"></i></a>
+                                <a href="#" class="text-white mr-3"><i class="fab fa-twitter fa-2x"></i></a>
+                                <a href="#" class="text-white mr-3"><i class="fab fa-instagram fa-2x"></i></a>
+                                <a href="#" class="text-white"><i class="fab fa-whatsapp fa-2x"></i></a>
+                            </div>
+                        </div>
+                    </div>
 
-                <!-- Right: Contact Form -->
-                <div class="col-md-6">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h4 class="card-title mb-4">Send Us a Message</h4>
-                            <form id="contactForm"
-                                  method="post"
-                                  action="SubmitContactServlet">
-
+                    <!-- Right: Contact Form -->
+                    <div class="col-lg-6">
+                        <div class="contact-form-section">
+                            <h4>Send Us a Message</h4>
+                            <form id="contactForm" method="post" action="SubmitContactServlet">
                                 <div class="form-group">
                                     <label for="contactName">Name</label>
                                     <input type="text" class="form-control" id="contactName" name="name" placeholder="Your Name" required>
@@ -73,7 +189,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </main>
@@ -88,10 +203,10 @@
     <script>
         window.addEventListener('DOMContentLoaded', function() {
             var header = document.querySelector('header');
-            var searchBar = document.querySelector('.search-bar'); // Adjust if your search bar class is different
+            var searchBar = document.querySelector('.search-bar');
             var headerHeight = header ? header.offsetHeight : 0;
             var searchHeight = searchBar ? searchBar.offsetHeight : 0;
-            var totalHeight = headerHeight + searchHeight + 20; // some margin
+            var totalHeight = headerHeight + searchHeight + 20;
 
             document.body.style.paddingTop = totalHeight + 'px';
         });
