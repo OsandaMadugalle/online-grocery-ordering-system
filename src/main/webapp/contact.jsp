@@ -1,177 +1,132 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback Form</title>
+    <title>Contact Us - GOS Groceries</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
     <style>
         body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .form-container {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            padding: 30px;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-            align-items: center;
-        }
-        .nav-buttons {
-            display: flex;
-            gap: 10px;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        .form-group input, 
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        .form-group textarea {
-            height: 150px;
-            resize: vertical;
-        }
-        .submit-btn {
-            width: 100%;
-            padding: 12px;
-            background-color: #6242ef;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-        .submit-btn:hover {
-            background-color: #5035c9;
-        }
-        .error {
-            color: red;
-            font-size: 0.8em;
-            margin-top: 5px;
+            padding-top: 160px;
         }
     </style>
 </head>
+
 <body>
-    <div class="form-container">
-        <div class="header">
-            <h2>Feedback Form</h2>
-            <div class="nav-buttons">
-                <button onclick="window.location.href='profile.html'">My Profile</button>
-                <button onclick="logout()">Log Out</button>
+
+    <%@ include file="header.jsp" %>
+
+    <main>
+        <div class="container my-5">
+            <div class="row">
+                <!-- Left: Contact Info -->
+                <div class="col-md-6 mb-4">
+                    <h2 class="text-primary">Get in Touch</h2>
+                    <p><i class="fas fa-phone-alt"></i> +94 70 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> support@gosgroceries.lk</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Main Street, Colombo, Sri Lanka</p>
+                </div>
+
+                <!-- Right: Contact Form -->
+                <div class="col-md-6">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">Send Us a Message</h4>
+                            <form id="contactForm"
+                                  method="post"
+                                  action="SubmitContactServlet">
+
+                                <div class="form-group">
+                                    <label for="contactName">Name</label>
+                                    <input type="text" class="form-control" id="contactName" name="name" placeholder="Your Name" required>
+                                    <small id="nameError" class="form-text text-danger"></small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="contactEmail">Email</label>
+                                    <input type="email" class="form-control" id="contactEmail" name="email" placeholder="you@example.com" required>
+                                    <small id="emailError" class="form-text text-danger"></small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="contactSubject">Subject</label>
+                                    <input type="text" class="form-control" id="contactSubject" name="subject" placeholder="Subject" required>
+                                    <small id="subjectError" class="form-text text-danger"></small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="contactMessage">Message</label>
+                                    <textarea class="form-control" id="contactMessage" name="message" rows="5" placeholder="How can we help?" required></textarea>
+                                    <small id="messageError" class="form-text text-danger"></small>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-        
-        <form id="feedbackForm">
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Enter Name" required>
-                <div id="nameError" class="error"></div>
-            </div>
-            
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Enter Email" required>
-                <div id="emailError" class="error"></div>
-            </div>
-            
-            <div class="form-group">
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" placeholder="Give us your feedback" required></textarea>
-                <div id="messageError" class="error"></div>
-            </div>
-            
-            <button type="submit" class="submit-btn">Submit Feedback</button>
-        </form>
-    </div>
+    </main>
 
+    <%@ include file="footer.jsp" %>
+
+    <!-- Bootstrap JS + dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+    <!-- Dynamic Top Padding Fix Script -->
     <script>
-        document.getElementById('feedbackForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            // Reset previous error messages
-            document.getElementById('nameError').textContent = '';
-            document.getElementById('emailError').textContent = '';
-            document.getElementById('messageError').textContent = '';
-            
-            // Get form values
-            const name = document.getElementById('name');
-            const email = document.getElementById('email');
-            const message = document.getElementById('message');
-            
-            let isValid = true;
-            
-            // Name validation
-            if (name.value.trim() === '') {
-                document.getElementById('nameError').textContent = 'Name is required';
-                isValid = false;
-            } else if (name.value.trim().length < 2) {
-                document.getElementById('nameError').textContent = 'Name must be at least 2 characters';
-                isValid = false;
-            }
-            
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (email.value.trim() === '') {
-                document.getElementById('emailError').textContent = 'Email is required';
-                isValid = false;
-            } else if (!emailRegex.test(email.value)) {
-                document.getElementById('emailError').textContent = 'Invalid email format';
-                isValid = false;
-            }
-            
-            // Message validation
-            if (message.value.trim() === '') {
-                document.getElementById('messageError').textContent = 'Message is required';
-                isValid = false;
-            } else if (message.value.trim().length < 10) {
-                document.getElementById('messageError').textContent = 'Message must be at least 10 characters';
-                isValid = false;
-            }
-            
-            // If all validations pass
-            if (isValid) {
-                // Simulating form submission
-                alert('Feedback submitted successfully!');
-                
-                // In a real-world scenario, you would send this data to a server
-                const formData = {
-                    name: name.value.trim(),
-                    email: email.value.trim(),
-                    message: message.value.trim()
-                };
-                
-                console.log('Submitted Feedback:', formData);
-                
-                // Reset form
-                this.reset();
-            }
-        });
+        window.addEventListener('DOMContentLoaded', function() {
+            var header = document.querySelector('header');
+            var searchBar = document.querySelector('.search-bar'); // Adjust if your search bar class is different
+            var headerHeight = header ? header.offsetHeight : 0;
+            var searchHeight = searchBar ? searchBar.offsetHeight : 0;
+            var totalHeight = headerHeight + searchHeight + 20; // some margin
 
-        function logout() {
-            alert('Logging out!');
-            // Implement actual logout logic here
-            window.location.href = 'login.html';
-        }
+            document.body.style.paddingTop = totalHeight + 'px';
+        });
     </script>
+
+    <!-- Contact Form Validation -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            ['name','email','subject','message'].forEach(function(field) {
+                document.getElementById(field + 'Error').textContent = '';
+            });
+
+            let valid = true;
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const f  = this;
+
+            if (!f.name.value.trim()) {
+                document.getElementById('nameError').textContent = 'Name is required.';
+                valid = false;
+            }
+            if (!re.test(f.email.value.trim())) {
+                document.getElementById('emailError').textContent = 'Valid email is required.';
+                valid = false;
+            }
+            if (!f.subject.value.trim()) {
+                document.getElementById('subjectError').textContent = 'Subject is required.';
+                valid = false;
+            }
+            if (f.message.value.trim().length < 10) {
+                document.getElementById('messageError').textContent = 'Minimum 10 characters.';
+                valid = false;
+            }
+            if (!valid) e.preventDefault();
+        });
+    </script>
+
 </body>
 </html>
