@@ -123,13 +123,12 @@
                             <a class="nav-link" href="index.jsp">HOME</a>
                         </li>
                         <li class="nav-item dropdown mx-2">
-                            <a class="nav-link dropdown-toggle" href="#" id="catalogDropdown">CATALOG</a>
+                            <a class="nav-link dropdown-toggle" href="shop.jsp" id="catalogDropdown">CATALOG</a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="vegitables.jsp">Vegetables</a>
                                 <a class="dropdown-item" href="fruits.jsp">Fruits</a>
-                                <a class="dropdown-item" href="#">Rice</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">More Categories</a>
+                                <a class="dropdown-item" href="shop.jsp">More Categories</a>
                             </div>
                         </li>
                         <li class="nav-item mx-2">
