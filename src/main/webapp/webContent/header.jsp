@@ -109,8 +109,8 @@
         <!-- Navbar with integrated search -->
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <img src="images/logo.png" alt="Website Logo" style="height: 40px;">
+                <a class="navbar-brand" href="index.jsp">
+                    <img src="../images/logo.png" alt="Website Logo" style="height: 40px;">
                 </a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
