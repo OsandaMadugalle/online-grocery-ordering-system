@@ -11,7 +11,6 @@ import java.util.List;
 
 import com.gos.model.Admin;
 import com.gos.service.AdminService;
-import com.gos.util.DBConnection;
 
 @WebServlet("/AdminLoginServlet")
 public class AdminLoginServlet extends HttpServlet {
