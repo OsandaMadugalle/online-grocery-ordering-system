@@ -136,7 +136,7 @@
                             <a class="nav-link" href="shop.jsp">SHOP</a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a class="nav-link" href="#">OFFERS</a>
+                            <a class="nav-link" href="offers.jsp">OFFERS</a>
                         </li>
                         <li class="nav-item mx-2">
                             <a class="nav-link" href="feedback.jsp">FEEDBACK</a>
