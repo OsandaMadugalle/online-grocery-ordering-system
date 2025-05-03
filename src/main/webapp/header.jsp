@@ -133,7 +133,7 @@
                             </div>
                         </li>
                         <li class="nav-item mx-2">
-                            <a class="nav-link" href="#">SHOP</a>
+                            <a class="nav-link" href="shop.jsp">SHOP</a>
                         </li>
                         <li class="nav-item mx-2">
                             <a class="nav-link" href="#">OFFERS</a>
