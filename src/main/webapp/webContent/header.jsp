@@ -100,8 +100,8 @@
                     <a href="customerLogoutServlet" class="btn btn-danger">Logout</a>
                 </c:when>
                 <c:otherwise>
-                    <a href="./customer/cusLogin.jsp" class="btn btn-outline-primary mx-2">Log In</a>
-                    <a href="./customer/cusSignup.jsp" class="btn btn-outline-secondary mx-2">Sign Up</a>
+                    <a href="../customer/cusLogin.jsp" class="btn btn-outline-primary mx-2">Log In</a>
+                    <a href="../customer/cusSignup.jsp" class="btn btn-outline-secondary mx-2">Sign Up</a>
                 </c:otherwise>
             </c:choose>
         </div>
