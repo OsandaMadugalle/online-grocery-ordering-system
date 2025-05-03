@@ -125,8 +125,8 @@
                         <li class="nav-item dropdown mx-2">
                             <a class="nav-link dropdown-toggle" href="#" id="catalogDropdown">CATALOG</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Vegetables</a>
-                                <a class="dropdown-item" href="#">Fruits</a>
+                                <a class="dropdown-item" href="vegitables.jsp">Vegetables</a>
+                                <a class="dropdown-item" href="fruits.jsp">Fruits</a>
                                 <a class="dropdown-item" href="#">Rice</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">More Categories</a>
