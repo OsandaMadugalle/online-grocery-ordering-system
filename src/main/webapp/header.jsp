@@ -161,7 +161,7 @@
 
                     <ul class="navbar-nav ml-2">
                         <li class="nav-item">
-                            <a class="nav-link" href="customer/cart.jsp">
+                            <a class="nav-link" href="cart.jsp">
                                 <i class="bi bi-cart4"></i> CART
                             </a>
                         </li>
