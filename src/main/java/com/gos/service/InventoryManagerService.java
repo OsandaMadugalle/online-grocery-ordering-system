@@ -17,7 +17,7 @@ public class InventoryManagerService {
 	
 	//Validate Inventory Manager Login
 	public static List<InventoryManager> validate(String username, String password){
-		List<InventoryManager> inventoryManagerList = new ArrayList<>();
+		ArrayList<InventoryManager> inventoryManagerList = new ArrayList<>();
 		String sql = "SELECT * FROM InventoryManager WHERE Username = ? AND Password = ?";
 		
 		try(Connection con = DBConnection.getConnection(); 
@@ -136,7 +136,7 @@ public class InventoryManagerService {
     
     // Fetch Inventory Manager Details By ID
     public static List<InventoryManager> getInventoryManagerById(String id) {    	    	
-    	List<InventoryManager> IM = new ArrayList<>();
+    	ArrayList<InventoryManager> IM = new ArrayList<>();
         String sql = "SELECT * FROM InventoryManager WHERE M_ID = ?";
 
         try (Connection conn = DBConnection.getConnection();
