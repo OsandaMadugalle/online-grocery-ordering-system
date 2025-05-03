@@ -8,9 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.gos.model.Admin;
 import com.gos.model.InventoryManager;
-import com.gos.model.Product;
 import com.gos.util.DBConnection;
 
 public class InventoryManagerService {
