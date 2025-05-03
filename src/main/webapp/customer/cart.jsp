@@ -1,4 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.List" %>
+<%@ page import="com.gos.model.Customer" %>
+<%@ page session="true" %>
+
+<c:if test="${empty sessionScope.loggedIn or empty sessionScope.customerDetails}">
+    <c:redirect url="/customer/cusLogin.jsp"/>
+</c:if>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +23,6 @@
     
     <style>
         :root {
-            --header-height: 160px; /* Must match header.jsp height */
             --primary-green: #004d00;
             --light-green: #e8f5e9;
             --accent-gold: #FFD700;
@@ -23,14 +31,22 @@
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding-top: var(--header-height);
             background-color: var(--light-green);
             margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .content-wrapper {
+            flex: 1;
+            padding: 30px 0;
         }
         
         main {
             max-width: 1200px;
-            margin: 30px auto;
+            margin: 0 auto;
             padding: 0 20px;
         }
         
@@ -39,40 +55,63 @@
             border-radius: 10px;
             box-shadow: 0 2px 15px rgba(0,0,0,0.1);
             overflow: hidden;
+            margin-top: 20px;
         }
         
         .cart-header {
             background-color: var(--primary-green);
             color: white;
-            padding: 25px;
+            padding: 20px;
             text-align: center;
+            position: relative;
         }
         
         .cart-header h2 {
             color: var(--accent-gold);
             margin: 0;
             font-weight: 600;
+            font-size: 1.8rem;
+        }
+        
+        .cart-actions {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 20px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .cart-actions .btn {
+            padding: 8px 15px;
+            font-weight: 500;
+            border-radius: 5px;
+        }
+        
+        .cart-actions .btn i {
+            margin-right: 8px;
         }
         
         .cart-items-container {
-            padding: 25px;
+            padding: 20px;
+            min-height: 200px;
         }
         
         .cart-item {
             display: flex;
             align-items: center;
-            padding: 20px 0;
+            padding: 15px 0;
             border-bottom: 1px solid #eee;
         }
         
         .product-image {
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 90px;
             background-color: #f5f5f5;
-            margin-right: 20px;
+            margin-right: 15px;
             border-radius: 5px;
             background-size: cover;
             background-position: center;
+            flex-shrink: 0;
         }
         
         .product-details {
@@ -82,11 +121,13 @@
         .product-title {
             font-weight: 600;
             margin-bottom: 5px;
+            font-size: 1.1rem;
         }
         
         .product-description {
             color: #666;
             font-size: 0.9rem;
+            margin-bottom: 10px;
         }
         
         .quantity-control {
@@ -95,21 +136,24 @@
         }
         
         .quantity-input {
-            width: 60px;
-            padding: 8px;
+            width: 50px;
+            padding: 6px;
             text-align: center;
             border: 1px solid #ddd;
             border-radius: 4px;
-            margin: 0 10px;
+            margin: 0 8px;
         }
         
         .quantity-btn {
-            width: 30px;
-            height: 30px;
+            width: 28px;
+            height: 28px;
             border: 1px solid #ddd;
             background: #f9f9f9;
             border-radius: 4px;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .remove-btn {
@@ -117,20 +161,25 @@
             background: none;
             border: none;
             cursor: pointer;
-            margin-left: 20px;
+            margin-left: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .remove-btn i {
+            margin-right: 5px;
         }
         
         .cart-summary {
-            padding: 25px;
-            background-color: #f9f9f9;
-            border-top: 1px solid #eee;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #dee2e6;
         }
         
         .summary-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
+            margin-bottom: 12px;
+            font-size: 1rem;
         }
         
         .checkout-btn {
@@ -144,26 +193,41 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
+            margin-top: 10px;
         }
         
         .checkout-btn:hover {
             background-color: var(--dark-green);
         }
         
+        .checkout-btn i {
+            margin-right: 8px;
+        }
+        
         .empty-cart {
             text-align: center;
-            padding: 50px 20px;
+            padding: 40px 20px;
         }
         
         .empty-cart i {
             font-size: 3rem;
             color: #ccc;
+            margin-bottom: 15px;
+        }
+        
+        .empty-cart h3 {
+            color: #555;
+            margin-bottom: 15px;
+        }
+        
+        .empty-cart p {
+            color: #777;
             margin-bottom: 20px;
         }
         
         @media (max-width: 768px) {
-            body {
-                padding-top: 180px;
+            .content-wrapper {
+                padding: 20px 0;
             }
             
             .cart-item {
@@ -172,6 +236,9 @@
             }
             
             .product-image {
+                width: 100%;
+                height: 150px;
+                margin-right: 0;
                 margin-bottom: 15px;
             }
             
@@ -180,44 +247,60 @@
                 width: 100%;
                 justify-content: space-between;
             }
+            
+            .cart-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .cart-actions .btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
 
-    <%@ include file="header.jsp" %>  
-
-    <main>
-        <div class="cart-container">
-            <div class="cart-header">
-                <h2><i class="fas fa-shopping-cart"></i> My Shopping Cart</h2>
-            </div>
-            
-            <div class="cart-items-container" id="cart-items">
-                <!-- Cart items will be dynamically populated here -->
-            </div>
-            
-            <div class="cart-summary">
-                <div class="summary-row">
-                    <span>Subtotal:</span>
-                    <span id="subtotal">Rs. 0</span>
+    <div class="content-wrapper">
+        <main>
+            <div class="cart-container">
+                <div class="cart-header">
+                    <h2><i class="fas fa-shopping-cart"></i> My Shopping Cart</h2>
                 </div>
-                <div class="summary-row">
-                    <span>Delivery Fee:</span>
-                    <span id="delivery-fee">Rs. 400</span>
+                
+                <div class="cart-actions">
+                    <button class="btn btn-outline-secondary" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i> Back to Shopping
+                    </button>
+                    <button class="btn btn-outline-primary" onclick="viewProfile()">
+                        <i class="fas fa-user"></i> My Profile
+                    </button>
                 </div>
-                <div class="summary-row" style="font-weight: 600;">
-                    <span>Total:</span>
-                    <span id="total">Rs. 400</span>
+                
+                <div class="cart-items-container" id="cart-items">
+                    <!-- Cart items will be dynamically populated here -->
                 </div>
-                <button class="checkout-btn" onclick="proceedToCheckout()">
-                    <i class="fas fa-credit-card"></i> Proceed to Checkout
-                </button>
+                
+                <div class="cart-summary">
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">Rs. 0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery Fee:</span>
+                        <span id="delivery-fee">Rs. 400</span>
+                    </div>
+                    <div class="summary-row" style="font-weight: 600; font-size: 1.1rem;">
+                        <span>Total:</span>
+                        <span id="total">Rs. 400</span>
+                    </div>
+                    <button class="checkout-btn" onclick="proceedToCheckout()">
+                        <i class="fas fa-credit-card"></i> Proceed to Checkout
+                    </button>
+                </div>
             </div>
-        </div>
-    </main>
-
-    <%@ include file="footer.jsp" %>
+        </main>
+    </div>
 
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -332,22 +415,16 @@
             }
             window.location.href = 'checkout.jsp';
         }
+        
+        function goBack() {
+            window.history.back();
+        }
+        
+        function viewProfile() {
+            window.location.href = 'customerAccount.jsp';
+        }
 
-        // Fix header issues
         $(document).ready(function() {
-            // Ensure header height is properly accounted for
-            const headerHeight = $('header').outerHeight();
-            if (headerHeight) {
-                $('body').css('padding-top', headerHeight + 'px');
-                $(':root').css('--header-height', headerHeight + 'px');
-            }
-            
-            // Make sure logo link works
-            $('.navbar-brand').on('click', function(e) {
-                e.preventDefault();
-                window.location.href = 'index.jsp';
-            });
-            
             // Initial render
             renderCartItems();
         });
