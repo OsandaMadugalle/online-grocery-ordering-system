@@ -31,7 +31,7 @@
 
     <servlet-mapping>
         <servlet-name>default</servlet-name>
-        <url-pattern>/productImages/*</url-pattern>
+        <url-pattern>/images/productImages/*</url-pattern>
     </servlet-mapping>
 
     <!-- ============================================
