@@ -38,7 +38,7 @@ public class CustomerService {
 	
 	// Validate Customer Login
 	public static List<Customer> validate(String username, String password) {
-	    List<Customer> customerList = new ArrayList<>();
+	    ArrayList<Customer> customerList = new ArrayList<>();
 	    String sql = "SELECT * FROM Customer WHERE username = ? AND password = ?";
 
 	    try (Connection conn = DBConnection.getConnection(); 
@@ -101,7 +101,7 @@ public class CustomerService {
 	//Get Customer By ID
 	public static List<Customer> getCustomerById(String id) {
     	
-	    List<Customer> customers = new ArrayList<>();
+	    ArrayList<Customer> customers = new ArrayList<>();
 	    String sql = "SELECT * FROM Customer WHERE customer_ID = ?";
 
 	    try (Connection conn = DBConnection.getConnection();
