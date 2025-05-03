@@ -10,7 +10,7 @@ public class AdminService {
 
     // Validate Admin Login
     public static List<Admin> validate(String username, String password) {
-        List<Admin> adminList = new ArrayList<>();
+        ArrayList<Admin> adminList = new ArrayList<>();
         String sql = "SELECT * FROM Admin WHERE Username = ? AND Password = ?";
 
         try (Connection conn = DBConnection.getConnection(); 
@@ -102,7 +102,7 @@ public class AdminService {
     //Fetch Updated Admins
     public static List<Admin> getAdminById(String id) {
     	    	
-    	List<Admin> ad = new ArrayList<>();
+    	ArrayList<Admin> ad = new ArrayList<>();
         String sql = "SELECT * FROM Admin WHERE Admin_ID = ?";
 
         try (Connection conn = DBConnection.getConnection();
