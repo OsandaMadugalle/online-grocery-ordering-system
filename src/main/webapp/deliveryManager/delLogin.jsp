@@ -158,7 +158,7 @@
 
     <div class="left-side left-side-delivery">   
         
-        <a href="../index.jsp" class="home-icon">
+        <a href="../webContent/index.jsp" class="home-icon">
             <i class="fas fa-home"></i>
         </a>     
         

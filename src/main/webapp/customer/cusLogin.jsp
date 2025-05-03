@@ -143,7 +143,7 @@
 
     <div class="left-side">
     
-	    <a href="../index.jsp" class="home-icon">
+	    <a href="../webContent/index.jsp" class="home-icon">
 	        <i class="fas fa-home"></i>
 	    </a>
     
