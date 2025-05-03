@@ -86,11 +86,11 @@
                 <!-- Quick Links -->
                 <div class="col-md-4 quick-links mb-4">
                     <h5 class="footer-heading">Quick Links</h5>
-                    <a href="<c:url value='/shop'/>">Shop Now</a><br>
-                    <a href="<c:url value='/about'/>">About Us</a><br>
+                    <a href="<c:url value='shop.jsp'/>">Shop Now</a><br>
+                    <a href="<c:url value='3'/>">About Us</a><br>
                     <a href="<c:url value='contact.jsp'/>">Contact</a><br>
-                    <a href="<c:url value='/faq'/>">FAQs</a><br>
-                    <a href="<c:url value='/terms'/>">Terms & Conditions</a>
+                    <a href="<c:url value='feedback.jsp'/>">FAQs</a><br>
+                    <a href="<c:url value='3'/>">Terms & Conditions</a>
                 </div>
 
                 <!-- Services Offered -->
