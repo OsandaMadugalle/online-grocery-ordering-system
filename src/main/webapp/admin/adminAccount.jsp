@@ -11,7 +11,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Admin Dashboard</title>
+    <title>Admin Account</title>
+    <link rel="icon" type="image/png" href="../images/favAdmin.jpg">
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
@@ -399,10 +400,6 @@
         <a href="#">
             <i class="fas fa-users"></i>
             <span class="nav-text">Users</span>
-        </a>
-        <a href="../index.jsp">
-            <i class="fas fa-cog"></i>
-            <span class="nav-text">Site Settings</span>
         </a>
         <a href="../LogoutServlet" class="logout-btn">
             <i class="fas fa-sign-out-alt"></i>
