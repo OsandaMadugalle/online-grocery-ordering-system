@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
+    <link rel="icon" type="image/png" href="../images/fav.png">
     
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -106,7 +107,7 @@
 
     <div class="form-container">
     
-    <a href="../index.jsp" class="home-icon">
+    <a href="../webContent/index.jsp" class="home-icon">
         <i class="fas fa-home"></i>
     </a>
     
