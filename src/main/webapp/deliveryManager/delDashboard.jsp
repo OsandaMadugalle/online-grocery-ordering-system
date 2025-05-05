@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Delivary Manager Dashboard</title>
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
@@ -336,7 +336,7 @@
 
             </c:when>
             <c:otherwise>
-                <div class="alert alert-danger text-center mt-5">No admin details found.</div>
+                <div class="alert alert-danger text-center mt-5">No delivery manager details found.</div>
             </c:otherwise>
         </c:choose>
     </div>
