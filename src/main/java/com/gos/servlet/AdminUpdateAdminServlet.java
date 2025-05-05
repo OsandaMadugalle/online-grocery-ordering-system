@@ -11,10 +11,11 @@ import java.util.List;
 import com.gos.model.Admin;
 import com.gos.service.AdminService;
 
-@WebServlet("/AdminUpdateInventoryManager")
+@WebServlet("/AdminUpdateAdminServlet")
 public class AdminUpdateAdminServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         // Display edit form - GET request
         String id = request.getParameter("id");
