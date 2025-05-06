@@ -7,10 +7,7 @@
          metadata-complete="true">
 
     <display-name>GOS</display-name>
-
-    <!-- ============================================
-         SECTION: Welcome Files
-         ============================================ -->
+    
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
         <welcome-file>index.htm</welcome-file>
@@ -21,9 +18,7 @@
         <welcome-file>adminAccount.jsp</welcome-file>
     </welcome-file-list>
 
-    <!-- ============================================
-         SECTION: Static Resource Mapping
-         ============================================ -->
+	<!-- Images -->
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>/images/*</url-pattern>
@@ -34,9 +29,7 @@
         <url-pattern>/images/productImages/*</url-pattern>
     </servlet-mapping>
 
-    <!-- ============================================
-         SECTION: Admin Servlets
-         ============================================ -->
+    <!-- Admin Servlets-->
 
     <!-- Admin Login -->
     <servlet>
@@ -168,9 +161,7 @@
         <url-pattern>/addDeliveryManager</url-pattern>
     </servlet-mapping>
     
-    <!-- ============================================
-         SECTION: Inventory Manager Servlets
-         ============================================ -->
+    <!-- Inventory Manager Servlets -->
 
     <!-- Inventory Manager Login -->
     <servlet>
@@ -242,9 +233,7 @@
         <url-pattern>/updateProduct</url-pattern>
     </servlet-mapping>
 
-    <!-- ============================================
-         SECTION: Customer Servlets
-         ============================================ -->
+    <!-- Customer Servlets-->
          
      <!-- Signup Customer -->
     <servlet>
@@ -298,9 +287,7 @@
     
     
      
-  	<!-- ============================================
-         SECTION: Delivery Manager Servlets
-         ============================================ -->
+  	<!-- Delivery Manager Servlets -->
 
     
 

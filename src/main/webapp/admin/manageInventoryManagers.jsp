@@ -5,8 +5,7 @@
 <%@ page session="true" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<%-- Authorization check (session) --%>
-<c:if test="${empty sessionScope.loggedIn}">
+<c:if test="${empty sessionScope.loggedIn or empty sessionScope.adminDetails}">
     <c:redirect url="/admin/adminLogin.jsp"/>
 </c:if>
 
