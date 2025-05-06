@@ -33,7 +33,7 @@ public class DeliveryManagerLoginServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/deliveryManager/deliveryManagerDashboard.jsp"); 
             } else {
                 request.setAttribute("errorMessage", "Invalid username or password.");
-                response.sendRedirect(request.getContextPath() + "/deliveryManager/deliveryManagerLogin.jsp"); 
+                response.sendRedirect(request.getContextPath() + "/deliveryManager/delLogin.jsp"); 
             }
         } catch (Exception e) {
             e.printStackTrace();

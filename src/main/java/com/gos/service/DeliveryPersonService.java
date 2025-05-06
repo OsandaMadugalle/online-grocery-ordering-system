@@ -46,7 +46,7 @@ public class DeliveryPersonService {
     }
 
     // Get All Delivery Persons
-    public ArrayList<DeliveryPerson> getAllDeliveryPersons() {
+    public static ArrayList<DeliveryPerson> getAllDeliveryPersons() {
         ArrayList<DeliveryPerson> listDeliveryPersons = new ArrayList<>();
         String sql = "SELECT * FROM DeliveryPerson";
 

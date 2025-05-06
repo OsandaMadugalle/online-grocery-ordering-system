@@ -20,6 +20,6 @@ public class DeliveryManagerLogoutServlet extends HttpServlet {
             session.setAttribute("logoutMessage", "You have successfully logged out."); 
             session.invalidate();
         }  
-        response.sendRedirect(request.getContextPath() + "/deliveryManager/deliveryManagerLogin.jsp");
+        response.sendRedirect(request.getContextPath() + "/deliveryManager/delLogin.jsp");
     }
 }

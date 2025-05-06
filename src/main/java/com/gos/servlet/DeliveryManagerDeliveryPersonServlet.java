@@ -12,8 +12,7 @@ import com.gos.service.DeliveryManagerService;
 @WebServlet("/DeliveryManagerDeliveryPersonServlet")
 public class DeliveryManagerDeliveryPersonServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private DeliveryManagerService deliveryManagerService = new DeliveryManagerService();
-
+    
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
@@ -24,16 +23,11 @@ public class DeliveryManagerDeliveryPersonServlet extends HttpServlet {
             request.setAttribute("deliveryManagers", deliveryManagers);
             
             // Forward the request to manageDeliveryManagers.jsp
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/inventoryManager/manageDeliveryManagers.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/deliveryManager/manageDeliveryPerson.jsp");
             dispatcher.forward(request, response);
             
         } catch (Exception e) {
             e.printStackTrace();
-            // If an error occurs, show an error message
-            request.setAttribute("error", "Error loading delivery managers.");
-            // Forward to error page (optional)
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/inventoryManager/errorPage.jsp");
-            dispatcher.forward(request, response);
         }
     }
 }

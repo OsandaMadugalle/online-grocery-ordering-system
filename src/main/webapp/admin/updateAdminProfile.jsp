@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="java.util.List" %>
-<%@ page import="com.gos.model.Admin" %>
 <%@ page session="true" %>
 
-<c:if test="${empty sessionScope.loggedIn or empty sessionScope.adminDetails}">
-    <c:redirect url="/admin/adminLogin.jsp"/>
+<c:if test="${empty sessionScope.deliveryManagerDetails}">
+    <c:redirect url="/deliveryManager/delLogin.jsp"/>
 </c:if>
 
 <!DOCTYPE html>
@@ -14,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Update My Profile</title>
-    <link rel="icon" type="image/png" href="../images/favAdmin.jpg">
+    <link rel="icon" type="image/png" href="../images/favDelManager.jpg">
     
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
@@ -22,10 +20,10 @@
     
     <style>
         :root {
-            --primary-bg: #002244;
+            --primary-bg: #1a3a5f;
             --form-bg: rgba(255, 255, 255, 0.1);
-            --accent-color: #ff4c29;
-            --accent-hover: #e03e1a;
+            --accent-color: #ff9f1c;
+            --accent-hover: #e68a00;
             --text-color: white;
             --placeholder-color: #e0e0e0;
             --error-color: #ff6b6b;
@@ -57,6 +55,7 @@
             font-size: clamp(1.5rem, 2.5vw, 2rem);
             margin-bottom: 25px;
             text-align: center;
+            color: var(--accent-color);
         }
         
         .form-row {
@@ -90,7 +89,7 @@
         
         .form-control:focus {
             background: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 0 0 0.2rem rgba(255, 76, 41, 0.25);
+            box-shadow: 0 0 0 0.2rem rgba(255, 159, 28, 0.25);
         }
         
         .form-control::placeholder {
@@ -104,7 +103,7 @@
         
         .btn-submit {
             background: var(--accent-color);
-            color: white;
+            color: #1e1e1e;
             font-size: clamp(0.9rem, 1.2vw, 1rem);
             font-weight: 600;
             border: none;
@@ -211,85 +210,78 @@
 </head>
 
 <body>
-    <%
-        String id= request.getParameter("id");
-        String username= request.getParameter("username");
-        String fName= request.getParameter("fName");
-        String lName= request.getParameter("lName");
-        String phone= request.getParameter("phone");
-        String email= request.getParameter("email");
-        String password= request.getParameter("password");
-    %>
-
-    <a href="${pageContext.request.contextPath}/admin/admin/adminDashboard.jsp" class="home-icon">
+    <a href="${pageContext.request.contextPath}/deliveryManager/deliveryManagerDashboard.jsp" class="home-icon">
         <i class="fas fa-arrow-left"></i>
     </a>
 
     <div class="form-container">
-        <h3>Update My Profile</h3>
+        <h3><i class="fas fa-user-edit mr-2"></i>Update Delivery Manager Profile</h3>
         
-        <form action="../updateAdmin" method="post" onsubmit="return validateForm()">
+        <form action="../deliveryManagerUpdate" method="post" onsubmit="return validateForm()">
+            <input type="hidden" name="d_id" value="${param.id}">
+            
             <!-- ID -->
             <div class="form-row">
-                <label for="admin_id" class="form-label">Admin ID</label>
+                <label for="m_id" class="form-label"><i class="fas fa-id-card mr-2"></i>Manager ID</label>
                 <div class="form-input">
-                    <input type="text" class="form-control" name="admin_id" id="admin_id" 
-                        value="<%= id %>" readonly>
+                    <input type="text" class="form-control" id="m_id" 
+                        value="${param.id}" readonly>
                 </div>
             </div>
             
             <!-- Username -->
             <div class="form-row">
-                <label for="username" class="form-label">Username</label>
+                <label for="username" class="form-label"><i class="fas fa-user mr-2"></i>Username</label>
                 <div class="form-input">
                     <input type="text" class="form-control" name="username" id="username" 
-                        placeholder="Username" value="<%= username %>" required>
+                        placeholder="Username" value="${param.username}" required>
                 </div>
             </div>
             
             <!-- First Name -->
             <div class="form-row">
-                <label for="firstName" class="form-label">First Name</label>
+                <label for="firstName" class="form-label"><i class="fas fa-signature mr-2"></i>First Name</label>
                 <div class="form-input">
                     <input type="text" class="form-control" name="firstName" id="firstName" 
-                        placeholder="First Name" value="<%= fName %>" required>
+                        placeholder="First Name" value="${param.fName}" required>
                 </div>
             </div>
             
             <!-- Last Name -->
             <div class="form-row">
-                <label for="lastName" class="form-label">Last Name</label>
+                <label for="lastName" class="form-label"><i class="fas fa-signature mr-2"></i>Last Name</label>
                 <div class="form-input">
                     <input type="text" class="form-control" name="lastName" id="lastName" 
-                        placeholder="Last Name" value="<%= lName %>" required>
+                        placeholder="Last Name" value="${param.lName}" required>
                 </div>
             </div>
             
             <!-- Phone -->
             <div class="form-row">
-                <label for="phone" class="form-label">Phone</label>
+                <label for="phone" class="form-label"><i class="fas fa-phone mr-2"></i>Phone</label>
                 <div class="form-input">
                     <input type="tel" class="form-control" name="phone" id="phone" 
-                        placeholder="Phone" value="<%= phone %>" required>
+                        placeholder="Phone" value="${param.phone}" required pattern="[0-9]{10}"
+                        title="Please enter a 10-digit phone number">
                 </div>
             </div>
             
             <!-- Email -->
             <div class="form-row">
-                <label for="email" class="form-label">Email</label>
+                <label for="email" class="form-label"><i class="fas fa-envelope mr-2"></i>Email</label>
                 <div class="form-input">
                     <input type="email" class="form-control" name="email" id="email" 
-                        placeholder="Email" value="<%= email %>" required>
+                        placeholder="Email" value="${param.email}" required>
                 </div>
             </div>
             
             <!-- Password -->
             <div class="form-row">
-                <label for="password" class="form-label">Password</label>
+                <label for="password" class="form-label"><i class="fas fa-lock mr-2"></i>Password</label>
                 <div class="form-input">
                     <div class="password-wrapper">
                         <input type="password" class="form-control" name="password" id="password" 
-                            placeholder="Password" value="<%= password %>" required>
+                            placeholder="Password" value="${param.password}" required minlength="8">
                         <button type="button" class="password-toggle" onclick="togglePassword('password', this)">
                             <i class="fas fa-eye"></i>
                         </button>
@@ -299,20 +291,20 @@
             
             <!-- Confirm Password -->
             <div class="form-row">
-                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <label for="confirmPassword" class="form-label"><i class="fas fa-check-circle mr-2"></i>Confirm Password</label>
                 <div class="form-input">
                     <div class="password-wrapper">
                         <input type="password" class="form-control" id="confirmPassword" 
-                            placeholder="Re-type Password" value="<%= password %>" required>
+                            placeholder="Re-type Password" value="${param.password}" required minlength="8">
                         <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword', this)">
                             <i class="fas fa-eye"></i>
                         </button>
                     </div>
-                    <div class="error-message" id="error-message">Passwords do not match</div>
+                    <div class="error-message" id="error-message"><i class="fas fa-exclamation-circle mr-1"></i>Passwords do not match</div>
                 </div>
             </div>
             
-            <button type="submit" class="btn-submit">Update Profile</button>
+            <button type="submit" class="btn-submit"><i class="fas fa-save mr-2"></i>Update Profile</button>
         </form>
     </div>
 
@@ -342,6 +334,27 @@
                 icon.classList.replace('fa-eye-slash', 'fa-eye');
             }
         }
+
+        // Real-time password validation
+        document.getElementById('confirmPassword').addEventListener('input', function() {
+            const password = document.getElementById("password").value;
+            const confirmPassword = this.value;
+            const errorMessage = document.getElementById("error-message");
+
+            if (password !== confirmPassword) {
+                errorMessage.style.display = "block";
+            } else {
+                errorMessage.style.display = "none";
+            }
+        });
+        
+        // Add input validation for phone number
+        document.getElementById('phone').addEventListener('input', function() {
+            this.value = this.value.replace(/[^0-9]/g, '');
+            if (this.value.length > 10) {
+                this.value = this.value.slice(0, 10);
+            }
+        });
     </script>
 </body>
 </html>
