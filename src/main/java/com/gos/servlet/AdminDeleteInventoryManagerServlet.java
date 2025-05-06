@@ -14,10 +14,12 @@ import com.gos.service.InventoryManagerService;
 public class AdminDeleteInventoryManagerServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    @Override
+    /*    
+   	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
     }
+    */
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,6 +29,7 @@ public class AdminDeleteInventoryManagerServlet extends HttpServlet {
         InventoryManagerService delService = new InventoryManagerService();
         delService.deleteInventoryManager(IM);
 
-        response.sendRedirect(request.getContextPath() + "/manageInventoryManager");
+        response.sendRedirect("manageInventoryManager");
+       // response.sendRedirect(request.getContextPath() + "/manageInventoryManager");
     }
 }

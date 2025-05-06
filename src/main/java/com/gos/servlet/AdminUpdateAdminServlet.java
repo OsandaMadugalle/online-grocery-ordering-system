@@ -16,6 +16,7 @@ public class AdminUpdateAdminServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
+		
         // Display edit form - GET request
         String id = request.getParameter("id");
         ArrayList<Admin> ad = AdminService.getAdminById(id);
@@ -30,6 +31,7 @@ public class AdminUpdateAdminServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
+    	
         // Process form submission - POST request
         String id = request.getParameter("id");
         String username = request.getParameter("username");
@@ -43,12 +45,10 @@ public class AdminUpdateAdminServlet extends HttpServlet {
                 id, username, fName, lName, phone, email, password);
 
         if (isSuccess) {
-            // Refresh the list in session if needed
             ArrayList<Admin> ad = AdminService.getAdminById(id);
 
             request.getSession().setAttribute("admin", ad);
-        }
-        
+        }        
         response.sendRedirect(request.getContextPath() + "/manageAdmin");
     }
 }

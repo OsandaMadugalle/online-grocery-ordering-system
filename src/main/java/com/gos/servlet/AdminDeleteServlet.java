@@ -15,11 +15,6 @@ public class AdminDeleteServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
-    }
-
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Admin ad = new Admin();
         ad.setAdmin_id(Integer.parseInt(request.getParameter("id")));
@@ -27,6 +22,6 @@ public class AdminDeleteServlet extends HttpServlet {
         AdminService delService = new AdminService();
         delService.deleteadmin(ad);
 
-        response.sendRedirect(request.getContextPath() + "/manageAdmin");
+        response.sendRedirect("manageAdmin");
     }
 }

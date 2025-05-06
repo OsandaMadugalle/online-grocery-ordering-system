@@ -12,7 +12,7 @@ import com.gos.model.Product;
 import com.gos.service.ProductService;
 
 @WebServlet("/AdminDeleteProductServlet")
-public class AdminDeleteProductServlet extends HttpServlet {
+public class InventoryManagerDeleteProductServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @Override

@@ -253,7 +253,7 @@
 
 <body>
     <!-- Back Button -->
-    <a href="${pageContext.request.contextPath}/admin/adminAccount.jsp" class="home-icon">
+    <a href="${pageContext.request.contextPath}/admin/adminDashboard.jsp" class="home-icon">
         <i class="fas fa-arrow-left"></i>
     </a>
 

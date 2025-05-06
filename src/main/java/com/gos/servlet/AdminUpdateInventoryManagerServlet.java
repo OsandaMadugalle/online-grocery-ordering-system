@@ -14,6 +14,7 @@ import com.gos.service.InventoryManagerService;
 public class AdminUpdateInventoryManagerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	// Display edit form - GET request
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         
@@ -28,6 +29,7 @@ public class AdminUpdateInventoryManagerServlet extends HttpServlet {
         }
     }
 
+	 // Process form submission - POST request
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
    
@@ -46,8 +48,7 @@ public class AdminUpdateInventoryManagerServlet extends HttpServlet {
         
             ArrayList<InventoryManager> updatedList = InventoryManagerService.getInventoryManagerById(id);
             request.getSession().setAttribute("inventoryManagers", updatedList);
-        }
-        
+        }        
         response.sendRedirect(request.getContextPath() + "/manageInventoryManager");
     }
 }
