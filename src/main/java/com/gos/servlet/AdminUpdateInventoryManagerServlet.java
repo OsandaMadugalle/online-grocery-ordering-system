@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import com.gos.model.InventoryManager;
 import com.gos.service.InventoryManagerService;
 
-@WebServlet("/AdminUpdateInventoryManagerServlet")
+@WebServlet("/adminUpdateInventoryManagerServlet")
 public class AdminUpdateInventoryManagerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

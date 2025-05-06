@@ -308,7 +308,7 @@
                                 </div>
                             </td>
                             <td data-label="Actions" class="action-buttons">
-                                <form action="updateInventoryManager" method="get" style="display: inline;">
+                                <form action="adminUpdateInventoryManager" method="get" style="display: inline;">
                                     <input type="hidden" name="id" value="${manager.inventory_manager_id}">
                                     <button type="submit" class="btn btn-warning btn-sm btn-action">
                                         <i class="fas fa-edit"></i>

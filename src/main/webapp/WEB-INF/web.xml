@@ -215,7 +215,7 @@
     <!-- Inventory Manager Deletes Product -->
    <servlet>
 	    <servlet-name>DeleteProduct</servlet-name>
-	    <servlet-class>com.gos.servlet.AdminDeleteProductServlet</servlet-class>
+	    <servlet-class>com.gos.servlet.InventoryManagerDeleteProductServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 	    <servlet-name>DeleteProduct</servlet-name>

@@ -226,7 +226,7 @@
     <div class="form-container">
         <h3>Update Inventory Manager</h3>
         
-        <form action="${pageContext.request.contextPath}/adminUpdateInventoryManager method="post" onsubmit="return validateForm()">
+        <form action="${pageContext.request.contextPath}/adminUpdateInventoryManager" method="post" onsubmit="return validateForm()">
             <!-- ID -->
             <div class="form-row">
                 <label for="id" class="form-label">ID</label>
