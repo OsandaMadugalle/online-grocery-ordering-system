@@ -1,17 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="java.util.List" %>
-<%@ page import="com.gos.model.Admin" %>
-<%@ page session="true" %>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New Admin</title>
+    <title>Add New Delivery Person</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -37,7 +30,7 @@
             padding: 2rem;
         }
 
-        .admin-form-container {
+        .manager-form-container {
             max-width: 700px;
             margin: 0 auto;
             background: rgba(255, 255, 255, 0.05);
@@ -172,7 +165,7 @@
                 padding: 1.5rem;
             }
             
-            .admin-form-container {
+            .manager-form-container {
                 padding: 1.5rem;
             }
         }
@@ -182,7 +175,7 @@
                 padding: 1rem;
             }
             
-            .admin-form-container {
+            .manager-form-container {
                 padding: 1.25rem;
             }
             
@@ -195,17 +188,17 @@
 
 <body>
     <div class="container">
-        <a href="../manageAdmin" class="back-link">
-            <i class="fas fa-arrow-left"></i> Back to Admin List
+        <a href="../manageDeliveryManager" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Delivery Person List
         </a>
 
-        <div class="admin-form-container">
+        <div class="manager-form-container">
             <div class="form-header">
-                <h2><i class="fas fa-user-plus"></i> Create New Admin</h2>
-                <p>Fill in the details below to register a new administrator</p>
+                <h2><i class="fas fa-user-plus"></i> Create New Delivery Person</h2>
+                <p>Fill in the details below to register a new delivery person</p>
             </div>
 
-            <form action="../addAdmin" method="post" onsubmit="return validateForm()">
+            <form action="../addDeliveryManager" method="post" onsubmit="return validateForm()">
                 
                 <!-- Username -->
                 <div class="form-group">
@@ -281,7 +274,7 @@
 
                 <!-- Submit Button -->
                 <button type="submit" class="btn-submit">
-                    <i class="fas fa-user-plus"></i> Create Admin Account
+                    <i class="fas fa-user-plus"></i> Create Delivery Person Account
                 </button>
             </form>
         </div>

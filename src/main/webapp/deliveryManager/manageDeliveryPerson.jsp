@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Admins</title>
+    <title>Manage Delivery Persons</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -32,12 +32,12 @@
             padding: 20px;
         }
 
-        .admin-container {
+        .manager-container {
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .admin-header {
+        .manager-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -55,7 +55,7 @@
             margin: 0;
         }
 
-        .admin-count {
+        .manager-count {
             background-color: var(--highlight-color);
             color: white;
             padding: 8px 15px;
@@ -65,11 +65,11 @@
             align-items: center;
         }
 
-        .admin-count i {
+        .manager-count i {
             margin-right: 8px;
         }
 
-        .btn-add-admin {
+        .btn-add-manager {
             background: var(--highlight-color);
             color: white;
             font-weight: 600;
@@ -81,17 +81,17 @@
             align-items: center;
         }
 
-        .btn-add-admin:hover {
+        .btn-add-manager:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(233, 69, 96, 0.3);
             color: white;
         }
 
-        .btn-add-admin i {
+        .btn-add-manager i {
             margin-right: 8px;
         }
 
-        .admin-table-container {
+        .manager-table-container {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             border-radius: 10px;
@@ -100,33 +100,33 @@
             overflow-x: auto;
         }
 
-        .admin-table {
+        .manager-table {
             width: 100%;
             border-collapse: collapse;
             color: var(--text-color);
         }
 
-        .admin-table thead tr {
+        .manager-table thead tr {
             background-color: var(--highlight-color);
             color: white;
         }
 
-        .admin-table th,
-        .admin-table td {
+        .manager-table th,
+        .manager-table td {
             padding: 15px;
             text-align: left;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .admin-table tbody tr {
+        .manager-table tbody tr {
             transition: all 0.2s ease;
         }
 
-        .admin-table tbody tr:nth-child(even) {
+        .manager-table tbody tr:nth-child(even) {
             background-color: rgba(0, 0, 0, 0.1);
         }
 
-        .admin-table tbody tr:hover {
+        .manager-table tbody tr:hover {
             background-color: rgba(233, 69, 96, 0.1);
         }
 
@@ -180,7 +180,7 @@
             background-color: #b71c1c;
         }
 
-        .no-admins {
+        .no-managers {
             background: rgba(0, 0, 0, 0.2);
             padding: 20px;
             border-radius: 8px;
@@ -208,7 +208,7 @@
         }
 
         @media (max-width: 768px) {
-            .admin-header {
+            .manager-header {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 15px;
@@ -220,12 +220,12 @@
                 justify-content: space-between;
             }
 
-            .admin-table {
+            .manager-table {
                 display: block;
                 overflow-x: auto;
             }
 
-            .admin-table td {
+            .manager-table td {
                 min-width: 120px;
             }
 
@@ -235,37 +235,37 @@
         }
 
         @media (max-width: 576px) {
-            .admin-table {
+            .manager-table {
                 display: block;
                 width: 100%;
             }
             
-            .admin-table thead {
+            .manager-table thead {
                 display: none;
             }
             
-            .admin-table tbody, 
-            .admin-table tr, 
-            .admin-table td {
+            .manager-table tbody, 
+            .manager-table tr, 
+            .manager-table td {
                 display: block;
                 width: 100%;
             }
             
-            .admin-table tr {
+            .manager-table tr {
                 margin-bottom: 15px;
                 border: 1px solid rgba(255, 255, 255, 0.2);
                 border-radius: 5px;
                 padding: 10px;
             }
             
-            .admin-table td {
+            .manager-table td {
                 text-align: right;
                 padding-left: 50%;
                 position: relative;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
             
-            .admin-table td:before {
+            .manager-table td:before {
                 content: attr(data-label);
                 position: absolute;
                 left: 15px;
@@ -276,7 +276,7 @@
                 color: var(--highlight-color);
             }
             
-            .admin-table td:last-child {
+            .manager-table td:last-child {
                 border-bottom: 0;
             }
             
@@ -288,29 +288,29 @@
 </head>
 
 <body>
-    <div class="admin-container">
-        <a href="${pageContext.request.contextPath}/admin/adminAccount.jsp" class="back-btn">
+    <div class="manager-container">
+        <a href="${pageContext.request.contextPath}/admin/adminDashboard.jsp" class="back-btn">
             <i class="fas fa-arrow-left"></i> Back to Dashboard
         </a>
 
-        <div class="admin-header">
-            <h1 class="page-title"><i class="fas fa-users-cog"></i> Manage Admins</h1>
+        <div class="manager-header">
+            <h1 class="page-title"><i class="fas fa-truck"></i> Manage Delivery Persons</h1>
             <div class="header-actions">
-                <c:if test="${not empty admin}">
-                    <div class="admin-count">
-                        <i class="fas fa-users"></i> Total Admins: ${fn:length(admin)}
+                <c:if test="${not empty deliveryManagers}">
+                    <div class="manager-count">
+                        <i class="fas fa-users"></i> Total Managers: ${fn:length(deliveryManagers)}
                     </div>
                 </c:if>
                 
-                <a href="${pageContext.request.contextPath}/admin/createAdmin.jsp" class="btn btn-add-admin">
-                    <i class="fas fa-plus"></i> Add Admin
+                <a href="${pageContext.request.contextPath}/admin/addDeliveryManager.jsp" class="btn btn-add-manager">
+                    <i class="fas fa-plus"></i> Add Delivery Person
                 </a>
             </div>
         </div>
 
-        <div class="admin-table-container">
-            <c:if test="${not empty admin}">
-                <table class="admin-table">
+        <div class="manager-table-container">
+            <c:if test="${not empty deliveryManagers}">
+                <table class="manager-table">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -324,36 +324,36 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="ad" items="${admin}">
+                        <c:forEach var="manager" items="${deliveryManagers}">
                             <tr>
-                                <td data-label="ID">${ad.admin_id}</td>
-                                <td data-label="Username">${ad.username}</td>
-                                <td data-label="First Name">${ad.first_name}</td>
-                                <td data-label="Last Name">${ad.last_name}</td>
-                                <td data-label="Phone">${ad.phone}</td>
-                                <td data-label="Email">${ad.email}</td>
+                                <td data-label="ID">${manager.managerId}</td>
+                                <td data-label="Username">${manager.username}</td>
+                                <td data-label="First Name">${manager.firstName}</td>
+                                <td data-label="Last Name">${manager.lastName}</td>
+                                <td data-label="Phone">${manager.phone}</td>
+                                <td data-label="Email">${manager.email}</td>
                                 <td data-label="Password">
                                     <div class="password-field">
                                         <span class="password-mask">••••••••</span>
                                         <button class="btn-show-password" onclick="togglePassword(this)">
                                             <i class="fas fa-eye"></i>
                                         </button>
-                                        <span class="actual-password" style="display:none;">${ad.password}</span>
+                                        <span class="actual-password" style="display:none;">${manager.password}</span>
                                     </div>
                                 </td>
                                 <td data-label="Actions">
                                     <div class="action-buttons">
-                                        <form action="adminUpdateAdmin" method="get" style="display: inline;">
-                                            <input type="hidden" name="id" value="${ad.admin_id}">
+                                        <form action="editDeliveryManager" method="get" style="display: inline;">
+                                            <input type="hidden" name="id" value="${manager.managerId}">
                                             <button type="submit" class="btn-action btn-edit" title="Edit">
                                                 <i class="fas fa-edit"></i>
                                             </button>
                                         </form>
                                         
-                                        <form action="deleteAdmin" method="POST" style="display: inline;">
-                                            <input type="hidden" name="id" value="${ad.admin_id}">
+                                        <form action="deleteDeliveryManager" method="POST" style="display: inline;">
+                                            <input type="hidden" name="id" value="${manager.managerId}">
                                             <button type="submit" class="btn-action btn-delete" title="Delete"
-                                                    onclick="return confirm('Are you sure you want to delete this admin?')">
+                                                    onclick="return confirm('Are you sure you want to delete this delivery manager?')">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </form>
@@ -364,13 +364,13 @@
                     </tbody>
                 </table>
             </c:if>
-            <c:if test="${empty admin}">
-                <div class="no-admins">
+            <c:if test="${empty deliveryManagers}">
+                <div class="no-managers">
                     <i class="fas fa-info-circle fa-2x"></i>
-                    <h3>No Admins Found</h3>
-                    <p>There are currently no admins registered in the system.</p>
-                    <a href="${pageContext.request.contextPath}/admin/createAdmin.jsp" class="btn btn-add-admin mt-3">
-                        <i class="fas fa-plus"></i> Add Your First Admin
+                    <h3>No Delivery Persons Found</h3>
+                    <p>There are currently no delivery persons registered in the system.</p>
+                    <a href="${pageContext.request.contextPath}/admin/addDeliveryManager.jsp" class="btn btn-add-manager mt-3">
+                        <i class="fas fa-plus"></i> Add Your First Delivery Person
                     </a>
                 </div>
             </c:if>

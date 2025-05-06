@@ -2,15 +2,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page session="true" %>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delivary Manager Dashboard</title>
-
+    <title>Delivery Manager Dashboard</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -54,7 +51,7 @@
         }
 
         .sidebar-collapsed .nav-text,
-        .sidebar-collapsed .admin-name,
+        .sidebar-collapsed .manager-name,
         .sidebar-collapsed .logout-btn span {
             display: none;
         }
@@ -107,7 +104,7 @@
             margin-left: var(--sidebar-collapsed-width);
         }
 
-        .admin-name {
+        .manager-name {
             text-align: center;
             margin-bottom: 10px;
             font-weight: bold;
@@ -266,71 +263,59 @@
     </button>
 
     <div class="sidebar" id="sidebar">
-        <div class="admin-name">
-            <i class="fas fa-user-shield"></i>
-            <span class="nav-text">${sessionScope.adminDetails[0].first_name} ${sessionScope.adminDetails[0].last_name}</span>
+        <div class="manager-name">
+            <i class="fas fa-truck"></i>
+            <span class="nav-text">${sessionScope.deliveryManagerDetails.firstName} ${sessionScope.deliveryManagerDetails.lastName}</span>
         </div>
         <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> <span class="nav-text">Dashboard</span></a>
-        <a href="../manageAdmin"><i class="fas fa-users-cog"></i> <span class="nav-text">Admins</span></a>
-        <a href="../manageInventoryManager"><i class="fas fa-boxes"></i> <span class="nav-text">Inventory Managers</span></a>
-        <a href="../manageDeliveryManager"><i class="fas fa-truck"></i> <span class="nav-text">Delivery Managers</span></a>
-        <a href="#"><i class="fas fa-users"></i> <span class="nav-text">Users</span></a>
-        <a href="../index.jsp"><i class="fas fa-cog"></i> <span class="nav-text">Site Settings</span></a>
+        <a href="../manageDeliveries"><i class="fas fa-shipping-fast"></i> <span class="nav-text">Deliveries</span></a>
+        <a href="../manageDrivers"><i class="fas fa-user-tie"></i> <span class="nav-text">Drivers</span></a>
+        <a href="../manageVehicles"><i class="fas fa-truck-pickup"></i> <span class="nav-text">Vehicles</span></a>
         <a href="../LogoutServlet" class="logout-btn"><i class="fas fa-sign-out-alt"></i> <span class="nav-text">Logout</span></a>
     </div>
 
     <div class="main-content" id="mainContent">
         <c:choose>
-            <c:when test="${not empty sessionScope.adminDetails}">
+            <c:when test="${not empty sessionScope.deliveryManagerDetails}">
                 <div class="welcome-message">
-                    <i class="fas fa-user-shield"></i> Welcome, ${sessionScope.adminDetails[0].first_name} ${sessionScope.adminDetails[0].last_name}!
+                    <i class="fas fa-truck"></i> Welcome, ${sessionScope.deliveryManagerDetails.firstName} ${sessionScope.deliveryManagerDetails.lastName}!
                 </div>
 
                 <div class="table-container">
                     <table class="profile-table table-bordered">
                         <tbody>
-                            <c:forEach var="ad" items="${sessionScope.adminDetails}">
-                                <c:set var="id" value="${ad.admin_id}"/>
-                                <c:set var="username" value="${ad.username}"/>
-                                <c:set var="fName" value="${ad.first_name}"/>
-                                <c:set var="lName" value="${ad.last_name}"/>
-                                <c:set var="phone" value="${ad.phone}"/>
-                                <c:set var="email" value="${ad.email}"/>
-                                <c:set var="password" value="${ad.password}"/>
-
-                                <tr class="detail-row"><td class="detail-label" data-label="Admin ID"><i class="fas fa-id-card"></i> Admin ID</td><td class="detail-value"><c:out value="${ad.admin_id}"/></td></tr>
-                                <tr class="detail-row"><td class="detail-label" data-label="Username"><i class="fas fa-user"></i> Username</td><td class="detail-value"><c:out value="${ad.username}"/></td></tr>
-                                <tr class="detail-row"><td class="detail-label" data-label="First Name"><i class="fas fa-signature"></i> First Name</td><td class="detail-value"><c:out value="${ad.first_name}"/></td></tr>
-                                <tr class="detail-row"><td class="detail-label" data-label="Last Name"><i class="fas fa-signature"></i> Last Name</td><td class="detail-value"><c:out value="${ad.last_name}"/></td></tr>
-                                <tr class="detail-row"><td class="detail-label" data-label="Phone"><i class="fas fa-phone"></i> Phone</td><td class="detail-value"><c:out value="${ad.phone}"/></td></tr>
-                                <tr class="detail-row"><td class="detail-label" data-label="Email"><i class="fas fa-envelope"></i> Email</td><td class="detail-value"><c:out value="${ad.email}"/></td></tr>
-                                <tr class="detail-row"><td class="detail-label" data-label="Password"><i class="fas fa-lock"></i> Password</td>
-                                    <td class="detail-value">
-                                        <div class="password-field">
-                                            <span class="password-mask">••••••••</span>
-                                            <button class="btn btn-sm btn-show-password" onclick="togglePassword(this)">
-                                                <i class="fas fa-eye"></i> Show
-                                            </button>
-                                            <span class="actual-password" style="display:none;"><c:out value="${ad.password}"/></span>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </c:forEach>
+                            <tr class="detail-row"><td class="detail-label" data-label="Manager ID"><i class="fas fa-id-card"></i> Manager ID</td><td class="detail-value">${sessionScope.deliveryManagerDetails.managerId}</td></tr>
+                            <tr class="detail-row"><td class="detail-label" data-label="Username"><i class="fas fa-user"></i> Username</td><td class="detail-value">${sessionScope.deliveryManagerDetails.username}</td></tr>
+                            <tr class="detail-row"><td class="detail-label" data-label="First Name"><i class="fas fa-signature"></i> First Name</td><td class="detail-value">${sessionScope.deliveryManagerDetails.firstName}</td></tr>
+                            <tr class="detail-row"><td class="detail-label" data-label="Last Name"><i class="fas fa-signature"></i> Last Name</td><td class="detail-value">${sessionScope.deliveryManagerDetails.lastName}</td></tr>
+                            <tr class="detail-row"><td class="detail-label" data-label="Phone"><i class="fas fa-phone"></i> Phone</td><td class="detail-value">${sessionScope.deliveryManagerDetails.phone}</td></tr>
+                            <tr class="detail-row"><td class="detail-label" data-label="Email"><i class="fas fa-envelope"></i> Email</td><td class="detail-value">${sessionScope.deliveryManagerDetails.email}</td></tr>
+                            <tr class="detail-row"><td class="detail-label" data-label="Password"><i class="fas fa-lock"></i> Password</td>
+                                <td class="detail-value">
+                                    <div class="password-field">
+                                        <span class="password-mask">••••••••</span>
+                                        <button class="btn btn-sm btn-show-password" onclick="togglePassword(this)">
+                                            <i class="fas fa-eye"></i> Show
+                                        </button>
+                                        <span class="actual-password" style="display:none;">${sessionScope.deliveryManagerDetails.password}</span>
+                                    </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <c:url value="updateAdminProfile.jsp" var="adminUpdate">
-                    <c:param name="id" value="${id}"/>
-                    <c:param name="username" value="${username}"/>
-                    <c:param name="fName" value="${fName}"/>
-                    <c:param name="lName" value="${lName}"/>
-                    <c:param name="phone" value="${phone}"/>
-                    <c:param name="email" value="${email}"/>
-                    <c:param name="password" value="${password}"/>
+                <c:url value="updateDeliveryManagerProfile.jsp" var="managerUpdate">
+                    <c:param name="id" value="${sessionScope.deliveryManagerDetails.managerId}"/>
+                    <c:param name="username" value="${sessionScope.deliveryManagerDetails.username}"/>
+                    <c:param name="firstName" value="${sessionScope.deliveryManagerDetails.firstName}"/>
+                    <c:param name="lastName" value="${sessionScope.deliveryManagerDetails.lastName}"/>
+                    <c:param name="phone" value="${sessionScope.deliveryManagerDetails.phone}"/>
+                    <c:param name="email" value="${sessionScope.deliveryManagerDetails.email}"/>
+                    <c:param name="password" value="${sessionScope.deliveryManagerDetails.password}"/>
                 </c:url>
 
-                <a href="${adminUpdate}" class="btn-edit-profile mt-4">
+                <a href="${managerUpdate}" class="btn-edit-profile mt-4">
                     <i class="fas fa-user-edit"></i> Edit Profile
                 </a>
 
