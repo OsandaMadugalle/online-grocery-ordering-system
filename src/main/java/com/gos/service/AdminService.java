@@ -4,7 +4,6 @@ import com.gos.model.Admin;
 import com.gos.util.DBConnection;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class AdminService {
 

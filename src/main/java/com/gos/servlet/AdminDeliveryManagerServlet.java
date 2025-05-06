@@ -21,7 +21,7 @@ public class AdminDeliveryManagerServlet extends HttpServlet {
 
 		try {
 			DeliveryManagerService service = new DeliveryManagerService();
-			ArrayList<DeliveryManager> deliveryManager = service.getAllDelivaryManager();
+			ArrayList<DeliveryManager> deliveryManager = service.getAllDeliveryManagers();
 			
 			request.setAttribute("deliveryManager", deliveryManager);
 			RequestDispatcher dis = request.getRequestDispatcher("admin/manageDeliveryManagers.jsp");

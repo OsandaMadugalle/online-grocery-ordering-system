@@ -104,6 +104,30 @@ VALUES
 (4, 'mike_jones', 'Mike', 'Jones', '6789012345', 'mike.jones@example.com', 'mikePass1234'),
 (5, 'emma_brown', 'Emma', 'Brown', '7890123456', 'emma.brown@example.com', 'emmaCode567');
 
+-- Drop DeliveryPerson table if it exists
+DROP TABLE IF EXISTS DeliveryPerson;
+
+-- Create DeliveryPerson table
+CREATE TABLE DeliveryPerson (
+    DP_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Username VARCHAR(50) UNIQUE,
+    First_name VARCHAR(50),
+    Last_name VARCHAR(50),
+    Phone VARCHAR(15),
+    Email VARCHAR(100),
+    Password VARCHAR(50)
+);
+
+-- Sample Inserts for DeliveryPerson
+INSERT INTO DeliveryPerson (Username, First_name, Last_name, Phone, Email, Password)
+VALUES
+    ('deliveryJohn', 'John', 'Walker', '+94704441111', 'john.walker@example.com', 'walker123'),
+    ('dpSara', 'Sara', 'Carter', '+94704442222', 'sara.carter@example.com', 'sara@dp'),
+    ('dpTom', 'Tom', 'Harris', '+94704443333', 'tom.harris@example.com', 'passTom123'),
+    ('dpAnna', 'Anna', 'Moore', '+94704444444', 'anna.moore@example.com', 'annaPass1'),
+    ('dpLeo', 'Leo', 'Grant', '+94704445555', 'leo.grant@example.com', 'grantSecure');
+
+
     
 -- Select all data from Admin table
 SELECT * FROM Admin;
@@ -119,3 +143,6 @@ SELECT * FROM Product;
 
 -- Select all data from Customer table
 SELECT * FROM Customer;
+
+-- Select all data from DeliveryPerson table
+SELECT * FROM DeliveryPerson;
