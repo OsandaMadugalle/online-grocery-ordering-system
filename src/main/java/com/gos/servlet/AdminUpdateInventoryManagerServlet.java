@@ -6,8 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
-
+import java.util.ArrayList;
 import com.gos.model.InventoryManager;
 import com.gos.service.InventoryManagerService;
 
@@ -19,7 +18,7 @@ public class AdminUpdateInventoryManagerServlet extends HttpServlet {
             throws ServletException, IOException {
         
         String id = request.getParameter("id");
-        List<InventoryManager> manager = InventoryManagerService.getInventoryManagerById(id);
+        ArrayList<InventoryManager> manager = InventoryManagerService.getInventoryManagerById(id);
         
         if (manager != null && !manager.isEmpty()) {
             request.setAttribute("manager", manager.get(0));
@@ -45,7 +44,7 @@ public class AdminUpdateInventoryManagerServlet extends HttpServlet {
 
         if (isSuccess) {
         
-            List<InventoryManager> updatedList = InventoryManagerService.getInventoryManagerById(id);
+            ArrayList<InventoryManager> updatedList = InventoryManagerService.getInventoryManagerById(id);
             request.getSession().setAttribute("inventoryManagers", updatedList);
         }
         

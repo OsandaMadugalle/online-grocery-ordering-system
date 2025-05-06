@@ -18,7 +18,7 @@ public class AdminLogoutServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         if (session != null) {
            
-        	session.setAttribute("logoutMessage", "You have successfully logged out."); 
+        	//System.out.println("Admin Logout Success");
             session.invalidate();
         }
   

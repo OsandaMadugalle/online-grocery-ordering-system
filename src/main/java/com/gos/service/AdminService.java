@@ -9,7 +9,7 @@ import java.util.List;
 public class AdminService {
 
     // Validate Admin Login
-    public static List<Admin> validate(String username, String password) {
+    public static ArrayList<Admin> validate(String username, String password) {
         ArrayList<Admin> adminList = new ArrayList<>();
         String sql = "SELECT * FROM Admin WHERE Username = ? AND Password = ?";
 
@@ -100,7 +100,7 @@ public class AdminService {
     }
 
     //Fetch Updated Admins
-    public static List<Admin> getAdminById(String id) {
+    public static ArrayList<Admin> getAdminById(String id) {
     	    	
     	ArrayList<Admin> ad = new ArrayList<>();
         String sql = "SELECT * FROM Admin WHERE Admin_ID = ?";

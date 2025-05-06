@@ -133,7 +133,7 @@ public class InventoryManagerService {
     }
     
     // Fetch Inventory Manager Details By ID
-    public static List<InventoryManager> getInventoryManagerById(String id) {    	    	
+    public static ArrayList<InventoryManager> getInventoryManagerById(String id) {    	    	
     	ArrayList<InventoryManager> IM = new ArrayList<>();
         String sql = "SELECT * FROM InventoryManager WHERE M_ID = ?";
 

@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page session="true" %>
 
+<!-- Admin Session -->
 <c:if test="${empty sessionScope.loggedIn or empty sessionScope.adminDetails}">
     <c:redirect url="/admin/adminLogin.jsp"/>
 </c:if>
@@ -11,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Admin Account</title>
+    <title>Admin Dashboard</title>
     <link rel="icon" type="image/png" href="../images/favAdmin.jpg">
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">

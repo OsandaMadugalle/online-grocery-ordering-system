@@ -6,8 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
-
+import java.util.ArrayList;
 import com.gos.model.Admin;
 import com.gos.service.AdminService;
 
@@ -19,7 +18,7 @@ public class AdminUpdateAdminServlet extends HttpServlet {
             throws ServletException, IOException {
         // Display edit form - GET request
         String id = request.getParameter("id");
-        List<Admin> ad = AdminService.getAdminById(id);
+        ArrayList<Admin> ad = AdminService.getAdminById(id);
         
         if (ad != null && !ad.isEmpty()) {
             request.setAttribute("admin", ad.get(0));
@@ -45,7 +44,7 @@ public class AdminUpdateAdminServlet extends HttpServlet {
 
         if (isSuccess) {
             // Refresh the list in session if needed
-            List<Admin> ad = AdminService.getAdminById(id);
+            ArrayList<Admin> ad = AdminService.getAdminById(id);
 
             request.getSession().setAttribute("admin", ad);
         }

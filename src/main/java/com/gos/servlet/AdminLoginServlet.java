@@ -7,8 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
-
+import java.util.ArrayList;
 import com.gos.model.Admin;
 import com.gos.service.AdminService;
 
@@ -22,7 +21,7 @@ public class AdminLoginServlet extends HttpServlet {
         String upass = request.getParameter("password");
 
         try {
-            List<Admin> adminDetails = AdminService.validate(uname, upass);
+            ArrayList<Admin> adminDetails = AdminService.validate(uname, upass);
 
             if (!adminDetails.isEmpty()) {
                 HttpSession session = request.getSession();
@@ -30,14 +29,15 @@ public class AdminLoginServlet extends HttpServlet {
                 session.setAttribute("adminDetails", adminDetails);
                 session.setAttribute("username", uname);
                 
-                response.sendRedirect(request.getContextPath() +"/admin/adminAccount.jsp"); 
+                //System.out.println("Admin Login Success");
+                response.sendRedirect(request.getContextPath() +"/admin/adminDashboard.jsp"); 
             } else {
-                request.setAttribute("errorMessage", "Invalid username or password.");
+                //System.out.println("Admin Login : Invalid username or password.");
                 response.sendRedirect(request.getContextPath() +"/admin/adminLogin.jsp");
             }
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
 }
-
