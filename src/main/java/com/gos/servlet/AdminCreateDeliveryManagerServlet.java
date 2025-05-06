@@ -14,6 +14,7 @@ public class AdminCreateDeliveryManagerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;     
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String username = request.getParameter("username");
 		String first_name  = request.getParameter("firstName");
 		String last_name  = request.getParameter("lastName");
