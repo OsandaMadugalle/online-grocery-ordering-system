@@ -1,8 +1,10 @@
--- Drop tables if they exist to start fresh
+-- Drop tables if they exist
 DROP TABLE IF EXISTS Product;
 DROP TABLE IF EXISTS Admin;
 DROP TABLE IF EXISTS InventoryManager;
 DROP TABLE IF EXISTS DeliveryManager;
+DROP TABLE IF EXISTS Customer;
+DROP TABLE IF EXISTS DeliveryPerson;
 
 -- Create Admin table
 CREATE TABLE Admin (
@@ -58,55 +60,6 @@ CREATE TABLE Customer (
     Password VARCHAR(50)
 );
 
-
--- Sample Inserts for Product table
-INSERT INTO Product (image_path, product_name, category, stock, price)
-VALUES
-    ('/productImages/4.jpg', 'Fresh Milk', 'Dairy', 100, 1.99),
-    ('/productImages/5.jpg', 'Brown Bread', 'Bakery', 50, 1.29),
-    ('/productImages/6.jpg', 'Chicken Breast', 'Meat', 30, 3.99),
-    ('/productImages/7.jpg', 'Broccoli', 'Vegetables', 75, 0.99),
-    ('/productImages/8.jpg', 'Basmati Rice', 'Grains', 40, 12.49);
-
--- Sample Inserts for Admin table
-INSERT INTO Admin (Username, First_Name, Last_Name, Phone, Email, Password)
-VALUES
-    ('SuperAdmin', 'John', 'Doe', '+94701112222', 'john.doe@example.com', 'admin@123'),
-    ('adminJane', 'Jane', 'Smith', '+94701113333', 'jane.smith@example.com', 'pass1234'),
-    ('adminSam', 'Sam', 'Brown', '+94701114444', 'sam.brown@example.com', 'secure123'),
-    ('adminLily', 'Lily', 'Taylor', '+94701115555', 'lily.taylor@example.com', 'admin2025'),
-    ('adminMax', 'Max', 'Davis', '+94701116666', 'max.davis@example.com', 'password1');
-
--- Sample Inserts for InventoryManager table
-INSERT INTO InventoryManager (Username, First_Name, Last_Name, Phone, Email, Password)
-VALUES
-    ('SuperManager', 'Alex', 'Miller', '+94702223333', 'alex.miller@example.com', 'inv@2025'),
-    ('managerEva', 'Eva', 'Wilson', '+94702224444', 'eva.wilson@example.com', 'invManager1'),
-    ('managerJake', 'Jake', 'Anderson', '+94702225555', 'jake.anderson@example.com', 'inventory!99'),
-    ('managerMia', 'Mia', 'Thomas', '+94702226666', 'mia.thomas@example.com', 'manager$12'),
-    ('managerZoe', 'Zoe', 'Martin', '+94702227777', 'zoe.martin@example.com', 'inventory#44');
-
--- Sample Inserts for DeliveryManager table
-INSERT INTO DeliveryManager (Username, First_Name, Last_Name, Phone, Email, Password)
-VALUES
-    ('SuperDelivery', 'Adam', 'White', '+94703334444', 'adam.white@example.com', 'del@driver'),
-    ('deliveryChloe', 'Chloe', 'King', '+94703335555', 'chloe.king@example.com', 'deliver123'),
-    ('deliveryNick', 'Nick', 'Scott', '+94703336666', 'nick.scott@example.com', 'fast$move'),
-    ('deliverySophia', 'Sophia', 'Green', '+94703337777', 'sophia.green@example.com', 'onTime#45'),
-    ('deliveryLiam', 'Liam', 'Clark', '+94703338888', 'liam.clark@example.com', 'routeDriver');
-
--- Insert sample values
-INSERT INTO Customer (customer_id, username, first_name, last_name, phone, email, password)
-VALUES
-(1, 'john_doe', 'John', 'Doe', '1234567890', 'john.doe@example.com', 'securePass123'),
-(2, 'jane_smith', 'Jane', 'Smith', '0987654321', 'jane.smith@example.com', 'password987'),
-(3, 'alice_williams', 'Alice', 'Williams', '5678901234', 'alice.williams@example.com', 'aliceSecure1'),
-(4, 'mike_jones', 'Mike', 'Jones', '6789012345', 'mike.jones@example.com', 'mikePass1234'),
-(5, 'emma_brown', 'Emma', 'Brown', '7890123456', 'emma.brown@example.com', 'emmaCode567');
-
--- Drop DeliveryPerson table if it exists
-DROP TABLE IF EXISTS DeliveryPerson;
-
 -- Create DeliveryPerson table
 CREATE TABLE DeliveryPerson (
     DP_ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -118,31 +71,74 @@ CREATE TABLE DeliveryPerson (
     Password VARCHAR(50)
 );
 
--- Sample Inserts for DeliveryPerson
+-- Sample Product Inserts (Sri Lankan products)
+INSERT INTO Product (image_path, product_name, category, stock, price)
+VALUES
+    ('/productImages/kiri.jpg', 'Anchor Kiri 1L', 'Dairy', 120, 520.00),
+    ('/productImages/roti.jpg', 'Coconut Roti Pack', 'Bakery', 60, 150.00),
+    ('/productImages/fish.jpg', 'Kelawalla Fish', 'Meat', 25, 1100.00),
+    ('/productImages/banana.jpg', 'Ambul Banana', 'Fruits', 80, 90.00),
+    ('/productImages/rice.jpg', 'Nadu Rice 5kg', 'Grains', 50, 750.00);
+
+-- Sample Admin Inserts
+INSERT INTO Admin (Username, First_Name, Last_Name, Phone, Email, Password)
+VALUES
+    ('adminNimal', 'Nimal', 'Perera', '+94712345678', 'nimal.perera@slexample.com', 'admin@2025'),
+    ('adminKumari', 'Kumari', 'Fernando', '+94711234567', 'kumari.fernando@slexample.com', 'securePass1'),
+    ('adminSanjeewa', 'Sanjeewa', 'Jayasinghe', '+94719876543', 'sanjeewa.jaya@slexample.com', 'sanj@admin'),
+    ('adminNadeesha', 'Nadeesha', 'Silva', '+94716789999', 'nadeesha.silva@slexample.com', 'nadee2025'),
+    ('adminRuwan', 'Ruwan', 'De Silva', '+94714442211', 'ruwan.desilva@slexample.com', 'pass4321');
+
+-- Inventory Managers
+INSERT INTO InventoryManager (Username, First_Name, Last_Name, Phone, Email, Password)
+VALUES
+    ('invRuwan', 'Ruwan', 'Rajapaksha', '+94720001111', 'ruwan.rajapaksha@slexample.com', 'inv@sl2025'),
+    ('invThilini', 'Thilini', 'Dias', '+94720002222', 'thilini.dias@slexample.com', 'invmanager'),
+    ('invAjith', 'Ajith', 'Weerasinghe', '+94720003333', 'ajith.weera@slexample.com', 'storeSecure'),
+    ('invChamari', 'Chamari', 'Gunasekara', '+94720004444', 'chamari.guna@slexample.com', 'stockM@2025'),
+    ('invRoshan', 'Roshan', 'Senanayake', '+94720005555', 'roshan.sena@slexample.com', 'roshanMGR');
+
+-- Delivery Managers
+INSERT INTO DeliveryManager (Username, First_Name, Last_Name, Phone, Email, Password)
+VALUES
+    ('delKamal', 'Kamal', 'Rathnayake', '+94730001111', 'kamal.rathna@slexample.com', 'deliver@sl'),
+    ('delNadeeka', 'Nadeeka', 'Perera', '+94730002222', 'nadeeka.perera@slexample.com', 'fastMove'),
+    ('delAruna', 'Aruna', 'Wijesinghe', '+94730003333', 'aruna.wije@slexample.com', 'routePlan123'),
+    ('delIshara', 'Ishara', 'Lakmal', '+94730004444', 'ishara.lakmal@slexample.com', 'onTime@45'),
+    ('delRashmi', 'Rashmi', 'Jayalath', '+94730005555', 'rashmi.jaya@slexample.com', 'rashDel');
+
+-- Delivery Persons
 INSERT INTO DeliveryPerson (Username, First_name, Last_name, Phone, Email, Password)
 VALUES
-    ('deliveryJohn', 'John', 'Walker', '+94704441111', 'john.walker@example.com', 'walker123'),
-    ('dpSara', 'Sara', 'Carter', '+94704442222', 'sara.carter@example.com', 'sara@dp'),
-    ('dpTom', 'Tom', 'Harris', '+94704443333', 'tom.harris@example.com', 'passTom123'),
-    ('dpAnna', 'Anna', 'Moore', '+94704444444', 'anna.moore@example.com', 'annaPass1'),
-    ('dpLeo', 'Leo', 'Grant', '+94704445555', 'leo.grant@example.com', 'grantSecure');
+    ('dpDilan', 'Dilan', 'Kumara', '+94740001111', 'dilan.kumara@slexample.com', 'dilan123'),
+    ('dpNisansala', 'Nisansala', 'Wijeratne', '+94740002222', 'nisansala.wije@slexample.com', 'nisan@dp'),
+    ('dpHarsha', 'Harsha', 'Madushanka', '+94740003333', 'harsha.madu@slexample.com', 'passHarsha'),
+    ('dpJanani', 'Janani', 'Wickramasinghe', '+94740004444', 'janani.wick@slexample.com', 'janaPass1'),
+    ('dpLakshan', 'Lakshan', 'Ranasinghe', '+94740005555', 'lakshan.rana@slexample.com', 'secureLak');
 
+-- Sample Sri Lankan Customers
+INSERT INTO Customer (customer_id, username, first_name, last_name, phone, email, password)
+VALUES
+(1, 'nuwan_k', 'Nuwan', 'Kumara', '0771234567', 'nuwan.k@example.lk', 'nuwan@123'),
+(2, 'sachini_f', 'Sachini', 'Fernando', '0779876543', 'sachini.f@example.lk', 'sachi@pass'),
+(3, 'hiruni_w', 'Hiruni', 'Wijeratne', '0713456789', 'hiruni.w@example.lk', 'hiruSecure'),
+(4, 'kamal_j', 'Kamal', 'Jayawardena', '0782345678', 'kamal.j@example.lk', 'kamalpass'),
+(5, 'dilani_p', 'Dilani', 'Perera', '0754567890', 'dilani.p@example.lk', 'dilani!12');
 
-    
--- Select all data from Admin table
+-- Select all records from Admin table
 SELECT * FROM Admin;
 
--- Select all data from InventoryManager table
+-- Select all records from InventoryManager table
 SELECT * FROM InventoryManager;
 
--- Select all data from DeliveryManager table
+-- Select all records from DeliveryManager table
 SELECT * FROM DeliveryManager;
 
--- Select all data from Product table
+-- Select all records from Product table
 SELECT * FROM Product;
 
--- Select all data from Customer table
+-- Select all records from Customer table
 SELECT * FROM Customer;
 
--- Select all data from DeliveryPerson table
+-- Select all records from DeliveryPerson table
 SELECT * FROM DeliveryPerson;
