@@ -5,11 +5,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-
-import com.gos.model.DeliveryManager;
 import com.gos.model.DeliveryPerson;
-import com.gos.service.DeliveryManagerService;
 import com.gos.service.DeliveryPersonService;
 
 @WebServlet("/DeliveryManagerDeliveryPersonServlet")
