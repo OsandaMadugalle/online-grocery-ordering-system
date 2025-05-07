@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Update My Profile</title>
-    <link rel="icon" type="image/png" href="../images/favDelManager.jpg">
+    <link rel="icon" type="image/png" href="../images/favAdmin.jpg">
     
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
@@ -20,18 +20,19 @@
     
     <style>
         :root {
-            --primary-bg: #1a3a5f;
-            --form-bg: rgba(255, 255, 255, 0.1);
-            --accent-color: #ff9f1c;
-            --accent-hover: #e68a00;
+            --sidebar-width: 300px;
+            --sidebar-collapsed-width: 80px;
+            --primary-color: #002244;
+            --accent-color: #ff4c29;
             --text-color: white;
+            --form-bg: rgba(255, 255, 255, 0.1);
             --placeholder-color: #e0e0e0;
             --error-color: #ff6b6b;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--primary-bg);
+            background-color: var(--primary-color);
             color: var(--text-color);
             min-height: 100vh;
             display: flex;
@@ -46,9 +47,11 @@
             padding: 30px;
             width: 100%;
             max-width: 800px;
-            border-radius: 12px;
+            border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
             animation: fadeIn 0.5s ease-in-out;
+            margin-left: 0;
+            transition: margin-left 0.3s ease;
         }
         
         .form-container h3 {
@@ -56,6 +59,7 @@
             margin-bottom: 25px;
             text-align: center;
             color: var(--accent-color);
+            font-weight: 600;
         }
         
         .form-row {
@@ -70,6 +74,13 @@
             text-align: right;
             padding-right: 15px;
             font-weight: 500;
+            color: #ffcc00;
+        }
+        
+        .form-label i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
         }
         
         .form-input {
@@ -80,16 +91,17 @@
         .form-control {
             background: rgba(255, 255, 255, 0.2);
             color: var(--text-color);
-            border: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
             padding: 12px 15px;
-            border-radius: 8px;
+            border-radius: 5px;
             width: 100%;
             transition: all 0.3s ease;
         }
         
         .form-control:focus {
             background: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 0 0 0.2rem rgba(255, 159, 28, 0.25);
+            box-shadow: 0 0 0 0.2rem rgba(255, 76, 41, 0.25);
+            border-color: var(--accent-color);
         }
         
         .form-control::placeholder {
@@ -102,21 +114,23 @@
         }
         
         .btn-submit {
-            background: var(--accent-color);
-            color: #1e1e1e;
+            background: linear-gradient(135deg, var(--accent-color) 0%, #ff6b3d 100%);
+            color: white;
             font-size: clamp(0.9rem, 1.2vw, 1rem);
             font-weight: 600;
             border: none;
             padding: 12px;
             width: 100%;
-            border-radius: 8px;
+            border-radius: 5px;
             transition: all 0.3s ease;
             margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(255, 76, 41, 0.3);
         }
         
         .btn-submit:hover {
-            background: var(--accent-hover);
+            background: linear-gradient(135deg, #e03e1a 0%, #e05a2a 100%);
             transform: translateY(-2px);
+            color: white;
         }
         
         .error-message {
@@ -136,14 +150,18 @@
             text-decoration: none;
             z-index: 100;
             background: rgba(0, 0, 0, 0.3);
-            padding: 8px 12px;
-            border-radius: 50%;
+            padding: 10px 15px;
+            border-radius: 5px;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .home-icon:hover {
-            color: #ddd;
-            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            background: var(--accent-color);
+            text-decoration: none;
         }
         
         .password-toggle {
@@ -162,6 +180,7 @@
             width: 100%;
         }
 
+        /* Responsive Styles */
         @media (max-width: 768px) {
             .form-container {
                 padding: 25px;
@@ -186,8 +205,8 @@
             }
             
             .home-icon {
-                font-size: 1.3rem;
-                padding: 6px 10px;
+                font-size: 1rem;
+                padding: 8px 12px;
             }
         }
 
@@ -206,23 +225,57 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1100;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 992px) {
+            .home-icon {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .form-container {
+                margin-top: 80px;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <a href="${pageContext.request.contextPath}/deliveryManager/deliveryManagerDashboard.jsp" class="home-icon">
-        <i class="fas fa-arrow-left"></i>
+    <!-- Mobile Menu Toggle -->
+    <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <a href="${pageContext.request.contextPath}/admin/adminDashboard.jsp" class="home-icon">
+        <i class="fas fa-arrow-left"></i> <span>Back to Dashboard</span>
     </a>
 
     <div class="form-container">
-        <h3><i class="fas fa-user-edit mr-2"></i>Update Delivery Manager Profile</h3>
+        <h3><i class="fas fa-user-edit"></i> Update Admin Profile</h3>
         
-        <form action="../deliveryManagerUpdate" method="post" onsubmit="return validateForm()">
+        <form action="../updateAdmin" method="post" onsubmit="return validateForm()">
             <input type="hidden" name="d_id" value="${param.id}">
             
             <!-- ID -->
             <div class="form-row">
-                <label for="m_id" class="form-label"><i class="fas fa-id-card mr-2"></i>Manager ID</label>
+                <label for="m_id" class="form-label"><i class="fas fa-id-card"></i>Admin ID</label>
                 <div class="form-input">
                     <input type="text" class="form-control" id="m_id" 
                         value="${param.id}" readonly>
@@ -231,7 +284,7 @@
             
             <!-- Username -->
             <div class="form-row">
-                <label for="username" class="form-label"><i class="fas fa-user mr-2"></i>Username</label>
+                <label for="username" class="form-label"><i class="fas fa-user"></i>Username</label>
                 <div class="form-input">
                     <input type="text" class="form-control" name="username" id="username" 
                         placeholder="Username" value="${param.username}" required>
@@ -240,7 +293,7 @@
             
             <!-- First Name -->
             <div class="form-row">
-                <label for="firstName" class="form-label"><i class="fas fa-signature mr-2"></i>First Name</label>
+                <label for="firstName" class="form-label"><i class="fas fa-signature"></i>First Name</label>
                 <div class="form-input">
                     <input type="text" class="form-control" name="firstName" id="firstName" 
                         placeholder="First Name" value="${param.fName}" required>
@@ -249,7 +302,7 @@
             
             <!-- Last Name -->
             <div class="form-row">
-                <label for="lastName" class="form-label"><i class="fas fa-signature mr-2"></i>Last Name</label>
+                <label for="lastName" class="form-label"><i class="fas fa-signature"></i>Last Name</label>
                 <div class="form-input">
                     <input type="text" class="form-control" name="lastName" id="lastName" 
                         placeholder="Last Name" value="${param.lName}" required>
@@ -258,7 +311,7 @@
             
             <!-- Phone -->
             <div class="form-row">
-                <label for="phone" class="form-label"><i class="fas fa-phone mr-2"></i>Phone</label>
+                <label for="phone" class="form-label"><i class="fas fa-phone"></i>Phone</label>
                 <div class="form-input">
                     <input type="tel" class="form-control" name="phone" id="phone" 
                         placeholder="Phone" value="${param.phone}" required pattern="[0-9]{10}"
@@ -268,7 +321,7 @@
             
             <!-- Email -->
             <div class="form-row">
-                <label for="email" class="form-label"><i class="fas fa-envelope mr-2"></i>Email</label>
+                <label for="email" class="form-label"><i class="fas fa-envelope"></i>Email</label>
                 <div class="form-input">
                     <input type="email" class="form-control" name="email" id="email" 
                         placeholder="Email" value="${param.email}" required>
@@ -277,7 +330,7 @@
             
             <!-- Password -->
             <div class="form-row">
-                <label for="password" class="form-label"><i class="fas fa-lock mr-2"></i>Password</label>
+                <label for="password" class="form-label"><i class="fas fa-lock"></i>Password</label>
                 <div class="form-input">
                     <div class="password-wrapper">
                         <input type="password" class="form-control" name="password" id="password" 
@@ -291,7 +344,7 @@
             
             <!-- Confirm Password -->
             <div class="form-row">
-                <label for="confirmPassword" class="form-label"><i class="fas fa-check-circle mr-2"></i>Confirm Password</label>
+                <label for="confirmPassword" class="form-label"><i class="fas fa-check-circle"></i>Confirm Password</label>
                 <div class="form-input">
                     <div class="password-wrapper">
                         <input type="password" class="form-control" id="confirmPassword" 
@@ -354,6 +407,15 @@
             if (this.value.length > 10) {
                 this.value = this.value.slice(0, 10);
             }
+        });
+        
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            
+            menuToggle.addEventListener('click', function() {
+                window.location.href = "${pageContext.request.contextPath}/admin/adminDashboard.jsp";
+            });
         });
     </script>
 </body>
