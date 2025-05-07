@@ -15,32 +15,48 @@ public class DeliveryManagerUpdateDeliveryPersonServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        try {
+            // Get all parameters
+            String id = request.getParameter("id");
+            String username = request.getParameter("username");
+            String firstName = request.getParameter("firstName");
+            String lastName = request.getParameter("lastName");
+            String phone = request.getParameter("phone");
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
 
-        // Get form data
-        String deliveryPersonId = request.getParameter("deliveryPersonId");
-        String username = request.getParameter("username");
-        String firstName = request.getParameter("firstName");
-        String lastName = request.getParameter("lastName");
-        String phone = request.getParameter("phone");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
+            // Validate required fields
+            if (id == null || username == null || password == null) {
+                response.sendRedirect(request.getContextPath() + "/manageDeliveryPersons?error=missingfields");
+                return;
+            }
 
-        // Update delivery person details in the database
-        boolean isUpdated = DeliveryPersonService.updateDeliveryPerson(deliveryPersonId, username, firstName, lastName, phone, email, password);
+            // Update in database
+            boolean isUpdated = DeliveryPersonService.updateDeliveryPerson(
+                id, username, firstName, lastName, phone, email, password);
 
-        if (isUpdated) {
-            // Retrieve the updated delivery person details to display
-            List<DeliveryPerson> updatedDeliveryPersonDetails = DeliveryPersonService.getDeliveryPersonById(deliveryPersonId);
-
-            HttpSession session = request.getSession();
-            session.setAttribute("deliveryPersonDetails", updatedDeliveryPersonDetails);
-
-            // Redirect to the updated list or dashboard
-            response.sendRedirect("manageDeliveryPersons");
-        } else {
-            // If update fails, show an error message
-            request.setAttribute("errorMessage", "Failed to update delivery person.");
+            if (isUpdated) {
+                response.sendRedirect(request.getContextPath() + "/manageDeliveryPersons?success=updated");
+            } else {
+                response.sendRedirect(request.getContextPath() + "/manageDeliveryPersons?error=updatefailed");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect(request.getContextPath() + "/manageDeliveryPersons?error=server");
+        }
+    }
+    
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String id = request.getParameter("id"); // Changed from deliveryPersonId to id
+        List<DeliveryPerson> deliveryPersonDetails = DeliveryPersonService.getDeliveryPersonById(id);
+        
+        if (deliveryPersonDetails != null && !deliveryPersonDetails.isEmpty()) {
+            request.setAttribute("deliveryPersonDetails", deliveryPersonDetails);
             request.getRequestDispatcher("/deliveryManager/updateDeliveryPerson.jsp").forward(request, response);
+        } else {
+            // Handle case where delivery person not found
+            response.sendRedirect(request.getContextPath() + "/manageDeliveryPersons?error=notfound");
         }
     }
 }

@@ -1,22 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="com.gos.model.DeliveryPerson" %>
+<%@ page import="java.util.List" %><%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page session="true" %>
 
 <c:if test="${empty sessionScope.deliveryManagerDetails}">
     <c:redirect url="/deliveryManager/delLogin.jsp"/>
 </c:if>
 
+<%
+    List<DeliveryPerson> dpList = (List<DeliveryPerson>) request.getAttribute("deliveryPersonDetails");
+    if (dpList == null || dpList.isEmpty()) {
+        response.sendRedirect(request.getContextPath() + "/manageDeliveryPersons");
+        return;
+    }
+    DeliveryPerson dp = dpList.get(0);
+%>
+            
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New Delivery Person</title>
+    <title>Update Delivery Person</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-     <style>
+    <style>
         :root {
             --primary-dark: #1a1a2e;
             --secondary-dark: #16213e;
@@ -195,31 +205,26 @@
 
 <body>
     <div class="container">
-        <a href="../manageDeliveryPersons" class="back-link">
+        <a href="${pageContext.request.contextPath}/manageDeliveryPersons" class="back-link">
             <i class="fas fa-arrow-left"></i> Back to Delivery Person List
         </a>
 
         <div class="manager-form-container">
             <div class="form-header">
-                <h2><i class="fas fa-user-plus"></i> Create New Delivery Person</h2>
-                <p>Fill in the details below to register a new delivery person</p>
+                <h2><i class="fas fa-user-edit"></i> Update Delivery Person</h2>
+                <p>Update the details below for this delivery person</p>
             </div>
 
-            <%-- Display error message if present --%>
-            <% if (request.getAttribute("errorMessage") != null) { %>
-                <div class="alert alert-danger">
-                    <%= request.getAttribute("errorMessage") %>
-                </div>
-            <% } %>
-
-            <form action="../addDeliveryPerson" method="post" onsubmit="return validateForm()">
+            <form action="${pageContext.request.contextPath}/deliveryPersonUpdate" method="post" onsubmit="return validateForm()">
+                <input type="hidden" name="id" value="<%= dp.getDelivery_person_id() %>">
                 
                 <!-- Username -->
                 <div class="form-group">
                     <label for="username" class="form-label">Username</label>
                     <div class="position-relative">
                         <i class="fas fa-user input-icon"></i>
-                        <input type="text" class="form-control with-icon" id="username" name="username" placeholder="Enter username" required>
+                        <input type="text" class="form-control with-icon" id="username" name="username" 
+                               value="<%= dp.getUsername() %>" placeholder="Enter username" required>
                     </div>
                 </div>
 
@@ -228,7 +233,8 @@
                     <label for="firstName" class="form-label">First Name</label>
                     <div class="position-relative">
                         <i class="fas fa-id-card input-icon"></i>
-                        <input type="text" class="form-control with-icon" id="firstName" name="firstName" placeholder="Enter first name">
+                        <input type="text" class="form-control with-icon" id="firstName" name="firstName" 
+                               value="<%= dp.getFirst_name() %>" placeholder="Enter first name">
                     </div>
                 </div>
 
@@ -237,7 +243,8 @@
                     <label for="lastName" class="form-label">Last Name</label>
                     <div class="position-relative">
                         <i class="fas fa-id-card input-icon"></i>
-                        <input type="text" class="form-control with-icon" id="lastName" name="lastName" placeholder="Enter last name">
+                        <input type="text" class="form-control with-icon" id="lastName" name="lastName" 
+                               value="<%= dp.getLast_name() %>" placeholder="Enter last name">
                     </div>
                 </div>
 
@@ -246,7 +253,8 @@
                     <label for="phone" class="form-label">Phone Number</label>
                     <div class="position-relative">
                         <i class="fas fa-phone input-icon"></i>
-                        <input type="tel" class="form-control with-icon" id="phone" name="phone" placeholder="Enter phone number">
+                        <input type="tel" class="form-control with-icon" id="phone" name="phone" 
+                               value="<%= dp.getPhone() %>" placeholder="Enter phone number">
                     </div>
                 </div>
 
@@ -255,7 +263,8 @@
                     <label for="email" class="form-label">Email Address</label>
                     <div class="position-relative">
                         <i class="fas fa-envelope input-icon"></i>
-                        <input type="email" class="form-control with-icon" id="email" name="email" placeholder="Enter email">
+                        <input type="email" class="form-control with-icon" id="email" name="email" 
+                               value="<%= dp.getEmail() %>" placeholder="Enter email">
                     </div>
                 </div>
 
@@ -264,7 +273,8 @@
                     <label for="password" class="form-label">Password</label>
                     <div class="position-relative">
                         <i class="fas fa-lock input-icon"></i>
-                        <input type="password" class="form-control with-icon" id="password" name="password" placeholder="Enter password" required>
+                        <input type="password" class="form-control with-icon" id="password" name="password" 
+                               value="<%= dp.getPassword() %>" placeholder="Enter password" required>
                         <button type="button" class="password-toggle" onclick="togglePassword('password', this)">
                             <i class="fas fa-eye"></i>
                         </button>
@@ -276,7 +286,8 @@
                     <label for="confirmPassword" class="form-label">Confirm Password</label>
                     <div class="position-relative">
                         <i class="fas fa-lock input-icon"></i>
-                        <input type="password" class="form-control with-icon" id="confirmPassword" placeholder="Confirm password" required>
+                        <input type="password" class="form-control with-icon" id="confirmPassword" 
+                               value="<%= dp.getPassword() %>" placeholder="Confirm password" required>
                         <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword', this)">
                             <i class="fas fa-eye"></i>
                         </button>
@@ -288,7 +299,7 @@
 
                 <!-- Submit Button -->
                 <button type="submit" class="btn-submit">
-                    <i class="fas fa-user-plus"></i> Create Delivery Person Account
+                    <i class="fas fa-save"></i> Update Delivery Person
                 </button>
             </form>
         </div>

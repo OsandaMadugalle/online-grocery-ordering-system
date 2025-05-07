@@ -89,9 +89,11 @@ public class DeliveryPersonService {
     }
 
     // Update Delivery Person Details
-    public static boolean updateDeliveryPerson(String id, String username, String fname, String lname, String phone, String email, String password) {
+    public static boolean updateDeliveryPerson(String id, String username, String fname, 
+            String lname, String phone, String email, String password) {
         boolean isSuccess = false;
-        String sql = "UPDATE DeliveryPerson SET Username=?, First_name=?, Last_name=?, Phone=?, Email=?, Password=? WHERE DP_ID=?";
+        String sql = "UPDATE DeliveryPerson SET Username=?, First_name=?, Last_name=?, "
+                   + "Phone=?, Email=?, Password=? WHERE DP_ID=?";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
