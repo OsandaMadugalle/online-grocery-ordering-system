@@ -4,10 +4,13 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.gos.model.DeliveryManager;
+import com.gos.model.DeliveryPerson;
 import com.gos.service.DeliveryManagerService;
+import com.gos.service.DeliveryPersonService;
 
 @WebServlet("/DeliveryManagerDeliveryPersonServlet")
 public class DeliveryManagerDeliveryPersonServlet extends HttpServlet {
@@ -17,10 +20,10 @@ public class DeliveryManagerDeliveryPersonServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             // Fetch all delivery managers
-            List<DeliveryManager> deliveryManagers = deliveryManagerService.getAllDeliveryManagers();
+            ArrayList<DeliveryPerson> deliveryPersons = DeliveryPersonService.getAllDeliveryPersons();
             
             // Set the list of delivery managers as an attribute
-            request.setAttribute("deliveryManagers", deliveryManagers);
+            request.setAttribute("deliveryPersons", deliveryPersons);
             
             // Forward the request to manageDeliveryManagers.jsp
             RequestDispatcher dispatcher = request.getRequestDispatcher("/deliveryManager/manageDeliveryPerson.jsp");

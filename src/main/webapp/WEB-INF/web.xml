@@ -201,33 +201,34 @@
         <servlet-name>DeliveryManagerManageDeliveryPersons</servlet-name>
         <url-pattern>/manageDeliveryPersons</url-pattern>
     </servlet-mapping>
+    
+    <!-- Delivery Manager adds Delivery Persons -->
+    <servlet>
+        <servlet-name>DeliveryManagerCreateDeliveryPersonServlet</servlet-name>
+        <servlet-class>com.gos.servlet.DeliveryManagerCreateDeliveryPersonServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeliveryManagerCreateDeliveryPersonServlet</servlet-name>
+        <url-pattern>/addDeliveryPerson</url-pattern>
+    </servlet-mapping>
+    
+      <!-- Delivery Manager delete Delivery Persons -->
+    <servlet>
+        <servlet-name>DeliveryManagerDeleteDeliveryPersonServlet</servlet-name>
+        <servlet-class>com.gos.servlet.DeliveryManagerDeleteDeliveryPersonServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeliveryManagerDeleteDeliveryPersonServlet</servlet-name>
+        <url-pattern>/deleteDeliveryPerson</url-pattern>
+    </servlet-mapping>
 
     <!-- Delivery Person Servlets -->
-
-    <!-- Delivery Person Login -->
-    <servlet>
-        <servlet-name>DeliveryPersonLoginServlet</servlet-name>
-        <servlet-class>com.gos.servlet.DeliveryPersonLoginServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>DeliveryPersonLoginServlet</servlet-name>
-        <url-pattern>/deliveryPersonLoginServlet</url-pattern>
-    </servlet-mapping>
-
-    <!-- Delivery Person Logout -->
-    <servlet>
-        <servlet-name>DeliveryPersonLogoutServlet</servlet-name>
-        <servlet-class>com.gos.servlet.DeliveryPersonLogoutServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>DeliveryPersonLogoutServlet</servlet-name>
-        <url-pattern>/deliveryPersonLogoutServlet</url-pattern>
-    </servlet-mapping>
+    
 
     <!-- Delivery Person Profile Update -->
     <servlet>
         <servlet-name>DeliveryPersonUpdate</servlet-name>
-        <servlet-class>com.gos.servlet.DeliveryPersonUpdateServlet</servlet-class>
+        <servlet-class>com.gos.servlet.DeliveryManagerUpdateDeliveryPersonServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DeliveryPersonUpdate</servlet-name>

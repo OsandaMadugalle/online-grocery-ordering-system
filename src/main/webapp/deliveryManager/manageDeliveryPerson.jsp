@@ -5,6 +5,10 @@
 <%@ page session="true" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+<c:if test="${empty sessionScope.deliveryManagerDetails}">
+    <c:redirect url="/deliveryManager/delLogin.jsp"/>
+</c:if>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -289,27 +293,27 @@
 
 <body>
     <div class="manager-container">
-        <a href="${pageContext.request.contextPath}/admin/adminDashboard.jsp" class="back-btn">
+        <a href="${pageContext.request.contextPath}/deliveryManager/deliveryManagerDashboard.jsp" class="back-btn">
             <i class="fas fa-arrow-left"></i> Back to Dashboard
         </a>
 
         <div class="manager-header">
             <h1 class="page-title"><i class="fas fa-truck"></i> Manage Delivery Persons</h1>
             <div class="header-actions">
-                <c:if test="${not empty deliveryManagers}">
+                <c:if test="${not empty deliveryPersons}">
                     <div class="manager-count">
-                        <i class="fas fa-users"></i> Total Managers: ${fn:length(deliveryManagers)}
+                        <i class="fas fa-users"></i> Total Delivery Persons: ${fn:length(deliveryPersons)}
                     </div>
                 </c:if>
                 
-                <a href="${pageContext.request.contextPath}/admin/addDeliveryManager.jsp" class="btn btn-add-manager">
+                <a href="${pageContext.request.contextPath}/deliveryManager/createDeliveryPerson.jsp" class="btn btn-add-manager">
                     <i class="fas fa-plus"></i> Add Delivery Person
                 </a>
             </div>
         </div>
 
         <div class="manager-table-container">
-            <c:if test="${not empty deliveryManagers}">
+            <c:if test="${not empty deliveryPersons}">
                 <table class="manager-table">
                     <thead>
                         <tr>
@@ -324,36 +328,36 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="manager" items="${deliveryManagers}">
+                        <c:forEach var="dp" items="${deliveryPersons}">
                             <tr>
-                                <td data-label="ID">${manager.managerId}</td>
-                                <td data-label="Username">${manager.username}</td>
-                                <td data-label="First Name">${manager.firstName}</td>
-                                <td data-label="Last Name">${manager.lastName}</td>
-                                <td data-label="Phone">${manager.phone}</td>
-                                <td data-label="Email">${manager.email}</td>
+                                <td data-label="ID">${dp.delivery_person_id}</td>
+                                <td data-label="Username">${dp.username}</td>
+                                <td data-label="First Name">${dp.first_name}</td>
+                                <td data-label="Last Name">${dp.last_name}</td>
+                                <td data-label="Phone">${dp.phone}</td>
+                                <td data-label="Email">${dp.email}</td>
                                 <td data-label="Password">
                                     <div class="password-field">
                                         <span class="password-mask">••••••••</span>
                                         <button class="btn-show-password" onclick="togglePassword(this)">
                                             <i class="fas fa-eye"></i>
                                         </button>
-                                        <span class="actual-password" style="display:none;">${manager.password}</span>
+                                        <span class="actual-password" style="display:none;">${dp.password}</span>
                                     </div>
                                 </td>
                                 <td data-label="Actions">
                                     <div class="action-buttons">
-                                        <form action="editDeliveryManager" method="get" style="display: inline;">
-                                            <input type="hidden" name="id" value="${manager.managerId}">
+                                        <form action="${pageContext.request.contextPath}/deliveryPersonUpdate" method="get" style="display: inline;">
+                                            <input type="hidden" name="id" value="${dp.delivery_person_id}">
                                             <button type="submit" class="btn-action btn-edit" title="Edit">
                                                 <i class="fas fa-edit"></i>
                                             </button>
                                         </form>
                                         
-                                        <form action="deleteDeliveryManager" method="POST" style="display: inline;">
-                                            <input type="hidden" name="id" value="${manager.managerId}">
+                                        <form action="${pageContext.request.contextPath}/deleteDeliveryPerson" method="POST" style="display: inline;">
+                                            <input type="hidden" name="id" value="${dp.delivery_person_id}">
                                             <button type="submit" class="btn-action btn-delete" title="Delete"
-                                                    onclick="return confirm('Are you sure you want to delete this delivery manager?')">
+                                                    onclick="return confirm('Are you sure you want to delete this delivery person?')">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </form>
@@ -364,12 +368,12 @@
                     </tbody>
                 </table>
             </c:if>
-            <c:if test="${empty deliveryManagers}">
+            <c:if test="${empty deliveryPersons}">
                 <div class="no-managers">
                     <i class="fas fa-info-circle fa-2x"></i>
                     <h3>No Delivery Persons Found</h3>
                     <p>There are currently no delivery persons registered in the system.</p>
-                    <a href="${pageContext.request.contextPath}/admin/addDeliveryManager.jsp" class="btn btn-add-manager mt-3">
+                    <a href="${pageContext.request.contextPath}/deliveryManager/addDeliveryPerson.jsp" class="btn btn-add-manager mt-3">
                         <i class="fas fa-plus"></i> Add Your First Delivery Person
                     </a>
                 </div>

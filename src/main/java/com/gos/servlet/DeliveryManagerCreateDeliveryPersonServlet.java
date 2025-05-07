@@ -6,8 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.io.IOException;
 
-import com.gos.model.DeliveryManager;
-import com.gos.service.DeliveryManagerService;
+import com.gos.service.DeliveryPersonService;
 
 @WebServlet("/DeliveryManagerCreateDeliveryPersonServlet")
 @MultipartConfig
@@ -25,24 +24,15 @@ public class DeliveryManagerCreateDeliveryPersonServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        // Create DeliveryManager object and set values
-        DeliveryManager deliveryManager = new DeliveryManager();
-        deliveryManager.setUsername(username);
-        deliveryManager.setFirst_name(firstName);
-        deliveryManager.setLast_name(lastName);
-        deliveryManager.setPhone(phone);
-        deliveryManager.setEmail(email);
-        deliveryManager.setPassword(password);
-
-        // Call service to add the delivery manager to the database
-        boolean success = DeliveryManagerService.addDeliveryManager(username, firstName, lastName, phone, email, password);
+        // Call service to add the delivery person to the database
+        boolean success = DeliveryPersonService.addDeliveryPerson(username, firstName, lastName, phone, email, password);
 
         // Redirect or forward based on success
         if (success) {
-            response.sendRedirect("manageDeliveryManagers"); // Redirect to the list of delivery managers
+            response.sendRedirect("manageDeliveryPersons"); // Redirect to the list of delivery persons
         } else {
-            request.setAttribute("errorMessage", "Failed to add delivery manager.");
-            request.getRequestDispatcher("/inventoryManager/addDeliveryManager.jsp").forward(request, response);
+            request.setAttribute("errorMessage", "Failed to add delivery person.");
+            request.getRequestDispatcher("/deliveryManager/createDeliveryPerson.jsp").forward(request, response);
         }
     }
 }

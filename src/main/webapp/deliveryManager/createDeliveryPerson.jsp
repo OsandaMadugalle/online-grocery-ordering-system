@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-    <style>
+     <style>
         :root {
             --primary-dark: #1a1a2e;
             --secondary-dark: #16213e;
@@ -188,7 +188,7 @@
 
 <body>
     <div class="container">
-        <a href="../manageDeliveryManager" class="back-link">
+        <a href="../manageDeliveryPersons" class="back-link">
             <i class="fas fa-arrow-left"></i> Back to Delivery Person List
         </a>
 
@@ -198,7 +198,14 @@
                 <p>Fill in the details below to register a new delivery person</p>
             </div>
 
-            <form action="../addDeliveryManager" method="post" onsubmit="return validateForm()">
+            <%-- Display error message if present --%>
+            <% if (request.getAttribute("errorMessage") != null) { %>
+                <div class="alert alert-danger">
+                    <%= request.getAttribute("errorMessage") %>
+                </div>
+            <% } %>
+
+            <form action="../addDeliveryPerson" method="post" onsubmit="return validateForm()">
                 
                 <!-- Username -->
                 <div class="form-group">
@@ -214,7 +221,7 @@
                     <label for="firstName" class="form-label">First Name</label>
                     <div class="position-relative">
                         <i class="fas fa-id-card input-icon"></i>
-                        <input type="text" class="form-control with-icon" id="firstName" name="firstName" placeholder="Enter first name" required>
+                        <input type="text" class="form-control with-icon" id="firstName" name="firstName" placeholder="Enter first name">
                     </div>
                 </div>
 
@@ -241,7 +248,7 @@
                     <label for="email" class="form-label">Email Address</label>
                     <div class="position-relative">
                         <i class="fas fa-envelope input-icon"></i>
-                        <input type="email" class="form-control with-icon" id="email" name="email" placeholder="Enter email" required>
+                        <input type="email" class="form-control with-icon" id="email" name="email" placeholder="Enter email">
                     </div>
                 </div>
 
