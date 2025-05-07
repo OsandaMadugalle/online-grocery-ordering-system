@@ -9,7 +9,7 @@ import com.gos.util.DBConnection;
 
 public class DeliveryPersonService {
 
-    // Validate Delivery Person Login
+    // Delivery Person Login
     public static List<DeliveryPerson> validate(String username, String password) {
         ArrayList<DeliveryPerson> deliveryPersonList = new ArrayList<>();
         String sql = "SELECT * FROM DeliveryPerson WHERE Username = ? AND Password = ?";
@@ -32,7 +32,6 @@ public class DeliveryPersonService {
         return deliveryPersonList;
     }
 
-    // Map ResultSet to DeliveryPerson object
     private static DeliveryPerson mapResultSetToDeliveryPerson(ResultSet rs) throws SQLException {
         return new DeliveryPerson(
                 rs.getInt("DP_ID"),
@@ -88,7 +87,7 @@ public class DeliveryPersonService {
         return isSuccess;
     }
 
-    // Update Delivery Person Details
+    // Update Delivery Person
     public static boolean updateDeliveryPerson(String id, String username, String fname, 
             String lname, String phone, String email, String password) {
         boolean isSuccess = false;
@@ -114,7 +113,7 @@ public class DeliveryPersonService {
         return isSuccess;
     }
 
-    // Get Delivery Person By ID
+    // Get Delivery Person 
     public static ArrayList<DeliveryPerson> getDeliveryPersonById(String id) {
         ArrayList<DeliveryPerson> dpList = new ArrayList<>();
         String sql = "SELECT * FROM DeliveryPerson WHERE DP_ID = ?";
@@ -136,7 +135,7 @@ public class DeliveryPersonService {
         return dpList;
     }
 
-    // Delete Delivery Person by ID
+    // Delete Delivery Person
     public static boolean deleteDeliveryPerson(int id) {
         boolean isSuccess = false;
         String sql = "DELETE FROM DeliveryPerson WHERE DP_ID = ?";
@@ -144,7 +143,7 @@ public class DeliveryPersonService {
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setInt(1, id); // Set the delivery person ID for deletion
+            stmt.setInt(1, id); 
             isSuccess = stmt.executeUpdate() > 0;
 
         } catch (Exception e) {
