@@ -2,8 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page session="true" %>
 
-<c:if test="${empty sessionScope.deliveryManagerDetails}">
-    <c:redirect url="/deliveryManager/delLogin.jsp"/>
+<c:if test="${empty sessionScope.loggedIn or empty sessionScope.adminDetails}">
+    <c:redirect url="/admin/adminLogin.jsp"/>
 </c:if>
 
 <!DOCTYPE html>
