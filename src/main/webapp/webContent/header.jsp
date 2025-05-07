@@ -94,10 +94,10 @@
             <c:choose>
                 <c:when test="${sessionScope.loggedIn == true}">
                     <a href="#" class="btn btn-outline-info mx-2">Track My Order</a>
-                    <a href="customer/customerAccount.jsp" class="btn btn-light mx-2">
+                    <a href="../customer/customerAccount.jsp" class="btn btn-light mx-2">
                         <i class="bi bi-person-circle"></i> Profile
                     </a>
-                    <a href="customerLogoutServlet" class="btn btn-danger">Logout</a>
+                    <a href="../customerLogoutServlet" class="btn btn-danger">Logout</a>
                 </c:when>
                 <c:otherwise>
                     <a href="../customer/cusLogin.jsp" class="btn btn-outline-primary mx-2">Log In</a>
@@ -146,7 +146,7 @@
                     </ul>
 
                     <!-- Integrated Search Form -->
-                    <form class="form-inline search-form" action="searchServlet" method="get">
+                    <form class="form-inline search-form" action="#" method="get">
                         <div class="input-group w-100">
                             <input id="searchInput" class="form-control search-input" type="search" 
                                    placeholder="Search products..." aria-label="Search">

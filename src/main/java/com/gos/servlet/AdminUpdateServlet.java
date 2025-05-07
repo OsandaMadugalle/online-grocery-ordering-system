@@ -15,7 +15,7 @@ import com.gos.service.AdminService;
 public class AdminUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    String id = request.getParameter("admin_id");
+	    String id = request.getParameter("id");
 	    String username = request.getParameter("username");
 	    String fName = request.getParameter("firstName");
 	    String lName = request.getParameter("lastName");

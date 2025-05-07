@@ -380,7 +380,7 @@
     <div class="sidebar" id="sidebar">
         <div class="admin-name">
             <i class="fas fa-boxes"></i>
-            <span class="nav-text">${sessionScope.inventoryManagerDetails[0].first_name} ${sessionScope.inventoryManagerDetails[0].last_name}</span>
+            <span class="nav-text">${sessionScope.inventoryManagerDetails[0].firstName} ${sessionScope.inventoryManagerDetails[0].lastName}</span>
         </div>
         
         <a href="#" class="active">
@@ -424,7 +424,7 @@
         <c:choose>
             <c:when test="${not empty sessionScope.inventoryManagerDetails}">
                 <div class="welcome-message">
-                    <i class="fas fa-boxes"></i> Welcome, ${sessionScope.inventoryManagerDetails[0].first_name} ${sessionScope.inventoryManagerDetails[0].last_name}!
+                    <i class="fas fa-boxes"></i> Welcome, ${sessionScope.inventoryManagerDetails[0].firstName} ${sessionScope.inventoryManagerDetails[0].lastName}!
                 </div>
                 
                <div class="table-responsive">
@@ -432,17 +432,17 @@
                     <table class="profile-table table-bordered">
                         <tbody>
                             <c:forEach var="im" items="${sessionScope.inventoryManagerDetails}">
-                            <c:set var="id" value="${im.inventory_manager_id}"/>
+                            <c:set var="id" value="${im.id}"/>
                             <c:set var="username" value="${im.username}"/>
-                            <c:set var="fName" value="${im.first_name}"/>
-                            <c:set var="lName" value="${im.last_name}"/>
+                            <c:set var="fName" value="${im.firstName}"/>
+                            <c:set var="lName" value="${im.lastName}"/>
                             <c:set var="phone" value="${im.phone}"/>
                             <c:set var="email" value="${im.email}"/>
                             <c:set var="password" value="${im.password}"/>
                             
                             <tr class="detail-row">
                                 <td class="detail-label" data-label="Manager ID"><i class="fas fa-id-card"></i> Manager ID</td>
-                                <td class="detail-value"><c:out value="${im.inventory_manager_id}"/></td>
+                                <td class="detail-value"><c:out value="${im.id}"/></td>
                             </tr>
                             <tr class="detail-row">
                                 <td class="detail-label" data-label="Username"><i class="fas fa-user"></i> Username</td>
@@ -450,11 +450,11 @@
                             </tr>
                             <tr class="detail-row">
                                 <td class="detail-label" data-label="First Name"><i class="fas fa-signature"></i> First Name</td>
-                                <td class="detail-value"><c:out value="${im.first_name}"/></td>
+                                <td class="detail-value"><c:out value="${im.firstName}"/></td>
                             </tr>
                             <tr class="detail-row">
                                 <td class="detail-label" data-label="Last Name"><i class="fas fa-signature"></i> Last Name</td>
-                                <td class="detail-value"><c:out value="${im.last_name}"/></td>
+                                <td class="detail-value"><c:out value="${im.lastName}"/></td>
                             </tr>
                             <tr class="detail-row">
                                 <td class="detail-label" data-label="Phone"><i class="fas fa-phone"></i> Phone</td>

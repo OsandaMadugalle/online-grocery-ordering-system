@@ -231,7 +231,7 @@
                 <label for="id" class="form-label">ID</label>
                 <div class="form-input">
                     <input type="text" class="form-control" name="id" id="id" 
-                        value="<%= ad.getAdmin_id() %>" readonly>
+                        value="<%= ad.getId() %>" readonly>
                 </div>
             </div>
             
@@ -249,7 +249,7 @@
                 <label for="firstName" class="form-label">First Name</label>
                 <div class="form-input">
                     <input type="text" class="form-control" name="firstName" id="firstName" 
-                        value="<%= ad.getFirst_name() %>" required>
+                        value="<%= ad.getFirstName() %>" required>
                 </div>
             </div>
             
@@ -258,7 +258,7 @@
                 <label for="lastName" class="form-label">Last Name</label>
                 <div class="form-input">
                     <input type="text" class="form-control" name="lastName" id="lastName" 
-                        value="<%= ad.getLast_name() %>">
+                        value="<%= ad.getLastName() %>">
                 </div>
             </div>
             

@@ -398,8 +398,8 @@
             <div class="info-row">
                 <div class="info-label"><i class="fas fa-id-card"></i> Customer ID</div>
                 <div class="form-input">
-                    <input type="text" class="info-value" value="<%= customer.getCustomer_id() %>" readonly disabled>
-                    <input type="hidden" name="customer_id" value="<%= customer.getCustomer_id() %>">
+                    <input type="text" class="info-value" value="<%= customer.getId() %>" readonly disabled>
+                    <input type="hidden" name="customer_id" value="<%= customer.getId() %>">
                 </div>
             </div>
 
@@ -414,7 +414,7 @@
             <div class="info-row">
                 <div class="info-label"><i class="fas fa-user"></i> First Name</div>
                 <div class="form-input">
-                    <input type="text" name="first_name" class="info-value" value="<%= customer.getFirst_name() %>" required>
+                    <input type="text" name="first_name" class="info-value" value="<%= customer.getFirstName() %>" required>
                     <div id="firstNameError" class="error-message"></div>
                 </div>
             </div>
@@ -422,7 +422,7 @@
             <div class="info-row">
                 <div class="info-label"><i class="fas fa-user"></i> Last Name</div>
                 <div class="form-input">
-                    <input type="text" name="last_name" class="info-value" value="<%= customer.getLast_name() %>" required>
+                    <input type="text" name="last_name" class="info-value" value="<%= customer.getLastName() %>" required>
                     <div id="lastNameError" class="error-message"></div>
                 </div>
             </div>

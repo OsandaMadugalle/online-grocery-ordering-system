@@ -271,11 +271,11 @@
         <h3><i class="fas fa-user-edit"></i> Update Admin Profile</h3>
         
         <form action="../updateAdmin" method="post" onsubmit="return validateForm()">
-            <input type="hidden" name="d_id" value="${param.id}">
+            <input type="hidden" name="id" value="${param.id}">
             
             <!-- ID -->
             <div class="form-row">
-                <label for="m_id" class="form-label"><i class="fas fa-id-card"></i>Admin ID</label>
+                <label for="id" class="form-label"><i class="fas fa-id-card"></i>Admin ID</label>
                 <div class="form-input">
                     <input type="text" class="form-control" id="m_id" 
                         value="${param.id}" readonly>

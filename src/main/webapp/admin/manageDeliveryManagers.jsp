@@ -291,10 +291,10 @@
                 <tbody>
                     <c:forEach var="dmanager" items="${deliveryManager}">
                         <tr>
-                            <td data-label="ID">${dmanager.delivery_manager_id}</td>
+                            <td data-label="ID">${dmanager.id}</td>
                             <td data-label="Username">${dmanager.username}</td>
-                            <td data-label="First Name">${dmanager.first_name}</td>
-                            <td data-label="Last Name">${dmanager.last_name}</td>
+                            <td data-label="First Name">${dmanager.firstName}</td>
+                            <td data-label="Last Name">${dmanager.lastName}</td>
                             <td data-label="Phone">${dmanager.phone}</td>
                             <td data-label="Email">${dmanager.email}</td>
                             <td data-label="Password">
@@ -308,14 +308,14 @@
                             </td>
                             <td data-label="Actions" class="action-buttons">
                                 <form action="updateDeliveryManager" method="get" style="display: inline;">
-                                    <input type="hidden" name="id" value="${dmanager.delivery_manager_id}">
+                                    <input type="hidden" name="id" value="${dmanager.id}">
                                     <button type="submit" class="btn btn-warning btn-sm btn-action">
                                         <i class="fas fa-edit"></i>
                                     </button>
                                 </form>
                                 
                                 <form action="deleteDeliveryManager" method="POST" style="display: inline;">
-                                    <input type="hidden" name="id" value="${dmanager.delivery_manager_id}">
+                                    <input type="hidden" name="id" value="${dmanager.id}">
                                     <button type="submit" class="btn btn-danger btn-sm btn-action" 
                                             onclick="return confirm('Are you sure you want to delete this manager?')">
                                         <i class="fas fa-trash"></i>

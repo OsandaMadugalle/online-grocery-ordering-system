@@ -374,7 +374,7 @@
     <div class="sidebar" id="sidebar">
         <div class="customer-name">
             <i class="fas fa-user"></i>
-            <span>${sessionScope.customerDetails[0].first_name} ${sessionScope.customerDetails[0].last_name}</span>
+            <span>${sessionScope.customerDetails[0].firstName} ${sessionScope.customerDetails[0].lastName}</span>
         </div>
         <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Profile</a>
         <a href="./viewProducts.jsp"><i class="fas fa-shopping-bag"></i> Shop</a>
@@ -394,7 +394,7 @@
         <c:choose>
             <c:when test="${not empty sessionScope.customerDetails}">
                 <div class="welcome-message">
-                    <i class="fas fa-user"></i> Welcome, ${sessionScope.customerDetails[0].first_name} ${sessionScope.customerDetails[0].last_name}!
+                    <i class="fas fa-user"></i> Welcome, ${sessionScope.customerDetails[0].firstName} ${sessionScope.customerDetails[0].lastName}!
                 </div>
 
                 <div class="row">
@@ -403,18 +403,18 @@
 				            <table class="profile-table table table-bordered">
 				                <tbody>
 				                    <c:forEach var="cd" items="${sessionScope.customerDetails}">
-				                        <c:set var="id" value="${cd.customer_id}"/>
+				                        <c:set var="id" value="${cd.id}"/>
 				                        <c:set var="username" value="${cd.username}"/>
-				                        <c:set var="fName" value="${cd.first_name}"/>
-				                        <c:set var="lName" value="${cd.last_name}"/>
+				                        <c:set var="fName" value="${cd.firstName}"/>
+				                        <c:set var="lName" value="${cd.lastName}"/>
 				                        <c:set var="phone" value="${cd.phone}"/>
 				                        <c:set var="email" value="${cd.email}"/>
 				                        <c:set var="password" value="${cd.password}"/>
 				
-				                        <tr><td class="detail-label" data-label="Customer ID"><i class="fas fa-id-card"></i> Customer ID</td><td><c:out value="${cd.customer_id}"/></td></tr>
+				                        <tr><td class="detail-label" data-label="Customer ID"><i class="fas fa-id-card"></i> Customer ID</td><td><c:out value="${cd.id}"/></td></tr>
 				                        <tr><td class="detail-label" data-label="Username"><i class="fas fa-user"></i> Username</td><td><c:out value="${cd.username}"/></td></tr>
-				                        <tr><td class="detail-label" data-label="First Name"><i class="fas fa-signature"></i> First Name</td><td><c:out value="${cd.first_name}"/></td></tr>
-				                        <tr><td class="detail-label" data-label="Last Name"><i class="fas fa-signature"></i> Last Name</td><td><c:out value="${cd.last_name}"/></td></tr>
+				                        <tr><td class="detail-label" data-label="First Name"><i class="fas fa-signature"></i> First Name</td><td><c:out value="${cd.firstName}"/></td></tr>
+				                        <tr><td class="detail-label" data-label="Last Name"><i class="fas fa-signature"></i> Last Name</td><td><c:out value="${cd.lastName}"/></td></tr>
 				                        <tr><td class="detail-label" data-label="Phone"><i class="fas fa-phone"></i> Phone</td><td><c:out value="${cd.phone}"/></td></tr>
 				                        <tr><td class="detail-label" data-label="Email"><i class="fas fa-envelope"></i> Email</td><td><c:out value="${cd.email}"/></td></tr>
 				                        <tr>

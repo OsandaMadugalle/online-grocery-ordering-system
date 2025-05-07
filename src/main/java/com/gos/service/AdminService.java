@@ -28,6 +28,7 @@ public class AdminService {
         	e.printStackTrace();
         }
         return adminList;  
+        
     }  
     
     private static Admin mapResultSetToAdmin(ResultSet rs) throws SQLException {
@@ -141,10 +142,10 @@ public class AdminService {
 	        
 	        while(rs.next()) {
 	            Admin ad = new Admin();
-	            ad.setAdmin_id(rs.getInt("Admin_ID"));
+	            ad.setId(rs.getInt("Admin_ID"));
 	            ad.setUsername(rs.getString("Username"));
-	            ad.setFirst_name(rs.getString("First_Name"));
-	            ad.setLast_name(rs.getString("Last_Name"));
+	            ad.setFirstName(rs.getString("First_Name"));
+	            ad.setLastName(rs.getString("Last_Name"));
 	            ad.setPhone(rs.getString("Phone"));
 	            ad.setEmail(rs.getString("Email"));
 	            ad.setPassword(rs.getString("Password"));
@@ -166,7 +167,7 @@ public class AdminService {
         try (Connection conn = DBConnection.getConnection();
         		PreparedStatement stmt = conn.prepareStatement(sql)){
         	
-            stmt.setInt(1, ad.getAdmin_id());
+            stmt.setInt(1, ad.getId());
             stmt.executeUpdate();
         } 
         catch(Exception e) {

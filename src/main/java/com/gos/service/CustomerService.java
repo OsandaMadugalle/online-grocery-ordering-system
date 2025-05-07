@@ -137,7 +137,7 @@ public class CustomerService {
         try (Connection conn = DBConnection.getConnection();
         		PreparedStatement stmt = conn.prepareStatement(sql)){
         	
-            stmt.setInt(1, cus.getCustomer_id());
+            stmt.setInt(1, cus.getId());
             stmt.executeUpdate();
         } 
         catch(Exception e) {

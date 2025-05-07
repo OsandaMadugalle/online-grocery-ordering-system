@@ -12,7 +12,7 @@ import java.util.List;
 import com.gos.model.Customer;
 import com.gos.service.CustomerService;
 
-@WebServlet("/customerLoginServlet")
+@WebServlet("/CustomerLoginServlet")
 public class CustomerLoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -30,7 +30,7 @@ public class CustomerLoginServlet extends HttpServlet {
                 session.setAttribute("customerDetails", customerDetails);
                 session.setAttribute("username", uname);
                                 
-                response.sendRedirect(request.getContextPath() + "/index.jsp");
+                response.sendRedirect(request.getContextPath() + "/webContent/index.jsp");
             } else {
                 request.setAttribute("errorMessage", "Invalid username or password.");
                 response.sendRedirect(request.getContextPath() + "/customer/cusLogin.jsp");

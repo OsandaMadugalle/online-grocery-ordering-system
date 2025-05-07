@@ -232,7 +232,7 @@
                 <label for="id" class="form-label">ID</label>
                 <div class="form-input">
                     <input type="text" class="form-control" name="id" id="id" 
-                        value="<%= manager.getInventory_manager_id() %>" readonly>
+                        value="<%= manager.getId() %>" readonly>
                 </div>
             </div>
             
@@ -250,7 +250,7 @@
                 <label for="firstName" class="form-label">First Name</label>
                 <div class="form-input">
                     <input type="text" class="form-control" name="firstName" id="firstName" 
-                        value="<%= manager.getFirst_name() %>" required>
+                        value="<%= manager.getFirstName() %>" required>
                 </div>
             </div>
             
@@ -259,7 +259,7 @@
                 <label for="lastName" class="form-label">Last Name</label>
                 <div class="form-input">
                     <input type="text" class="form-control" name="lastName" id="lastName" 
-                        value="<%= manager.getLast_name() %>">
+                        value="<%= manager.getLastName() %>">
                 </div>
             </div>
             

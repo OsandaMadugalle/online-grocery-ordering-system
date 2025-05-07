@@ -330,10 +330,10 @@
                     <tbody>
                         <c:forEach var="dp" items="${deliveryPersons}">
                             <tr>
-                                <td data-label="ID">${dp.delivery_person_id}</td>
+                                <td data-label="ID">${dp.id}</td>
                                 <td data-label="Username">${dp.username}</td>
-                                <td data-label="First Name">${dp.first_name}</td>
-                                <td data-label="Last Name">${dp.last_name}</td>
+                                <td data-label="First Name">${dp.firstName}</td>
+                                <td data-label="Last Name">${dp.lastName}</td>
                                 <td data-label="Phone">${dp.phone}</td>
                                 <td data-label="Email">${dp.email}</td>
                                 <td data-label="Password">
@@ -348,14 +348,14 @@
                                 <td data-label="Actions">
                                     <div class="action-buttons">
                                         <form action="${pageContext.request.contextPath}/deliveryPersonUpdate" method="get" style="display: inline;">
-                                            <input type="hidden" name="id" value="${dp.delivery_person_id}">
+                                            <input type="hidden" name="id" value="${dp.id}">
                                             <button type="submit" class="btn-action btn-edit" title="Edit">
                                                 <i class="fas fa-edit"></i>
                                             </button>
                                         </form>
                                         
                                         <form action="${pageContext.request.contextPath}/deleteDeliveryPerson" method="POST" style="display: inline;">
-                                            <input type="hidden" name="id" value="${dp.delivery_person_id}">
+                                            <input type="hidden" name="id" value="${dp.id}">
                                             <button type="submit" class="btn-action btn-delete" title="Delete"
                                                     onclick="return confirm('Are you sure you want to delete this delivery person?')">
                                                 <i class="fas fa-trash"></i>

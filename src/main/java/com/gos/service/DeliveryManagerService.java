@@ -26,10 +26,10 @@ public class DeliveryManagerService {
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     DeliveryManager dm = new DeliveryManager();
-                    dm.setdelivery_manager_id(rs.getInt("D_ID"));
+                    dm.setId(rs.getInt("D_ID"));
                     dm.setUsername(rs.getString("Username"));
-                    dm.setFirst_name(rs.getString("First_Name"));
-                    dm.setLast_name(rs.getString("Last_Name"));
+                    dm.setFirstName(rs.getString("First_Name"));
+                    dm.setLastName(rs.getString("Last_Name"));
                     dm.setPhone(rs.getString("Phone"));
                     dm.setEmail(rs.getString("Email"));
                     dm.setPassword(rs.getString("Password"));
@@ -54,10 +54,10 @@ public class DeliveryManagerService {
 
             while (rs.next()) {
                 DeliveryManager dm = new DeliveryManager();
-                dm.setdelivery_manager_id(rs.getInt("D_ID"));
+                dm.setId(rs.getInt("D_ID"));
                 dm.setUsername(rs.getString("Username"));
-                dm.setFirst_name(rs.getString("First_Name"));
-                dm.setLast_name(rs.getString("Last_Name"));
+                dm.setFirstName(rs.getString("First_Name"));
+                dm.setLastName(rs.getString("Last_Name"));
                 dm.setPhone(rs.getString("Phone"));
                 dm.setEmail(rs.getString("Email"));
                 dm.setPassword(rs.getString("Password"));
@@ -135,10 +135,10 @@ public class DeliveryManagerService {
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     DeliveryManager dm = new DeliveryManager();
-                    dm.setdelivery_manager_id(rs.getInt("D_ID"));
+                    dm.setId(rs.getInt("D_ID"));
                     dm.setUsername(rs.getString("Username"));
-                    dm.setFirst_name(rs.getString("First_Name"));
-                    dm.setLast_name(rs.getString("Last_Name"));
+                    dm.setFirstName(rs.getString("First_Name"));
+                    dm.setLastName(rs.getString("Last_Name"));
                     dm.setPhone(rs.getString("Phone"));
                     dm.setEmail(rs.getString("Email"));
                     dm.setPassword(rs.getString("Password"));

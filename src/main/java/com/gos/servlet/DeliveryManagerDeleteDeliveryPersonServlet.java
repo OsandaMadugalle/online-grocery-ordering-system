@@ -27,7 +27,7 @@ public class DeliveryManagerDeleteDeliveryPersonServlet extends HttpServlet {
 
         // Create a DeliveryPerson object and set the ID
         DeliveryPerson deliveryPerson = new DeliveryPerson();
-        deliveryPerson.setDelivery_person_id(deliveryPersonId);
+        deliveryPerson.setId(deliveryPersonId);
 
         boolean isDeleted = DeliveryPersonService.deleteDeliveryPerson(deliveryPersonId);
 

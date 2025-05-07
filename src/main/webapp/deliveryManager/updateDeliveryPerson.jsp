@@ -216,7 +216,7 @@
             </div>
 
             <form action="${pageContext.request.contextPath}/deliveryPersonUpdate" method="post" onsubmit="return validateForm()">
-                <input type="hidden" name="id" value="<%= dp.getDelivery_person_id() %>">
+                <input type="hidden" name="id" value="<%= dp.getId() %>">
                 
                 <!-- Username -->
                 <div class="form-group">
@@ -234,7 +234,7 @@
                     <div class="position-relative">
                         <i class="fas fa-id-card input-icon"></i>
                         <input type="text" class="form-control with-icon" id="firstName" name="firstName" 
-                               value="<%= dp.getFirst_name() %>" placeholder="Enter first name">
+                               value="<%= dp.getFirstName() %>" placeholder="Enter first name">
                     </div>
                 </div>
 
@@ -244,7 +244,7 @@
                     <div class="position-relative">
                         <i class="fas fa-id-card input-icon"></i>
                         <input type="text" class="form-control with-icon" id="lastName" name="lastName" 
-                               value="<%= dp.getLast_name() %>" placeholder="Enter last name">
+                               value="<%= dp.getLastName() %>" placeholder="Enter last name">
                     </div>
                 </div>
 

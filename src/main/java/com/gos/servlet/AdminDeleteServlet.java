@@ -17,7 +17,7 @@ public class AdminDeleteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Admin ad = new Admin();
-        ad.setAdmin_id(Integer.parseInt(request.getParameter("id")));
+        ad.setId(Integer.parseInt(request.getParameter("id")));
 
         AdminService delService = new AdminService();
         delService.deleteadmin(ad);

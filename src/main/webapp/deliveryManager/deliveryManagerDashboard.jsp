@@ -369,7 +369,7 @@
     <div class="sidebar" id="sidebar">
         <div class="manager-name">
             <i class="fas fa-truck"></i>
-            <span class="nav-text">${sessionScope.deliveryManagerDetails[0].first_name} ${sessionScope.deliveryManagerDetails[0].last_name}</span>
+            <span class="nav-text">${sessionScope.deliveryManagerDetails[0].firstName} ${sessionScope.deliveryManagerDetails[0].lastName}</span>
         </div>
         <a href="#" class="active">
             <i class="fas fa-tachometer-alt"></i>
@@ -398,7 +398,7 @@
         <c:choose>
             <c:when test="${not empty sessionScope.deliveryManagerDetails}">
                 <div class="welcome-message">
-                    <i class="fas fa-truck"></i> Welcome, ${sessionScope.deliveryManagerDetails[0].first_name} ${sessionScope.deliveryManagerDetails[0].last_name}!
+                    <i class="fas fa-truck"></i> Welcome, ${sessionScope.deliveryManagerDetails[0].firstName} ${sessionScope.deliveryManagerDetails[0].lastName}!
                 </div>
                 
                 <div class="table-responsive">
@@ -406,17 +406,17 @@
                         <table class="profile-table table-bordered">
                             <tbody>
                                 <c:forEach var="dm" items="${sessionScope.deliveryManagerDetails}">
-                                <c:set var="id" value="${dm.delivery_manager_id}"/>
+                                <c:set var="id" value="${dm.id}"/>
                                 <c:set var="username" value="${dm.username}"/>
-                                <c:set var="fName" value="${dm.first_name}"/>
-                                <c:set var="lName" value="${dm.last_name}"/>
+                                <c:set var="fName" value="${dm.firstName}"/>
+                                <c:set var="lName" value="${dm.lastName}"/>
                                 <c:set var="phone" value="${dm.phone}"/>
                                 <c:set var="email" value="${dm.email}"/>
                                 <c:set var="password" value="${dm.password}"/>
                                 
                                 <tr class="detail-row">
                                     <td class="detail-label" data-label="Manager ID"><i class="fas fa-id-card"></i> Manager ID</td>
-                                    <td class="detail-value"><c:out value="${dm.delivery_manager_id}"/></td>
+                                    <td class="detail-value"><c:out value="${dm.id}"/></td>
                                 </tr>
                                 <tr class="detail-row">
                                     <td class="detail-label" data-label="Username"><i class="fas fa-user"></i> Username</td>
@@ -424,11 +424,11 @@
                                 </tr>
                                 <tr class="detail-row">
                                     <td class="detail-label" data-label="First Name"><i class="fas fa-signature"></i> First Name</td>
-                                    <td class="detail-value"><c:out value="${dm.first_name}"/></td>
+                                    <td class="detail-value"><c:out value="${dm.firstName}"/></td>
                                 </tr>
                                 <tr class="detail-row">
                                     <td class="detail-label" data-label="Last Name"><i class="fas fa-signature"></i> Last Name</td>
-                                    <td class="detail-value"><c:out value="${dm.last_name}"/></td>
+                                    <td class="detail-value"><c:out value="${dm.lastName}"/></td>
                                 </tr>
                                 <tr class="detail-row">
                                     <td class="detail-label" data-label="Phone"><i class="fas fa-phone"></i> Phone</td>

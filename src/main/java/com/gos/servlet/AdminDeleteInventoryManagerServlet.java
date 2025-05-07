@@ -24,7 +24,7 @@ public class AdminDeleteInventoryManagerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         InventoryManager IM = new InventoryManager();
-        IM.setInventory_manager_id(Integer.parseInt(request.getParameter("id")));
+        IM.setId(Integer.parseInt(request.getParameter("id")));
 
         InventoryManagerService delService = new InventoryManagerService();
         delService.deleteInventoryManager(IM);

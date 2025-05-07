@@ -291,10 +291,10 @@
                 <tbody>
                     <c:forEach var="ad" items="${admin}">
                         <tr>
-                            <td data-label="ID">${ad.admin_id}</td>
+                            <td data-label="ID">${ad.id}</td>
                             <td data-label="Username">${ad.username}</td>
-                            <td data-label="First Name">${ad.first_name}</td>
-                            <td data-label="Last Name">${ad.last_name}</td>
+                            <td data-label="First Name">${ad.firstName}</td>
+                            <td data-label="Last Name">${ad.lastName}</td>
                             <td data-label="Phone">${ad.phone}</td>
                             <td data-label="Email">${ad.email}</td>
                             <td data-label="Password">
@@ -308,14 +308,14 @@
                             </td>
                             <td data-label="Actions" class="action-buttons">
                                 <form action="adminUpdateAdmin" method="get" style="display: inline;">
-                                    <input type="hidden" name="id" value="${ad.admin_id}">
+                                    <input type="hidden" name="id" value="${ad.id}">
                                     <button type="submit" class="btn btn-warning btn-sm btn-action">
                                         <i class="fas fa-edit"></i>
                                     </button>
                                 </form>
                                 
                                 <form action="deleteAdmin" method="POST" style="display: inline;">
-                                    <input type="hidden" name="id" value="${ad.admin_id}">
+                                    <input type="hidden" name="id" value="${ad.id}">
                                     <button type="submit" class="btn btn-danger btn-sm btn-action" 
                                             onclick="return confirm('Are you sure you want to delete this admin?')">
                                         <i class="fas fa-trash"></i>

@@ -22,13 +22,13 @@ public class CustomerDeleteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Customer cus = new Customer();
-        cus.setCustomer_id(Integer.parseInt(request.getParameter("id")));
+        cus.setId(Integer.parseInt(request.getParameter("id")));
 
         CustomerService delService = new CustomerService();
         delService.deleteCustomer(cus);
         
         request.getSession().invalidate();
 
-        response.sendRedirect(request.getContextPath() + "/index.jsp");
+        response.sendRedirect(request.getContextPath() + "/webContent/index.jsp");
     }
 }

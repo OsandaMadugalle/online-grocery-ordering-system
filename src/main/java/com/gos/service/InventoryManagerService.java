@@ -60,10 +60,10 @@ public class InventoryManagerService {
 	        
 	        while(rs.next()) {
 	            InventoryManager IM = new InventoryManager();
-	            IM.setInventory_manager_id(rs.getInt("M_ID"));
+	            IM.setId(rs.getInt("M_ID"));
 	            IM.setUsername(rs.getString("Username"));
-	            IM.setFirst_name(rs.getString("First_Name"));
-	            IM.setLast_name(rs.getString("Last_Name"));
+	            IM.setFirstName(rs.getString("First_Name"));
+	            IM.setLastName(rs.getString("Last_Name"));
 	            IM.setPhone(rs.getString("Phone"));
 	            IM.setEmail(rs.getString("Email"));
 	            IM.setPassword(rs.getString("Password"));
@@ -169,7 +169,7 @@ public class InventoryManagerService {
         try (Connection conn = DBConnection.getConnection();
         		PreparedStatement stmt = conn.prepareStatement(sql)){
         	
-            stmt.setInt(1, im.getInventory_manager_id());
+            stmt.setInt(1, im.getId());
             stmt.executeUpdate();
         } 
         catch(Exception e) {

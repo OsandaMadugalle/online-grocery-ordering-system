@@ -28,6 +28,59 @@
         <servlet-name>default</servlet-name>
         <url-pattern>/images/productImages/*</url-pattern>
     </servlet-mapping>
+    
+    <!-- Customer Servlets -->
+    <!-- Customer Login -->
+    <servlet>
+        <servlet-name>CustomerLoginServlet</servlet-name>
+        <servlet-class>com.gos.servlet.CustomerLoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomerLoginServlet</servlet-name>
+        <url-pattern>/customerLoginServlet</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Customer Logout -->
+    <servlet>
+        <servlet-name>CustomerLogoutServlet</servlet-name>
+        <servlet-class>com.gos.servlet.CustomerLogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomerLogoutServlet</servlet-name>
+        <url-pattern>/customerLogoutServlet</url-pattern>
+    </servlet-mapping>
+    
+     <!-- Customer Profile Update -->
+    <servlet>
+        <servlet-name>CustomerUpdate</servlet-name>
+        <servlet-class>com.gos.servlet.CustomerUpdateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomerUpdate</servlet-name>
+        <url-pattern>/customerUpdate</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Delete Customer -->
+    <servlet>
+        <servlet-name>DeleteCustomer</servlet-name>
+        <servlet-class>com.gos.servlet.CustomerDeleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteCustomer</servlet-name>
+        <url-pattern>/deleteCustomer</url-pattern>
+    </servlet-mapping>
+    
+     <!-- Add Customer -->
+    <servlet>
+        <servlet-name>CreateCustomer</servlet-name>
+        <servlet-class>com.gos.servlet.CustomerCreateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateCustomer</servlet-name>
+        <url-pattern>/createCustomer</url-pattern>
+    </servlet-mapping>
+
+
 
     <!-- Admin Servlets-->
     <!-- Admin Login -->
@@ -159,9 +212,83 @@
         <servlet-name>AdminCreateDeliveryManager</servlet-name>
         <url-pattern>/addDeliveryManager</url-pattern>
     </servlet-mapping>
-
-    <!-- Delivery Manager Servlets -->
     
+    <!-- Inventory Manager Servlets -->    
+    <!-- Inventory Manager Login -->
+    <servlet>
+        <servlet-name>InventoryManagerLoginServlet</servlet-name>
+        <servlet-class>com.gos.servlet.InventoryManagerLoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InventoryManagerLoginServlet</servlet-name>
+        <url-pattern>/inventoryManagerLoginServlet</url-pattern>
+    </servlet-mapping>
+    
+     <!-- Inventory Manager Profile Update -->
+    <servlet>
+        <servlet-name>InventoryManagerUpdate</servlet-name>
+        <servlet-class>com.gos.servlet.InventoryManagerUpdateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InventoryManagerUpdate</servlet-name>
+        <url-pattern>/updateInventoryManager</url-pattern>
+    </servlet-mapping>
+    
+      <!-- Inventory Manager Manages Products -->
+    <servlet>
+        <servlet-name>InventoryManagerProductServlet</servlet-name>
+        <servlet-class>com.gos.servlet.InventoryManagerProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InventoryManagerProductServlet</servlet-name>
+        <url-pattern>/manageProducts</url-pattern>
+    </servlet-mapping>
+     <!-- Inventory Manager adds Product -->
+    <servlet>
+        <servlet-name>InventoryManagerCreateProductServlet</servlet-name>
+        <servlet-class>com.gos.servlet.InventoryManagerCreateProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InventoryManagerCreateProductServlet</servlet-name>
+        <url-pattern>/addProducts</url-pattern>
+    </servlet-mapping>
+    
+      <!-- Delivery Manager delete Delivery Persons -->
+    <servlet>
+        <servlet-name>InventoryManagerDeleteProductServlet</servlet-name>
+        <servlet-class>com.gos.servlet.InventoryManagerDeleteProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InventoryManagerDeleteProductServlet</servlet-name>
+        <url-pattern>/deleteProduct</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Inventory Manger Update Product -->
+    <servlet>
+        <servlet-name>InventoryManagerUpdateProductServlet</servlet-name>
+        <servlet-class>com.gos.servlet.InventoryManagerUpdateProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InventoryManagerUpdateProductServlet</servlet-name>
+        <url-pattern>/updateProduct</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Inventory Manager Logout -->
+    <servlet>
+        <servlet-name>InventoryManagerLogoutServlet</servlet-name>
+        <servlet-class>com.gos.servlet.InventoryManagerLogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InventoryManagerLogoutServlet</servlet-name>
+        <url-pattern>/inventoryManagerLogoutServlet</url-pattern>
+    </servlet-mapping>
+    
+    
+    
+    
+    
+
+    <!-- Delivery Manager Servlets -->    
     <!-- Delivery Manager Login -->
     <servlet>
         <servlet-name>DeliveryManagerLoginServlet</servlet-name>
@@ -234,5 +361,10 @@
         <servlet-name>DeliveryPersonUpdate</servlet-name>
         <url-pattern>/deliveryPersonUpdate</url-pattern>
     </servlet-mapping>
+    
+    
+    
+    
+    
 
 </web-app>

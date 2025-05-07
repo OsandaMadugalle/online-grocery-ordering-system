@@ -380,7 +380,7 @@
     <div class="sidebar" id="sidebar">
         <div class="admin-name">
             <i class="fas fa-user-shield"></i>
-            <span class="nav-text">${sessionScope.adminDetails[0].first_name} ${sessionScope.adminDetails[0].last_name}</span>
+            <span class="nav-text">${sessionScope.adminDetails[0].firstName} ${sessionScope.adminDetails[0].lastName}</span>
         </div>
         <a href="#" class="active">
             <i class="fas fa-tachometer-alt"></i>
@@ -413,7 +413,7 @@
         <c:choose>
             <c:when test="${not empty sessionScope.adminDetails}">
                 <div class="welcome-message">
-                    <i class="fas fa-user-shield"></i> Welcome, ${sessionScope.adminDetails[0].first_name} ${sessionScope.adminDetails[0].last_name}!
+                    <i class="fas fa-user-shield"></i> Welcome, ${sessionScope.adminDetails[0].firstName} ${sessionScope.adminDetails[0].lastName}!
                 </div>
                 
                <div class="table-responsive">
@@ -421,17 +421,17 @@
 			        <table class="profile-table table-bordered">
 			            <tbody>
 			                <c:forEach var="ad" items="${sessionScope.adminDetails}">
-			                <c:set var="id" value="${ad.admin_id}"/>
+			                <c:set var="id" value="${ad.id}"/>
 			                <c:set var="username" value="${ad.username}"/>
-			                <c:set var="fName" value="${ad.first_name}"/>
-			                <c:set var="lName" value="${ad.last_name}"/>
+			                <c:set var="fName" value="${ad.firstName}"/>
+			                <c:set var="lName" value="${ad.lastName}"/>
 			                <c:set var="phone" value="${ad.phone}"/>
 			                <c:set var="email" value="${ad.email}"/>
 			                <c:set var="password" value="${ad.password}"/>
 			                
 			                <tr class="detail-row">
 			                    <td class="detail-label" data-label="Admin ID"><i class="fas fa-id-card"></i> Admin ID</td>
-			                    <td class="detail-value"><c:out value="${ad.admin_id}"/></td>
+			                    <td class="detail-value"><c:out value="${ad.id}"/></td>
 			                </tr>
 			                <tr class="detail-row">
 			                    <td class="detail-label" data-label="Username"><i class="fas fa-user"></i> Username</td>
@@ -439,11 +439,11 @@
 			                </tr>
 			                <tr class="detail-row">
 			                    <td class="detail-label" data-label="First Name"><i class="fas fa-signature"></i> First Name</td>
-			                    <td class="detail-value"><c:out value="${ad.first_name}"/></td>
+			                    <td class="detail-value"><c:out value="${ad.firstName}"/></td>
 			                </tr>
 			                <tr class="detail-row">
 			                    <td class="detail-label" data-label="Last Name"><i class="fas fa-signature"></i> Last Name</td>
-			                    <td class="detail-value"><c:out value="${ad.last_name}"/></td>
+			                    <td class="detail-value"><c:out value="${ad.lastName}"/></td>
 			                </tr>
 			                <tr class="detail-row">
 			                    <td class="detail-label" data-label="Phone"><i class="fas fa-phone"></i> Phone</td>
