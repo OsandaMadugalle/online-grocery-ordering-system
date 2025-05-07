@@ -207,18 +207,18 @@
 		<div class="container-fluid mt-5 p-5" style="background-color: #f8f9fa; height: 60vh;">
 		
 		    <div class="row align-items-center h-100">
-		        <!-- Left Side: Image -->
+		        <!-- Left -->
 		        <div class="col-md-7 order-md-1 order-2">
 		            <div style="height: 100%; max-height: 400px;">
 		                <img src="../images/banner.png" class="img-fluid w-100 h-100" style="object-fit: cover;" alt="App Banner">
 		            </div>
 		        </div>
 		
-		        <!-- Right Side: Content -->
+		        <!-- Right -->
 		        <div class="col-md-5 order-md-2 order-1 text-center">
 		            <h3>Download Our App Now!</h3>
 		            <p>Experience the best of our services on mobile.</p>
-		            <a href="https://your-app-link.com" target="_blank" class="btn btn-outline-dark btn-lg mt-3">
+		            <a href="#" target="_blank" class="btn btn-outline-dark btn-lg mt-3">
 		                Get the App
 		            </a>
 		        </div>
