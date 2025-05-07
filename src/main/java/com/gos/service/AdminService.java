@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class AdminService {
 
-    // Validate Admin Login
+    // Admin Login Validate 
     public static ArrayList<Admin> validate(String username, String password) {
         ArrayList<Admin> adminList = new ArrayList<>();
         String sql = "SELECT * FROM Admin WHERE Username = ? AND Password = ?";
@@ -30,7 +30,6 @@ public class AdminService {
         return adminList;  
     }  
     
-    //Map the ResultSet row to an Admin object
     private static Admin mapResultSetToAdmin(ResultSet rs) throws SQLException {
         return new Admin(
                 rs.getInt("Admin_ID"),
@@ -69,7 +68,7 @@ public class AdminService {
     	
     }
     
-    //Update Admin Details
+    //Update Admin
     public static boolean updateAdmin(String id, String username, String fname, String lname, String phone, String email, String password) {
         boolean isSuccess = false;
         String sql = "UPDATE Admin SET Username=?, First_Name=?, Last_Name=?, Phone=?, Email=?, Password=? WHERE Admin_ID=?";
@@ -98,7 +97,7 @@ public class AdminService {
         return isSuccess;
     }
 
-    //Fetch Updated Admins
+    //Get Admin
     public static ArrayList<Admin> getAdminById(String id) {
     	    	
     	ArrayList<Admin> ad = new ArrayList<>();
@@ -131,7 +130,7 @@ public class AdminService {
         return ad;
     } 
 
-	// Display Admins Table
+	// Display Admin
 	public ArrayList<Admin> getAllAdmin(){
 		ArrayList<Admin> listAdmin = new ArrayList<>();        
         String sql = "SELECT * FROM Admin";
