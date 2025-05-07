@@ -13,7 +13,7 @@ import com.gos.util.DBConnection;
 
 public class InventoryManagerService {
 	
-	//Validate Inventory Manager Login
+	// Inventory Manager Login
 	public static List<InventoryManager> validate(String username, String password){
 		ArrayList<InventoryManager> inventoryManagerList = new ArrayList<>();
 		String sql = "SELECT * FROM InventoryManager WHERE Username = ? AND Password = ?";
@@ -36,7 +36,6 @@ public class InventoryManagerService {
 		return inventoryManagerList;
 	}
 	
-	//Map the ResultSet row to an Inventory Manager object
     private static InventoryManager mapResultSetToInventoryManager(ResultSet rs) throws SQLException {
         return new InventoryManager(
                 rs.getInt("M_ID"),
@@ -51,7 +50,7 @@ public class InventoryManagerService {
     
    
 	
-	// Display Inventory Managers Table
+	// Display Inventory Managers 
 	public ArrayList<InventoryManager> getAllInventoryManager(){		
 		ArrayList<InventoryManager> listInventoryManager = new ArrayList<>();        
         String sql = "SELECT * FROM InventoryManager";
@@ -105,7 +104,7 @@ public class InventoryManagerService {
 	    return isSuccess;
 	}    
     
-	// Update Inventory Manager Details
+	// Update Inventory Manager
     public static boolean updateInventoryManager(String id, String username, String fname, String lname, String phone, String email, String password) {
         boolean isSuccess = false;
         String sql = "UPDATE InventoryManager SET Username=?, First_Name=?, Last_Name=?, Phone=?, Email=?, Password=? WHERE M_ID=?";
@@ -132,7 +131,7 @@ public class InventoryManagerService {
         return isSuccess;
     }
     
-    // Fetch Inventory Manager Details By ID
+    
     public static ArrayList<InventoryManager> getInventoryManagerById(String id) {    	    	
     	ArrayList<InventoryManager> IM = new ArrayList<>();
         String sql = "SELECT * FROM InventoryManager WHERE M_ID = ?";
