@@ -36,7 +36,7 @@ public class CustomerService {
 	    return isSuccess;
 	}
 	
-	// Validate Customer Login
+	// Customer Login
 	public static List<Customer> validate(String username, String password) {
 	    ArrayList<Customer> customerList = new ArrayList<>();
 	    String sql = "SELECT * FROM Customer WHERE username = ? AND password = ?";
@@ -59,7 +59,6 @@ public class CustomerService {
 	    return customerList;
 	}
 
-	// Map the ResultSet row to a Customer
 	private static Customer mapResultSetToCustomer(ResultSet rs) throws SQLException {
 	    return new Customer(
 	    		rs.getInt("customer_id"),
@@ -98,7 +97,7 @@ public class CustomerService {
 	    return isSuccess;
 	}
 	
-	//Get Customer By ID
+	//Get Customer
 	public static List<Customer> getCustomerById(String id) {
     	
 	    ArrayList<Customer> customers = new ArrayList<>();
