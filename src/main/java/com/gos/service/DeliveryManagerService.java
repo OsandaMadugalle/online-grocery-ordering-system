@@ -12,7 +12,7 @@ import com.gos.util.DBConnection;
 
 public class DeliveryManagerService {
 
-    // Validate Delivery Manager Login
+    // Delivery Manager Login
     public static List<DeliveryManager> validate(String username, String password) {
         ArrayList<DeliveryManager> deliveryManagerList = new ArrayList<>();
         String sql = "SELECT * FROM DeliveryManager WHERE Username = ? AND Password = ?";
@@ -44,7 +44,7 @@ public class DeliveryManagerService {
         return deliveryManagerList;
     }
 
-    // Display Delivery Managers Table
+    // Display Delivery Manager
     public ArrayList<DeliveryManager> getAllDeliveryManagers() {
         ArrayList<DeliveryManager> listDeliveryManager = new ArrayList<>();
         String sql = "SELECT * FROM DeliveryManager";
@@ -96,7 +96,7 @@ public class DeliveryManagerService {
         return isSuccess;
     }
 
-    // Update Delivery Manager by ID
+    // Update Delivery Manager
     public static boolean updateDeliveryManager(String id, String username, String fname, String lname, String phone, String email, String password) {
         boolean isSuccess = false;
         String sql = "UPDATE DeliveryManager SET Username=?, First_Name=?, Last_Name=?, Phone=?, Email=?, Password=? WHERE D_ID=?";
@@ -122,7 +122,7 @@ public class DeliveryManagerService {
         return isSuccess;
     }
 
-    // Get Delivery Manager by ID
+    // Get Delivery Manager
     public static List<DeliveryManager> getDeliveryManagerById(String id) {
         List<DeliveryManager> managerList = new ArrayList<>();
         String sql = "SELECT * FROM DeliveryManager WHERE D_ID=?";
@@ -153,7 +153,7 @@ public class DeliveryManagerService {
         return managerList;
     }
 
-    // Delete Delivery Manager by ID
+    // Delete Delivery Manager
     public static boolean deleteDeliveryManager(int id) {
         boolean isSuccess = false;
         String sql = "DELETE FROM DeliveryManager WHERE D_ID = ?";
@@ -161,10 +161,10 @@ public class DeliveryManagerService {
         try (Connection con = DBConnection.getConnection();
              PreparedStatement stmt = con.prepareStatement(sql)) {
 
-            stmt.setInt(1, id); // Set the delivery manager ID for deletion
+            stmt.setInt(1, id);
 
             int result = stmt.executeUpdate();
-            isSuccess = result > 0; // Return true if deletion is successful
+            isSuccess = result > 0;
 
         } catch (Exception e) {
             e.printStackTrace();
