@@ -10,7 +10,7 @@ import com.gos.util.DBConnection;
 
 public class ProductService {
 	
-	// Display Products Table
+	// Display Products
     public ArrayList<Product> getAllProducts() {
         ArrayList<Product> productList = new ArrayList<>();        
         String sql = "SELECT * FROM Product";
@@ -101,7 +101,6 @@ public class ProductService {
         return isSuccess;
     }
 
-    // Inside ProductService class
     public Product getProductById(int id) {
         Product product = null;
         String sql = "SELECT * FROM Product WHERE id = ?";
@@ -114,7 +113,7 @@ public class ProductService {
 
             if (rs.next()) {
                 product = new Product();
-                product.setId(rs.getInt("id"));  // Changed from "product_id" to "id"
+                product.setId(rs.getInt("id")); 
                 product.setProductName(rs.getString("product_name"));
                 product.setCategory(rs.getString("category"));
                 product.setStock(rs.getInt("stock"));
