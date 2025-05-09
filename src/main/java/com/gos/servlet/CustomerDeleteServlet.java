@@ -24,8 +24,12 @@ public class CustomerDeleteServlet extends HttpServlet {
         Customer cus = new Customer();
         cus.setId(Integer.parseInt(request.getParameter("id")));
 
+        /*
         CustomerService delService = new CustomerService();
         delService.deleteCustomer(cus);
+        */
+        
+        CustomerService.deleteCustomer(cus);
         
         request.getSession().invalidate();
 

@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
 import com.gos.model.InventoryManager;
 import com.gos.util.DBConnection;
@@ -14,7 +13,7 @@ import com.gos.util.DBConnection;
 public class InventoryManagerService {
 	
 	// Inventory Manager Login
-	public static List<InventoryManager> validate(String username, String password){
+	public static ArrayList<InventoryManager> validate(String username, String password){
 		ArrayList<InventoryManager> inventoryManagerList = new ArrayList<>();
 		String sql = "SELECT * FROM InventoryManager WHERE Username = ? AND Password = ?";
 		
@@ -51,7 +50,7 @@ public class InventoryManagerService {
    
 	
 	// Display Inventory Managers 
-	public ArrayList<InventoryManager> getAllInventoryManager(){		
+	public static ArrayList<InventoryManager> getAllInventoryManager(){		
 		ArrayList<InventoryManager> listInventoryManager = new ArrayList<>();        
         String sql = "SELECT * FROM InventoryManager";
         
@@ -163,7 +162,7 @@ public class InventoryManagerService {
     }
     
     // Delete Inventory Manager
-    public void deleteInventoryManager(InventoryManager im) {
+    public static void deleteInventoryManager(InventoryManager im) {
         String sql = "DELETE FROM InventoryManager WHERE M_ID = ?";
          
         try (Connection conn = DBConnection.getConnection();

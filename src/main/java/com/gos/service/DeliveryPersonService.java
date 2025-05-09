@@ -2,7 +2,6 @@ package com.gos.service;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 import com.gos.model.DeliveryPerson;
 import com.gos.util.DBConnection;
@@ -10,7 +9,7 @@ import com.gos.util.DBConnection;
 public class DeliveryPersonService {
 
     // Delivery Person Login
-    public static List<DeliveryPerson> validate(String username, String password) {
+    public static ArrayList<DeliveryPerson> validate(String username, String password) {
         ArrayList<DeliveryPerson> deliveryPersonList = new ArrayList<>();
         String sql = "SELECT * FROM DeliveryPerson WHERE Username = ? AND Password = ?";
 

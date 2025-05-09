@@ -63,7 +63,7 @@ public class ProductService {
     }
     
     // Delete Product
-    public void deleteProduct(Product product) {
+    public static void deleteProduct(Product product) {
         String sql = "DELETE FROM Product WHERE id = ?";
 
         try (Connection conn = DBConnection.getConnection();
@@ -101,7 +101,7 @@ public class ProductService {
         return isSuccess;
     }
 
-    public Product getProductById(int id) {
+    public static Product getProductById(int id) {
         Product product = null;
         String sql = "SELECT * FROM Product WHERE id = ?";
 

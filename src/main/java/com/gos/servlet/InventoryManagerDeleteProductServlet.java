@@ -25,8 +25,8 @@ public class InventoryManagerDeleteProductServlet extends HttpServlet {
         Product product = new Product();
         product.setId(Integer.parseInt(request.getParameter("id")));
 
-        ProductService productService = new ProductService();
-        productService.deleteProduct(product);
+        //ProductService productService = new ProductService();
+        ProductService.deleteProduct(product);
 
         response.sendRedirect(request.getContextPath() + "/manageProducts");
     }

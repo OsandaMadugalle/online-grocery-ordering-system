@@ -4,7 +4,6 @@ import com.gos.model.Customer;
 import com.gos.util.DBConnection;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class CustomerService {
 	
@@ -37,7 +36,7 @@ public class CustomerService {
 	}
 	
 	// Customer Login
-	public static List<Customer> validate(String username, String password) {
+	public static ArrayList<Customer> validate(String username, String password) {
 	    ArrayList<Customer> customerList = new ArrayList<>();
 	    String sql = "SELECT * FROM Customer WHERE username = ? AND password = ?";
 
@@ -98,7 +97,7 @@ public class CustomerService {
 	}
 	
 	//Get Customer
-	public static List<Customer> getCustomerById(String id) {
+	public static ArrayList<Customer> getCustomerById(String id) {
     	
 	    ArrayList<Customer> customers = new ArrayList<>();
 	    String sql = "SELECT * FROM Customer WHERE customer_ID = ?";
@@ -131,7 +130,7 @@ public class CustomerService {
 	}
 	
 	// Delete Customer
-    public void deleteCustomer(Customer cus) {
+    public static void deleteCustomer(Customer cus) {
         String sql = "DELETE FROM Customer WHERE customer_id = ?";
          
         try (Connection conn = DBConnection.getConnection();

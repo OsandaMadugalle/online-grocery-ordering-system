@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
 import com.gos.model.DeliveryManager;
 import com.gos.util.DBConnection;
@@ -13,7 +12,7 @@ import com.gos.util.DBConnection;
 public class DeliveryManagerService {
 
     // Delivery Manager Login
-    public static List<DeliveryManager> validate(String username, String password) {
+    public static ArrayList<DeliveryManager> validate(String username, String password) {
         ArrayList<DeliveryManager> deliveryManagerList = new ArrayList<>();
         String sql = "SELECT * FROM DeliveryManager WHERE Username = ? AND Password = ?";
 
@@ -45,7 +44,7 @@ public class DeliveryManagerService {
     }
 
     // Display Delivery Manager
-    public ArrayList<DeliveryManager> getAllDeliveryManagers() {
+    public static ArrayList<DeliveryManager> getAllDeliveryManagers() {
         ArrayList<DeliveryManager> listDeliveryManager = new ArrayList<>();
         String sql = "SELECT * FROM DeliveryManager";
 
@@ -123,8 +122,8 @@ public class DeliveryManagerService {
     }
 
     // Get Delivery Manager
-    public static List<DeliveryManager> getDeliveryManagerById(String id) {
-        List<DeliveryManager> managerList = new ArrayList<>();
+    public static ArrayList<DeliveryManager> getDeliveryManagerById(String id) {
+        ArrayList<DeliveryManager> managerList = new ArrayList<>();
         String sql = "SELECT * FROM DeliveryManager WHERE D_ID=?";
 
         try (Connection con = DBConnection.getConnection();

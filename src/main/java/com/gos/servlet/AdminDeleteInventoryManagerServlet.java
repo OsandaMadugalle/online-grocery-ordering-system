@@ -26,8 +26,12 @@ public class AdminDeleteInventoryManagerServlet extends HttpServlet {
         InventoryManager IM = new InventoryManager();
         IM.setId(Integer.parseInt(request.getParameter("id")));
 
+        /*
         InventoryManagerService delService = new InventoryManagerService();
         delService.deleteInventoryManager(IM);
+        */
+        
+        InventoryManagerService.deleteInventoryManager(IM);
 
         response.sendRedirect("manageInventoryManager");
        // response.sendRedirect(request.getContextPath() + "/manageInventoryManager");

@@ -132,7 +132,7 @@ public class AdminService {
     } 
 
 	// Display Admin
-	public ArrayList<Admin> getAllAdmin(){
+	public static ArrayList<Admin> getAllAdmin(){
 		ArrayList<Admin> listAdmin = new ArrayList<>();        
         String sql = "SELECT * FROM Admin";
 	    try (Connection conn = DBConnection.getConnection();
@@ -161,7 +161,7 @@ public class AdminService {
 	}
 	
 	// Delete Admin
-    public void deleteadmin(Admin ad) {
+    public static void deleteadmin(Admin ad) {
         String sql = "DELETE FROM Admin WHERE Admin_ID = ?";
          
         try (Connection conn = DBConnection.getConnection();

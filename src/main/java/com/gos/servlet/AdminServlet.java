@@ -19,10 +19,10 @@ public class AdminServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         try {
-        	AdminService service = new AdminService();
-            ArrayList<Admin> ad = service.getAllAdmin();
+        	//AdminService service = new AdminService();
+            ArrayList<Admin> admin = AdminService.getAllAdmin();
             
-            request.setAttribute("admin", ad);
+            request.setAttribute("admin", admin);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/manageAdmins.jsp");
             dispatcher.forward(request, response);
         } 

@@ -20,12 +20,12 @@ public class AdminDeliveryManagerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		try {
-			DeliveryManagerService service = new DeliveryManagerService();
-			ArrayList<DeliveryManager> deliveryManager = service.getAllDeliveryManagers();
+			//DeliveryManagerService service = new DeliveryManagerService();
+			ArrayList<DeliveryManager> deliveryManager = DeliveryManagerService.getAllDeliveryManagers();
 			
 			request.setAttribute("deliveryManager", deliveryManager);
-			RequestDispatcher dis = request.getRequestDispatcher("admin/manageDeliveryManagers.jsp");
-			dis.forward(request, response);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("admin/manageDeliveryManagers.jsp");
+			dispatcher.forward(request, response);
 		}
 		catch(Exception e){
 			e.printStackTrace();

@@ -23,8 +23,8 @@ public class InventoryManagerUpdateProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int productId = Integer.parseInt(request.getParameter("id"));
-        ProductService productService = new ProductService();
-        Product product = productService.getProductById(productId);
+        //ProductService productService = new ProductService();
+        Product product = ProductService.getProductById(productId);
 
         if (product != null) {
             request.setAttribute("product", product);

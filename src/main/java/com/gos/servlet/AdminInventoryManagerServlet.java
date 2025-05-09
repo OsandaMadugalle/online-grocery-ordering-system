@@ -19,8 +19,8 @@ public class AdminInventoryManagerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         try {
-            InventoryManagerService service = new InventoryManagerService();
-            ArrayList<InventoryManager> inventoryManagers = service.getAllInventoryManager();
+            //InventoryManagerService service = new InventoryManagerService();
+            ArrayList<InventoryManager> inventoryManagers = InventoryManagerService.getAllInventoryManager();
                         
             request.setAttribute("inventoryManagers", inventoryManagers);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/manageInventoryManagers.jsp");

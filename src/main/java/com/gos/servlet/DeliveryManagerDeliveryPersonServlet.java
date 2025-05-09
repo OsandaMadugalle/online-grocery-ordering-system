@@ -21,7 +21,7 @@ public class DeliveryManagerDeliveryPersonServlet extends HttpServlet {
             // Set the list of delivery managers as an attribute
             request.setAttribute("deliveryPersons", deliveryPersons);
             
-            // Forward the request to manageDeliveryManagers.jsp
+            // Forward the request
             RequestDispatcher dispatcher = request.getRequestDispatcher("/deliveryManager/manageDeliveryPerson.jsp");
             dispatcher.forward(request, response);
             

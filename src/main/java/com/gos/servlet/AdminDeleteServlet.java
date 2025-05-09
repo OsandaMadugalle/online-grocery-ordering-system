@@ -19,8 +19,12 @@ public class AdminDeleteServlet extends HttpServlet {
         Admin ad = new Admin();
         ad.setId(Integer.parseInt(request.getParameter("id")));
 
+        /*
         AdminService delService = new AdminService();
         delService.deleteadmin(ad);
+        */
+        
+        AdminService.deleteadmin(ad);
 
         response.sendRedirect("manageAdmin");
     }
