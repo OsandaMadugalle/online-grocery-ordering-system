@@ -6,9 +6,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import com.gos.model.Admin;
 import com.gos.service.AdminService;
+import com.gos.service.AdminService.DataAccessException;
 
 @WebServlet("/AdminUpdateAdminServlet")
 public class AdminUpdateAdminServlet extends HttpServlet {
@@ -41,8 +43,22 @@ public class AdminUpdateAdminServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        boolean isSuccess = AdminService.updateAdmin(
-                id, username, fName, lName, phone, email, password);
+        boolean isSuccess = false;
+		try {
+			isSuccess = AdminService.updateAdmin(id, username, fName, lName, phone, email, password);
+			
+		} catch (NumberFormatException e) {
+			System.out.println("Invalid Admin ID");
+			
+		} catch (SQLException e) {
+			System.out.println("Database Error");
+			
+		} catch (DataAccessException e) {
+			System.out.println("Database Connection Error");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
         if (isSuccess) {
             ArrayList<Admin> ad = AdminService.getAdminById(id);

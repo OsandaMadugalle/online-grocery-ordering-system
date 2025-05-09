@@ -6,8 +6,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 import com.gos.service.AdminService;
+import com.gos.service.AdminService.DataAccessException;
 
 @WebServlet("/AdminCreateServlet")
 public class AdminCreateServlet extends HttpServlet {
@@ -21,9 +23,20 @@ public class AdminCreateServlet extends HttpServlet {
 		 String email  = request.getParameter("email");
 		 String password  = request.getParameter("password");
 		 
-		 boolean isTrue;
+		 boolean isTrue = false;
 		 
-		 isTrue= AdminService.addAdmin(username, first_name, last_name, phone, email, password);
+		 try {
+			isTrue= AdminService.addAdmin(username, first_name, last_name, phone, email, password);
+			
+		} catch (SQLException e) {
+			System.out.println("Database Error");
+			
+		} catch (DataAccessException e) {
+			System.out.println("Database Connectiion Error");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		 
 		 if(isTrue==true) {
 			 response.sendRedirect("manageAdmin");

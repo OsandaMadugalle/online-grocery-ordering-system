@@ -87,19 +87,21 @@
         }
         
         .form-control {
-            background: rgba(255, 255, 255, 0.2);
-            color: var(--text-color);
-            border: none;
-            padding: 12px 15px;
-            border-radius: 8px;
-            width: 100%;
-            transition: all 0.3s ease;
-        }
-        
-        .form-control:focus {
-            background: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 0 0 0.2rem rgba(255, 76, 41, 0.25);
-        }
+		    background: rgba(255, 255, 255, 0.2);
+		    color: var(--text-color); /* Ensure text is white by default */
+		    border: 1px solid rgba(255, 255, 255, 0.3);
+		    padding: 12px 15px;
+		    border-radius: 5px;
+		    width: 100%;
+		    transition: all 0.3s ease;
+		}
+		
+		.form-control:focus {
+		    background: rgba(255, 255, 255, 0.3);
+		    box-shadow: 0 0 0 0.2rem rgba(255, 76, 41, 0.25);
+		    border-color: var(--accent-color);
+		    color: var(--text-color); /* Maintain white text on focus */
+		}
         
         .form-control::placeholder {
             color: var(--placeholder-color);
