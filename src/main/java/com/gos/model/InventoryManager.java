@@ -9,4 +9,14 @@ public class InventoryManager extends Staff {
     public InventoryManager() {
         super();
     }
+    
+    @Override
+    public String getRole() {
+        return "Inventory Manager";
+    }
+
+    @Override
+    public String getAccessLevel() {
+        return "Can manage Inventories only";
+    }
 }

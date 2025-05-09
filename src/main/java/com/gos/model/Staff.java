@@ -9,4 +9,12 @@ public abstract class Staff extends Person {
     public Staff() {
         super();
     }
+
+    // New abstract method (must be implemented by all Staff subclasses)
+    public abstract String getRole();
+
+    // Optional: A common method that can be overridden
+    public String getAccessLevel() {
+        return "Base Staff Access";
+    }
 }

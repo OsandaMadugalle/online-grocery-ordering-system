@@ -9,4 +9,14 @@ public class DeliveryPerson extends Staff {
     public DeliveryPerson() {
         super();
     }
+
+    @Override
+    public String getRole() {
+        return "Delivery Person";
+    }
+
+    @Override
+    public String getAccessLevel() {
+        return "Can manage deliveries only";
+    }
 }

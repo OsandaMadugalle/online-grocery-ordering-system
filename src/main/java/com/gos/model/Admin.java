@@ -9,4 +9,14 @@ public class Admin extends Staff {
     public Admin() {
         super();
     }
+
+    @Override
+    public String getRole() {
+        return "Administrator";
+    }
+
+    @Override
+    public String getAccessLevel() {
+        return "Full System Access";
+    }
 }
