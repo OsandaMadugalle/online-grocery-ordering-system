@@ -1,13 +1,13 @@
 package com.gos.model;
 
 public abstract class Person {
-    protected int id;
-    protected String username;
-    protected String firstName;
-    protected String lastName;
-    protected String phone;
-    protected String email;
-    protected String password;
+    private int id;
+    private String username;
+    private String firstName;
+    private String lastName;
+    private String phone;
+    private String email;
+    private String password;
 
     public Person(int id, String username, String firstName, String lastName, 
                  String phone, String email, String password) {
