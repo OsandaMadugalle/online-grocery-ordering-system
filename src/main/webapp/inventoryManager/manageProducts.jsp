@@ -349,7 +349,7 @@
 
 <body>
     <!-- Back Button -->
-    <a href="${pageContext.request.contextPath}/inventoryManager/inventoryManagerDashboard.jsp" class="home-icon">
+    <a href="./inventoryManager/inventoryManagerDashboard.jsp" class="home-icon">
         <i class="fas fa-arrow-left"></i>
     </a>
 
@@ -366,7 +366,7 @@
                         <span>Total Products: ${fn:length(products)}</span>
                     </div>
                 </c:if>
-                <a href="${pageContext.request.contextPath}/inventoryManager/createProduct.jsp" class="btn-add mb-2">
+                <a href="./inventoryManager/createProduct.jsp" class="btn-add mb-2">
                     <i class="fas fa-plus"></i> Add Product
                 </a>
             </div>
@@ -395,13 +395,13 @@
 									<td data-label="Image">
 									    <c:choose>
 									        <c:when test="${not empty product.imagePath}">
-									            <img src="${pageContext.request.contextPath}/${product.imagePath}" 
+									            <img src="./${product.imagePath}" 
 									                 alt="${product.productName}" 
 									                 class="product-image"
-									                 onerror="this.src='${pageContext.request.contextPath}/productImages/default-product.png'">
+									                 onerror="this.src='./productImages/default-product.png'">
 									        </c:when>
 									        <c:otherwise>
-									            <img src="${pageContext.request.contextPath}/productImages/default-product.png" 
+									            <img src="./productImages/default-product.png" 
 									                 alt="Default product image" 
 									                 class="product-image">
 									        </c:otherwise>

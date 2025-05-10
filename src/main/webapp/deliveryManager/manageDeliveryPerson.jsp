@@ -293,7 +293,7 @@
 
 <body>
     <div class="manager-container">
-        <a href="${pageContext.request.contextPath}/deliveryManager/deliveryManagerDashboard.jsp" class="back-btn">
+        <a href="/deliveryManager/deliveryManagerDashboard.jsp" class="back-btn">
             <i class="fas fa-arrow-left"></i> Back to Dashboard
         </a>
 
@@ -306,7 +306,7 @@
                     </div>
                 </c:if>
                 
-                <a href="${pageContext.request.contextPath}/deliveryManager/createDeliveryPerson.jsp" class="btn btn-add-manager">
+                <a href="/deliveryManager/createDeliveryPerson.jsp" class="btn btn-add-manager">
                     <i class="fas fa-plus"></i> Add Delivery Person
                 </a>
             </div>
@@ -347,14 +347,14 @@
                                 </td>
                                 <td data-label="Actions">
                                     <div class="action-buttons">
-                                        <form action="${pageContext.request.contextPath}/deliveryPersonUpdate" method="get" style="display: inline;">
+                                        <form action="$./deliveryPersonUpdate" method="get" style="display: inline;">
                                             <input type="hidden" name="id" value="${dp.id}">
                                             <button type="submit" class="btn-action btn-edit" title="Edit">
                                                 <i class="fas fa-edit"></i>
                                             </button>
                                         </form>
                                         
-                                        <form action="${pageContext.request.contextPath}/deleteDeliveryPerson" method="POST" style="display: inline;">
+                                        <form action="./deleteDeliveryPerson" method="POST" style="display: inline;">
                                             <input type="hidden" name="id" value="${dp.id}">
                                             <button type="submit" class="btn-action btn-delete" title="Delete"
                                                     onclick="return confirm('Are you sure you want to delete this delivery person?')">
@@ -373,7 +373,7 @@
                     <i class="fas fa-info-circle fa-2x"></i>
                     <h3>No Delivery Persons Found</h3>
                     <p>There are currently no delivery persons registered in the system.</p>
-                    <a href="${pageContext.request.contextPath}/deliveryManager/addDeliveryPerson.jsp" class="btn btn-add-manager mt-3">
+                    <a href="/deliveryManager/addDeliveryPerson.jsp" class="btn btn-add-manager mt-3">
                         <i class="fas fa-plus"></i> Add Your First Delivery Person
                     </a>
                 </div>

@@ -210,7 +210,7 @@
 </head>
 
 <body>
-    <a href="${pageContext.request.contextPath}/deliveryManager/deliveryManagerDashboard.jsp" class="home-icon">
+    <a href="./deliveryManager/deliveryManagerDashboard.jsp" class="home-icon">
         <i class="fas fa-arrow-left"></i>
     </a>
 

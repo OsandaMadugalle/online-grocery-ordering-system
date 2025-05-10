@@ -385,7 +385,7 @@
             <i class="fas fa-cog"></i>
             <span class="nav-text">Back To Site</span>
         </a>
-        <a href="${pageContext.request.contextPath}/customerLogoutServlet" class="logout-btn">
+        <a href="./customerLogoutServlet" class="logout-btn">
             <i class="fas fa-sign-out-alt"></i> Logout
         </a>
     </div>
@@ -450,7 +450,7 @@
 				                <i class="fas fa-user-edit"></i> Edit Profile
 				            </a>
 				            
-							<a href="${pageContext.request.contextPath}/deleteCustomer?id=${id}" class="delete-btn" onclick="return confirm('Are you sure you want to delete your account? This action is irreversible.')">
+							<a href="./deleteCustomer?id=${id}" class="delete-btn" onclick="return confirm('Are you sure you want to delete your account? This action is irreversible.')">
 								<i class="fas fa-trash-alt"></i> Delete Account
 				            </a>
 				        </div>

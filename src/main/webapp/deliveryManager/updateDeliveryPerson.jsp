@@ -205,7 +205,7 @@
 
 <body>
     <div class="container">
-        <a href="${pageContext.request.contextPath}/manageDeliveryPersons" class="back-link">
+        <a href="/manageDeliveryPersons" class="back-link">
             <i class="fas fa-arrow-left"></i> Back to Delivery Person List
         </a>
 
@@ -215,7 +215,7 @@
                 <p>Update the details below for this delivery person</p>
             </div>
 
-            <form action="${pageContext.request.contextPath}/deliveryPersonUpdate" method="post" onsubmit="return validateForm()">
+            <form action="/deliveryPersonUpdate" method="post" onsubmit="return validateForm()">
                 <input type="hidden" name="id" value="<%= dp.getId() %>">
                 
                 <!-- Username -->

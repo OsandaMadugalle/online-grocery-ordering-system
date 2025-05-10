@@ -251,8 +251,9 @@
 </head>
 
 <body>
-    <!-- Back Button -->
-    <a href="${pageContext.request.contextPath}/admin/adminDashboard.jsp" class="home-icon">
+    <!-- Back Button 
+    <a href="${pageContext.request.contextPath}/admin/adminDashboard.jsp" class="home-icon">-->
+     <a href="./admin/adminDashboard.jsp" class="home-icon">
         <i class="fas fa-arrow-left"></i>
     </a>
 
@@ -268,7 +269,8 @@
                 </div>
             </c:if>
             
-            <a href="${pageContext.request.contextPath}/admin/createAdmin.jsp" class="btn btn-add">
+         <!--   <a href="${pageContext.request.contextPath}/admin/createAdmin.jsp" class="btn btn-add"> --> 
+           <a href="./admin/createAdmin.jsp" class="btn btn-add"> 
                 <i class="fas fa-plus"></i> Add New Admin
             </a>
         </div>

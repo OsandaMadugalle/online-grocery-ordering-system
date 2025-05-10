@@ -271,7 +271,7 @@
     </style>
 </head>
 <body>
-    <a href="${pageContext.request.contextPath}/manageProducts" class="home-icon">
+    <a href="./manageProducts" class="home-icon">
         <i class="fas fa-arrow-left"></i>
     </a>
 
@@ -281,7 +281,7 @@
             <p class="text-muted">Modify the product details below.</p>
         </div>
 
-        <form action="${pageContext.request.contextPath}/updateProduct" method="post" enctype="multipart/form-data" id="updateForm">
+        <form action="./updateProduct" method="post" enctype="multipart/form-data" id="updateForm">
             <input type="hidden" name="id" value="${product.id}">
 
             <div class="row">
@@ -333,7 +333,7 @@
                                 <i class="fas fa-times"></i>
                             </button>
                         </div>
-                        <img src="${pageContext.request.contextPath}/${not empty product.imagePath ? product.imagePath : 'images/default-product.png'}"
+                        <img src="./${not empty product.imagePath ? product.imagePath : 'images/default-product.png'}"
                              alt="Product preview"
                              class="preview-image"
                              id="previewImage">

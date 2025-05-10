@@ -220,14 +220,14 @@
 </head>
 
 <body>
-    <a href="${pageContext.request.contextPath}/manageAdmin" class="home-icon">
+    <a href="./manageAdmin" class="home-icon">
         <i class="fas fa-arrow-left"></i>
     </a>
 
     <div class="form-container">
         <h3>Update Admin</h3>
         
-        <form action="${pageContext.request.contextPath}/adminUpdateAdmin" method="post" onsubmit="return validateForm()">
+        <form action="./adminUpdateAdmin" method="post" onsubmit="return validateForm()">
             <!-- ID -->
             <div class="form-row">
                 <label for="id" class="form-label">ID</label>
