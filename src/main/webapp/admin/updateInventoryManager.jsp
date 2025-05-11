@@ -219,7 +219,7 @@
 </head>
 
 <body>
-    <a href="$./manageInventoryManager" class="home-icon">
+    <a href="./manageInventoryManager" class="home-icon">
         <i class="fas fa-arrow-left"></i>
     </a>
 
