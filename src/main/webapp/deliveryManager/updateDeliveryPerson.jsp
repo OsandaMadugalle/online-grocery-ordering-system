@@ -205,7 +205,7 @@
 
 <body>
     <div class="container">
-        <a href="/manageDeliveryPersons" class="back-link">
+        <a href="./manageDeliveryPersons" class="back-link">
             <i class="fas fa-arrow-left"></i> Back to Delivery Person List
         </a>
 
