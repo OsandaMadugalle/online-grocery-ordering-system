@@ -264,7 +264,7 @@
         <i class="fas fa-bars"></i>
     </button>
 
-    <a href="./admin/adminDashboard.jsp" class="home-icon">
+    <a href="./adminDashboard.jsp" class="home-icon">
         <i class="fas fa-arrow-left"></i> <span>Back to Dashboard</span>
     </a>
 
