@@ -264,7 +264,7 @@
         String password= request.getParameter("password");
     %>
 
-    <a href="./inventoryManager/inventoryManagerDashboard.jsp" class="home-icon">
+    <a href="./inventoryManagerDashboard.jsp" class="home-icon">
         <i class="fas fa-arrow-left"></i>
     </a>
 
