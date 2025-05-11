@@ -293,7 +293,7 @@
 
 <body>
     <div class="manager-container">
-        <a href="/deliveryManager/deliveryManagerDashboard.jsp" class="back-btn">
+        <a href="./deliveryManager/deliveryManagerDashboard.jsp" class="back-btn">
             <i class="fas fa-arrow-left"></i> Back to Dashboard
         </a>
 
@@ -306,7 +306,7 @@
                     </div>
                 </c:if>
                 
-                <a href="/deliveryManager/createDeliveryPerson.jsp" class="btn btn-add-manager">
+                <a href="./deliveryManager/createDeliveryPerson.jsp" class="btn btn-add-manager">
                     <i class="fas fa-plus"></i> Add Delivery Person
                 </a>
             </div>
@@ -347,7 +347,7 @@
                                 </td>
                                 <td data-label="Actions">
                                     <div class="action-buttons">
-                                        <form action="$./deliveryPersonUpdate" method="get" style="display: inline;">
+                                        <form action="./deliveryPersonUpdate" method="get" style="display: inline;">
                                             <input type="hidden" name="id" value="${dp.id}">
                                             <button type="submit" class="btn-action btn-edit" title="Edit">
                                                 <i class="fas fa-edit"></i>
