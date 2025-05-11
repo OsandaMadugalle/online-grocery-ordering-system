@@ -377,15 +377,15 @@
             <span>${sessionScope.customerDetails[0].firstName} ${sessionScope.customerDetails[0].lastName}</span>
         </div>
         <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Profile</a>
-        <a href="./viewProducts.jsp"><i class="fas fa-shopping-bag"></i> Shop</a>
-        <a href="./viewOrders.jsp"><i class="fas fa-clipboard-list"></i> My Orders</a>
-        <a href="./viewCart.jsp"><i class="fas fa-shopping-cart"></i> My Cart</a>
-        <a href="./viewWishlist.jsp"><i class="fas fa-heart"></i> Wishlist</a>
-        <a href="../index.jsp">
+        <a href="#"><i class="fas fa-shopping-bag"></i> Shop</a>
+        <a href="#"><i class="fas fa-clipboard-list"></i> My Orders</a>
+        <a href="./cart.jsp"><i class="fas fa-shopping-cart"></i> My Cart</a>
+        <a href="#"><i class="fas fa-heart"></i> Wishlist</a>
+        <a href="../webContent/index.jsp">
             <i class="fas fa-cog"></i>
             <span class="nav-text">Back To Site</span>
         </a>
-        <a href="./customerLogoutServlet" class="logout-btn">
+        <a href="../customerLogoutServlet" class="logout-btn">
             <i class="fas fa-sign-out-alt"></i> Logout
         </a>
     </div>
