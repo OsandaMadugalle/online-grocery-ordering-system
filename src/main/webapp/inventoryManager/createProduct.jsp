@@ -79,6 +79,7 @@
             box-shadow: 0 0 0 0.2rem rgba(76, 201, 240, 0.3);
             border-color: var(--accent-color);
             outline: none;
+            color: var(--text-color);
         }
         
         .form-control::placeholder {
@@ -173,51 +174,56 @@
             color: var(--accent-color);
         }
         
-		.enhanced-dropdown {
-		    background: rgba(255, 255, 255, 0.15);
-		    color: var(--text-color);
-		    border: 1px solid rgba(255, 255, 255, 0.2); 
-		    padding: 14px 20px; 
-		    border-radius: var(--border-radius); 
-		    margin-bottom: 20px;
-		    transition: all 0.3s ease; 
-		    font-size: 15px; 
-		    appearance: none; 
-		    -webkit-appearance: none;
-		    -moz-appearance: none;
-		    position: relative; 		
-		    display: flex;
-		    align-items: center;
-		    height: 50px;
-		    line-height: 20px; 
-		}
-		
-		.enhanced-dropdown::after {
-		    content: "\f0d7";
-		    font-family: 'Font Awesome 5 Free';
-		    font-weight: 900; 
-		    position: absolute;
-		    right: 20px; 
-		    top: 50%; 
-		    transform: translateY(-50%); 
-		    color: rgba(255, 255, 255, 0.5);
-		    pointer-events: none; 
-		}
-		
-		.enhanced-dropdown:focus {
-		    background: rgba(255, 255, 255, 0.25); 
-		    box-shadow: 0 0 0 0.2rem rgba(76, 201, 240, 0.3); 
-		    border-color: var(--accent-color); 
-		    outline: none; 
-		}
-		
-		.enhanced-dropdown:hover {
-		    background: rgba(255, 255, 255, 0.2); 
-		}
-		
-		.enhanced-dropdown::-ms-expand {
-		    display: none;
-		}
+        .enhanced-dropdown {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--text-color);
+            border: 1px solid rgba(255, 255, 255, 0.2); 
+            padding: 14px 20px; 
+            border-radius: var(--border-radius); 
+            margin-bottom: 20px;
+            transition: all 0.3s ease; 
+            font-size: 15px; 
+            appearance: none; 
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            position: relative;         
+            width: 100%;
+            height: 50px;
+            line-height: 20px; 
+        }
+        
+        .enhanced-dropdown::after {
+            content: "\f0d7";
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900; 
+            position: absolute;
+            right: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            color: rgba(255, 255, 255, 0.5);
+            pointer-events: none; 
+        }
+        
+        .enhanced-dropdown:focus {
+            background: rgba(255, 255, 255, 0.25); 
+            box-shadow: 0 0 0 0.2rem rgba(76, 201, 240, 0.3); 
+            border-color: var(--accent-color); 
+            outline: none; 
+            color: var(--text-color);
+        }
+        
+        .enhanced-dropdown:hover {
+            background: rgba(255, 255, 255, 0.2); 
+        }
+        
+        .enhanced-dropdown option {
+            background: var(--secondary-bg);
+            color: var(--text-color);
+        }
+        
+        .enhanced-dropdown::-ms-expand {
+            display: none;
+        }
 
         @media (max-width: 768px) {
             .form-container {
@@ -289,17 +295,17 @@
             </div>
 
             <!-- Category -->
-			<div class="form-group">
-			    <label class="form-label">Category</label>
-			    <select class="form-control enhanced-dropdown" name="category" required>
-			        <option value="" disabled ${empty product.category ? 'selected' : ''}>Select a category</option>
-			        <option value="Fruits & Vegetables" ${product.category == 'Fruits & Vegetables' ? 'selected' : ''}>Fruits & Vegetables</option>
-			        <option value="Dairy & Eggs" ${product.category == 'Dairy & Eggs' ? 'selected' : ''}>Dairy & Eggs</option>
-			        <option value="Meat & Seafood" ${product.category == 'Meat & Seafood' ? 'selected' : ''}>Meat & Seafood</option>
-			        <option value="Bakery & Bread" ${product.category == 'Bakery & Bread' ? 'selected' : ''}>Bakery & Bread</option>
-			        <option value="Pantry Staples" ${product.category == 'Pantry Staples' ? 'selected' : ''}>Pantry Staples</option>
-			    </select>
-			</div>
+            <div class="form-group">
+                <label class="form-label">Category</label>
+                <select class="enhanced-dropdown" name="category" required>
+                    <option value="" disabled ${empty product.category ? 'selected' : ''}>Select a category</option>
+                    <option value="Fruits & Vegetables" ${product.category == 'Fruits & Vegetables' ? 'selected' : ''}>Fruits & Vegetables</option>
+                    <option value="Dairy & Eggs" ${product.category == 'Dairy & Eggs' ? 'selected' : ''}>Dairy & Eggs</option>
+                    <option value="Meat & Seafood" ${product.category == 'Meat & Seafood' ? 'selected' : ''}>Meat & Seafood</option>
+                    <option value="Bakery & Bread" ${product.category == 'Bakery & Bread' ? 'selected' : ''}>Bakery & Bread</option>
+                    <option value="Pantry Staples" ${product.category == 'Pantry Staples' ? 'selected' : ''}>Pantry Staples</option>
+                </select>
+            </div>
 
             <!-- Stock -->
             <div class="form-group">
@@ -340,7 +346,7 @@
             <!-- Submit Button -->
             <button type="submit" class="btn-submit">
                 <i class="fas fa-${empty product.id ? 'save' : 'sync-alt'} mr-2"></i>
-                Add Product
+                ${empty product.id ? 'Add Product' : 'Update Product'}
             </button>
         </form>
     </div>
@@ -395,7 +401,6 @@
         document.querySelector('.enhanced-dropdown').addEventListener('blur', function() {
             this.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
         });
-
     </script>
 </body>
 </html>

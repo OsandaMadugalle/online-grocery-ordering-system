@@ -51,7 +51,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.1);
             margin: 0 auto;
-            animation: fadeIn 0.6s ease-out, float 6s ease-in-out infinite;
+            animation: fadeIn 0.6s ease-out;
         }
 
         .form-header h2 {
@@ -82,6 +82,7 @@
             box-shadow: 0 0 0 0.2rem rgba(76, 201, 240, 0.3);
             border-color: var(--accent-color);
             outline: none;
+            color: var(--text-color);
         }
 
         .form-control::placeholder {
@@ -92,6 +93,20 @@
         .form-control[readonly] {
             background-color: rgba(128, 128, 128, 0.2);
             color: #ccc;
+        }
+
+        /* Remove dropdown arrow */
+        .form-select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: none;
+        }
+
+        /* Style dropdown options */
+        .form-select option {
+            background: var(--secondary-bg);
+            color: var(--text-color);
         }
 
         .btn-submit {
@@ -210,12 +225,6 @@
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
         }
 
         .spinner-border {
@@ -385,12 +394,19 @@
             document.getElementById('existingImagePath').value = '';
         }
 
-        // Optional: Show loading spinner when the form is being submitted
+        // Form submission handler
         document.getElementById("updateForm").addEventListener("submit", function() {
             const submitButton = document.querySelector(".btn-submit");
             const spinner = submitButton.querySelector(".spinner-border");
             spinner.classList.add("active");
             submitButton.disabled = true;
+        });
+
+        // Disable mouse wheel on number inputs to prevent accidental changes
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            input.addEventListener('wheel', function(e) {
+                e.preventDefault();
+            });
         });
     </script>
 </body>
