@@ -1,4 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="com.gos.service.ProductService" %>
+<%@ page import="com.gos.model.Product" %>
+<%@ page import="java.util.List" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -121,9 +126,17 @@
     </style>
 </head>
 
+
 <body>
 
     <%@ include file="header.jsp" %>
+
+    <%
+        // Get all products from service
+        ProductService productService = new ProductService();
+        List<Product> allProducts = productService.getAllProducts();
+        request.setAttribute("allProducts", allProducts);
+    %>
 
     <main>
         <div class="container my-5">
@@ -152,56 +165,28 @@
 
                 <!-- Product List -->
                 <div class="row" id="productList">
-                    <!-- Example Product Cards -->
-                    <div class="col-md-4 col-sm-6">
-                        <div class="product-card">
-                            <img src="https://via.placeholder.com/300x200" alt="Product Image">
-                            <h5>Fresh Apples</h5>
-                            <p>Juicy and crispy apples for your daily dose of vitamins.</p>
-                            <span class="price">$4.99 / kg</span>
-                            <button class="btn-add-cart">Add to Cart</button>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6">
-                        <div class="product-card">
-                            <img src="https://via.placeholder.com/300x200" alt="Product Image">
-                            <h5>Organic Milk</h5>
-                            <p>Freshly sourced milk for a healthy start to your day.</p>
-                            <span class="price">$2.50 / L</span>
-                            <button class="btn-add-cart">Add to Cart</button>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6">
-                        <div class="product-card">
-                            <img src="https://via.placeholder.com/300x200" alt="Product Image">
-                            <h5>Green Lettuce</h5>
-                            <p>Crisp and fresh lettuce for your salads and sandwiches.</p>
-                            <span class="price">$3.20 / head</span>
-                            <button class="btn-add-cart">Add to Cart</button>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6">
-                        <div class="product-card">
-                            <img src="https://via.placeholder.com/300x200" alt="Product Image">
-                            <h5>Whole Wheat Bread</h5>
-                            <p>Freshly baked whole wheat bread, perfect for sandwiches.</p>
-                            <span class="price">$1.50 / loaf</span>
-                            <button class="btn-add-cart">Add to Cart</button>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6">
-                        <div class="product-card">
-                            <img src="https://via.placeholder.com/300x200" alt="Product Image">
-                            <h5>Cheddar Cheese</h5>
-                            <p>Rich and creamy cheddar cheese for all your meals.</p>
-                            <span class="price">$5.00 / 200g</span>
-                            <button class="btn-add-cart">Add to Cart</button>
-                        </div>
-                    </div>
+                    <c:choose>
+                        <c:when test="${not empty allProducts}">
+                            <c:forEach items="${allProducts}" var="product">
+                                <div class="col-md-4 col-sm-6 mb-4">
+                                    <div class="product-card">
+                                        <img src="<%= request.getContextPath() %>/${product.imagePath}" 
+                                             alt="${product.productName}"
+                                             onerror="this.onerror=null;this.src='<%= request.getContextPath() %>/images/productImages/default-product.png'">
+                                        <h5>${product.productName}</h5>
+                                        <p>${product.category}</p>
+                                        <span class="price">Rs. ${product.price}</span>
+                                        <button class="btn-add-cart">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="col-12 text-center">
+                                <p>No products available</p>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </div>
@@ -210,47 +195,52 @@
     <%@ include file="footer.jsp" %>
 
     <!-- Bootstrap JS + dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Filter and Sort Logic -->
     <script>
-        // Handle filter by category and price
-        document.getElementById('categoryFilter').addEventListener('change', function() {
-            filterProducts();
-        });
-
-        document.getElementById('priceSort').addEventListener('change', function() {
-            filterProducts();
-        });
-
-        function filterProducts() {
-            let category = document.getElementById('categoryFilter').value;
-            let sortOrder = document.getElementById('priceSort').value;
-            let products = [...document.querySelectorAll('.product-card')];
-
-            // Filter by category
-            if (category) {
-                products = products.filter(product => product.querySelector('h5').textContent.toLowerCase().includes(category));
-            }
-
-            // Sort by price
-            if (sortOrder) {
-                products.sort(function(a, b) {
-                    let priceA = parseFloat(a.querySelector('.price').textContent.replace('$', '').trim());
-                    let priceB = parseFloat(b.querySelector('.price').textContent.replace('$', '').trim());
-                    return sortOrder === 'asc' ? priceA - priceB : priceB - priceA;
-                });
-            }
-
-            // Display filtered and sorted products
-            let productList = document.getElementById('productList');
-            productList.innerHTML = '';
-            products.forEach(function(product) {
-                productList.appendChild(product);
+        $(document).ready(function() {
+            // Handle filter by category and price
+            $('#categoryFilter, #priceSort').change(function() {
+                filterProducts();
             });
-        }
+
+            function filterProducts() {
+                let category = $('#categoryFilter').val().toLowerCase();
+                let sortOrder = $('#priceSort').val();
+                
+                // Get all product cards
+                let $products = $('.product-card').parent();
+                
+                // Filter by category if selected
+                if (category) {
+                    $products.each(function() {
+                        let $card = $(this);
+                        let productCategory = $card.find('p').text().toLowerCase();
+                        if (productCategory.includes(category)) {
+                            $card.show();
+                        } else {
+                            $card.hide();
+                        }
+                    });
+                } else {
+                    $products.show();
+                }
+                
+                // Sort by price if selected
+                if (sortOrder) {
+                    let $productList = $('#productList');
+                    let $sortedProducts = $('.product-card').parent().sort(function(a, b) {
+                        let priceA = parseFloat($(a).find('.price').text().replace('Rs. ', '').trim());
+                        let priceB = parseFloat($(b).find('.price').text().replace('Rs. ', '').trim());
+                        return sortOrder === 'asc' ? priceA - priceB : priceB - priceA;
+                    });
+                    
+                    $productList.empty().append($sortedProducts);
+                }
+            }
+        });
     </script>
 </body>
-
 </html>
