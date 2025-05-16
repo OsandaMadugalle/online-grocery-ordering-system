@@ -136,8 +136,9 @@
 		                <c:forEach items="${topProducts}" var="product">
 		                    <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
 		                        <div class="card h-100"> <!-- Added h-100 to make cards equal height -->
-		                            <img src="${product.imagePath}" class="card-img-top p-2" alt="${product.productName}" style="height: 150px; object-fit: contain;">
-		                            <div class="card-body d-flex flex-column">
+		                          <img src="<%= request.getContextPath() %>/${product.imagePath}" class="card-img-top p-2" alt="${product.productName}" 
+		                          onerror="this.onerror=null;this.src='<%= request.getContextPath() %>/images/productImages/default-product.png'">  
+		                          <div class="card-body d-flex flex-column">
 		                                <h5 class="card-title text-center" style="min-height: 3rem;">${product.productName}</h5>
 		                                <p class="card-text text-center">Price: Rs. ${product.price}</p>
 		                                <div class="mt-auto text-center"> <!-- This ensures button stays at bottom -->

@@ -25,9 +25,6 @@ import com.gos.service.ProductService;
 public class InventoryManagerCreateProductServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    // Relative path from webapp root
-    private static final String UPLOAD_DIR = "/images/productImages";
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
@@ -40,30 +37,30 @@ public class InventoryManagerCreateProductServlet extends HttpServlet {
 
             // Handle image file upload
             Part filePart = request.getPart("imageFile");
-            String fileName = null;
             String imagePath = null;
 
             if (filePart != null && filePart.getSize() > 0) {
-                // Generate unique filename
-                String originalFileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-                String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
-                fileName = UUID.randomUUID().toString() + fileExtension;
-
-                // Get absolute upload path
+                // Get webapp root path
                 String appPath = request.getServletContext().getRealPath("");
-                String uploadPath = Paths.get(appPath, UPLOAD_DIR).toString();
-
-                // Create directory if not exists
-                File uploadDir = new File(uploadPath);
-                if (!uploadDir.exists()) {
-                    uploadDir.mkdirs();
+                
+                // Define upload directory (relative to webapp)
+                String uploadDir = Paths.get(appPath, "images", "productImages").toString();
+                
+                // Create directory if it doesn't exist
+                File uploadDirFile = new File(uploadDir);
+                if (!uploadDirFile.exists()) {
+                    uploadDirFile.mkdirs();
                 }
 
-                // Save file
-                filePart.write(uploadPath + File.separator + fileName);
+                // Generate filename (keep original name or use UUID)
+                String originalFileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+                String fileName = originalFileName; // Or use UUID if you prefer: UUID.randomUUID() + originalFileName.substring(originalFileName.lastIndexOf("."));
                 
-                // Set relative path for database (without webapp root)
-                imagePath = UPLOAD_DIR + "/" + fileName;
+                // Save file
+                filePart.write(Paths.get(uploadDir, fileName).toString());
+                
+                // Set relative path for database (matches your desired format)
+                imagePath = "images/productImages/" + fileName;
             }
 
             // Create Product object

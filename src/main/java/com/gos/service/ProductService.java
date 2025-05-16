@@ -141,7 +141,25 @@ public class ProductService {
                 product.setId(rs.getInt("id"));
                 product.setProductName(rs.getString("product_name"));
                 product.setPrice(rs.getDouble("price"));
-                product.setImagePath(rs.getString("image_path"));
+                
+                // Normalize image path
+             // In getTopProducts() method:
+                String imagePath = rs.getString("image_path");
+                if (imagePath == null || imagePath.trim().isEmpty()) {
+                    imagePath = "images/productImages/default.jpg";  // Fallback
+                } else {
+                    // Ensure proper prefix
+                    if (!imagePath.startsWith("images/productImages/")) {
+                        // Handle different cases:
+                        if (imagePath.startsWith("productImages/")) {
+                            imagePath = "images/" + imagePath;
+                        } else {
+                            imagePath = "images/productImages/" + imagePath;
+                        }
+                    }
+                }
+                product.setImagePath(imagePath);
+                
                 products.add(product);
             }
         } catch (SQLException e) {

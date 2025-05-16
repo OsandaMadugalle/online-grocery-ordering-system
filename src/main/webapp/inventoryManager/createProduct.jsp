@@ -299,11 +299,11 @@
                 <label class="form-label">Category</label>
                 <select class="enhanced-dropdown" name="category" required>
                     <option value="" disabled ${empty product.category ? 'selected' : ''}>Select a category</option>
-                    <option value="Fruits & Vegetables" ${product.category == 'Fruits & Vegetables' ? 'selected' : ''}>Fruits & Vegetables</option>
-                    <option value="Dairy & Eggs" ${product.category == 'Dairy & Eggs' ? 'selected' : ''}>Dairy & Eggs</option>
-                    <option value="Meat & Seafood" ${product.category == 'Meat & Seafood' ? 'selected' : ''}>Meat & Seafood</option>
-                    <option value="Bakery & Bread" ${product.category == 'Bakery & Bread' ? 'selected' : ''}>Bakery & Bread</option>
-                    <option value="Pantry Staples" ${product.category == 'Pantry Staples' ? 'selected' : ''}>Pantry Staples</option>
+                    <option value="Fruits & Vegetables" ${product.category == 'Dairy' ? 'selected' : ''}>Dairy</option>
+                    <option value="Dairy & Eggs" ${product.category == 'Bakery' ? 'selected' : ''}>Bakery</option>
+                    <option value="Meat & Seafood" ${product.category == 'Meat' ? 'selected' : ''}>Meat</option>
+                    <option value="Bakery & Bread" ${product.category == 'Fruits' ? 'selected' : ''}>Fruits</option>
+                    <option value="Pantry Staples" ${product.category == 'Grains' ? 'selected' : ''}>Grains</option>
                 </select>
             </div>
 
