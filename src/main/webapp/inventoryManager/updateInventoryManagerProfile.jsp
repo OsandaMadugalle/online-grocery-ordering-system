@@ -86,21 +86,21 @@
         }
         
         .form-control {
-		    background: rgba(255, 255, 255, 0.2);
-		    color: var(--text-color); /* Ensure text is white by default */
-		    border: 1px solid rgba(255, 255, 255, 0.3);
-		    padding: 12px 15px;
-		    border-radius: 5px;
-		    width: 100%;
-		    transition: all 0.3s ease;
-		}
-		
-		.form-control:focus {
-		    background: rgba(255, 255, 255, 0.3);
-		    box-shadow: 0 0 0 0.2rem rgba(255, 76, 41, 0.25);
-		    border-color: var(--accent-color);
-		    color: var(--text-color); /* Maintain white text on focus */
-		}
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--text-color);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 12px 15px;
+            border-radius: 5px;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 0 0.2rem rgba(255, 76, 41, 0.25);
+            border-color: var(--accent-color);
+            color: var(--text-color);
+        }
         
         .form-control::placeholder {
             color: var(--placeholder-color);
@@ -239,16 +239,6 @@
                 transform: translateY(0); 
             }
         }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .form-container {
-            animation: fadeIn 0.6s ease-out, float 6s ease-in-out infinite;
-        }
     </style>
 </head>
 
@@ -322,7 +312,11 @@
                 </label>
                 <div class="form-input">
                     <input type="tel" class="form-control" name="phone" id="phone" 
-                        placeholder="Enter phone number" value="<%= phone %>" required>
+                        placeholder="Enter phone number (07XXXXXXXX)" value="<%= phone %>" 
+                        pattern="0[1-9][0-9]{8}" title="Please enter a valid Sri Lankan phone number (07XXXXXXXX)" required>
+                    <div class="error-message" id="phone-error">
+                        <i class="fas fa-exclamation-circle mr-1"></i>Please enter a valid Sri Lankan phone number (07XXXXXXXX)
+                    </div>
                 </div>
             </div>
             
@@ -366,7 +360,7 @@
                             <i class="fas fa-eye"></i>
                         </button>
                     </div>
-                    <div class="error-message" id="error-message">
+                    <div class="error-message" id="password-error">
                         <i class="fas fa-exclamation-circle mr-1"></i>Passwords do not match
                     </div>
                 </div>
@@ -380,16 +374,30 @@
 
     <script>
         function validateForm() {
+            // Password validation
             const password = document.getElementById("password").value;
             const confirmPassword = document.getElementById("confirmPassword").value;
-            const errorMessage = document.getElementById("error-message");
+            const passwordError = document.getElementById("password-error");
             
             if (password !== confirmPassword) {
-                errorMessage.style.display = "block";
+                passwordError.style.display = "block";
                 document.getElementById("confirmPassword").focus();
                 return false;
             }
-            errorMessage.style.display = "none";
+            passwordError.style.display = "none";
+            
+            // Phone validation for Sri Lankan numbers
+            const phone = document.getElementById("phone").value;
+            const phoneError = document.getElementById("phone-error");
+            const phoneRegex = /^0[1-9][0-9]{8}$/;
+            
+            if (!phoneRegex.test(phone)) {
+                phoneError.style.display = "block";
+                document.getElementById("phone").focus();
+                return false;
+            }
+            phoneError.style.display = "none";
+            
             return true;
         }
 
@@ -410,12 +418,25 @@
         document.getElementById('confirmPassword').addEventListener('input', function() {
             const password = document.getElementById("password").value;
             const confirmPassword = this.value;
-            const errorMessage = document.getElementById("error-message");
+            const passwordError = document.getElementById("password-error");
             
             if (password !== confirmPassword) {
-                errorMessage.style.display = "block";
+                passwordError.style.display = "block";
             } else {
-                errorMessage.style.display = "none";
+                passwordError.style.display = "none";
+            }
+        });
+        
+        // Validate phone number on the fly
+        document.getElementById('phone').addEventListener('input', function() {
+            const phone = this.value;
+            const phoneError = document.getElementById("phone-error");
+            const phoneRegex = /^0[1-9][0-9]{8}$/;
+            
+            if (!phoneRegex.test(phone)) {
+                phoneError.style.display = "block";
+            } else {
+                phoneError.style.display = "none";
             }
         });
     </script>

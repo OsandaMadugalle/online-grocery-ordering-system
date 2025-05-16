@@ -74,11 +74,11 @@ CREATE TABLE DeliveryPerson (
 -- Sample Product Inserts (Sri Lankan products)
 INSERT INTO Product (image_path, product_name, category, stock, price)
 VALUES
-    ('/productImages/kiri.jpg', 'Anchor Kiri 1L', 'Dairy', 120, 520.00),
-    ('/productImages/roti.jpg', 'Coconut Roti Pack', 'Bakery', 60, 150.00),
-    ('/productImages/fish.jpg', 'Kelawalla Fish', 'Meat', 25, 1100.00),
-    ('/productImages/banana.jpg', 'Ambul Banana', 'Fruits', 80, 90.00),
-    ('/productImages/rice.jpg', 'Nadu Rice 5kg', 'Grains', 50, 750.00);
+    ('images/productImages/AnchorKiri1L.png', 'Anchor Kiri 1L', 'Dairy', 120, 520.00),
+    ('images/productImages/CoconutRotiPack.jpeg', 'Coconut Roti Pack', 'Bakery', 60, 150.00),
+    ('images/productImages/KelawallaFish.jpg', 'Kelawalla Fish', 'Meat', 25, 1100.00),
+    ('images/productImages/AmbulBanana.jpeg', 'Ambul Banana', 'Fruits', 80, 90.00),
+    ('images/productImages/NaduRice.jpeg', 'Nadu Rice 5kg', 'Grains', 50, 750.00);
 
 -- Sample Admin Inserts
 INSERT INTO Admin (Username, First_Name, Last_Name, Phone, Email, Password)
