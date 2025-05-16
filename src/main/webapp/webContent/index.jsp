@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="com.gos.service.ProductService" %>
+<%@ page import="com.gos.model.Product" %>
+<%@ page import="java.util.List" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,9 +21,7 @@
 		<!-- Carousel -->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">		
 		
-		
 	    <style>  		  
-		    
 		    .carousel-item img {
 			    height: 800px;
 			    object-fit: cover;
@@ -37,23 +38,47 @@
 		    
 		    .card {
 			    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+			    height: 300px;
+			}
+			
+			.card img {
+			    height: 150px;
+			    object-fit: contain;
+			    padding: 10px;
 			}
 			
 			.card:hover {
 			    transform: scale(1.05);
 			    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 			}
-		    		    
+		    
+		    .card-body {
+		        display: flex;
+		        flex-direction: column;
+		        justify-content: space-between;
+		    }
+		    
+		    .card-title {
+		        font-size: 1rem;
+		        margin-bottom: 0.5rem;
+		    }
+		    
+		    .card-text {
+		        font-size: 0.9rem;
+		    }
+		    
+		    @keyframes zoomIn {
+		        from { transform: scale(1); }
+		        to { transform: scale(1.05); }
+		    }
 		</style>
 	</head>
 	
 	<body>		    
-	    	
 	<%@ include file="./header.jsp" %>  
 	
 	    <!-- Bootstrap 5 Carousel -->
 		<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
-		
 			  <div class="carousel-indicators">
 				    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
 				    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -90,7 +115,14 @@
 			  </button>
 		</div>
 		 
-		 <!-- Top Products Section -->
+		<%
+		    // Get top products from service
+		    ProductService productService = new ProductService();
+		    List<Product> topProducts = productService.getTopProducts();
+		    request.setAttribute("topProducts", topProducts);
+		%>
+		 
+		<!-- Top Products Section -->
 		<div class="container mt-5">
 		    <div class="d-flex align-items-center mb-4" style="margin-top: 20px; margin-bottom: 20px;">
 		        <hr class="flex-grow-1 me-3" style="border: 1px solid black; margin: 0 10px;">
@@ -98,73 +130,30 @@
 		        <hr class="flex-grow-1 ms-3" style="border: 1px solid black; margin: 0 10px;">
 		    </div>
 		    
-		    <div class="row">		    
-		        <!-- Product 1 -->
-		        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-		            <div class="card" style="height: 300px;">
-		                <img src="https://via.placeholder.com/150" class="card-img-top" alt="Product 1">
-		                <div class="card-body">
-		                    <h5 class="card-title text-center">Product 1</h5>
-		                    <p class="card-text text-center">Price: Rs: 150.00</p>
+		    <div class="row">
+		        <c:choose>
+		            <c:when test="${not empty topProducts}">
+		                <c:forEach items="${topProducts}" var="product">
+		                    <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+		                        <div class="card h-100"> <!-- Added h-100 to make cards equal height -->
+		                            <img src="${product.imagePath}" class="card-img-top p-2" alt="${product.productName}" style="height: 150px; object-fit: contain;">
+		                            <div class="card-body d-flex flex-column">
+		                                <h5 class="card-title text-center" style="min-height: 3rem;">${product.productName}</h5>
+		                                <p class="card-text text-center">Price: Rs. ${product.price}</p>
+		                                <div class="mt-auto text-center"> <!-- This ensures button stays at bottom -->
+		                                    <a href="#" class="btn btn-primary btn-sm">Add to Cart</a>
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </c:forEach>
+		            </c:when>
+		            <c:otherwise>
+		                <div class="col-12 text-center">
+		                    <p>No products available</p>
 		                </div>
-		            </div>
-		        </div>
-		
-		        <!-- Product 2 -->
-		        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-		            <div class="card" style="height: 300px;">
-		                <img src="https://via.placeholder.com/150" class="card-img-top" alt="Product 2">
-		                <div class="card-body">
-		                    <h5 class="card-title text-center">Product 2</h5>
-		                    <p class="card-text text-center">Price: Rs: 150.00</p>
-		                </div>
-		            </div>
-		        </div>
-		
-		        <!-- Product 3 -->
-		        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-		            <div class="card" style="height: 300px;">
-		                <img src="https://via.placeholder.com/150" class="card-img-top" alt="Product 3">
-		                <div class="card-body">
-		                    <h5 class="card-title text-center">Product 3</h5>
-		                    <p class="card-text text-center">Price: Rs: 150.00</p>
-		                </div>
-		            </div>
-		        </div>
-		
-		        <!-- Product 4 -->
-		        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-		            <div class="card" style="height: 300px;">
-		                <img src="https://via.placeholder.com/150" class="card-img-top" alt="Product 4">
-		                <div class="card-body">
-		                    <h5 class="card-title text-center">Product 4</h5>
-		                    <p class="card-text text-center">Price: Rs: 150.00</p>
-		                </div>
-		            </div>
-		        </div>
-		
-		        <!-- Product 5 -->
-		        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-		            <div class="card" style="height: 300px;">
-		                <img src="https://via.placeholder.com/150" class="card-img-top" alt="Product 5">
-		                <div class="card-body">
-		                    <h5 class="card-title text-center">Product 5</h5>
-		                    <p class="card-text text-center">Price: Rs: 150.00</p>
-		                </div>
-		            </div>
-		        </div>
-		        
-		        <!-- Product 6 -->
-		        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-		            <div class="card" style="height: 300px;">
-		                <img src="https://via.placeholder.com/150" class="card-img-top" alt="Product 6">
-		                <div class="card-body">
-		                    <h5 class="card-title text-center">Product 6</h5>
-		                    <p class="card-text text-center">Price: Rs: 150.00</p>
-		                </div>
-		            </div>
-		        </div>   
-		           
+		            </c:otherwise>
+		        </c:choose>
 		    </div>
 		</div>
 	
@@ -198,14 +187,11 @@
 		                </div>
 		            </div>
 		        </div>
-		        
 		    </div>
 		</div>
 	
-		
 		<!-- App Banner Section -->
 		<div class="container-fluid mt-5 p-5" style="background-color: #f8f9fa; height: 60vh;">
-		
 		    <div class="row align-items-center h-100">
 		        <!-- Left -->
 		        <div class="col-md-7 order-md-1 order-2">
@@ -222,13 +208,11 @@
 		                Get the App
 		            </a>
 		        </div>
-		        
 		    </div>
 		</div>
 	
 		<!-- Feedback and Support Section -->
 		<div class="container mt-5 mb-5">
-		
 		    <div class="d-flex align-items-center mb-4" style="margin-top: 20px; margin-bottom: 20px;">
 		        <hr class="flex-grow-1 me-3" style="border: 1px solid black; margin: 0 10px;">
 		        <h2 class="text-center mb-0" style="color: black;"><b>Support</b></h2>
@@ -261,7 +245,6 @@
 		                <button type="submit" class="btn btn-primary">Submit</button>
 		            </form>
 		        </div>
-		        
 		    </div>
 		</div>		
 		

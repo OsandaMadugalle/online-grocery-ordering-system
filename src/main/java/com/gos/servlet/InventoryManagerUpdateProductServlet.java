@@ -13,6 +13,9 @@ import com.gos.service.ProductService;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @WebServlet("/InventoryManagerUpdateProductServlet")
 @MultipartConfig(
@@ -22,65 +25,96 @@ import java.io.IOException;
 )
 public class InventoryManagerUpdateProductServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    private static final String PRODUCT_IMAGES_DIR = "/images/productImages";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int productId = Integer.parseInt(request.getParameter("id"));
-        //ProductService productService = new ProductService();
-        Product product = ProductService.getProductById(productId);
+        try {
+            int productId = Integer.parseInt(request.getParameter("id"));
+            Product product = ProductService.getProductById(productId);
 
-        if (product != null) {
-            request.setAttribute("product", product);
-            request.getRequestDispatcher("/inventoryManager/updateProduct.jsp").forward(request, response);
-        } else {
+            if (product != null) {
+                request.setAttribute("product", product);
+                request.getRequestDispatcher("/inventoryManager/updateProduct.jsp").forward(request, response);
+            } else {
+                response.sendRedirect(request.getContextPath() + "/manageProducts");
+            }
+        } catch (NumberFormatException e) {
             response.sendRedirect(request.getContextPath() + "/manageProducts");
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Product product = new Product();
-
-        int productId = Integer.parseInt(request.getParameter("id"));
-        product.setId(productId);
-        product.setProductName(request.getParameter("productName"));
-        product.setCategory(request.getParameter("category"));
-        product.setStock(Integer.parseInt(request.getParameter("stock")));
-        product.setPrice(Double.parseDouble(request.getParameter("price")));
-
-        // Existing image path (used if no new image uploaded)
-        String imagePath = request.getParameter("existingImagePath");
-
-        // Check if new image was uploaded
-        Part filePart = request.getPart("imageFile");
-        if (filePart != null && filePart.getSize() > 0) {
-            String fileName = System.currentTimeMillis() + "_" + filePart.getSubmittedFileName();
-
-            // Path to the productImages folder
-            String uploadDir = getServletContext().getRealPath("/") + "productImages";
-            File uploadPath = new File(uploadDir);
-            if (!uploadPath.exists()) {
-                uploadPath.mkdirs();
+        try {
+            int productId = Integer.parseInt(request.getParameter("id"));
+            Product existingProduct = ProductService.getProductById(productId);
+            
+            if (existingProduct == null) {
+                response.sendRedirect(request.getContextPath() + "/manageProducts");
+                return;
             }
 
-            // Save the uploaded file
-            filePart.write(uploadDir + File.separator + fileName);
+            Product product = new Product();
+            product.setId(productId);
+            product.setProductName(request.getParameter("productName"));
+            product.setCategory(request.getParameter("category"));
+            product.setStock(Integer.parseInt(request.getParameter("stock")));
+            product.setPrice(Double.parseDouble(request.getParameter("price")));
 
-            // Update the image path for saving in DB
-            imagePath = "productImages/" + fileName;  // Store just the relative path
-        }
+            // Use existing image path as default
+            String imagePath = existingProduct.getImagePath();
 
-        product.setImagePath(imagePath);
+         // Handle file upload
+            Part filePart = request.getPart("imageFile");
+            if (filePart != null && filePart.getSize() > 0 && filePart.getSubmittedFileName() != null 
+                    && !filePart.getSubmittedFileName().isEmpty()) {
+                
+                // Get webapp root path
+                String appPath = request.getServletContext().getRealPath("");
+                
+                // Path to images/productImages
+                String uploadDir = Paths.get(appPath, "images", "productImages").toString();
+                
+                // Create directory if it doesn't exist
+                Path uploadPath = Paths.get(uploadDir);
+                if (!Files.exists(uploadPath)) {
+                    Files.createDirectories(uploadPath);
+                }
 
-        ProductService productService = new ProductService();
-        boolean success = productService.updateProduct(product);
+                // Generate unique filename
+                String fileName = System.currentTimeMillis() + "_" + 
+                        filePart.getSubmittedFileName().replace(" ", "_");
+                
+                // Delete old image if it exists
+                if (imagePath != null && !imagePath.isEmpty()) {
+                    Path oldImagePath = Paths.get(appPath, imagePath);
+                    if (Files.exists(oldImagePath)) {
+                        Files.delete(oldImagePath);
+                    }
+                }
 
-        if (success) {
+                // Save new image
+                filePart.write(Paths.get(uploadDir, fileName).toString());
+                
+                // Update image path (relative to webapp)
+                imagePath = "images/productImages/" + fileName;  // Modified path
+            }
+
+            product.setImagePath(imagePath);
+
+            boolean success = ProductService.updateProduct(product);
+
+            if (success) {
+                response.sendRedirect(request.getContextPath() + "/manageProducts");
+            } else {
+                request.setAttribute("error", "Failed to update product.");
+                request.setAttribute("product", product);
+                request.getRequestDispatcher("/inventoryManager/updateProduct.jsp").forward(request, response);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
             response.sendRedirect(request.getContextPath() + "/manageProducts");
-        } else {
-            request.setAttribute("error", "Failed to update product.");
-            request.setAttribute("product", product);
-            response.sendRedirect(request.getContextPath() + "/inventoryManager/updateProduct.jsp\"");
         }
     }
 }

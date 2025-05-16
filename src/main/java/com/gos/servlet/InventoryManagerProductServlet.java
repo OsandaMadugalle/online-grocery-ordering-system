@@ -20,17 +20,29 @@ public class InventoryManagerProductServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String action = request.getParameter("action");
+        
         try {
-            List<Product> products = productService.getAllProducts();
-            
-            request.setAttribute("products", products);
-            
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/inventoryManager/manageProducts.jsp");
-            dispatcher.forward(request, response);
-            
+            if ("top".equals(action)) {
+                // Handle top products request
+                List<Product> topProducts = productService.getTopProducts();
+                request.setAttribute("products", topProducts);
+                request.setAttribute("isTopProducts", true);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/inventoryManager/manageProducts.jsp");
+                dispatcher.forward(request, response);
+            } else {
+                // Handle regular product listing
+                List<Product> products = productService.getAllProducts();
+                request.setAttribute("products", products);
+                request.setAttribute("isTopProducts", false);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/inventoryManager/manageProducts.jsp");
+                dispatcher.forward(request, response);
+            }
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("error", "Error loading products");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/inventoryManager/manageProducts.jsp");
+            dispatcher.forward(request, response);
         }
     }
 }

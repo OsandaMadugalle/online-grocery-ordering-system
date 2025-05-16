@@ -3,6 +3,7 @@ package com.gos.service;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.gos.model.Product;
@@ -78,7 +79,7 @@ public class ProductService {
     }
 
     // Update Product
-    public boolean updateProduct(Product product) {
+    public static boolean updateProduct(Product product) {
         String sql = "UPDATE Product SET product_name = ?, category = ?, stock = ?, price = ?, image_path = ? WHERE id = ?";
         boolean isSuccess = false;
 
@@ -124,5 +125,29 @@ public class ProductService {
             e.printStackTrace();
         }
         return product;
+    }
+    
+ // Get top products (first 6)
+    public ArrayList<Product> getTopProducts() {
+        ArrayList<Product> products = new ArrayList<>();        
+        String sql = "SELECT * FROM Product LIMIT 6";
+        
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            
+            while (rs.next()) {
+                Product product = new Product();
+                product.setId(rs.getInt("id"));
+                product.setProductName(rs.getString("product_name"));
+                product.setPrice(rs.getDouble("price"));
+                product.setImagePath(rs.getString("image_path"));
+                products.add(product);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Error fetching top products", e);
+        }
+        return products;
     }
 }
