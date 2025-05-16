@@ -195,7 +195,8 @@ public class AdminService {
     }
     
     // Custom Exception Handling
-    public static class DataAccessException extends Exception {
+    @SuppressWarnings("serial")
+	public static class DataAccessException extends Exception {
         public DataAccessException(String message, Throwable cause) {
             super(message, cause);
         }
