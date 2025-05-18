@@ -149,6 +149,16 @@
 	    background-color: rgba(255, 76, 41, 0.1);
 	}
 	
+	/* Super Admin Row */
+	.super-admin-row {
+	    background-color: rgba(255, 215, 0, 0.1) !important;
+	    border-left: 3px solid gold;
+	}
+	
+	.super-admin-row:hover {
+	    background-color: rgba(255, 215, 0, 0.2) !important;
+	}
+	
 	/* Mobile Styles */
 	@media screen and (max-width: 768px) {
 	    .responsive-table {
@@ -210,6 +220,12 @@
 	    min-width: 70px;
 	}
 	
+	/* Disabled Action Buttons */
+	.btn-action.disabled {
+	    opacity: 0.5;
+	    cursor: not-allowed;
+	}
+	
 	/* Password Field */
 	.password-field {
 	    display: flex;
@@ -247,13 +263,23 @@
 	.home-icon:hover {
 	    background: rgba(0,0,0,0.7);
 	}
+	
+	/* Super Admin Badge */
+	.super-admin-badge {
+	    background-color: gold;
+	    color: #002244;
+	    padding: 3px 8px;
+	    border-radius: 4px;
+	    font-size: 0.7rem;
+	    font-weight: bold;
+	    margin-left: 5px;
+	}
    </style>
 </head>
 
 <body>
-    <!-- Back Button 
-    <a href="${pageContext.request.contextPath}/admin/adminDashboard.jsp" class="home-icon">-->
-     <a href="./admin/adminDashboard.jsp" class="home-icon">
+    <!-- Back Button -->
+    <a href="./admin/adminDashboard.jsp" class="home-icon">
         <i class="fas fa-arrow-left"></i>
     </a>
 
@@ -269,8 +295,7 @@
                 </div>
             </c:if>
             
-         <!--   <a href="${pageContext.request.contextPath}/admin/createAdmin.jsp" class="btn btn-add"> --> 
-           <a href="./admin/createAdmin.jsp" class="btn btn-add"> 
+            <a href="./admin/createAdmin.jsp" class="btn btn-add"> 
                 <i class="fas fa-plus"></i> Add New Admin
             </a>
         </div>
@@ -291,9 +316,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach var="ad" items="${admin}">
-                        <tr>
-                            <td data-label="ID">${ad.id}</td>
+                    <c:forEach var="ad" items="${admin}" varStatus="loop">
+                        <tr class="${loop.first ? 'super-admin-row' : ''}">
+                            <td data-label="ID">
+                                ${ad.id}
+                                <c:if test="${loop.first}">
+                                    <span class="super-admin-badge">Super Admin</span>
+                                </c:if>
+                            </td>
                             <td data-label="Username">${ad.username}</td>
                             <td data-label="First Name">${ad.firstName}</td>
                             <td data-label="Last Name">${ad.lastName}</td>
@@ -311,15 +341,17 @@
                             <td data-label="Actions" class="action-buttons">
                                 <form action="adminUpdateAdmin" method="get" style="display: inline;">
                                     <input type="hidden" name="id" value="${ad.id}">
-                                    <button type="submit" class="btn btn-warning btn-sm btn-action">
+                                    <button type="submit" class="btn btn-warning btn-sm btn-action ${loop.first ? 'disabled' : ''}" 
+                                        ${loop.first ? 'disabled title="Cannot edit super admin"' : ''}>
                                         <i class="fas fa-edit"></i>
                                     </button>
                                 </form>
                                 
                                 <form action="deleteAdmin" method="POST" style="display: inline;">
                                     <input type="hidden" name="id" value="${ad.id}">
-                                    <button type="submit" class="btn btn-danger btn-sm btn-action" 
-                                            onclick="return confirm('Are you sure you want to delete this admin?')">
+                                    <button type="submit" class="btn btn-danger btn-sm btn-action ${loop.first ? 'disabled' : ''}" 
+                                        ${loop.first ? 'disabled title="Cannot delete super admin"' : ''}
+                                        onclick="${loop.first ? 'return false' : 'return confirm(\'Are you sure you want to delete this admin?\')'}">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
