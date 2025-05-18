@@ -153,14 +153,14 @@ public class DeliveryManagerService {
     }
 
     // Delete Delivery Manager
-    public static boolean deleteDeliveryManager(int id) {
+    public static boolean deleteDeliveryManager(DeliveryManager dm) {
         boolean isSuccess = false;
         String sql = "DELETE FROM DeliveryManager WHERE D_ID = ?";
 
         try (Connection con = DBConnection.getConnection();
              PreparedStatement stmt = con.prepareStatement(sql)) {
 
-            stmt.setInt(1, id);
+            stmt.setInt(1, dm.getId());
 
             int result = stmt.executeUpdate();
             isSuccess = result > 0;

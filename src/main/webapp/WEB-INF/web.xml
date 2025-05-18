@@ -211,6 +211,26 @@
     <servlet-mapping>
         <servlet-name>AdminCreateDeliveryManager</servlet-name>
         <url-pattern>/addDeliveryManager</url-pattern>
+    </servlet-mapping>    
+    
+    <!-- Admin Deletes Delivery Manager -->
+    <servlet>
+        <servlet-name>AdminDeleteDeliveryManager</servlet-name>
+        <servlet-class>com.gos.servlet.AdminDeleteDeliveryManagerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminDeleteDeliveryManager</servlet-name>
+        <url-pattern>/deleteDeliveryManager</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Admin Updates Delivery Manager -->
+    <servlet>
+        <servlet-name>AdminUpdateDeliveryManager</servlet-name>
+        <servlet-class>com.gos.servlet.AdminUpdateDeliveryManagerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminUpdateDeliveryManager</servlet-name>
+        <url-pattern>/updateDeliveryManager</url-pattern>
     </servlet-mapping>
     
     <!-- Inventory Manager Servlets -->    
