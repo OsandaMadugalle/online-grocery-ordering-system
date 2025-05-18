@@ -89,7 +89,7 @@
             display: flex;
             align-items: center;
             font-size: 16px;
-            margin: 10px 0;
+            margin: 5px 0;
             border-radius: 5px;
             transition: 0.3s;
             width: 100%;
@@ -254,6 +254,54 @@
             color: white;
         }
         
+        /* Staff dropdown styles */
+        .staff-menu {
+            margin: 10px 0;
+        }
+        
+        .staff-menu-header {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .staff-menu-header:hover {
+            background: var(--accent-color);
+        }
+        
+        .staff-menu-header i:first-child {
+            margin-right: 10px;
+        }
+        
+        .staff-menu-header i.fa-chevron-down {
+            margin-left: auto;
+            transition: transform 0.3s;
+        }
+        
+        .staff-menu-header.collapsed i.fa-chevron-down {
+            transform: rotate(-90deg);
+        }
+        
+        .staff-submenu {
+            padding-left: 20px;
+            max-height: 500px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .staff-submenu.collapsed {
+            max-height: 0;
+        }
+        
+        .staff-submenu a {
+            padding-left: 30px;
+            font-size: 14px;
+            margin: 2px 0;
+        }
+        
         /* Mobile Menu Toggle */
         .menu-toggle {
             display: none;
@@ -322,51 +370,64 @@
         }
         
         @media (max-width: 768px) {
-		    .profile-table, 
-		    .profile-table tbody, 
-		    .profile-table tr, 
-		    .profile-table td {
-		      display: block;
-		      width: 100%;
-		    }
-		    
-		    .profile-table thead {
-		      display: none;
-		    }
-		    
-		    .profile-table tr {
-		      margin-bottom: 15px;
-		      background: rgba(255,255,255,0.05);
-		      border: 1px solid rgba(255,255,255,0.2);
-		      border-radius: 5px;
-		    }
-		    
-		    .profile-table td {
-		      padding: 10px 15px;
-		      text-align: right;
-		      position: relative;
-		      border: none;
-		      border-bottom: 1px solid rgba(255,255,255,0.1);
-		    }
-		    
-		    .profile-table td:last-child {
-		      border-bottom: none;
-		    }
-		    
-		    .profile-table td::before {
-		      content: attr(data-label);
-		      position: absolute;
-		      left: 15px;
-		      top: 10px;
-		      font-weight: bold;
-		      text-align: left;
-		      color: #ffcc00;
-		    }
-		    
-		    .password-field {
-		      justify-content: flex-end;
-		    }
-		  }
+            .profile-table, 
+            .profile-table tbody, 
+            .profile-table tr, 
+            .profile-table td {
+                display: block;
+                width: 100%;
+            }
+            
+            .profile-table thead {
+                display: none;
+            }
+            
+            .profile-table tr {
+                margin-bottom: 15px;
+                background: rgba(255,255,255,0.05);
+                border: 1px solid rgba(255,255,255,0.2);
+                border-radius: 5px;
+            }
+            
+            .profile-table td {
+                padding: 10px 15px;
+                text-align: right;
+                position: relative;
+                border: none;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            
+            .profile-table td:last-child {
+                border-bottom: none;
+            }
+            
+            .profile-table td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 15px;
+                top: 10px;
+                font-weight: bold;
+                text-align: left;
+                color: #ffcc00;
+            }
+            
+            .password-field {
+                justify-content: flex-end;
+            }
+        }
+        
+        /* Collapsed sidebar styles */
+        .sidebar-collapsed .staff-menu-header span {
+            display: none;
+        }
+        
+        .sidebar-collapsed .staff-menu-header i.fa-chevron-down {
+            display: none;
+        }
+        
+        .sidebar-collapsed .staff-submenu {
+            display: none;
+        }
     </style>
 </head>
 
@@ -386,18 +447,30 @@
             <i class="fas fa-tachometer-alt"></i>
             <span class="nav-text">Dashboard</span>
         </a>
-        <a href="../manageAdmin">
-            <i class="fas fa-users-cog"></i>
-            <span class="nav-text">Admins</span>
-        </a>
-        <a href="../manageInventoryManager">
-            <i class="fas fa-boxes"></i>
-            <span class="nav-text">Inventory Managers</span>
-        </a>
-        <a href="../manageDeliveryManager">
-            <i class="fas fa-truck"></i>
-            <span class="nav-text">Delivery Managers</span>
-        </a>
+        
+        <!-- Staff Dropdown Menu -->
+        <div class="staff-menu">
+            <div class="staff-menu-header" id="staffMenuHeader">
+                <i class="fas fa-users-cog"></i>
+                <span class="nav-text">Staff</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="staff-submenu" id="staffSubmenu">
+                <a href="../manageAdmin">
+                    <i class="fas fa-user-shield"></i>
+                    <span class="nav-text">Admins</span>
+                </a>
+                <a href="../manageInventoryManager">
+                    <i class="fas fa-boxes"></i>
+                    <span class="nav-text">Inventory Managers</span>
+                </a>
+                <a href="../manageDeliveryManager">
+                    <i class="fas fa-truck"></i>
+                    <span class="nav-text">Delivery Managers</span>
+                </a>
+            </div>
+        </div>
+        
         <a href="#">
             <i class="fas fa-users"></i>
             <span class="nav-text">Users</span>
@@ -417,59 +490,59 @@
                 </div>
                 
                <div class="table-responsive">
-			    <div class="table-container">
-			        <table class="profile-table table-bordered">
-			            <tbody>
-			                <c:forEach var="ad" items="${sessionScope.adminDetails}">
-			                <c:set var="id" value="${ad.id}"/>
-			                <c:set var="username" value="${ad.username}"/>
-			                <c:set var="fName" value="${ad.firstName}"/>
-			                <c:set var="lName" value="${ad.lastName}"/>
-			                <c:set var="phone" value="${ad.phone}"/>
-			                <c:set var="email" value="${ad.email}"/>
-			                <c:set var="password" value="${ad.password}"/>
-			                
-			                <tr class="detail-row">
-			                    <td class="detail-label" data-label="Admin ID"><i class="fas fa-id-card"></i> Admin ID</td>
-			                    <td class="detail-value"><c:out value="${ad.id}"/></td>
-			                </tr>
-			                <tr class="detail-row">
-			                    <td class="detail-label" data-label="Username"><i class="fas fa-user"></i> Username</td>
-			                    <td class="detail-value"><c:out value="${ad.username}"/></td>
-			                </tr>
-			                <tr class="detail-row">
-			                    <td class="detail-label" data-label="First Name"><i class="fas fa-signature"></i> First Name</td>
-			                    <td class="detail-value"><c:out value="${ad.firstName}"/></td>
-			                </tr>
-			                <tr class="detail-row">
-			                    <td class="detail-label" data-label="Last Name"><i class="fas fa-signature"></i> Last Name</td>
-			                    <td class="detail-value"><c:out value="${ad.lastName}"/></td>
-			                </tr>
-			                <tr class="detail-row">
-			                    <td class="detail-label" data-label="Phone"><i class="fas fa-phone"></i> Phone</td>
-			                    <td class="detail-value"><c:out value="${ad.phone}"/></td>
-			                </tr>
-			                <tr class="detail-row">
-			                    <td class="detail-label" data-label="Email"><i class="fas fa-envelope"></i> Email</td>
-			                    <td class="detail-value"><c:out value="${ad.email}"/></td>
-			                </tr>
-			                <tr class="detail-row">
-			                    <td class="detail-label" data-label="Password"><i class="fas fa-lock"></i> Password</td>
-			                    <td class="detail-value">
-			                        <div class="password-field">
-			                            <span class="password-mask">••••••••</span>
-			                            <button class="btn btn-sm btn-show-password" onclick="togglePassword(this)">
-			                                <i class="fas fa-eye"></i> Show
-			                            </button>
-			                            <span class="actual-password" style="display:none;"><c:out value="${ad.password}"/></span>
-			                        </div>
-			                    </td>
-			                </tr>
-			                </c:forEach>
-			            </tbody>
-			        </table>
-			    </div>
-			</div>
+                <div class="table-container">
+                    <table class="profile-table table-bordered">
+                        <tbody>
+                            <c:forEach var="ad" items="${sessionScope.adminDetails}">
+                            <c:set var="id" value="${ad.id}"/>
+                            <c:set var="username" value="${ad.username}"/>
+                            <c:set var="fName" value="${ad.firstName}"/>
+                            <c:set var="lName" value="${ad.lastName}"/>
+                            <c:set var="phone" value="${ad.phone}"/>
+                            <c:set var="email" value="${ad.email}"/>
+                            <c:set var="password" value="${ad.password}"/>
+                            
+                            <tr class="detail-row">
+                                <td class="detail-label" data-label="Admin ID"><i class="fas fa-id-card"></i> Admin ID</td>
+                                <td class="detail-value"><c:out value="${ad.id}"/></td>
+                            </tr>
+                            <tr class="detail-row">
+                                <td class="detail-label" data-label="Username"><i class="fas fa-user"></i> Username</td>
+                                <td class="detail-value"><c:out value="${ad.username}"/></td>
+                            </tr>
+                            <tr class="detail-row">
+                                <td class="detail-label" data-label="First Name"><i class="fas fa-signature"></i> First Name</td>
+                                <td class="detail-value"><c:out value="${ad.firstName}"/></td>
+                            </tr>
+                            <tr class="detail-row">
+                                <td class="detail-label" data-label="Last Name"><i class="fas fa-signature"></i> Last Name</td>
+                                <td class="detail-value"><c:out value="${ad.lastName}"/></td>
+                            </tr>
+                            <tr class="detail-row">
+                                <td class="detail-label" data-label="Phone"><i class="fas fa-phone"></i> Phone</td>
+                                <td class="detail-value"><c:out value="${ad.phone}"/></td>
+                            </tr>
+                            <tr class="detail-row">
+                                <td class="detail-label" data-label="Email"><i class="fas fa-envelope"></i> Email</td>
+                                <td class="detail-value"><c:out value="${ad.email}"/></td>
+                            </tr>
+                            <tr class="detail-row">
+                                <td class="detail-label" data-label="Password"><i class="fas fa-lock"></i> Password</td>
+                                <td class="detail-value">
+                                    <div class="password-field">
+                                        <span class="password-mask">••••••••</span>
+                                        <button class="btn btn-sm btn-show-password" onclick="togglePassword(this)">
+                                            <i class="fas fa-eye"></i> Show
+                                        </button>
+                                        <span class="actual-password" style="display:none;"><c:out value="${ad.password}"/></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
                     
                     <c:url value="updateAdminProfile.jsp" var="adminUpdate">
                         <c:param name="id" value="${id}"/>
@@ -521,6 +594,14 @@
             const menuToggle = document.getElementById('menuToggle');
             const sidebar = document.getElementById('sidebar');
             const mainContent = document.getElementById('mainContent');
+            const staffMenuHeader = document.getElementById('staffMenuHeader');
+            const staffSubmenu = document.getElementById('staffSubmenu');
+            
+            // Toggle staff submenu
+            staffMenuHeader.addEventListener('click', function() {
+                this.classList.toggle('collapsed');
+                staffSubmenu.classList.toggle('collapsed');
+            });
             
             menuToggle.addEventListener('click', function() {
                 sidebar.classList.toggle('active');
