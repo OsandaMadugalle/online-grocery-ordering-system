@@ -9,9 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import com.gos.model.DeliveryManager;
-import com.gos.model.InventoryManager;
 import com.gos.service.DeliveryManagerService;
-import com.gos.service.InventoryManagerService;
 
 @WebServlet("/AdminDeleteDeliveryManagerServlet")
 public class AdminDeleteDeliveryManagerServlet extends HttpServlet {
