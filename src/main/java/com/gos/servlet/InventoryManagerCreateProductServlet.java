@@ -11,8 +11,6 @@ import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.UUID;
-
 import com.gos.model.Product;
 import com.gos.service.ProductService;
 
