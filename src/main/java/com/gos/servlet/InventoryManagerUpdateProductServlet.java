@@ -11,7 +11,6 @@ import javax.servlet.http.Part;
 import com.gos.model.Product;
 import com.gos.service.ProductService;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
