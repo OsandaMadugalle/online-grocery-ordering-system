@@ -14,6 +14,9 @@
 	    
 	    <!-- Bootstrap Icons -->
 	    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+		    
+		<!-- Include Bootstrap Icons -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 	
 		<!-- cart icon -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -70,6 +73,68 @@
 		    @keyframes zoomIn {
 		        from { transform: scale(1); }
 		        to { transform: scale(1.05); }
+		    }
+		    
+		     .offer-card {
+		        transition: transform 0.3s ease, box-shadow 0.3s ease;
+		        border: none;
+		        border-radius: 10px;
+		        overflow: hidden;
+		        background: #fff;
+		    }
+		
+		    .offer-card:hover {
+		        transform: translateY(-5px);
+		        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+		    }
+		
+		    .btn-shop {
+		        position: relative;
+		        overflow: hidden;
+		        z-index: 1;
+		        transition: all 0.3s ease;
+		    }
+		
+		    .btn-shop::before {
+		        content: '';
+		        position: absolute;
+		        top: 0;
+		        left: -100%;
+		        width: 100%;
+		        height: 100%;
+		        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+		        transition: 0.5s;
+		        z-index: -1;
+		    }
+		
+		    .btn-shop:hover::before {
+		        left: 100%;
+		    }
+		
+		    .btn-shop:hover {
+		        background-color: #c82333;
+		        transform: scale(1.05);
+		    }
+		
+		    .card-title {
+		        font-size: 1.5rem;
+		        font-weight: 600;
+		        color: #333;
+		    }
+		
+		    .card-text {
+		        color: #555;
+		    }
+		
+		    @media (max-width: 576px) {
+		        .card-title {
+		            font-size: 1.25rem;
+		        }
+		
+		        .btn-shopiteral: inherit;
+		        .offer-card {
+		            margin-bottom: 1.5rem;
+		        }
 		    }
 		</style>
 	</head>
@@ -161,30 +226,38 @@
 		<!-- Featured Offers Section -->
 		<div class="container mt-5">
 		    <div class="d-flex align-items-center mb-4" style="margin-top: 20px; margin-bottom: 20px;">
-		        <hr class="flex-grow-1 me-3" style="border: 1px solid black; margin: 0 10px;">
-		        <h2 class="text-center mb-0" style="color: black;"><b>Featured Offers</b></h2>
-		        <hr class="flex-grow-1 ms-3" style="border: 1px solid black; margin: 0 10px;">
+		        <hr class="flex-grow-1 me-3" style="border: 1px solid #333; margin: 0 10px;">
+		        <h2 class="text-center mb-0" style="color: #333; font-weight: 700;">Featured Offers</h2>
+		        <hr class="flex-grow-1 ms-3" style="border: 1px solid #333; margin: 0 10px;">
 		    </div>
-		    
-		    <div class="row">
+		
+		    <div class="row g-4">
 		        <!-- Offer 1 -->
 		        <div class="col-md-6">
-		            <div class="card">
+		            <div class="card offer-card shadow-sm" role="article" aria-labelledby="offer1-title">
 		                <div class="card-body text-center">
-		                    <h5 class="card-title">Buy 1 Get 1 Free</h5>
+		                    <i class="bi bi-gift-fill" style="font-size: 2.5rem; color: #dc3545;"></i>
+		                    <h5 class="card-title mt-3" id="offer1-title">Buy 1 Get 1 Free</h5>
 		                    <p class="card-text">On selected items. Offer valid until <strong>March 10th!</strong></p>
-		                    <a href="#" class="btn btn-danger">Shop Now</a>
+		                    <div id="countdown" class="mb-3" aria-live="polite">
+		                        <small>Ends in: <span id="timer"></span></small>
+		                    </div>
+		                    <a href="#" class="btn btn-danger btn-shop">Shop Now</a>
 		                </div>
 		            </div>
 		        </div>
-		        
+		
 		        <!-- Offer 2 -->
 		        <div class="col-md-6">
-		            <div class="card">
+		            <div class="card offer-card shadow-sm" role="article" aria-labelledby="offer2-title">
 		                <div class="card-body text-center">
-		                    <h5 class="card-title">Flash Sale</h5>
-		                    <p class="card-text">Up to 50% off. Grab it before it's gone!</p>
-		                    <a href="#" class="btn btn-danger">Browse Sale</a>
+		                    <i class="bi bi-lightning-charge-fill" style="font-size: 2.5rem; color: #dc3545;"></i>
+		                    <h5 class="card-title mt-3" id="offer2-title">Flash Sale</h5>
+		                    <p class="card-text">Up to 50% off. Limited stock remaining!</p>
+		                    <div class="progress mb-3" style="height: 10px;" role="progressbar" aria-label="Stock remaining" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
+		                        <div class="progress-bar bg-danger" style="width: 70%;"></div>
+		                    </div>
+		                    <a href="#" class="btn btn-danger btn-shop">Browse Sale</a>
 		                </div>
 		            </div>
 		        </div>
@@ -251,7 +324,39 @@
 		
 		<!-- Bootstrap Bundle with Popper for Carousel -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>		
+		
 	
 		<%@ include file="./footer.jsp" %>
+		
+		<script>
+		    // Countdown timer for Offer 1
+		    function startCountdown() {
+		        const endDate = new Date('2025-03-10T23:59:59');
+		        const timerElement = document.getElementById('timer');
+		
+		        function updateTimer() {
+		            const now = new Date();
+		            const timeLeft = endDate - now;
+		
+		            if (timeLeft <= 0) {
+		                timerElement.textContent = 'Expired';
+		                return;
+		            }
+		
+		            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+		            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+		            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+		
+		            timerElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+		        }
+		
+		        updateTimer();
+		        setInterval(updateTimer, 1000);
+		    }
+		
+		    // Start the countdown when the page loads
+		    window.onload = startCountdown;
+		</script>
 	</body>
 </html>
