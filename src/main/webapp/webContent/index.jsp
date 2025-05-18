@@ -188,77 +188,77 @@
 		%>
 		 
 		<!-- Top Products Section -->
-<div class="container my-5">
-    <!-- Section Header with decorative lines -->
-    <div class="d-flex align-items-center mb-5">
-        <hr class="flex-grow-1" style="border-top: 2px solid rgba(0,0,0,0.1);">
-        <h2 class="text-center mx-4 mb-0 display-5 fw-bold text-uppercase" style="color: #2c3e50;">
-            <i class="bi bi-star-fill me-2 text-warning"></i>Top Products
-        </h2>
-        <hr class="flex-grow-1" style="border-top: 2px solid rgba(0,0,0,0.1);">
-    </div>
-    
-    <!-- Products Grid -->
-    <div class="row g-4">
-        <c:choose>
-            <c:when test="${not empty topProducts}">
-                <c:forEach items="${topProducts}" var="product">
-                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-                        <div class="card h-100 shadow-sm border-0 rounded-3 overflow-hidden hover-shadow">
-                            <!-- Product Image with aspect ratio and hover effect -->
-                            <div class="ratio ratio-1x1 bg-light">
-                                <img src="<%= request.getContextPath() %>/${product.imagePath}" 
-                                     class="card-img-top p-3 object-fit-contain" 
-                                     alt="${product.productName}"
-                                     onerror="this.onerror=null;this.src='<%= request.getContextPath() %>/images/productImages/default-product.png'">
-                            </div>
-                            
-                            <!-- Card Body -->
-                            <div class="card-body d-flex flex-column p-3">
-                                <!-- Product Name with ellipsis for overflow -->
-                                <h5 class="card-title text-center mb-2 fs-6" style="min-height: 3rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
-                                    ${product.productName}
-                                </h5>
-                                
-                                <!-- Price with emphasis -->
-                                <p class="card-text text-center text-danger fw-bold mb-3">Rs. ${product.price}</p>
-                                
-                                <!-- Rating Badge (optional) -->
-                                <div class="text-center mb-3">
-                                    <span class="badge bg-warning text-dark">
-                                        <i class="bi bi-star-fill small"></i> 4.8
-                                    </span>
-                                </div>
-                                
-                                <!-- Add to Cart Button -->
-                                <div class="mt-auto text-center">
-                                    <a href="#" class="btn btn-primary btn-sm w-100 py-2 rounded-pill">
-                                        <i class="bi bi-cart-plus me-1"></i> Add to Cart
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </c:forEach>
-            </c:when>
-            <c:otherwise>
-                <!-- Empty State -->
-                <div class="col-12 text-center py-5">
-                    <img src="<%= request.getContextPath() %>/images/empty-state.svg" alt="No products" class="img-fluid mb-4" style="max-height: 200px;">
-                    <h4 class="text-muted mb-3">No products available</h4>
-                    <a href="#" class="btn btn-outline-primary">Browse Products</a>
-                </div>
-            </c:otherwise>
-        </c:choose>
-    </div>
-    
-    <!-- View More Button -->
-    <div class="text-center mt-4">
-        <a href="#" class="btn btn-outline-dark px-4 rounded-pill">
-            View All Products <i class="bi bi-arrow-right ms-2"></i>
-        </a>
-    </div>
-</div>
+		<div class="container my-5">
+		    <!-- Section Header with decorative lines -->
+		    <div class="d-flex align-items-center mb-5">
+		        <hr class="flex-grow-1" style="border-top: 2px solid rgba(0,0,0,0.1);">
+		        <h2 class="text-center mx-4 mb-0 display-5 fw-bold text-uppercase" style="color: #2c3e50;">
+		            <i class="bi bi-star-fill me-2 text-warning"></i>Top Products
+		        </h2>
+		        <hr class="flex-grow-1" style="border-top: 2px solid rgba(0,0,0,0.1);">
+		    </div>
+		    
+		    <!-- Products Grid -->
+		    <div class="row g-4">
+		        <c:choose>
+		            <c:when test="${not empty topProducts}">
+		                <c:forEach items="${topProducts}" var="product">
+		                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+		                        <div class="card h-100 shadow-sm border-0 rounded-3 overflow-hidden hover-shadow">
+		                            <!-- Product Image with aspect ratio and hover effect -->
+		                            <div class="ratio ratio-1x1 bg-light">
+		                                <img src="<%= request.getContextPath() %>/${product.imagePath}" 
+		                                     class="card-img-top p-3 object-fit-contain" 
+		                                     alt="${product.productName}"
+		                                     onerror="this.onerror=null;this.src='<%= request.getContextPath() %>/images/productImages/default-product.png'">
+		                            </div>
+		                            
+		                            <!-- Card Body -->
+		                            <div class="card-body d-flex flex-column p-3">
+		                                <!-- Product Name with ellipsis for overflow -->
+		                                <h5 class="card-title text-center mb-2 fs-6" style="min-height: 3rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+		                                    ${product.productName}
+		                                </h5>
+		                                
+		                                <!-- Price with emphasis -->
+		                                <p class="card-text text-center text-danger fw-bold mb-3">Rs. ${product.price}</p>
+		                                
+		                                <!-- Rating Badge (optional) -->
+		                                <div class="text-center mb-3">
+		                                    <span class="badge bg-warning text-dark">
+		                                        <i class="bi bi-star-fill small"></i> 4.8
+		                                    </span>
+		                                </div>
+		                                
+		                                <!-- Add to Cart Button -->
+		                                <div class="mt-auto text-center">
+		                                    <a href="#" class="btn btn-primary btn-sm w-100 py-2 rounded-pill">
+		                                        <i class="bi bi-cart-plus me-1"></i> Add to Cart
+		                                    </a>
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </c:forEach>
+		            </c:when>
+		            <c:otherwise>
+		                <!-- Empty State -->
+		                <div class="col-12 text-center py-5">
+		                    <img src="<%= request.getContextPath() %>/images/empty-state.svg" alt="No products" class="img-fluid mb-4" style="max-height: 200px;">
+		                    <h4 class="text-muted mb-3">No products available</h4>
+		                    <a href="#" class="btn btn-outline-primary">Browse Products</a>
+		                </div>
+		            </c:otherwise>
+		        </c:choose>
+		    </div>
+		    
+		    <!-- View More Button -->
+		    <div class="text-center mt-4">
+		        <a href="#" class="btn btn-outline-dark px-4 rounded-pill">
+		            View All Products <i class="bi bi-arrow-right ms-2"></i>
+		        </a>
+		    </div>
+		</div>
 		<!-- Featured Offers Section -->
 		<div class="container mt-5">
 		    <div class="d-flex align-items-center mb-4" style="margin-top: 20px; margin-bottom: 20px;">
@@ -301,183 +301,183 @@
 		</div>
 	
 		<!-- App Banner Section -->
-<section class="app-banner" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
-    <div class="container py-5">
-        <div class="row align-items-center">
-            <!-- Left Column - Content -->
-            <div class="col-lg-6 order-lg-1 order-2 py-5">
-                <div class="pe-lg-5">
-                    <h2 class="display-5 fw-bold mb-4">Download Our <span class="text-primary">Mobile App</span> Now!</h2>
-                    <p class="lead mb-4">Get exclusive app-only deals, faster checkout, and personalized recommendations.</p>
-                    
-                    <div class="d-flex flex-wrap gap-3 mt-4">
-                        <a href="#" class="btn btn-dark btn-lg px-4 py-3 d-flex align-items-center">
-                            <i class="bi bi-apple fs-3 me-2"></i>
-                            <div class="text-start">
-                                <small class="d-block">Download on the</small>
-                                <span class="fw-bold">App Store</span>
-                            </div>
-                        </a>
-                        <a href="#" class="btn btn-dark btn-lg px-4 py-3 d-flex align-items-center">
-                            <i class="bi bi-google-play fs-3 me-2"></i>
-                            <div class="text-start">
-                                <small class="d-block">Get it on</small>
-                                <span class="fw-bold">Google Play</span>
-                            </div>
-                        </a>
-                    </div>
-                    
-                    <div class="mt-4 d-flex align-items-center">
-                        <div class="me-3">
-                            <i class="bi bi-shield-check fs-4 text-success"></i>
-                        </div>
-                        <small class="text-muted">Secure and trusted by 500K+ users</small>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Right Column - Image -->
-            <div class="col-lg-6 order-lg-2 order-1">
-                <div class="position-relative">
-                    <img src="../images/banner.png" class="img-fluid rounded-4 shadow" alt="Mobile App Screenshots" loading="lazy">
-                    <div class="position-absolute top-0 start-0 w-100 h-100 bg-primary bg-opacity-10 rounded-4"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Feedback and Support Section -->
-<section class="support-section py-5 bg-light">
-    <div class="container">
-        <!-- Section Header -->
-        <div class="text-center mb-5">
-            <span class="badge bg-primary bg-opacity-10 text-primary fs-6 fw-normal mb-3 px-3 py-2 rounded-pill">
-                <i class="bi bi-headset me-2"></i>Customer Support
-            </span>
-            <h2 class="display-6 fw-bold mb-3">We're Here to Help</h2>
-            <p class="lead text-muted mx-auto" style="max-width: 700px;">Have questions or feedback? We'd love to hear from you.</p>
-        </div>
-        
-        <div class="row g-5">
-            <!-- Contact Info -->
-            <div class="col-lg-5">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-body p-4 p-lg-5">
-                        <h3 class="h4 fw-bold mb-4">Contact Information</h3>
-                        
-                        <div class="d-flex mb-4">
-                            <div class="me-3 text-primary">
-                                <i class="bi bi-envelope fs-3"></i>
-                            </div>
-                            <div>
-                                <h4 class="h6 fw-bold mb-1">Email Us</h4>
-                                <a href="mailto:support@example.com" class="text-decoration-none">support@example.com</a>
-                            </div>
-                        </div>
-                        
-                        <div class="d-flex mb-4">
-                            <div class="me-3 text-primary">
-                                <i class="bi bi-telephone fs-3"></i>
-                            </div>
-                            <div>
-                                <h4 class="h6 fw-bold mb-1">Call Us</h4>
-                                <a href="tel:+1234567890" class="text-decoration-none">+1 (234) 567-890</a>
-                            </div>
-                        </div>
-                        
-                        <div class="d-flex mb-4">
-                            <div class="me-3 text-primary">
-                                <i class="bi bi-clock fs-3"></i>
-                            </div>
-                            <div>
-                                <h4 class="h6 fw-bold mb-1">Working Hours</h4>
-                                <p class="mb-0">Mon-Fri: 9AM - 6PM<br>Sat: 10AM - 4PM</p>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-4 pt-3">
-                            <h4 class="h6 fw-bold mb-3">Follow Us</h4>
-                            <div class="d-flex gap-3">
-                                <a href="#" class="text-decoration-none text-muted">
-                                    <i class="bi bi-facebook fs-4"></i>
-                                </a>
-                                <a href="#" class="text-decoration-none text-muted">
-                                    <i class="bi bi-twitter fs-4"></i>
-                                </a>
-                                <a href="#" class="text-decoration-none text-muted">
-                                    <i class="bi bi-instagram fs-4"></i>
-                                </a>
-                                <a href="#" class="text-decoration-none text-muted">
-                                    <i class="bi bi-linkedin fs-4"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Contact Form -->
-            <div class="col-lg-7">
-                <div class="card border-0 shadow-sm">
-                    <div class="card-body p-4 p-lg-5">
-                        <h3 class="h4 fw-bold mb-4">Send Us a Message</h3>
-                        
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <label for="name" class="form-label">Your Name</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text bg-light border-end-0">
-                                            <i class="bi bi-person text-muted"></i>
-                                        </span>
-                                        <input type="text" class="form-control" id="name" placeholder="John Doe" required>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-md-6">
-                                    <label for="email" class="form-label">Email Address</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text bg-light border-end-0">
-                                            <i class="bi bi-envelope text-muted"></i>
-                                        </span>
-                                        <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-12">
-                                    <label for="subject" class="form-label">Subject</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text bg-light border-end-0">
-                                            <i class="bi bi-card-heading text-muted"></i>
-                                        </span>
-                                        <input type="text" class="form-control" id="subject" placeholder="How can we help?" required>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-12">
-                                    <label for="message" class="form-label">Your Message</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text bg-light border-end-0 align-items-start pt-2">
-                                            <i class="bi bi-chat-left-text text-muted"></i>
-                                        </span>
-                                        <textarea class="form-control" id="message" rows="5" placeholder="Type your message here..." required></textarea>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-primary px-4 py-2">
-                                        <i class="bi bi-send me-2"></i> Send Message
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+		<section class="app-banner" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+		    <div class="container py-5">
+		        <div class="row align-items-center">
+		            <!-- Left Column - Content -->
+		            <div class="col-lg-6 order-lg-1 order-2 py-5">
+		                <div class="pe-lg-5">
+		                    <h2 class="display-5 fw-bold mb-4">Download Our <span class="text-primary">Mobile App</span> Now!</h2>
+		                    <p class="lead mb-4">Get exclusive app-only deals, faster checkout, and personalized recommendations.</p>
+		                    
+		                    <div class="d-flex flex-wrap gap-3 mt-4">
+		                        <a href="#" class="btn btn-dark btn-lg px-4 py-3 d-flex align-items-center">
+		                            <i class="bi bi-apple fs-3 me-2"></i>
+		                            <div class="text-start">
+		                                <small class="d-block">Download on the</small>
+		                                <span class="fw-bold">App Store</span>
+		                            </div>
+		                        </a>
+		                        <a href="#" class="btn btn-dark btn-lg px-4 py-3 d-flex align-items-center">
+		                            <i class="bi bi-google-play fs-3 me-2"></i>
+		                            <div class="text-start">
+		                                <small class="d-block">Get it on</small>
+		                                <span class="fw-bold">Google Play</span>
+		                            </div>
+		                        </a>
+		                    </div>
+		                    
+		                    <div class="mt-4 d-flex align-items-center">
+		                        <div class="me-3">
+		                            <i class="bi bi-shield-check fs-4 text-success"></i>
+		                        </div>
+		                        <small class="text-muted">Secure and trusted by 500K+ users</small>
+		                    </div>
+		                </div>
+		            </div>
+		            
+		            <!-- Right Column - Image -->
+		            <div class="col-lg-6 order-lg-2 order-1">
+		                <div class="position-relative">
+		                    <img src="../images/banner.png" class="img-fluid rounded-4 shadow" alt="Mobile App Screenshots" loading="lazy">
+		                    <div class="position-absolute top-0 start-0 w-100 h-100 bg-primary bg-opacity-10 rounded-4"></div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</section>
+		
+		<!-- Feedback and Support Section -->
+		<section class="support-section py-5 bg-light">
+		    <div class="container">
+		        <!-- Section Header -->
+		        <div class="text-center mb-5">
+		            <span class="badge bg-primary bg-opacity-10 text-primary fs-6 fw-normal mb-3 px-3 py-2 rounded-pill">
+		                <i class="bi bi-headset me-2"></i>Customer Support
+		            </span>
+		            <h2 class="display-6 fw-bold mb-3">We're Here to Help</h2>
+		            <p class="lead text-muted mx-auto" style="max-width: 700px;">Have questions or feedback? We'd love to hear from you.</p>
+		        </div>
+		        
+		        <div class="row g-5">
+		            <!-- Contact Info -->
+		            <div class="col-lg-5">
+		                <div class="card border-0 shadow-sm h-100">
+		                    <div class="card-body p-4 p-lg-5">
+		                        <h3 class="h4 fw-bold mb-4">Contact Information</h3>
+		                        
+		                        <div class="d-flex mb-4">
+		                            <div class="me-3 text-primary">
+		                                <i class="bi bi-envelope fs-3"></i>
+		                            </div>
+		                            <div>
+		                                <h4 class="h6 fw-bold mb-1">Email Us</h4>
+		                                <a href="mailto:support@example.com" class="text-decoration-none">support@example.com</a>
+		                            </div>
+		                        </div>
+		                        
+		                        <div class="d-flex mb-4">
+		                            <div class="me-3 text-primary">
+		                                <i class="bi bi-telephone fs-3"></i>
+		                            </div>
+		                            <div>
+		                                <h4 class="h6 fw-bold mb-1">Call Us</h4>
+		                                <a href="tel:+1234567890" class="text-decoration-none">+1 (234) 567-890</a>
+		                            </div>
+		                        </div>
+		                        
+		                        <div class="d-flex mb-4">
+		                            <div class="me-3 text-primary">
+		                                <i class="bi bi-clock fs-3"></i>
+		                            </div>
+		                            <div>
+		                                <h4 class="h6 fw-bold mb-1">Working Hours</h4>
+		                                <p class="mb-0">Mon-Fri: 9AM - 6PM<br>Sat: 10AM - 4PM</p>
+		                            </div>
+		                        </div>
+		                        
+		                        <div class="mt-4 pt-3">
+		                            <h4 class="h6 fw-bold mb-3">Follow Us</h4>
+		                            <div class="d-flex gap-3">
+		                                <a href="#" class="text-decoration-none text-muted">
+		                                    <i class="bi bi-facebook fs-4"></i>
+		                                </a>
+		                                <a href="#" class="text-decoration-none text-muted">
+		                                    <i class="bi bi-twitter fs-4"></i>
+		                                </a>
+		                                <a href="#" class="text-decoration-none text-muted">
+		                                    <i class="bi bi-instagram fs-4"></i>
+		                                </a>
+		                                <a href="#" class="text-decoration-none text-muted">
+		                                    <i class="bi bi-linkedin fs-4"></i>
+		                                </a>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		            
+		            <!-- Contact Form -->
+		            <div class="col-lg-7">
+		                <div class="card border-0 shadow-sm">
+		                    <div class="card-body p-4 p-lg-5">
+		                        <h3 class="h4 fw-bold mb-4">Send Us a Message</h3>
+		                        
+		                        <form>
+		                            <div class="row g-3">
+		                                <div class="col-md-6">
+		                                    <label for="name" class="form-label">Your Name</label>
+		                                    <div class="input-group">
+		                                        <span class="input-group-text bg-light border-end-0">
+		                                            <i class="bi bi-person text-muted"></i>
+		                                        </span>
+		                                        <input type="text" class="form-control" id="name" placeholder="John Doe" required>
+		                                    </div>
+		                                </div>
+		                                
+		                                <div class="col-md-6">
+		                                    <label for="email" class="form-label">Email Address</label>
+		                                    <div class="input-group">
+		                                        <span class="input-group-text bg-light border-end-0">
+		                                            <i class="bi bi-envelope text-muted"></i>
+		                                        </span>
+		                                        <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+		                                    </div>
+		                                </div>
+		                                
+		                                <div class="col-12">
+		                                    <label for="subject" class="form-label">Subject</label>
+		                                    <div class="input-group">
+		                                        <span class="input-group-text bg-light border-end-0">
+		                                            <i class="bi bi-card-heading text-muted"></i>
+		                                        </span>
+		                                        <input type="text" class="form-control" id="subject" placeholder="How can we help?" required>
+		                                    </div>
+		                                </div>
+		                                
+		                                <div class="col-12">
+		                                    <label for="message" class="form-label">Your Message</label>
+		                                    <div class="input-group">
+		                                        <span class="input-group-text bg-light border-end-0 align-items-start pt-2">
+		                                            <i class="bi bi-chat-left-text text-muted"></i>
+		                                        </span>
+		                                        <textarea class="form-control" id="message" rows="5" placeholder="Type your message here..." required></textarea>
+		                                    </div>
+		                                </div>
+		                                
+		                                <div class="col-12">
+		                                    <button type="submit" class="btn btn-primary px-4 py-2">
+		                                        <i class="bi bi-send me-2"></i> Send Message
+		                                    </button>
+		                                </div>
+		                            </div>
+		                        </form>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</section>
 		
 		<!-- Bootstrap Bundle with Popper for Carousel -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>		
