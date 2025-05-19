@@ -279,7 +279,7 @@
                 </label>
                 <div class="form-input">
                     <input type="text" class="form-control" name="username" id="username" 
-                        placeholder="Enter username" value="<%= username %>" required>
+                        placeholder="Enter username" value="<%= username %>" readonly>
                 </div>
             </div>
             
