@@ -288,7 +288,7 @@
                 <label for="username" class="form-label"><i class="fas fa-user"></i>Username</label>
                 <div class="form-input">
                     <input type="text" class="form-control" name="username" id="username" 
-                        placeholder="Username" value="${param.username}" required>
+                        placeholder="Username" value="${param.username}" readonly>
                 </div>
             </div>
             
