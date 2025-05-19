@@ -49,7 +49,7 @@ public class InventoryManagerService {
     
    
 	
-	// Display Inventory Managers 
+	// Display Inventory Managers - In Admin Profile 
 	public static ArrayList<InventoryManager> getAllInventoryManager(){		
 		ArrayList<InventoryManager> listInventoryManager = new ArrayList<>();        
         String sql = "SELECT * FROM InventoryManager";
