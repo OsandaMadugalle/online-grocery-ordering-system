@@ -27,6 +27,8 @@ public class AdminDeliveryManagerServlet extends HttpServlet {
 			request.setAttribute("deliveryManager", deliveryManager);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("admin/manageDeliveryManagers.jsp");
 			dispatcher.forward(request, response);
+			
+			System.out.println("Fetch Delivery Managers Success");
 		}
 		catch(Exception e){
 			e.printStackTrace();

@@ -34,6 +34,8 @@ public class AdminDeleteDeliveryManagerServlet extends HttpServlet {
         
         DeliveryManagerService.deleteDeliveryManager(dM);
 
+        System.out.println("Delete Delivery Manager Success");
+        
         response.sendRedirect("manageDeliveryManager");
        // response.sendRedirect(request.getContextPath() + "/manageInventoryManager");
     }

@@ -115,7 +115,7 @@ public class AdminService {
         return isSuccess;
     }
 
-    //Get Admin
+    //Get Admin for update, delete
     public static ArrayList<Admin> getAdminById(String id) {
     	    	
     	ArrayList<Admin> ad = new ArrayList<>();

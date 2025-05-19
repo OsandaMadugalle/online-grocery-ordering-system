@@ -51,5 +51,7 @@ public class AdminUpdateInventoryManagerServlet extends HttpServlet {
             request.getSession().setAttribute("inventoryManagers", updatedList);
         }        
         response.sendRedirect(request.getContextPath() + "/manageInventoryManager");
+        
+        System.out.println("Update Inventory Manager Success");
     }
 }

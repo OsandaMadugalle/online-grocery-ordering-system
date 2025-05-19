@@ -26,6 +26,8 @@ public class AdminInventoryManagerServlet extends HttpServlet {
             request.setAttribute("inventoryManagers", inventoryManagers);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/manageInventoryManagers.jsp");
             dispatcher.forward(request, response);
+            
+            System.out.println("Fetch Inventory Managers Success");
         } 
         catch (Exception e) {
             e.printStackTrace();

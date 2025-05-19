@@ -30,10 +30,10 @@ public class AdminLoginServlet extends HttpServlet {
                 session.setAttribute("adminDetails", adminDetails);
                 session.setAttribute("username", uname);
                 
-                //System.out.println("Admin Login Success");
+                System.out.println("Admin Login Success");
                 response.sendRedirect(request.getContextPath() +"/admin/adminDashboard.jsp"); 
             } else {
-                //System.out.println("Admin Login : Invalid username or password.");
+                System.out.println("Admin Login : Invalid username or password.");
                 response.sendRedirect(request.getContextPath() +"/admin/adminLogin.jsp");
             }
         } 

@@ -28,8 +28,10 @@ public class AdminCreateDeliveryManagerServlet extends HttpServlet {
 		isTrue = DeliveryManagerService.addDeliveryManager(username, first_name, last_name, phone, email, password);
 		
 		if(isTrue==true) {
+			System.out.println("Create Delivery Manager Success");
 			response.sendRedirect("manageDeliveryManager");
 		}else {
+			System.out.println("Create Delivery Manager Failed");
 			response.sendRedirect(request.getContextPath() + "/admin/createDeliveryManager.jsp");
 		}
 	}

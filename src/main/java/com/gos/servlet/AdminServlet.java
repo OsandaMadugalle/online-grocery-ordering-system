@@ -26,6 +26,8 @@ public class AdminServlet extends HttpServlet {
             request.setAttribute("admin", admin);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/manageAdmins.jsp");
             dispatcher.forward(request, response);
+            
+            System.out.println("Fetch Admins Success");
         } 
         catch (Exception e) {
             e.printStackTrace();

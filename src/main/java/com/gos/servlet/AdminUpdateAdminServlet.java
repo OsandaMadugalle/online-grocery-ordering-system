@@ -67,5 +67,7 @@ public class AdminUpdateAdminServlet extends HttpServlet {
             request.getSession().setAttribute("admin", ad);
         }        
         response.sendRedirect(request.getContextPath() + "/manageAdmin");
+        
+        System.out.println("Update Admin Success");
     }
 }

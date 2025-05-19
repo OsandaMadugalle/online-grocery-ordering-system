@@ -40,8 +40,10 @@ public class AdminCreateServlet extends HttpServlet {
 		}
 		 
 		 if(isTrue==true) {
+			 System.out.println("Create Admin Success");
 			 response.sendRedirect("manageAdmin");
 		 }else {
+			 System.out.println("Create Admin Failed");
 			 response.sendRedirect(request.getContextPath() + "/admin/createAdmin.jsp");
 		 }
 		 

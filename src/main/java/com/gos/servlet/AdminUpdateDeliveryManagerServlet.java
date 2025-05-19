@@ -51,5 +51,7 @@ public class AdminUpdateDeliveryManagerServlet extends HttpServlet {
             request.getSession().setAttribute("deliveryManagers", updatedList);
         }        
         response.sendRedirect(request.getContextPath() + "/manageDeliveryManager");
+        
+        System.out.println("Update Delivery Manager Success");
     }
 }

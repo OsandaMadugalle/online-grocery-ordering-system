@@ -26,6 +26,8 @@ public class AdminDeleteServlet extends HttpServlet {
         */
         
         AdminService.deleteadmin(ad);
+        
+        System.out.println("Delete Admin Success");
 
         response.sendRedirect("manageAdmin");
     }

@@ -34,6 +34,8 @@ public class AdminDeleteInventoryManagerServlet extends HttpServlet {
         
         InventoryManagerService.deleteInventoryManager(IM);
 
+        System.out.println("Delete Inventory Manager Success");
+        
         response.sendRedirect("manageInventoryManager");
        // response.sendRedirect(request.getContextPath() + "/manageInventoryManager");
     }
