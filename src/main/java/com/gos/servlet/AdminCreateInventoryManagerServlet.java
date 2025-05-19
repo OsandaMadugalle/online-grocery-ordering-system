@@ -20,7 +20,7 @@ private static final long serialVersionUID = 1L;
 		 String first_name  = request.getParameter("firstName");
 		 String last_name  = request.getParameter("lastName");
 		 String phone  = request.getParameter("phone");
-		 String email  = request.getParameter("username");
+		 String email  = request.getParameter("email");
 		 String password  = request.getParameter("password");
 		 
 		 boolean isTrue;
