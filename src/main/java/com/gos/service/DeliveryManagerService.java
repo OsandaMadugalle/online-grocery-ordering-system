@@ -43,7 +43,7 @@ public class DeliveryManagerService {
         return deliveryManagerList;
     }
 
-    // Display Delivery Manager
+    // Display Delivery Manager - In Admin Profile
     public static ArrayList<DeliveryManager> getAllDeliveryManagers() {
         ArrayList<DeliveryManager> listDeliveryManager = new ArrayList<>();
         String sql = "SELECT * FROM DeliveryManager";
