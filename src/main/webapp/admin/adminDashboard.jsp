@@ -469,12 +469,8 @@
                     <span class="nav-text">Delivery Managers</span>
                 </a>
             </div>
-        </div>
+        </div>        
         
-        <a href="#">
-            <i class="fas fa-users"></i>
-            <span class="nav-text">Users</span>
-        </a>
         <a href="../LogoutServlet" class="logout-btn">
             <i class="fas fa-sign-out-alt"></i>
             <span class="nav-text">Logout</span>
