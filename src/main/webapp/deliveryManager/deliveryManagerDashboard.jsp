@@ -379,14 +379,7 @@
             <i class="fas fa-shipping-fast"></i>
             <span class="nav-text">Deliveries</span>
         </a>
-        <a href="../manageDrivers">
-            <i class="fas fa-user-tie"></i>
-            <span class="nav-text">Drivers</span>
-        </a>
-        <a href="../manageVehicles">
-            <i class="fas fa-truck-pickup"></i>
-            <span class="nav-text">Vehicles</span>
-        </a>
+        
         <a href="../deliveryManagerLogoutServlet" class="logout-btn">
             <i class="fas fa-sign-out-alt"></i>
             <span class="nav-text">Logout</span>
