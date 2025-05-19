@@ -83,38 +83,38 @@ VALUES
 -- Sample Admin Inserts
 INSERT INTO Admin (Username, First_Name, Last_Name, Phone, Email, Password)
 VALUES
-    ('adminNimal', 'Nimal', 'Perera', '+94712345678', 'nimal.perera@slexample.com', 'admin@2025'),
-    ('adminKumari', 'Kumari', 'Fernando', '+94711234567', 'kumari.fernando@slexample.com', 'securePass1'),
-    ('adminSanjeewa', 'Sanjeewa', 'Jayasinghe', '+94719876543', 'sanjeewa.jaya@slexample.com', 'sanj@admin'),
-    ('adminNadeesha', 'Nadeesha', 'Silva', '+94716789999', 'nadeesha.silva@slexample.com', 'nadee2025'),
-    ('adminRuwan', 'Ruwan', 'De Silva', '+94714442211', 'ruwan.desilva@slexample.com', 'pass4321');
+    ('adminNimal', 'Nimal', 'Perera', '0712345678', 'nimal.perera@slexample.com', 'admin@2025'),
+    ('adminKumari', 'Kumari', 'Fernando', '0711234567', 'kumari.fernando@slexample.com', 'securePass1'),
+    ('adminSanjeewa', 'Sanjeewa', 'Jayasinghe', '0719876543', 'sanjeewa.jaya@slexample.com', 'sanj@admin'),
+    ('adminNadeesha', 'Nadeesha', 'Silva', '0716789999', 'nadeesha.silva@slexample.com', 'nadee2025'),
+    ('adminRuwan', 'Ruwan', 'De Silva', '0714442211', 'ruwan.desilva@slexample.com', 'pass4321');
 
 -- Inventory Managers
 INSERT INTO InventoryManager (Username, First_Name, Last_Name, Phone, Email, Password)
 VALUES
-    ('invRuwan', 'Ruwan', 'Rajapaksha', '+94720001111', 'ruwan.rajapaksha@slexample.com', 'inv@sl2025'),
-    ('invThilini', 'Thilini', 'Dias', '+94720002222', 'thilini.dias@slexample.com', 'invmanager'),
-    ('invAjith', 'Ajith', 'Weerasinghe', '+94720003333', 'ajith.weera@slexample.com', 'storeSecure'),
-    ('invChamari', 'Chamari', 'Gunasekara', '+94720004444', 'chamari.guna@slexample.com', 'stockM@2025'),
-    ('invRoshan', 'Roshan', 'Senanayake', '+94720005555', 'roshan.sena@slexample.com', 'roshanMGR');
+    ('invRuwan', 'Ruwan', 'Rajapaksha', '0720001111', 'ruwan.rajapaksha@slexample.com', 'inv@sl2025'),
+    ('invThilini', 'Thilini', 'Dias', '0720002222', 'thilini.dias@slexample.com', 'invmanager'),
+    ('invAjith', 'Ajith', 'Weerasinghe', '0720003333', 'ajith.weera@slexample.com', 'storeSecure'),
+    ('invChamari', 'Chamari', 'Gunasekara', '0720004444', 'chamari.guna@slexample.com', 'stockM@2025'),
+    ('invRoshan', 'Roshan', 'Senanayake', '0720005555', 'roshan.sena@slexample.com', 'roshanMGR');
 
 -- Delivery Managers
 INSERT INTO DeliveryManager (Username, First_Name, Last_Name, Phone, Email, Password)
 VALUES
-    ('delKamal', 'Kamal', 'Rathnayake', '+94730001111', 'kamal.rathna@slexample.com', 'deliver@sl'),
-    ('delNadeeka', 'Nadeeka', 'Perera', '+94730002222', 'nadeeka.perera@slexample.com', 'fastMove'),
-    ('delAruna', 'Aruna', 'Wijesinghe', '+94730003333', 'aruna.wije@slexample.com', 'routePlan123'),
-    ('delIshara', 'Ishara', 'Lakmal', '+94730004444', 'ishara.lakmal@slexample.com', 'onTime@45'),
-    ('delRashmi', 'Rashmi', 'Jayalath', '+94730005555', 'rashmi.jaya@slexample.com', 'rashDel');
+    ('delKamal', 'Kamal', 'Rathnayake', '0730001111', 'kamal.rathna@slexample.com', 'deliver@sl'),
+    ('delNadeeka', 'Nadeeka', 'Perera', '0730002222', 'nadeeka.perera@slexample.com', 'fastMove'),
+    ('delAruna', 'Aruna', 'Wijesinghe', '0730003333', 'aruna.wije@slexample.com', 'routePlan123'),
+    ('delIshara', 'Ishara', 'Lakmal', '0730004444', 'ishara.lakmal@slexample.com', 'onTime@45'),
+    ('delRashmi', 'Rashmi', 'Jayalath', '0730005555', 'rashmi.jaya@slexample.com', 'rashDel');
 
 -- Delivery Persons
 INSERT INTO DeliveryPerson (Username, First_name, Last_name, Phone, Email, Password)
 VALUES
-    ('dpDilan', 'Dilan', 'Kumara', '+94740001111', 'dilan.kumara@slexample.com', 'dilan123'),
-    ('dpNisansala', 'Nisansala', 'Wijeratne', '+94740002222', 'nisansala.wije@slexample.com', 'nisan@dp'),
-    ('dpHarsha', 'Harsha', 'Madushanka', '+94740003333', 'harsha.madu@slexample.com', 'passHarsha'),
-    ('dpJanani', 'Janani', 'Wickramasinghe', '+94740004444', 'janani.wick@slexample.com', 'janaPass1'),
-    ('dpLakshan', 'Lakshan', 'Ranasinghe', '+94740005555', 'lakshan.rana@slexample.com', 'secureLak');
+    ('dpDilan', 'Dilan', 'Kumara', '0740001111', 'dilan.kumara@slexample.com', 'dilan123'),
+    ('dpNisansala', 'Nisansala', 'Wijeratne', '0740002222', 'nisansala.wije@slexample.com', 'nisan@dp'),
+    ('dpHarsha', 'Harsha', 'Madushanka', '0740003333', 'harsha.madu@slexample.com', 'passHarsha'),
+    ('dpJanani', 'Janani', 'Wickramasinghe', '0740004444', 'janani.wick@slexample.com', 'janaPass1'),
+    ('dpLakshan', 'Lakshan', 'Ranasinghe', '0740005555', 'lakshan.rana@slexample.com', 'secureLak');
 
 -- Sample Sri Lankan Customers
 INSERT INTO Customer (customer_id, username, first_name, last_name, phone, email, password)
