@@ -372,7 +372,7 @@
 		                            </div>
 		                            <div>
 		                                <h4 class="h6 fw-bold mb-1">Email Us</h4>
-		                                <a href="mailto:support@example.com" class="text-decoration-none">support@example.com</a>
+		                                <a href="mailto:support@gosgroceries.lk" class="text-decoration-none">support@gosgroceries.lk</a>
 		                            </div>
 		                        </div>
 		                        
@@ -382,7 +382,7 @@
 		                            </div>
 		                            <div>
 		                                <h4 class="h6 fw-bold mb-1">Call Us</h4>
-		                                <a href="tel:+1234567890" class="text-decoration-none">+1 (234) 567-890</a>
+		                                <a href="tel:+94701234567" class="text-decoration-none">+94 70 123 4567</a>
 		                            </div>
 		                        </div>
 		                        
@@ -392,7 +392,7 @@
 		                            </div>
 		                            <div>
 		                                <h4 class="h6 fw-bold mb-1">Working Hours</h4>
-		                                <p class="mb-0">Mon-Fri: 9AM - 6PM<br>Sat: 10AM - 4PM</p>
+		                                <p class="mb-0">Mon-Fri: 8AM - 10PM<br>Sat: 10AM - 4PM</p>
 		                            </div>
 		                        </div>
 		                        
