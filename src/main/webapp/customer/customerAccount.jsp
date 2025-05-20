@@ -450,7 +450,7 @@
 				                <i class="fas fa-user-edit"></i> Edit Profile
 				            </a>
 				            
-							<a href="./deleteCustomer?id=${id}" class="delete-btn" onclick="return confirm('Are you sure you want to delete your account? This action is irreversible.')">
+							<a href="../deleteCustomer?id=${id}" class="delete-btn" onclick="return confirm('Are you sure you want to delete your account? This action is irreversible.')">
 								<i class="fas fa-trash-alt"></i> Delete Account
 				            </a>
 				        </div>

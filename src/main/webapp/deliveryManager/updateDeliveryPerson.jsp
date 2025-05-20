@@ -215,7 +215,7 @@
                 <p>Update the details below for this delivery person</p>
             </div>
 
-            <form action="/deliveryPersonUpdate" method="post" onsubmit="return validateForm()">
+            <form action="./deliveryPersonUpdate" method="post" onsubmit="return validateForm()">
                 <input type="hidden" name="id" value="<%= dp.getId() %>">
                 
                 <!-- Username -->
