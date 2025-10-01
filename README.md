@@ -90,7 +90,14 @@
 
 ## Screenshots
 
-> _(Add screenshots here to showcase the UI and features of your application.)_
+### Homepage
+![Homepage](images/Home.png)
+
+### Sign Up
+![Sign Up](images/SignUp.png)
+
+### Log In
+![Log In](images/LogIn.png)
 
 ---
 
