@@ -99,6 +99,9 @@
 ### Log In
 ![Log In](images/LogIn.png)
 
+### Profile
+![Profile](images/Profile.png)
+
 ---
 
 ## Technologies Used
