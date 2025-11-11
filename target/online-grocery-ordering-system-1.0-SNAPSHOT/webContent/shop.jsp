@@ -44,7 +44,6 @@
         }
 
         .filter-bar {
-            margin-top: 50px;
             margin-bottom: 20px;
         }
 
